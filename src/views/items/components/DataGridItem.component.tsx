@@ -22,6 +22,14 @@ import {
 } from "devextreme-react/data-grid"
 import { exportFormats, exportGrid } from "../../../utils"
 import MasterDetailsectionComponent from "./MasterDetailsection.component.tsx"
+import {
+   ActionType,
+   DataType,
+   SortDirection,
+   SortingMode,
+   Table,
+   useTable,
+} from "ka-table"
 
 interface DataGridProps {
    dataSource: ItemDto[]
@@ -29,8 +37,21 @@ interface DataGridProps {
 
 export const DataGridItemComponent = ({ dataSource }: DataGridProps) => {
    const { itemsStore } = useAppStore()
+   const { items } = itemsStore.getters
 
-   const openModalUpdate = (e: any) => {
+   const table = useTable({
+      onDispatch: async (action) => {
+         console.log("entro en el action")
+         if (action.type === ActionType.ComponentDidMount) {
+            console.log("entro en el action componentDidMount")
+            table.showLoading()
+            await itemsStore.actions.loadItems()
+            table.hideLoading()
+         }
+      },
+   })
+
+   /*   const openModalUpdate = (e: any) => {
       const itemRow = e.row.data as ItemDto
       itemsStore.actions.prepareForUpdate(itemRow)
    }
@@ -38,11 +59,28 @@ export const DataGridItemComponent = ({ dataSource }: DataGridProps) => {
    const openModalDelete = (e: any) => {
       const itemRow = e.row.data as ItemDto
       itemsStore.actions.prepareForDelete(itemRow)
-   }
+   }*/
 
    return (
       <Box>
-         <DataGrid
+         <Table
+            table={table}
+            data={items}
+            columns={[
+               { key: "name", title: "Name", dataType: DataType.String },
+               {
+                  key: "code",
+                  title: "Code",
+                  dataType: DataType.String,
+                  sortDirection: SortDirection.Ascend,
+               },
+               { key: "price", title: "Price", dataType: DataType.Number },
+               { key: "cost", title: "Cost", dataType: DataType.Number },
+            ]}
+            sortingMode={SortingMode.Single}
+            rowKeyField={"itemId"}
+         />
+         {/*         <DataGrid
             id="ItemsDataGrid"
             dataSource={dataSource}
             keyExpr="itemId"
@@ -96,7 +134,7 @@ export const DataGridItemComponent = ({ dataSource }: DataGridProps) => {
                <Button name="edit" onClick={(e) => openModalUpdate(e)} />
                <Button name="delete" onClick={(e) => openModalDelete(e)} />
             </Column>
-         </DataGrid>
+         </DataGrid>*/}
       </Box>
    )
 }

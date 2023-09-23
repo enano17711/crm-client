@@ -16,12 +16,12 @@ const routes = [
 const ItemsView = () => {
    const { itemsStore } = useAppStore()
    const { items } = itemsStore.getters
-
-   useEffect(() => {
-      if (items.length === 0) {
-         itemsStore.actions.loadItems()
-      }
-   }, [])
+   /*
+      useEffect(() => {
+         if (items.length === 0) {
+            itemsStore.actions.loadItems()
+         }
+      }, [])*/
 
    return (
       <>

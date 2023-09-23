@@ -1,18 +1,39 @@
 import { Button, Group, Modal, Stack, TextInput } from "@mantine/core"
-import { CreateBrandDto, UpdateBrandDto } from "../../../api-services"
+import {
+   BrandApi,
+   BrandDto,
+   CreateBrandDto,
+   UpdateBrandDto,
+} from "../../../api-services"
 import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { useAppStore } from "../../../store"
+import { feature, getAPI } from "../../../axios-utils.ts"
+import { notifications } from "@mantine/notifications"
+import { DispatchFunc } from "ka-table/types"
+import { loadData } from "ka-table/actionCreators"
 
 interface IFormInputs {
    name: string
    description: string
 }
 
-export const ModalCreateBrandComponent = () => {
-   const { brandsStore } = useAppStore()
-   const { modalType, openUpdateModal, singleModel } = brandsStore.getters
+interface ModalCreateBrandComponentProps {
+   openModal: any
+   setOpenModal: any
+   brandData?: BrandDto
+   title: string
+   type: "create" | "update"
+   dispatch: DispatchFunc
+}
 
+export const ModalCreateBrandComponent = ({
+   openModal,
+   setOpenModal,
+   brandData,
+   title,
+   type,
+   dispatch,
+}: ModalCreateBrandComponentProps) => {
    const {
       handleSubmit,
       control,
@@ -25,38 +46,70 @@ export const ModalCreateBrandComponent = () => {
       },
    })
    const onModalClose = () => {
-      brandsStore.actions.disposeState()
+      setOpenModal(false)
       reset({
          name: "",
          description: "",
       })
    }
-   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-      if (modalType === "create") {
-         brandsStore.actions.addBrand(data as CreateBrandDto)
-      } else {
-         brandsStore.actions.updateBrand(
-            singleModel.brandId,
-            data as UpdateBrandDto,
+   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+      if (type === "create") {
+         const [err, res] = await feature(
+            getAPI(BrandApi).apiBrandBrandPost(data as CreateBrandDto),
          )
+         if (err) {
+            notifications.show({
+               title: "Operación Fallida",
+               message: err.message,
+               color: "red",
+            })
+         } else {
+            dispatch(loadData())
+            notifications.show({
+               title: "Operación Exitosa",
+               message: "Marca creada con éxito",
+               color: "teal",
+            })
+         }
+      } else if (type === "update") {
+         const [err, res] = await feature(
+            getAPI(BrandApi).apiBrandBrandIdPut(
+               brandData?.brandId,
+               data as UpdateBrandDto,
+            ),
+         )
+         if (err) {
+            notifications.show({
+               title: "Operación Fallida",
+               message: err.message,
+               color: "red",
+            })
+         } else {
+            dispatch(loadData())
+            notifications.show({
+               title: "Operación Exitosa",
+               message: "Marca actualizada con exito",
+               color: "teal",
+            })
+         }
       }
       onModalClose()
    }
 
    useEffect(() => {
-      if (singleModel?.name) {
+      if (brandData?.name) {
          reset({
-            name: singleModel?.name,
-            description: singleModel?.description,
+            name: brandData?.name,
+            description: brandData?.description,
          })
       }
-   }, [singleModel])
+   }, [brandData])
 
    return (
       <>
          <Modal
-            opened={openUpdateModal}
-            title={modalType === "create" ? "Crear Marca" : "Editar Marca"}
+            opened={openModal}
+            title={title}
             centered
             onClose={onModalClose}
             closeOnClickOutside={false}

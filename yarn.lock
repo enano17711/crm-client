@@ -2706,6 +2706,11 @@ jszip@^3.5.0, jszip@^3.7.1:
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
 
+ka-table@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/ka-table/-/ka-table-8.3.2.tgz#17f69b4c9b90028affeb8400c7203af07d6c5845"
+  integrity sha512-b08of5T1Kpna4Ahnx7BKPmlY5pOuAb516ESqDmNi4oIdnQH5okid5Ah5VswjCCSDXlFYaYrfuN07mm9LdpVcCg==
+
 lazystream@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/lazystream/-/lazystream-1.0.1.tgz#494c831062f1f9408251ec44db1cba29242a2638"

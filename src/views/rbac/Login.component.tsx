@@ -11,15 +11,8 @@ import {
    Button,
 } from "@mantine/core"
 import { useCallback, useEffect, useState } from "react"
-import {
-   accessTokenKey,
-   clearAccessTokens,
-   getAPI,
-   refreshAccessTokenKey,
-} from "../../axios-utils.ts"
-import { RbacApi } from "../../api-services"
+import { clearAccessTokens } from "../../axios-utils.ts"
 import { useNavigate } from "react-router-dom"
-import { notifications } from "@mantine/notifications"
 import { useAppStore } from "../../store"
 
 const LoginComponent = () => {
