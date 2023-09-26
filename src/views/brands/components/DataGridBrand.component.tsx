@@ -1,11 +1,10 @@
 import "ka-table/style.css"
 import {
    BrandApi,
-   BrandDto,
    BrandSimpleDto,
    PaginatedResponseBrandSimpleDto,
 } from "../../../api-services"
-import { Box, Portal } from "@mantine/core"
+import { Box } from "@mantine/core"
 import {
    ActionType,
    DataType,
@@ -32,23 +31,16 @@ export const DataGridBrandComponent = () => {
       pageSize: 10,
       pageNumber: 0,
    })
+
    const table = useTable({
       onDispatch: async (action) => {
-         console.log(action)
          if (
             action.type === ActionType.ComponentDidMount ||
             action.type === ActionType.LoadData
          ) {
-            console.log("entro en el primer fi")
-            console.log(searchColumn)
             table.showLoading()
             const [err, jsonData] = await feature(
-               getAPI(BrandApi).apiBrandBrandsGet(
-                  0,
-                  10,
-                  searchColumn.trim() !== "" ? searchColumn : undefined,
-                  searchValue.trim() !== "" ? searchValue : undefined,
-               ),
+               getAPI(BrandApi).apiBrandBrandsGet(0, 10),
             )
             if (err) {
                notifications.show({
@@ -185,7 +177,12 @@ export const DataGridBrandComponent = () => {
             <Table
                table={table}
                columns={[
-                  { key: "name", title: "Name", dataType: DataType.String },
+                  {
+                     key: "name",
+                     title: "Name",
+                     dataType: DataType.String,
+                     filterRowValue: "",
+                  },
                   {
                      key: "description",
                      title: "Description",
@@ -199,6 +196,7 @@ export const DataGridBrandComponent = () => {
                      filterRowValue: "",
                      isFilterable: false,
                      isSortable: false,
+                     width: 150,
                   },
                ]}
                data={data}
@@ -221,6 +219,13 @@ export const DataGridBrandComponent = () => {
                         }
                      },
                   },
+                  headCell: {
+                     content: (props) => {
+                        if (props.column.key === "addData") {
+                           return <AddColumnComponent {...props} />
+                        }
+                     },
+                  },
                   filterRowCell: {
                      content: (props) => {
                         switch (props.column.key) {
@@ -234,9 +239,6 @@ export const DataGridBrandComponent = () => {
                }}
             />
          </Box>
-         <Portal target={"#brand-header"}>
-            <AddColumnComponent dispatch={table.dispatch} />
-         </Portal>
       </>
    )
 }
