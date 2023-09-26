@@ -1,10 +1,14 @@
 import React from "react"
-import { IHeadCellProps } from "ka-table/props"
 import { Button } from "@mantine/core"
 import { IconPlus } from "@tabler/icons-react"
 import { ModalCreateBrandComponent } from "./ModalCreateBrand.component.tsx"
+import { DispatchFunc } from "ka-table/types"
 
-const AddColumnComponent = (props: IHeadCellProps) => {
+interface AddColumnComponentProps {
+   dispatch: DispatchFunc
+}
+
+const AddColumnComponent = ({ dispatch }: AddColumnComponentProps) => {
    const [openModal, setOpenModal] = React.useState(false)
    return (
       <>
@@ -12,7 +16,7 @@ const AddColumnComponent = (props: IHeadCellProps) => {
             Crear
          </Button>
          <ModalCreateBrandComponent
-            dispatch={props.dispatch}
+            dispatch={dispatch}
             openModal={openModal}
             setOpenModal={setOpenModal}
             title="Crear Marca"
