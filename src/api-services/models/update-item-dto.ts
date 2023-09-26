@@ -43,12 +43,6 @@ export interface UpdateItemDto {
     cost: number;
     /**
      * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    quantity: number;
-    /**
-     * 
      * @type {boolean}
      * @memberof UpdateItemDto
      */
@@ -58,7 +52,13 @@ export interface UpdateItemDto {
      * @type {string}
      * @memberof UpdateItemDto
      */
-    taxMethod: string;
+    taxCostMethod: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateItemDto
+     */
+    taxPriceMethod: string;
     /**
      * 
      * @type {string}
@@ -76,7 +76,13 @@ export interface UpdateItemDto {
      * @type {number}
      * @memberof UpdateItemDto
      */
-    taxId?: number | null;
+    taxCostId?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateItemDto
+     */
+    taxPriceId?: number | null;
     /**
      * 
      * @type {number}

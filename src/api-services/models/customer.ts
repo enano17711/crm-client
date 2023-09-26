@@ -11,89 +11,131 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { SaleDto } from './sale-dto';
+import { Sale } from './sale';
 /**
  * 
  * @export
- * @interface CustomerDto
+ * @interface Customer
  */
-export interface CustomerDto {
+export interface Customer {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Customer
+     */
+    isDeleted?: boolean | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Customer
+     */
+    deletedAt?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Customer
+     */
+    deletedBy?: number | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Customer
+     */
+    createdAt?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Customer
+     */
+    createdBy?: number | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof Customer
+     */
+    updatedAt?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Customer
+     */
+    updatedBy?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     name?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     description?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
-    customerId?: number | null;
+    customerId?: number;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     companyName?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     nit?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     ci?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     email?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     phone?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     address?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     city?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     state?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof CustomerDto
+     * @memberof Customer
      */
     country?: string | null;
     /**
      * 
-     * @type {Array<SaleDto>}
-     * @memberof CustomerDto
+     * @type {Array<Sale>}
+     * @memberof Customer
      */
-    sales?: Array<SaleDto> | null;
+    sales?: Array<Sale> | null;
 }

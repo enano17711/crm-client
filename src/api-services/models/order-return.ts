@@ -11,156 +11,156 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemOrderDto } from './item-order-dto';
-import { SupplierDto } from './supplier-dto';
+import { ItemOrderReturn } from './item-order-return';
+import { Supplier } from './supplier';
 /**
  * 
  * @export
- * @interface OrderDto
+ * @interface OrderReturn
  */
-export interface OrderDto {
+export interface OrderReturn {
     /**
      * 
      * @type {boolean}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     isDeleted?: boolean | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     deletedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     deletedBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     createdAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     createdBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     updatedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     updatedBy?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
-    orderId?: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderDto
-     */
-    orderDate?: Date | null;
+    orderReturnId?: number;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     referenceNumber?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     itemsCount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     totalQuantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     totalDiscount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     totalTax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     totalCost?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     orderTaxRate?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     orderTax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     orderDiscount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     grandTotal?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     status?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     note?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof OrderReturn
+     */
+    staffNote?: string | null;
+    /**
+     * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof OrderReturn
      */
     supplierId?: number | null;
     /**
      * 
-     * @type {SupplierDto}
-     * @memberof OrderDto
+     * @type {Supplier}
+     * @memberof OrderReturn
      */
-    supplier?: SupplierDto;
+    supplier?: Supplier;
     /**
      * 
-     * @type {Array<ItemOrderDto>}
-     * @memberof OrderDto
+     * @type {Array<ItemOrderReturn>}
+     * @memberof OrderReturn
      */
-    itemOrders?: Array<ItemOrderDto> | null;
+    itemOrderReturns?: Array<ItemOrderReturn> | null;
 }

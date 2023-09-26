@@ -389,11 +389,12 @@ export const SaleApiAxiosParamCreator = function (configuration?: Configuration)
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiSaleSalesGet: async (pageNumber?: number, pageSize?: number, totalCountValue?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiSaleSalesGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/sale/sales`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -422,8 +423,12 @@ export const SaleApiAxiosParamCreator = function (configuration?: Configuration)
                 localVarQueryParameter['PageSize'] = pageSize;
             }
 
-            if (totalCountValue !== undefined) {
-                localVarQueryParameter['TotalCount.Value'] = totalCountValue;
+            if (columnName !== undefined) {
+                localVarQueryParameter['ColumnName'] = columnName;
+            }
+
+            if (columnValue !== undefined) {
+                localVarQueryParameter['ColumnValue'] = columnValue;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -543,12 +548,13 @@ export const SaleApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSaleSalesGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>>> {
-            const localVarAxiosArgs = await SaleApiAxiosParamCreator(configuration).apiSaleSalesGet(pageNumber, pageSize, totalCountValue, options);
+        async apiSaleSalesGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>>> {
+            const localVarAxiosArgs = await SaleApiAxiosParamCreator(configuration).apiSaleSalesGet(pageNumber, pageSize, columnName, columnValue, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -635,12 +641,13 @@ export const SaleApiFactory = function (configuration?: Configuration, basePath?
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiSaleSalesGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>> {
-            return SaleApiFp(configuration).apiSaleSalesGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(axios, basePath));
+        async apiSaleSalesGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>> {
+            return SaleApiFp(configuration).apiSaleSalesGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -729,12 +736,13 @@ export class SaleApi extends BaseAPI {
      * 
      * @param {number} [pageNumber] 
      * @param {number} [pageSize] 
-     * @param {number} [totalCountValue] 
+     * @param {string} [columnName] 
+     * @param {string} [columnValue] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SaleApi
      */
-    public async apiSaleSalesGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>> {
-        return SaleApiFp(this.configuration).apiSaleSalesGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(this.axios, this.basePath));
+    public async apiSaleSalesGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultSaleDto>> {
+        return SaleApiFp(this.configuration).apiSaleSalesGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
     }
 }

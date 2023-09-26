@@ -19,7 +19,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { CreateOrderDto } from '../models';
 import { GroupingInfo } from '../models';
 import { RESTfulResultItemOrderDto } from '../models';
-import { RESTfulResultLoadResult } from '../models';
+import { RESTfulResultObject } from '../models';
 import { RESTfulResultOrderDto } from '../models';
 import { RESTfulResultPaginatedResultOrderDto } from '../models';
 import { SortingInfo } from '../models';
@@ -389,11 +389,12 @@ export const OrderApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiOrderOrdersGet: async (pageNumber?: number, pageSize?: number, totalCountValue?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiOrderOrdersGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/order/orders`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -422,8 +423,12 @@ export const OrderApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['PageSize'] = pageSize;
             }
 
-            if (totalCountValue !== undefined) {
-                localVarQueryParameter['TotalCount.Value'] = totalCountValue;
+            if (columnName !== undefined) {
+                localVarQueryParameter['ColumnName'] = columnName;
+            }
+
+            if (columnValue !== undefined) {
+                localVarQueryParameter['ColumnValue'] = columnValue;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -532,7 +537,7 @@ export const OrderApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultLoadResult>>> {
+        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultObject>>> {
             const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -543,12 +548,13 @@ export const OrderApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrdersGet(pageNumber, pageSize, totalCountValue, options);
+        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>>> {
+            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -628,19 +634,20 @@ export const OrderApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultLoadResult>> {
+        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultObject>> {
             return OrderApiFp(configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
-            return OrderApiFp(configuration).apiOrderOrdersGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(axios, basePath));
+        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
+            return OrderApiFp(configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -722,19 +729,20 @@ export class OrderApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OrderApi
      */
-    public async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultLoadResult>> {
+    public async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultObject>> {
         return OrderApiFp(this.configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @param {number} [pageNumber] 
      * @param {number} [pageSize] 
-     * @param {number} [totalCountValue] 
+     * @param {string} [columnName] 
+     * @param {string} [columnValue] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrderApi
      */
-    public async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderOrdersGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(this.axios, this.basePath));
+    public async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
+        return OrderApiFp(this.configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
     }
 }

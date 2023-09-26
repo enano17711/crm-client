@@ -11,146 +11,150 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemBatchDto } from './item-batch-dto';
-import { ItemDto } from './item-dto';
-import { OrderDto } from './order-dto';
-import { UnitDto } from './unit-dto';
+import { Customer } from './customer';
+import { ItemSale } from './item-sale';
 /**
  * 
  * @export
- * @interface ItemOrderDto
+ * @interface Sale
  */
-export interface ItemOrderDto {
+export interface Sale {
     /**
      * 
      * @type {boolean}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     isDeleted?: boolean | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     deletedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     deletedBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     createdAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     createdBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     updatedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
     updatedBy?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    itemOrderId?: number;
+    saleId?: number;
     /**
      * 
      * @type {string}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemOrderDto
-     */
-    batchDate?: Date | null;
+    referenceNumber?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    quantity?: number | null;
+    itemsCount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    receivedQuantity?: number | null;
+    totalQuantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    unitCostNet?: number | null;
+    totalDiscount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    discount?: number | null;
+    totalTax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    taxRate?: number | null;
+    totalCost?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    tax?: number | null;
+    orderTaxRate?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof Sale
      */
-    total?: number | null;
+    orderTax?: number | null;
     /**
      * 
-     * @type {ItemDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof Sale
      */
-    item?: ItemDto;
+    orderDiscount?: number | null;
     /**
      * 
-     * @type {ItemBatchDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof Sale
      */
-    itemBatch?: ItemBatchDto;
+    grandTotal?: number | null;
     /**
      * 
-     * @type {OrderDto}
-     * @memberof ItemOrderDto
+     * @type {string}
+     * @memberof Sale
      */
-    order?: OrderDto;
+    status?: string | null;
     /**
      * 
-     * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @type {string}
+     * @memberof Sale
      */
-    unitCost?: UnitDto;
+    note?: string | null;
     /**
      * 
-     * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof Sale
      */
-    unitPrice?: UnitDto;
+    customerId?: number | null;
+    /**
+     * 
+     * @type {Customer}
+     * @memberof Sale
+     */
+    customer?: Customer;
+    /**
+     * 
+     * @type {Array<ItemSale>}
+     * @memberof Sale
+     */
+    itemSales?: Array<ItemSale> | null;
 }

@@ -13,6 +13,7 @@
  */
 import { ItemBatchDto } from './item-batch-dto';
 import { ItemDto } from './item-dto';
+import { ItemForSaleDto } from './item-for-sale-dto';
 import { SaleDto } from './sale-dto';
 import { UnitDto } from './unit-dto';
 /**
@@ -147,4 +148,10 @@ export interface ItemSaleDto {
      * @memberof ItemSaleDto
      */
     unitPrice?: UnitDto;
+    /**
+     * 
+     * @type {ItemForSaleDto}
+     * @memberof ItemSaleDto
+     */
+    itemForSale?: ItemForSaleDto;
 }

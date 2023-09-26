@@ -34,11 +34,5 @@ export interface CreateItemBatchDto {
      * @type {number}
      * @memberof CreateItemBatchDto
      */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemBatchDto
-     */
     itemId?: number | null;
 }

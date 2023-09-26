@@ -11,146 +11,164 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemBatchDto } from './item-batch-dto';
-import { ItemDto } from './item-dto';
-import { OrderDto } from './order-dto';
-import { UnitDto } from './unit-dto';
+import { Item } from './item';
+import { ItemBatch } from './item-batch';
+import { OrderReturn } from './order-return';
+import { Unit } from './unit';
 /**
  * 
  * @export
- * @interface ItemOrderDto
+ * @interface ItemOrderReturn
  */
-export interface ItemOrderDto {
+export interface ItemOrderReturn {
     /**
      * 
      * @type {boolean}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     isDeleted?: boolean | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     deletedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     deletedBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     createdAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     createdBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     updatedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     updatedBy?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
-    itemOrderId?: number;
+    itemOrderReturnId?: number;
     /**
      * 
      * @type {string}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     batchNumber?: string | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     batchDate?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     quantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     receivedQuantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     unitCostNet?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     discount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     taxRate?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     tax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemOrderReturn
      */
     total?: number | null;
     /**
      * 
-     * @type {ItemDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof ItemOrderReturn
      */
-    item?: ItemDto;
+    orderReturnId?: number | null;
     /**
      * 
-     * @type {ItemBatchDto}
-     * @memberof ItemOrderDto
+     * @type {OrderReturn}
+     * @memberof ItemOrderReturn
      */
-    itemBatch?: ItemBatchDto;
+    orderReturn?: OrderReturn;
     /**
      * 
-     * @type {OrderDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof ItemOrderReturn
      */
-    order?: OrderDto;
+    itemId?: number | null;
     /**
      * 
-     * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @type {Item}
+     * @memberof ItemOrderReturn
      */
-    unitCost?: UnitDto;
+    item?: Item;
     /**
      * 
-     * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @type {number}
+     * @memberof ItemOrderReturn
      */
-    unitPrice?: UnitDto;
+    itemBatchId?: number | null;
+    /**
+     * 
+     * @type {ItemBatch}
+     * @memberof ItemOrderReturn
+     */
+    itemBatch?: ItemBatch;
+    /**
+     * 
+     * @type {number}
+     * @memberof ItemOrderReturn
+     */
+    unitCostId?: number | null;
+    /**
+     * 
+     * @type {Unit}
+     * @memberof ItemOrderReturn
+     */
+    unitCost?: Unit;
 }

@@ -382,11 +382,12 @@ export const TaxApiAxiosParamCreator = function (configuration?: Configuration) 
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiTaxTaxsGet: async (pageNumber?: number, pageSize?: number, totalCountValue?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiTaxTaxsGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/tax/taxs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -415,8 +416,12 @@ export const TaxApiAxiosParamCreator = function (configuration?: Configuration) 
                 localVarQueryParameter['PageSize'] = pageSize;
             }
 
-            if (totalCountValue !== undefined) {
-                localVarQueryParameter['TotalCount.Value'] = totalCountValue;
+            if (columnName !== undefined) {
+                localVarQueryParameter['ColumnName'] = columnName;
+            }
+
+            if (columnValue !== undefined) {
+                localVarQueryParameter['ColumnValue'] = columnValue;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -535,12 +540,13 @@ export const TaxApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>>> {
-            const localVarAxiosArgs = await TaxApiAxiosParamCreator(configuration).apiTaxTaxsGet(pageNumber, pageSize, totalCountValue, options);
+        async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>>> {
+            const localVarAxiosArgs = await TaxApiAxiosParamCreator(configuration).apiTaxTaxsGet(pageNumber, pageSize, columnName, columnValue, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -626,12 +632,13 @@ export const TaxApiFactory = function (configuration?: Configuration, basePath?:
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>> {
-            return TaxApiFp(configuration).apiTaxTaxsGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(axios, basePath));
+        async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>> {
+            return TaxApiFp(configuration).apiTaxTaxsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -719,12 +726,13 @@ export class TaxApi extends BaseAPI {
      * 
      * @param {number} [pageNumber] 
      * @param {number} [pageSize] 
-     * @param {number} [totalCountValue] 
+     * @param {string} [columnName] 
+     * @param {string} [columnValue] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TaxApi
      */
-    public async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>> {
-        return TaxApiFp(this.configuration).apiTaxTaxsGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(this.axios, this.basePath));
+    public async apiTaxTaxsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultTaxDto>> {
+        return TaxApiFp(this.configuration).apiTaxTaxsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
     }
 }

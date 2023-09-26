@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-
 /**
  * 规范化接口演示
  * 让 .NET 开发更简单，更通用，更流行。
@@ -13,99 +12,99 @@
  * Do not edit the class manually.
  */
 /**
- *
+ * 
  * @export
  * @interface CreateItemOrderDto
  */
 export interface CreateItemOrderDto {
-   /**
-    *
-    * @type {string}
-    * @memberof CreateItemOrderDto
-    */
-   batchNumber?: string | null
-   /**
-    *
-    * @type {Date}
-    * @memberof CreateItemOrderDto
-    */
-   batchDate?: Date | null
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   quantity: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   receivedQuantity: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   unitCostNet: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   unitPriceNet: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   discount: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   taxRate: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   tax: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   total: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   itemId?: number | null
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   itemBatchId?: number | null
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   orderId?: number | null
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   unitCostId: number
-   /**
-    *
-    * @type {number}
-    * @memberof CreateItemOrderDto
-    */
-   unitPriceId: number
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateItemOrderDto
+     */
+    batchNumber?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateItemOrderDto
+     */
+    batchDate?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    quantity: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    receivedQuantity: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    unitCostNet: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    unitPriceNet: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    discount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    taxRate: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    tax: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    total: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    itemId?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    itemBatchId?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    orderId?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    unitCostId: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemOrderDto
+     */
+    unitPriceId: number;
 }

@@ -43,12 +43,6 @@ export interface CreateItemDto {
     cost: number;
     /**
      * 
-     * @type {number}
-     * @memberof CreateItemDto
-     */
-    quantity: number;
-    /**
-     * 
      * @type {boolean}
      * @memberof CreateItemDto
      */
@@ -58,7 +52,13 @@ export interface CreateItemDto {
      * @type {string}
      * @memberof CreateItemDto
      */
-    taxMethod: string;
+    taxCostMethod: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateItemDto
+     */
+    taxPriceMethod: string;
     /**
      * 
      * @type {string}
@@ -76,7 +76,13 @@ export interface CreateItemDto {
      * @type {number}
      * @memberof CreateItemDto
      */
-    taxId?: number | null;
+    taxCostId?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateItemDto
+     */
+    taxPriceId?: number | null;
     /**
      * 
      * @type {number}

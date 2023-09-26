@@ -280,11 +280,12 @@ export const OrderReturnApiAxiosParamCreator = function (configuration?: Configu
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiOrderReturnOrderReturnsGet: async (pageNumber?: number, pageSize?: number, totalCountValue?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiOrderReturnOrderReturnsGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/order-return/order-returns`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -313,8 +314,12 @@ export const OrderReturnApiAxiosParamCreator = function (configuration?: Configu
                 localVarQueryParameter['PageSize'] = pageSize;
             }
 
-            if (totalCountValue !== undefined) {
-                localVarQueryParameter['TotalCount.Value'] = totalCountValue;
+            if (columnName !== undefined) {
+                localVarQueryParameter['ColumnName'] = columnName;
+            }
+
+            if (columnValue !== undefined) {
+                localVarQueryParameter['ColumnValue'] = columnValue;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -406,12 +411,13 @@ export const OrderReturnApiFp = function(configuration?: Configuration) {
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>>> {
-            const localVarAxiosArgs = await OrderReturnApiAxiosParamCreator(configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, totalCountValue, options);
+        async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>>> {
+            const localVarAxiosArgs = await OrderReturnApiAxiosParamCreator(configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, columnName, columnValue, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -478,12 +484,13 @@ export const OrderReturnApiFactory = function (configuration?: Configuration, ba
          * 
          * @param {number} [pageNumber] 
          * @param {number} [pageSize] 
-         * @param {number} [totalCountValue] 
+         * @param {string} [columnName] 
+         * @param {string} [columnValue] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>> {
-            return OrderReturnApiFp(configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(axios, basePath));
+        async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>> {
+            return OrderReturnApiFp(configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -550,12 +557,13 @@ export class OrderReturnApi extends BaseAPI {
      * 
      * @param {number} [pageNumber] 
      * @param {number} [pageSize] 
-     * @param {number} [totalCountValue] 
+     * @param {string} [columnName] 
+     * @param {string} [columnValue] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrderReturnApi
      */
-    public async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, totalCountValue?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>> {
-        return OrderReturnApiFp(this.configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, totalCountValue, options).then((request) => request(this.axios, this.basePath));
+    public async apiOrderReturnOrderReturnsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultOrderReturnDto>> {
+        return OrderReturnApiFp(this.configuration).apiOrderReturnOrderReturnsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
     }
 }

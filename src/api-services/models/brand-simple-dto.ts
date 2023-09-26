@@ -11,24 +11,28 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BrandDto } from './brand-dto';
-import { MetaData } from './meta-data';
 /**
  * 
  * @export
- * @interface PaginatedResultBrandDto
+ * @interface BrandSimpleDto
  */
-export interface PaginatedResultBrandDto {
+export interface BrandSimpleDto {
     /**
      * 
-     * @type {Array<BrandDto>}
-     * @memberof PaginatedResultBrandDto
+     * @type {string}
+     * @memberof BrandSimpleDto
      */
-    items?: Array<BrandDto> | null;
+    name?: string | null;
     /**
      * 
-     * @type {MetaData}
-     * @memberof PaginatedResultBrandDto
+     * @type {string}
+     * @memberof BrandSimpleDto
      */
-    metaData?: MetaData;
+    description?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof BrandSimpleDto
+     */
+    brandId?: number;
 }

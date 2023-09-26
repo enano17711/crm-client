@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BrandDto } from './brand-dto';
+import { IActionResult } from './iaction-result';
 /**
  * 
  * @export
- * @interface RESTfulResultBrandDto
+ * @interface RESTfulResultIActionResult
  */
-export interface RESTfulResultBrandDto {
+export interface RESTfulResultIActionResult {
     /**
      * 
      * @type {number}
-     * @memberof RESTfulResultBrandDto
+     * @memberof RESTfulResultIActionResult
      */
     statusCode?: number | null;
     /**
      * 
-     * @type {BrandDto}
-     * @memberof RESTfulResultBrandDto
+     * @type {IActionResult}
+     * @memberof RESTfulResultIActionResult
      */
-    data?: BrandDto;
+    data?: IActionResult;
     /**
      * 
      * @type {boolean}
-     * @memberof RESTfulResultBrandDto
+     * @memberof RESTfulResultIActionResult
      */
     succeeded?: boolean;
     /**
      * 
      * @type {any}
-     * @memberof RESTfulResultBrandDto
+     * @memberof RESTfulResultIActionResult
      */
     errors?: any | null;
     /**
      * 
      * @type {any}
-     * @memberof RESTfulResultBrandDto
+     * @memberof RESTfulResultIActionResult
      */
     extras?: any | null;
     /**
      * 
      * @type {number}
-     * @memberof RESTfulResultBrandDto
+     * @memberof RESTfulResultIActionResult
      */
     timestamp?: number;
 }

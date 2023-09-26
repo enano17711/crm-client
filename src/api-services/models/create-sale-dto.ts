@@ -11,7 +11,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CreateItemSaleDto } from './create-item-sale-dto';
+import { CreateItemForSaleDto } from './create-item-for-sale-dto';
 /**
  * 
  * @export
@@ -98,8 +98,8 @@ export interface CreateSaleDto {
     customerId: number;
     /**
      * 
-     * @type {Array<CreateItemSaleDto>}
+     * @type {Array<CreateItemForSaleDto>}
      * @memberof CreateSaleDto
      */
-    itemSales?: Array<CreateItemSaleDto> | null;
+    itemSales?: Array<CreateItemForSaleDto> | null;
 }

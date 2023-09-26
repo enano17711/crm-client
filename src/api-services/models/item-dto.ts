@@ -78,7 +78,13 @@ export interface ItemDto {
      * @type {string}
      * @memberof ItemDto
      */
-    taxMethod?: string | null;
+    taxCostMethod?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ItemDto
+     */
+    taxPriceMethod?: string | null;
     /**
      * 
      * @type {Array<CategoryItemDto>}
@@ -90,7 +96,13 @@ export interface ItemDto {
      * @type {TaxDto}
      * @memberof ItemDto
      */
-    tax?: TaxDto;
+    taxCost?: TaxDto;
+    /**
+     * 
+     * @type {TaxDto}
+     * @memberof ItemDto
+     */
+    taxPrice?: TaxDto;
     /**
      * 
      * @type {BrandDto}

@@ -13,144 +13,164 @@
  */
 import { ItemBatchDto } from './item-batch-dto';
 import { ItemDto } from './item-dto';
+import { ItemOrder } from './item-order';
+import { ItemSaleDto } from './item-sale-dto';
 import { OrderDto } from './order-dto';
 import { UnitDto } from './unit-dto';
 /**
  * 
  * @export
- * @interface ItemOrderDto
+ * @interface ItemForSaleDto
  */
-export interface ItemOrderDto {
+export interface ItemForSaleDto {
     /**
      * 
      * @type {boolean}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     isDeleted?: boolean | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     deletedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     deletedBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     createdAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     createdBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     updatedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     updatedBy?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
-    itemOrderId?: number;
+    itemForSaleId?: number;
+    /**
+     * 
+     * @type {ItemOrder}
+     * @memberof ItemForSaleDto
+     */
+    itemOrder?: ItemOrder;
     /**
      * 
      * @type {string}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     batchNumber?: string | null;
     /**
      * 
      * @type {Date}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     batchDate?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     quantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     receivedQuantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     unitCostNet?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
+     */
+    unitPriceNet?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ItemForSaleDto
      */
     discount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     taxRate?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     tax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     total?: number | null;
     /**
      * 
+     * @type {OrderDto}
+     * @memberof ItemForSaleDto
+     */
+    order?: OrderDto;
+    /**
+     * 
      * @type {ItemDto}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     item?: ItemDto;
     /**
      * 
      * @type {ItemBatchDto}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     itemBatch?: ItemBatchDto;
     /**
      * 
-     * @type {OrderDto}
-     * @memberof ItemOrderDto
-     */
-    order?: OrderDto;
-    /**
-     * 
      * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     unitCost?: UnitDto;
     /**
      * 
      * @type {UnitDto}
-     * @memberof ItemOrderDto
+     * @memberof ItemForSaleDto
      */
     unitPrice?: UnitDto;
+    /**
+     * 
+     * @type {Array<ItemSaleDto>}
+     * @memberof ItemForSaleDto
+     */
+    itemSales?: Array<ItemSaleDto> | null;
 }

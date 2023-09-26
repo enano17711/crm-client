@@ -11,156 +11,163 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemOrderDto } from './item-order-dto';
-import { SupplierDto } from './supplier-dto';
+import { ItemForSale } from './item-for-sale';
+import { ItemOrder } from './item-order';
+import { Supplier } from './supplier';
 /**
  * 
  * @export
- * @interface OrderDto
+ * @interface Order
  */
-export interface OrderDto {
+export interface Order {
     /**
      * 
      * @type {boolean}
-     * @memberof OrderDto
+     * @memberof Order
      */
     isDeleted?: boolean | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof Order
      */
     deletedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     deletedBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof Order
      */
     createdAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     createdBy?: number | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof Order
      */
     updatedAt?: Date | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     updatedBy?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     orderId?: number;
     /**
      * 
      * @type {Date}
-     * @memberof OrderDto
+     * @memberof Order
      */
     orderDate?: Date | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof Order
      */
     referenceNumber?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     itemsCount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     totalQuantity?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     totalDiscount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     totalTax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     totalCost?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     orderTaxRate?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     orderTax?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     orderDiscount?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     grandTotal?: number | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof Order
      */
     status?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderDto
+     * @memberof Order
      */
     note?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderDto
+     * @memberof Order
      */
     supplierId?: number | null;
     /**
      * 
-     * @type {SupplierDto}
-     * @memberof OrderDto
+     * @type {Supplier}
+     * @memberof Order
      */
-    supplier?: SupplierDto;
+    supplier?: Supplier;
     /**
      * 
-     * @type {Array<ItemOrderDto>}
-     * @memberof OrderDto
+     * @type {Array<ItemOrder>}
+     * @memberof Order
      */
-    itemOrders?: Array<ItemOrderDto> | null;
+    itemOrders?: Array<ItemOrder> | null;
+    /**
+     * 
+     * @type {Array<ItemForSale>}
+     * @memberof Order
+     */
+    itemForSales?: Array<ItemForSale> | null;
 }

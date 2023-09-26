@@ -11,47 +11,46 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultBrandDto } from './paginated-result-brand-dto';
 /**
  * 
  * @export
- * @interface RESTfulResultPaginatedResultBrandDto
+ * @interface RESTfulResultObject
  */
-export interface RESTfulResultPaginatedResultBrandDto {
+export interface RESTfulResultObject {
     /**
      * 
      * @type {number}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @memberof RESTfulResultObject
      */
     statusCode?: number | null;
     /**
      * 
-     * @type {PaginatedResultBrandDto}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @type {any}
+     * @memberof RESTfulResultObject
      */
-    data?: PaginatedResultBrandDto;
+    data?: any | null;
     /**
      * 
      * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @memberof RESTfulResultObject
      */
     succeeded?: boolean;
     /**
      * 
      * @type {any}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @memberof RESTfulResultObject
      */
     errors?: any | null;
     /**
      * 
      * @type {any}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @memberof RESTfulResultObject
      */
     extras?: any | null;
     /**
      * 
      * @type {number}
-     * @memberof RESTfulResultPaginatedResultBrandDto
+     * @memberof RESTfulResultObject
      */
     timestamp?: number;
 }
