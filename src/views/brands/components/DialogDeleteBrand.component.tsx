@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Modal, Stack, Text } from "@mantine/core"
-import { BrandApi, BrandDto } from "../../../api-services"
+import { BrandApi, BrandDto, BrandSimpleDto } from "../../../api-services"
 import { getAPI } from "../../../axios-utils.ts"
 import { notifications } from "@mantine/notifications"
 import { DispatchFunc } from "ka-table/types"
@@ -9,7 +9,7 @@ import { loadData } from "ka-table/actionCreators"
 interface DialogDeleteBrandComponentProps {
    openDeleteModal: any
    setOpenDeleteModal: any
-   brandData: BrandDto
+   brandData: BrandSimpleDto
    dispatch: DispatchFunc
 }
 

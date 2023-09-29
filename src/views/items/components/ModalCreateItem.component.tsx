@@ -8,10 +8,23 @@ import {
    Stack,
    TextInput,
 } from "@mantine/core"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useAppStore } from "../../../store"
-import { CreateItemDto, UpdateItemDto } from "../../../api-services"
+import {
+   BrandApi,
+   BrandDto,
+   CreateBrandDto,
+   CreateItemDto,
+   ItemApi,
+   ItemSimpleDto,
+   UpdateBrandDto,
+   UpdateItemDto,
+} from "../../../api-services"
+import { DispatchFunc } from "ka-table/types"
+import { feature, getAPI } from "../../../axios-utils.ts"
+import { notifications } from "@mantine/notifications"
+import { loadData } from "ka-table/actionCreators"
 
 interface IFormInputs {
    name: string
@@ -20,25 +33,42 @@ interface IFormInputs {
    cost: number
    quantity: number
    isBatched: string
-   taxMethod: string
+   taxCostMethod: string
+   taxPriceMethod: string
    description: string
    categoryItems: Array<string>
-   taxId: string
+   taxCostId: string
+   taxPriceId: string
    brandId: string
    unitPriceId: string
    unitCostId: string
+   baseUnitId: string
 }
 
-export const ModalCreateItemComponent = () => {
+interface ModalCreateItemComponentProps {
+   openModal: any
+   setOpenModal: any
+   itemData?: ItemSimpleDto
+   title: string
+   type: "create" | "update"
+   dispatch: DispatchFunc
+}
+
+export const ModalCreateItemComponent = ({
+   itemData,
+   setOpenModal,
+   openModal,
+   title,
+   type,
+   dispatch,
+}: ModalCreateItemComponentProps) => {
    const {
-      itemsStore,
       baseUnitsStore,
       unitsStore,
       categoryItemsStore,
       brandsStore,
       taxsStore,
    } = useAppStore()
-   const { modalType, openUpdateModal, singleModel } = itemsStore.getters
    const { baseUnits } = baseUnitsStore.getters
    const { units } = unitsStore.getters
    const { categoryItems } = categoryItemsStore.getters
@@ -46,6 +76,8 @@ export const ModalCreateItemComponent = () => {
    const { taxs } = taxsStore.getters
 
    const {
+      watch,
+      setValue,
       handleSubmit,
       control,
       reset,
@@ -58,17 +90,29 @@ export const ModalCreateItemComponent = () => {
          cost: 0,
          quantity: 0,
          isBatched: "",
-         taxMethod: "",
+         taxCostMethod: "",
+         taxPriceMethod: "",
          description: "",
          categoryItems: [],
-         taxId: "",
+         taxCostId: "",
+         taxPriceId: "",
          brandId: "",
          unitPriceId: "",
          unitCostId: "",
+         baseUnitId: "",
       },
    })
+   const watchBaseUnitId = watch("baseUnitId")
+
+   const unitArrayFromBaseUnitId = useMemo(() => {
+      setValue("unitPriceId", "")
+      setValue("unitCostId", "")
+      const baseUnitId = Number(watchBaseUnitId)
+      return units.filter((unit) => unit.baseUnit.baseUnitId === baseUnitId)
+   }, [units, watchBaseUnitId])
+
    const onModalClose = () => {
-      itemsStore.actions.disposeState()
+      setOpenModal(false)
       reset({
          name: "",
          code: "",
@@ -76,38 +120,71 @@ export const ModalCreateItemComponent = () => {
          cost: 0,
          quantity: 0,
          isBatched: "",
-         taxMethod: "",
+         taxCostMethod: "",
+         taxPriceMethod: "",
          description: "",
          categoryItems: [],
-         taxId: "",
+         taxCostId: "",
+         taxPriceId: "",
          brandId: "",
          unitPriceId: "",
          unitCostId: "",
+         baseUnitId: "",
       })
    }
-   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
       const itemForCreate: CreateItemDto = {
          name: data.name,
          code: data.code,
          price: data.price,
          cost: data.cost,
-         quantity: data.quantity,
          isBatched: data.isBatched === "true" ? true : false,
-         taxMethod: data.taxMethod,
+         taxCostMethod: data.taxCostMethod,
+         taxPriceMethod: data.taxPriceMethod,
          description: data.description,
          categoryItems: data.categoryItems.map((item) => Number(item)),
-         taxId: Number(data.taxId),
+         taxCostId: Number(data.taxCostId),
+         taxPriceId: Number(data.taxPriceId),
          brandId: Number(data.brandId),
          unitPriceId: Number(data.unitPriceId),
          unitCostId: Number(data.unitCostId),
       }
-      if (modalType === "create") {
-         itemsStore.actions.addItem(itemForCreate)
-      } else {
-         itemsStore.actions.updateItem(
-            singleModel.itemId,
-            itemForCreate as UpdateItemDto,
+      if (type === "create") {
+         const [err, res] = await feature(
+            getAPI(ItemApi).apiItemItemPost(itemForCreate),
          )
+         if (err) {
+            notifications.show({
+               title: "Operación Fallida",
+               message: err.message,
+               color: "red",
+            })
+         } else {
+            dispatch(loadData())
+            notifications.show({
+               title: "Operación Exitosa",
+               message: "Marca creada con éxito",
+               color: "teal",
+            })
+         }
+      } else if (type === "update") {
+         const [err, res] = await feature(
+            getAPI(ItemApi).apiItemItemIdPut(itemData?.itemId, itemForCreate),
+         )
+         if (err) {
+            notifications.show({
+               title: "Operación Fallida",
+               message: err.message,
+               color: "red",
+            })
+         } else {
+            dispatch(loadData())
+            notifications.show({
+               title: "Operación Exitosa",
+               message: "Marca actualizada con exito",
+               color: "teal",
+            })
+         }
       }
       onModalClose()
    }
@@ -131,39 +208,39 @@ export const ModalCreateItemComponent = () => {
    }, [])
 
    useEffect(() => {
-      if (singleModel?.name) {
+      if (itemData?.name) {
          reset({
-            name: singleModel?.name,
-            code: singleModel?.code,
-            price: singleModel?.price,
-            cost: singleModel?.cost,
-            quantity: singleModel?.quantity,
-            isBatched: singleModel?.isBatched === true ? "true" : "false",
-            taxMethod: singleModel?.taxMethod,
-            description: singleModel?.description,
-            categoryItems: singleModel?.categoryItems.map((cat) =>
+            name: itemData?.name,
+            code: itemData?.code,
+            price: itemData?.price,
+            cost: itemData?.cost,
+            quantity: itemData?.quantity,
+            isBatched: itemData?.isBatched === true ? "true" : "false",
+            taxCostMethod: itemData?.taxCostMethod,
+            taxPriceMethod: itemData?.taxPriceMethod,
+            description: itemData?.description,
+            categoryItems: itemData?.categoryItems.map((cat) =>
                cat.categoryItemId.toString(),
             ),
-            taxId: singleModel?.tax?.taxId.toString(),
-            brandId: singleModel?.brand?.brandId.toString(),
-            unitPriceId: singleModel?.unitPrice?.unitId.toString(),
-            unitCostId: singleModel?.unitCost?.unitId.toString(),
+            taxCostId: itemData?.taxCost?.taxId.toString(),
+            brandId: itemData?.brand?.brandId.toString(),
+            unitPriceId: itemData?.unitPrice?.unitId.toString(),
+            unitCostId: itemData?.unitCost?.unitId.toString(),
          })
       }
-   }, [singleModel])
+   }, [itemData])
 
    return (
       <>
          <Modal
-            opened={openUpdateModal}
-            title={modalType === "create" ? "Crear Item" : "Editar Item"}
+            opened={openModal}
+            title={title}
             centered
             onClose={onModalClose}
             closeOnClickOutside={false}
          >
             <form onSubmit={handleSubmit(onSubmit)}>
                <Stack spacing="sm">
-                  {/*Nombre*/}
                   <Controller
                      name="name"
                      control={control}
@@ -228,6 +305,33 @@ export const ModalCreateItemComponent = () => {
                         )}
                      />
                   </Group>
+                  <Controller
+                     name="baseUnitId"
+                     control={control}
+                     rules={{ required: true }}
+                     render={({ field }) => (
+                        <Select
+                           {...field}
+                           withAsterisk
+                           label="Unidad Base"
+                           searchable
+                           error={
+                              errors.baseUnitId?.type === "required" &&
+                              "Este campo es requerido"
+                           }
+                           data={
+                              baseUnits.length === 0
+                                 ? ["Cargando"]
+                                 : baseUnits.map((base) => {
+                                      return {
+                                         label: base.name,
+                                         value: base.baseUnitId.toString(),
+                                      }
+                                   })
+                           }
+                        />
+                     )}
+                  />
                   {/*Unidad Precio y Unidad Costo*/}
                   <Group position="apart" grow>
                      <Controller
@@ -246,8 +350,8 @@ export const ModalCreateItemComponent = () => {
                               }
                               data={
                                  units.length === 0
-                                    ? ["Cargando"]
-                                    : units.map((unit) => {
+                                    ? ["No data"]
+                                    : unitArrayFromBaseUnitId.map((unit) => {
                                          return {
                                             label: unit.name,
                                             value: unit.unitId.toString(),
@@ -273,8 +377,8 @@ export const ModalCreateItemComponent = () => {
                               }
                               data={
                                  units.length === 0
-                                    ? ["Cargando"]
-                                    : units.map((unit) => {
+                                    ? ["No data"]
+                                    : unitArrayFromBaseUnitId.map((unit) => {
                                          return {
                                             label: unit.name,
                                             value: unit.unitId.toString(),
@@ -351,17 +455,17 @@ export const ModalCreateItemComponent = () => {
                   {/*ImpuestoId y tipo impuesto*/}
                   <Group position="apart" grow>
                      <Controller
-                        name="taxId"
+                        name="taxCostId"
                         control={control}
                         rules={{ required: true }}
                         render={({ field }) => (
                            <Select
                               {...field}
                               withAsterisk
-                              label="Impuesto"
+                              label="Impuesto Compra"
                               searchable
                               error={
-                                 errors.taxId?.type === "required" &&
+                                 errors.taxCostId?.type === "required" &&
                                  "Este campo es requerido"
                               }
                               data={
@@ -378,17 +482,64 @@ export const ModalCreateItemComponent = () => {
                         )}
                      />
                      <Controller
-                        name="taxMethod"
+                        name="taxCostMethod"
                         control={control}
                         rules={{ required: true }}
                         render={({ field }) => (
                            <Select
                               {...field}
                               withAsterisk
-                              label="Metodo Impuesto"
+                              label="Metodo Impuesto Compra"
                               searchable
                               error={
-                                 errors.taxMethod?.type === "required" &&
+                                 errors.taxCostMethod?.type === "required" &&
+                                 "Este campo es requerido"
+                              }
+                              data={["Exclusivo", "Inclusivo"]}
+                           />
+                        )}
+                     />
+                  </Group>
+                  <Group position="apart" grow>
+                     <Controller
+                        name="taxPriceId"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                           <Select
+                              {...field}
+                              withAsterisk
+                              label="Impuesto Venta"
+                              searchable
+                              error={
+                                 errors.taxPriceId?.type === "required" &&
+                                 "Este campo es requerido"
+                              }
+                              data={
+                                 taxs.length === 0
+                                    ? ["Cargando"]
+                                    : taxs.map((tax) => {
+                                         return {
+                                            label: `${tax.name} = ${tax.rate}%`,
+                                            value: tax.taxId.toString(),
+                                         }
+                                      })
+                              }
+                           />
+                        )}
+                     />
+                     <Controller
+                        name="taxPriceMethod"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                           <Select
+                              {...field}
+                              withAsterisk
+                              label="Metodo Impuesto Venta"
+                              searchable
+                              error={
+                                 errors.taxPriceMethod?.type === "required" &&
                                  "Este campo es requerido"
                               }
                               data={["Exclusivo", "Inclusivo"]}
@@ -426,7 +577,7 @@ export const ModalCreateItemComponent = () => {
                            label="Tiene lote y expiracion"
                            searchable
                            error={
-                              errors.taxId?.type === "required" &&
+                              errors.isBatched?.type === "required" &&
                               "Este campo es requerido"
                            }
                            data={[

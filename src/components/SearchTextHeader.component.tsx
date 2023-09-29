@@ -12,7 +12,12 @@ const SearchTextHeaderComponent = (props: IFilterRowEditorProps) => {
             const filterValue = event.currentTarget.value.trim()
                ? event.currentTarget.value.trim()
                : undefined
-            props.dispatch(updateFilterRowValue(props.column.key, filterValue))
+            props.dispatch(
+               updateFilterRowValue(
+                  props.column.key[0].toUpperCase() + props.column.key.slice(1),
+                  filterValue,
+               ),
+            )
          }}
       ></TextInput>
    )

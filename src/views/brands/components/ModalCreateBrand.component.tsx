@@ -2,6 +2,7 @@ import { Button, Group, Modal, Stack, TextInput } from "@mantine/core"
 import {
    BrandApi,
    BrandDto,
+   BrandSimpleDto,
    CreateBrandDto,
    UpdateBrandDto,
 } from "../../../api-services"
@@ -20,7 +21,7 @@ interface IFormInputs {
 interface ModalCreateBrandComponentProps {
    openModal: any
    setOpenModal: any
-   brandData?: BrandDto
+   brandData?: BrandSimpleDto
    title: string
    type: "create" | "update"
    dispatch: DispatchFunc

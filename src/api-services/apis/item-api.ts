@@ -19,10 +19,9 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { CreateItemBatchDto } from '../models';
 import { CreateItemDto } from '../models';
 import { GroupingInfo } from '../models';
-import { RESTfulResultItemBatchDto } from '../models';
-import { RESTfulResultItemDto } from '../models';
+import { RESTfulResultItemSimpleDto } from '../models';
 import { RESTfulResultLoadResult } from '../models';
-import { RESTfulResultPaginatedResultItemDto } from '../models';
+import { RESTfulResultPaginatedResponseItemSimpleDto } from '../models';
 import { SortingInfo } from '../models';
 import { SummaryInfo } from '../models';
 import { UpdateItemDto } from '../models';
@@ -552,7 +551,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemBatchDto>>> {
+        async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemBatchIdDelete(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -565,7 +564,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemBatchDto>>> {
+        async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemBatchPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -578,7 +577,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemDto>>> {
+        async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemSimpleDto>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemByIdIdGet(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -591,7 +590,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemDto>>> {
+        async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemIdDelete(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -605,7 +604,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemDto>>> {
+        async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemIdPut(id, body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -618,7 +617,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemDto>>> {
+        async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -668,7 +667,7 @@ export const ItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultItemDto>>> {
+        async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResponseItemSimpleDto>>> {
             const localVarAxiosArgs = await ItemApiAxiosParamCreator(configuration).apiItemItemsGet(pageNumber, pageSize, columnName, columnValue, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -690,7 +689,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemBatchDto>> {
+        async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemApiFp(configuration).apiItemItemBatchIdDelete(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -699,7 +698,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemBatchDto>> {
+        async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemApiFp(configuration).apiItemItemBatchPost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -708,7 +707,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemDto>> {
+        async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemSimpleDto>> {
             return ItemApiFp(configuration).apiItemItemByIdIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -717,7 +716,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemDto>> {
+        async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemApiFp(configuration).apiItemItemIdDelete(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -727,7 +726,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemDto>> {
+        async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemApiFp(configuration).apiItemItemIdPut(id, body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -736,7 +735,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemDto>> {
+        async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemApiFp(configuration).apiItemItemPost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -778,7 +777,7 @@ export const ItemApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultItemDto>> {
+        async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResponseItemSimpleDto>> {
             return ItemApiFp(configuration).apiItemItemsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
         },
     };
@@ -798,7 +797,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemBatchDto>> {
+    public async apiItemItemBatchIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemApiFp(this.configuration).apiItemItemBatchIdDelete(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -808,7 +807,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemBatchDto>> {
+    public async apiItemItemBatchPost(body?: CreateItemBatchDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemApiFp(this.configuration).apiItemItemBatchPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -818,7 +817,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemDto>> {
+    public async apiItemItemByIdIdGet(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemSimpleDto>> {
         return ItemApiFp(this.configuration).apiItemItemByIdIdGet(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -828,7 +827,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemDto>> {
+    public async apiItemItemIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemApiFp(this.configuration).apiItemItemIdDelete(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -839,7 +838,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemDto>> {
+    public async apiItemItemIdPut(id: number, body?: UpdateItemDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemApiFp(this.configuration).apiItemItemIdPut(id, body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -849,7 +848,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemDto>> {
+    public async apiItemItemPost(body?: CreateItemDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemApiFp(this.configuration).apiItemItemPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -893,7 +892,7 @@ export class ItemApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ItemApi
      */
-    public async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultItemDto>> {
+    public async apiItemItemsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResponseItemSimpleDto>> {
         return ItemApiFp(this.configuration).apiItemItemsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
     }
 }

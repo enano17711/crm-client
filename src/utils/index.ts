@@ -3,6 +3,7 @@ import saveAs from "file-saver"
 import { exportDataGrid } from "devextreme/excel_exporter"
 import { jsPDF } from "jspdf"
 import { exportDataGrid as exportDataGridToPdf } from "devextreme/pdf_exporter"
+import { notifications } from "@mantine/notifications"
 
 export const exportFormats = ["xlsx", "pdf"]
 
@@ -30,4 +31,20 @@ export function exportGrid(e) {
          doc.save(`${e.element.id}.pdf`)
       })
    }
+}
+
+export const successNotification = (message?: string) => {
+   return notifications.show({
+      title: "Operación Exitosa",
+      message: "Datos cargados con éxito",
+      color: "teal",
+   })
+}
+
+export const errorNotification = (message?: string) => {
+   return notifications.show({
+      title: "Operación Fallida",
+      message: message,
+      color: "red",
+   })
 }

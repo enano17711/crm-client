@@ -12,7 +12,6 @@ import { DatePickerInput } from "@mantine/dates"
 interface IFormInputs {
    batchNumber: string
    batchDate: Date
-   quantity: number
    itemId: string
 }
 
@@ -29,7 +28,6 @@ const ModalCreateItemBatchComponent = () => {
       defaultValues: {
          batchNumber: "",
          batchDate: new Date(),
-         quantity: 0,
          itemId: "",
       },
    })
@@ -39,7 +37,6 @@ const ModalCreateItemBatchComponent = () => {
       reset({
          batchNumber: "",
          batchDate: new Date(),
-         quantity: 0,
          itemId: "",
       })
    }
@@ -48,7 +45,6 @@ const ModalCreateItemBatchComponent = () => {
       const dataForCreate: CreateItemBatchDto = {
          batchNumber: data.batchNumber,
          batchDate: data.batchDate,
-         quantity: data.quantity,
          itemId: Number(data.itemId),
       }
       itemsStore.actions.addItemBatch(dataForCreate)

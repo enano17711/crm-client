@@ -1,140 +1,111 @@
-import { ItemDto } from "../../../api-services"
-import { Badge, Box, Title } from "@mantine/core"
-import { useAppStore } from "../../../store"
-
-import "devextreme/dist/css/dx.light.css"
+import { Box } from "@mantine/core"
+import { useDataGridItemsHook } from "../hooks/useDataGridItems.hook.tsx"
 import {
-   DataGrid,
-   Column,
-   FilterRow,
-   SearchPanel,
-   GroupPanel,
-   Toolbar,
-   Item,
-   Editing,
-   ColumnChooser,
-   Paging,
-   Pager,
-   Export,
-   Selection,
-   Button,
-   MasterDetail,
-} from "devextreme-react/data-grid"
-import { exportFormats, exportGrid } from "../../../utils"
-import MasterDetailsectionComponent from "./MasterDetailsection.component.tsx"
-import {
-   ActionType,
    DataType,
-   SortDirection,
+   FilteringMode,
+   PagingPosition,
    SortingMode,
    Table,
-   useTable,
 } from "ka-table"
+import React from "react"
+import ItemActionsColumnComponent from "./ItemActionsColumn.component.tsx"
+import ItemAddColumnComponent from "./ItemAddColumn.component.tsx"
+import SearchTextHeaderComponent from "../../../components/SearchTextHeader.component.tsx"
 
-interface DataGridProps {
-   dataSource: ItemDto[]
-}
-
-export const DataGridItemComponent = ({ dataSource }: DataGridProps) => {
-   const { itemsStore } = useAppStore()
-   const { items } = itemsStore.getters
-
-   const table = useTable({
-      onDispatch: async (action) => {
-         console.log("entro en el action")
-         if (action.type === ActionType.ComponentDidMount) {
-            console.log("entro en el action componentDidMount")
-            table.showLoading()
-            await itemsStore.actions.loadItems()
-            table.hideLoading()
-         }
-      },
-   })
-
-   /*   const openModalUpdate = (e: any) => {
-      const itemRow = e.row.data as ItemDto
-      itemsStore.actions.prepareForUpdate(itemRow)
-   }
-
-   const openModalDelete = (e: any) => {
-      const itemRow = e.row.data as ItemDto
-      itemsStore.actions.prepareForDelete(itemRow)
-   }*/
-
+export const DataGridItemComponent = () => {
+   const { data, table, metadata } = useDataGridItemsHook()
    return (
-      <Box>
-         <Table
-            table={table}
-            data={items}
-            columns={[
-               { key: "name", title: "Name", dataType: DataType.String },
-               {
-                  key: "code",
-                  title: "Code",
-                  dataType: DataType.String,
-                  sortDirection: SortDirection.Ascend,
-               },
-               { key: "price", title: "Price", dataType: DataType.Number },
-               { key: "cost", title: "Cost", dataType: DataType.Number },
-            ]}
-            sortingMode={SortingMode.Single}
-            rowKeyField={"itemId"}
-         />
-         {/*         <DataGrid
-            id="ItemsDataGrid"
-            dataSource={dataSource}
-            keyExpr="itemId"
-            allowColumnReordering
-            allowColumnResizing
-            showRowLines
-            rowAlternationEnabled
-            columnHidingEnabled
-            onExporting={exportGrid}
-         >
-            <Selection mode="multiple" />
-            <Export enabled formats={exportFormats} allowExportSelectedData />
-            <FilterRow visible />
-            <SearchPanel visible />
-            <GroupPanel visible />
-            <Editing mode="popup" allowUpdating allowDeleting useIcons />
-            <Toolbar>
-               <Item name="groupPanel" />
-               <Item name="columnChooserButton" />
-               <Item name="exportButton" />
-               <Item name="searchPanel" />
-            </Toolbar>
-            <Paging enabled defaultPageSize={5} />
-            <Pager
-               displayMode="adaptive"
-               showPageSizeSelector
-               allowedPageSizes={[5, 10, 25, 50, 100]}
-               showNavigationButtons
+      <>
+         <Box>
+            <Table
+               table={table}
+               columns={[
+                  {
+                     key: "name",
+                     title: "Name",
+                     dataType: DataType.String,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "code",
+                     title: "Code",
+                     dataType: DataType.String,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "price",
+                     title: "Price",
+                     dataType: DataType.Number,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "cost",
+                     title: "Cost",
+                     dataType: DataType.Number,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "quantity",
+                     title: "Quantity",
+                     dataType: DataType.Number,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "description",
+                     title: "Description",
+                     dataType: DataType.String,
+                     filterRowValue: "",
+                  },
+                  {
+                     key: "addData",
+                     title: "Actions",
+                     isEditable: false,
+                     filterRowValue: "",
+                     isFilterable: false,
+                     isSortable: false,
+                     width: 150,
+                  },
+               ]}
+               data={data}
+               rowKeyField={"itemId"}
+               sortingMode={SortingMode.Single}
+               filteringMode={FilteringMode.FilterRow}
+               paging={{
+                  enabled: true,
+                  pageIndex: metadata.pageNumber,
+                  pageSize: metadata.pageSize,
+                  pageSizes: [10, 50, 100, 500],
+                  pagesCount: metadata.totalPage,
+                  position: PagingPosition.Bottom,
+               }}
+               childComponents={{
+                  cellText: {
+                     content: (props) => {
+                        if (props.column.key === "addData") {
+                           return <ItemActionsColumnComponent {...props} />
+                        }
+                     },
+                  },
+                  headCell: {
+                     content: (props) => {
+                        if (props.column.key === "addData") {
+                           return <ItemAddColumnComponent {...props} />
+                        }
+                     },
+                  },
+                  filterRowCell: {
+                     content: (props) => {
+                        switch (props.column.key) {
+                           case "name":
+                              return <SearchTextHeaderComponent {...props} />
+                           case "description":
+                              return <SearchTextHeaderComponent {...props} />
+                        }
+                     },
+                  },
+               }}
             />
-            <ColumnChooser enabled mode="dragAndDrop" />
-            <Column dataField="name" />
-            <Column dataField="description" />
-            <Column dataField="code" />
-            <Column dataField="price" />
-            <Column dataField="cost" />
-            <Column dataField="quantity" />
-            <Column dataField="isBatched" />
-            <Column dataField="taxMethod" />
-            <Column dataField="tax.name" />
-            <Column dataField="brand.name" />
-            <Column dataField="unitPrice.name" />
-            <Column dataField="unitCost.name" />
-            <Column
-               dataField="categoryItems"
-               customizeText={(cellInfo) =>
-                  cellInfo.value.map((x) => x.name).join(", ")
-               }
-            />
-            <MasterDetail enabled component={MasterDetailsectionComponent} />
-            <Column type="buttons">
-               <Button name="edit" onClick={(e) => openModalUpdate(e)} />
-               <Button name="delete" onClick={(e) => openModalDelete(e)} />
-            </Column>
-         </DataGrid>*/}
-      </Box>
+         </Box>
+      </>
    )
 }
