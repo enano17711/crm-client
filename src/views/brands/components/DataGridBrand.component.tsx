@@ -38,7 +38,11 @@ export const DataGridBrandComponent = ({
    })
    indexTable.onDispatch = async (action, tableProps) => {
       // console.log(action)
-      const searchData = indexTable.props.searchText.split("-")
+      console.log(indexTable.props.searchText)
+      const searchData =
+         indexTable.props.searchText === undefined
+            ? ["vacio"]
+            : indexTable.props.searchText.split("-")
 
       // console.log(searchData)
       let err = null

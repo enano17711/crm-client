@@ -33,6 +33,13 @@ const columns = [
 const BrandsView = () => {
    const [selectedData, setSelectedData] = useState<BrandSimpleDto>(null)
    const [openDeleteModal, setOpenDeleteModal] = useState(false)
+   const [searchData, setSearchData] = useState<{
+      column?: string
+      value?: string
+   }>({
+      column: "Name",
+      value: null,
+   })
    const navigate = useNavigate()
    const table = useTable()
 
@@ -171,7 +178,12 @@ const BrandsView = () => {
                      <IconTrash />
                   </ActionIcon>
                </Tooltip>
-               <SearchByColumnComponent columns={columns} table={table} />
+               <SearchByColumnComponent
+                  columns={columns}
+                  table={table}
+                  searchData={searchData}
+                  setSearchData={setSearchData}
+               />
                <Menu shadow="md">
                   <Menu.Target>
                      <ActionIcon color="lime" variant="light" size="lg">

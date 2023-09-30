@@ -48,7 +48,7 @@ export const throwError = (message: string) => {
  */
 export const axiosInstance: AxiosInstance = globalAxios
 
-// 这里可以配置 axios 更多选项 =========================================
+// 这里可以配置 AXIOS 更多选项 =========================================
 
 // axios 请求拦截
 axiosInstance.interceptors.request.use(

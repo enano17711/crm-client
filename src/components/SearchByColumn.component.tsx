@@ -1,22 +1,30 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback } from "react"
 import { NativeSelect, rem, TextInput } from "@mantine/core"
 import { ITableInstance } from "ka-table"
-import { search } from "ka-table/actionCreators"
 
 interface SearchByColumnComponentProps {
    columns: { label: string; value: string }[]
    table: ITableInstance
+   searchData: { column?: string; value?: string }
+   setSearchData: (
+      value:
+         | ((prevState: { column?: string; value?: string }) => {
+              column?: string
+              value?: string
+           })
+         | { column?: string; value?: string },
+   ) => void
 }
 
 const SearchByColumnComponent = ({
    columns,
    table,
+   searchData,
+   setSearchData,
 }: SearchByColumnComponentProps) => {
-   const [searchColumnValue, setSearchColumnValue] = useState(columns[0].value)
-
    const onTextSearchChange = useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
-         const textToSearch = event.currentTarget.value.trim()
+         /*const textToSearch = event.currentTarget.value.trim()
          if (textToSearch !== null && textToSearch !== undefined) {
             if (textToSearch !== "" && textToSearch.length > 2) {
                table.dispatch(search(`${searchColumnValue}-${textToSearch}`))
@@ -24,9 +32,9 @@ const SearchByColumnComponent = ({
          }
          if (textToSearch === "") {
             table.dispatch(search(`vacio`))
-         }
+         }*/
       },
-      [table, searchColumnValue],
+      [table],
    )
 
    const select = (
@@ -42,8 +50,13 @@ const SearchByColumnComponent = ({
                marginRight: rem(-2),
             },
          }}
-         value={searchColumnValue}
-         onChange={(event) => setSearchColumnValue(event.currentTarget.value)}
+         value={searchData.column}
+         onChange={(event) =>
+            setSearchData((prev) => ({
+               ...prev,
+               column: event.currentTarget.value,
+            }))
+         }
       />
    )
 
