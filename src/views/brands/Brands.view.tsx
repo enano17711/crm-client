@@ -13,25 +13,20 @@ import {
    IconRefresh,
    IconTrash,
 } from "@tabler/icons-react"
-import {
-   accessTokenKey,
-   getAPI,
-   refreshAccessTokenKey,
-} from "../../axios-utils.ts"
+import { accessTokenKey, refreshAccessTokenKey } from "../../axios-utils.ts"
 import SearchByColumnComponent from "../../components/SearchByColumn.component.tsx"
 import { Link, useNavigate } from "react-router-dom"
-import { BrandApi, BrandSimpleDto } from "../../api-services"
-import { errorNotification, successNotification } from "../../utils"
+import { BrandSimpleDto } from "../../api-services"
 import DialogDeleteBrandComponent from "./components/DialogDeleteBrand.component.tsx"
 import { useTable } from "ka-table"
 
 const columns = [
    {
-      value: "name",
+      value: "Name",
       label: "Name",
    },
    {
-      value: "description",
+      value: "Description",
       label: "Description",
    },
 ]

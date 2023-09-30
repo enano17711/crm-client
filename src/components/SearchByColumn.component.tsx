@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useCallback, useState } from "react"
 import { NativeSelect, rem, TextInput } from "@mantine/core"
 import { ITableInstance } from "ka-table"
+import { search } from "ka-table/actionCreators"
 
 interface SearchByColumnComponentProps {
    columns: { label: string; value: string }[]
@@ -11,6 +12,23 @@ const SearchByColumnComponent = ({
    columns,
    table,
 }: SearchByColumnComponentProps) => {
+   const [searchColumnValue, setSearchColumnValue] = useState(columns[0].value)
+
+   const onTextSearchChange = useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+         const textToSearch = event.currentTarget.value.trim()
+         if (textToSearch !== null && textToSearch !== undefined) {
+            if (textToSearch !== "" && textToSearch.length > 2) {
+               table.dispatch(search(`${searchColumnValue}-${textToSearch}`))
+            }
+         }
+         if (textToSearch === "") {
+            table.dispatch(search(`vacio`))
+         }
+      },
+      [table, searchColumnValue],
+   )
+
    const select = (
       <NativeSelect
          data={columns}
@@ -24,15 +42,17 @@ const SearchByColumnComponent = ({
                marginRight: rem(-2),
             },
          }}
+         value={searchColumnValue}
+         onChange={(event) => setSearchColumnValue(event.currentTarget.value)}
       />
    )
 
    return (
       <TextInput
-         type="number"
          placeholder="Data to search"
          rightSection={select}
          rightSectionWidth={92}
+         onChange={onTextSearchChange}
       />
    )
 }

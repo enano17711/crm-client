@@ -8,12 +8,10 @@ import { Box } from "@mantine/core"
 import {
    ActionType,
    DataType,
-   FilteringMode,
    ITableInstance,
    PagingPosition,
    SortingMode,
    Table,
-   useTable,
 } from "ka-table"
 import React, { useState } from "react"
 import { feature, getAPI } from "../../../axios-utils.ts"
@@ -39,7 +37,60 @@ export const DataGridBrandComponent = ({
       pageNumber: 0,
    })
    indexTable.onDispatch = async (action, tableProps) => {
-      console.log(action)
+      // console.log(action)
+      const searchData = indexTable.props.searchText.split("-")
+
+      // console.log(searchData)
+      let err = null
+      let jsonData = null
+
+      if (searchData[0] === "vacio") {
+         console.log(searchData[0])
+         const [errTemp, jsonDataTemp] = await feature(
+            getAPI(BrandApi).apiBrandBrandsGet(
+               action.pageIndex !== undefined
+                  ? action.pageIndex
+                  : indexTable.props.paging.pageIndex,
+               action.pageSize !== undefined
+                  ? action.pageSize
+                  : indexTable.props.paging.pageSize,
+            ),
+         )
+         err = errTemp
+         jsonData = jsonDataTemp
+      } else if (searchData[0] !== "vacio") {
+         const [errTemp, jsonDataTemp] = await feature(
+            getAPI(BrandApi).apiBrandBrandsGet(
+               action.pageIndex !== undefined
+                  ? action.pageIndex
+                  : indexTable.props.paging.pageIndex,
+               action.pageSize !== undefined
+                  ? action.pageSize
+                  : indexTable.props.paging.pageSize,
+               searchData[0],
+               searchData[1],
+            ),
+         )
+         err = errTemp
+         jsonData = jsonDataTemp
+      }
+
+      if (action.type === ActionType.Search) {
+         indexTable.showLoading()
+         if (err) {
+            errorNotification(err.message)
+         } else {
+            setData(jsonData.data.data.items)
+            setMetadata({
+               totalNumber: jsonData.data.data.totalNumber,
+               totalPage: jsonData.data.data.totalPage,
+               pageNumber: jsonData.data.data.pageNumber,
+               pageSize: jsonData.data.data.pageSize,
+            })
+            successNotification()
+         }
+         indexTable.hideLoading()
+      }
       if (action.type === ActionType.SelectSingleRow) {
          const selected = kaPropsUtils.getSelectedData(tableProps).pop()
          setSelectedData(selected as BrandSimpleDto)
@@ -49,9 +100,6 @@ export const DataGridBrandComponent = ({
          action.type === ActionType.LoadData
       ) {
          indexTable.showLoading()
-         const [err, jsonData] = await feature(
-            getAPI(BrandApi).apiBrandBrandsGet(0, 10),
-         )
          if (err) {
             errorNotification(err.message)
          } else {
@@ -71,16 +119,6 @@ export const DataGridBrandComponent = ({
          action.type === ActionType.UpdatePageSize
       ) {
          indexTable.showLoading()
-         const [err, jsonData] = await feature(
-            getAPI(BrandApi).apiBrandBrandsGet(
-               action.pageIndex !== undefined
-                  ? action.pageIndex
-                  : indexTable.props.paging.pageIndex,
-               action.pageSize !== undefined
-                  ? action.pageSize
-                  : indexTable.props.paging.pageSize,
-            ),
-         )
          if (err) {
             errorNotification(err.message)
          } else {
