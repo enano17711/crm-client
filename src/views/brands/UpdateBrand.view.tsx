@@ -1,53 +1,34 @@
-import React, { useCallback, useEffect } from "react"
-import {
-   Box,
-   Button,
-   Group,
-   Stack,
-   TextInput,
-   Textarea,
-   ActionIcon,
-   Menu,
-   Space,
-   Select,
-   Tooltip,
-   Title,
-} from "@mantine/core"
+import React, { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { feature, getAPI } from "../../axios-utils.ts"
-import { BrandApi, CreateBrandDto } from "../../api-services"
-import { errorNotification, successNotification } from "../../utils"
-import { Link, useNavigate, useParams } from "react-router-dom"
 import {
-   IconArrowLeft,
-   IconBoxModel,
-   IconChevronDown,
-   IconColumns3,
-   IconCopy,
-   IconCsv,
-   IconDeviceFloppy,
-   IconEdit,
-   IconFileExport,
-   IconPdf,
-   IconPlus,
-   IconRefresh,
-   IconSquarePlus,
-   IconSquareRounded,
-   IconSquareRoundedPlus,
-   IconSquareRoundedPlusFilled,
-   IconSquareRoundedX,
-   IconTrash,
-} from "@tabler/icons-react"
-import SearchByColumnComponent from "../../components/SearchByColumn.component.tsx"
+   BrandApi,
+   BrandSimpleDto,
+   CreateBrandDto,
+   UpdateBrandDto,
+} from "../../api-services"
+import { errorNotification, successNotification } from "../../utils"
 import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
+import {
+   Box,
+   LoadingOverlay,
+   Space,
+   Stack,
+   Textarea,
+   TextInput,
+   Title,
+} from "@mantine/core"
 
 interface IFormInputs {
    name: string
    description: string
 }
 
-const CreateBrandView = () => {
-   const [saveType, setSaveType] = React.useState<
+const UpdateBrandView = () => {
+   const [loading, setLoading] = useState(false)
+   const [data, setData] = useState<BrandSimpleDto>(null)
+   const [saveType, setSaveType] = useState<
       "create_new" | "create_close" | "create_clone"
    >("create_new")
    const navigate = useNavigate()
@@ -66,23 +47,18 @@ const CreateBrandView = () => {
    })
 
    const onSubmit: SubmitHandler<IFormInputs> = async (data, event) => {
+      const brandId = Number(params.brandId)
       const [err, res] = await feature(
-         getAPI(BrandApi).apiBrandBrandPost(data as CreateBrandDto),
+         getAPI(BrandApi).apiBrandBrandIdPut(brandId, data as UpdateBrandDto),
       )
       if (err) {
          errorNotification(err.message)
       } else {
          successNotification()
          if (saveType === "create_new") {
-            reset({
-               name: "",
-               description: "",
-            })
+            navigate("/brands/create")
          } else if (saveType === "create_clone") {
-            reset({
-               name: data.name,
-               description: data.description,
-            })
+            navigate(`/brands/create/${data.name}/${data.description}`)
          } else {
             reset({
                name: "",
@@ -94,23 +70,35 @@ const CreateBrandView = () => {
    }
 
    useEffect(() => {
-      console.log(params["name"])
-      if (params["name"] !== null && params["description"] !== null) {
-         reset({
-            name: params["name"],
-            description: params["description"],
+      const brandId = Number(params.brandId)
+      setLoading(true)
+      getAPI(BrandApi)
+         .apiBrandBrandIdGet(brandId)
+         .then((res) => {
+            reset({
+               name: res.data.data.name,
+               description: res.data.data.description,
+            })
+            setData(res.data.data)
+            successNotification()
          })
-      }
+         .catch((err) => {
+            errorNotification(err.message)
+         })
+         .finally(() => {
+            setLoading(false)
+         })
    }, [])
 
    return (
-      <>
+      <Box pos="relative">
+         <LoadingOverlay visible={loading} />
          <BasicCreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={false}
             setSaveType={setSaveType}
          >
-            <Title order={3}>Crear Marca</Title>
+            <Title order={4}>Editar: {data?.name}</Title>
          </BasicCreateUpdateTopBarComponent>
          <Space h="sm" />
          <form id="create-brand-form" onSubmit={handleSubmit(onSubmit)}>
@@ -148,8 +136,8 @@ const CreateBrandView = () => {
                />
             </Stack>
          </form>
-      </>
+      </Box>
    )
 }
 
-export default CreateBrandView
+export default UpdateBrandView

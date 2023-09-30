@@ -1,6 +1,5 @@
-import CustomBreadcrumbsComponent from "../../components/CustomBreadcrumbs.component.tsx"
-import React from "react"
-import { ActionIcon, Button, Group, Menu, Space } from "@mantine/core"
+import React, { useState } from "react"
+import { ActionIcon, Group, Menu, Space, Tooltip } from "@mantine/core"
 import { DataGridBrandComponent } from "./components/DataGridBrand.component.tsx"
 import { Can } from "../../access-control.ts"
 import {
@@ -19,10 +18,29 @@ import {
    getAPI,
    refreshAccessTokenKey,
 } from "../../axios-utils.ts"
-import { BrandApi } from "../../api-services"
 import SearchByColumnComponent from "../../components/SearchByColumn.component.tsx"
+import { Link, useNavigate } from "react-router-dom"
+import { BrandApi, BrandSimpleDto } from "../../api-services"
+import { errorNotification, successNotification } from "../../utils"
+import DialogDeleteBrandComponent from "./components/DialogDeleteBrand.component.tsx"
+import { useTable } from "ka-table"
 
+const columns = [
+   {
+      value: "name",
+      label: "Name",
+   },
+   {
+      value: "description",
+      label: "Description",
+   },
+]
 const BrandsView = () => {
+   const [selectedData, setSelectedData] = useState<BrandSimpleDto>(null)
+   const [openDeleteModal, setOpenDeleteModal] = useState(false)
+   const navigate = useNavigate()
+   const table = useTable()
+
    const exportCsv = () => {
       fetch("https://localhost:5001/api/brand/download-brand-excel", {
          method: "POST",
@@ -74,21 +92,92 @@ const BrandsView = () => {
    return (
       <Can I="ViewBrand" a="user">
          <Group position="apart">
-            <Group id="brand-header">
-               <ActionIcon color="orange" variant="light" size="lg">
-                  <IconPlus />
-               </ActionIcon>
-               <ActionIcon color="indigo" variant="light" size="lg">
-                  <IconCopy />
-               </ActionIcon>
-               <ActionIcon color="grape" variant="light" size="lg">
-                  <IconEdit />
-               </ActionIcon>
-               <ActionIcon color="red" variant="light" size="lg">
-                  <IconTrash />
-               </ActionIcon>
-               <SearchByColumnComponent />
-               <Menu shadow="md" width={200}>
+            <Group>
+               <Link to="/brands/create">
+                  <Tooltip
+                     label="Nuevo"
+                     color="orange"
+                     position="bottom"
+                     withArrow
+                     arrowPosition="center"
+                  >
+                     <ActionIcon color="orange" variant="light" size="lg">
+                        <IconPlus />
+                     </ActionIcon>
+                  </Tooltip>
+               </Link>
+               {selectedData !== null ? (
+                  <Link
+                     to={`/brands/create/${selectedData?.name}/${selectedData?.description}`}
+                  >
+                     <Tooltip
+                        label="Clonar"
+                        color="indigo"
+                        position="bottom"
+                        withArrow
+                        arrowPosition="center"
+                     >
+                        <ActionIcon color="indigo" variant="light" size="lg">
+                           <IconCopy />
+                        </ActionIcon>
+                     </Tooltip>
+                  </Link>
+               ) : (
+                  <Tooltip
+                     label="Clonar"
+                     color="indigo"
+                     position="bottom"
+                     withArrow
+                     arrowPosition="center"
+                  >
+                     <ActionIcon
+                        color="indigo"
+                        variant="light"
+                        size="lg"
+                        disabled
+                     >
+                        <IconCopy />
+                     </ActionIcon>
+                  </Tooltip>
+               )}
+               <Tooltip
+                  label="Editar"
+                  color="grape"
+                  position="bottom"
+                  withArrow
+                  arrowPosition="center"
+               >
+                  <ActionIcon
+                     color="grape"
+                     variant="light"
+                     size="lg"
+                     onClick={() =>
+                        navigate("/brands/update/" + selectedData?.brandId)
+                     }
+                     disabled={!(selectedData !== null)}
+                  >
+                     <IconEdit />
+                  </ActionIcon>
+               </Tooltip>
+               <Tooltip
+                  label="Borrar"
+                  color="red"
+                  position="bottom"
+                  withArrow
+                  arrowPosition="center"
+               >
+                  <ActionIcon
+                     color="red"
+                     variant="light"
+                     size="lg"
+                     disabled={!(selectedData !== null)}
+                     onClick={() => setOpenDeleteModal(true)}
+                  >
+                     <IconTrash />
+                  </ActionIcon>
+               </Tooltip>
+               <SearchByColumnComponent columns={columns} table={table} />
+               <Menu shadow="md">
                   <Menu.Target>
                      <ActionIcon color="lime" variant="light" size="lg">
                         <IconFileExport />
@@ -99,13 +188,13 @@ const BrandsView = () => {
                         icon={<IconPdf size={14} />}
                         onClick={exportPdf}
                      >
-                        Settings
+                        PDF
                      </Menu.Item>
                      <Menu.Item
                         icon={<IconCsv size={14} />}
                         onClick={exportCsv}
                      >
-                        Messages
+                        CSV
                      </Menu.Item>
                   </Menu.Dropdown>
                </Menu>
@@ -118,7 +207,16 @@ const BrandsView = () => {
             </ActionIcon>
          </Group>
          <Space h="sm" />
-         <DataGridBrandComponent />
+         <DataGridBrandComponent
+            setSelectedData={setSelectedData}
+            indexTable={table}
+         />
+         <DialogDeleteBrandComponent
+            openDeleteModal={openDeleteModal}
+            setOpenDeleteModal={setOpenDeleteModal}
+            brandData={selectedData}
+            setSelectedData={setSelectedData}
+         />
       </Can>
    )
 }

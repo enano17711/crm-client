@@ -22,6 +22,8 @@ import OrderReturnsView from "./views/order-returns/OrderReturns.view.tsx"
 import CreateSaleView from "./views/sales/CreateSale.view.tsx"
 import CustomersView from "./views/customers/Customers.view.tsx"
 import SalesView from "./views/sales/Sales.view.tsx"
+import CreateBrandView from "./views/brands/CreateBrand.view.tsx"
+import UpdateBrandView from "./views/brands/UpdateBrand.view.tsx"
 
 const RoutesComponent = () => {
    const { rbacsStore } = useAppStore()
@@ -64,6 +66,22 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <BrandsView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/brands/create/:name?/:description?"
+                  element={
+                     <ProtectedRouteComponent>
+                        <CreateBrandView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/brands/update/:brandId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateBrandView />
                      </ProtectedRouteComponent>
                   }
                />

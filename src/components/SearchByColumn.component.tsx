@@ -1,18 +1,19 @@
 import React from "react"
 import { NativeSelect, rem, TextInput } from "@mantine/core"
+import { ITableInstance } from "ka-table"
 
-const data = [
-   { value: "eur", label: "🇪🇺 EUR" },
-   { value: "usd", label: "🇺🇸 USD" },
-   { value: "cad", label: "🇨🇦 CAD" },
-   { value: "gbp", label: "🇬🇧 GBP" },
-   { value: "aud", label: "🇦🇺 AUD" },
-]
+interface SearchByColumnComponentProps {
+   columns: { label: string; value: string }[]
+   table: ITableInstance
+}
 
-const SearchByColumnComponent = () => {
+const SearchByColumnComponent = ({
+   columns,
+   table,
+}: SearchByColumnComponentProps) => {
    const select = (
       <NativeSelect
-         data={data}
+         data={columns}
          rightSectionWidth={28}
          styles={{
             input: {

@@ -52,10 +52,7 @@ export default function MainLayout({
          layout="alt"
          styles={{
             main: {
-               background:
-                  theme.colorScheme === "dark"
-                     ? theme.colors.dark[8]
-                     : theme.colors.gray[0],
+               background: "#ffffff",
             },
          }}
          navbarOffsetBreakpoint="md"

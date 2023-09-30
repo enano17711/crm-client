@@ -1,41 +1,39 @@
 import React from "react"
-import { Button, Modal, Stack, Text } from "@mantine/core"
+import { Button, Group, Modal, Stack, Text } from "@mantine/core"
 import { BrandApi, BrandDto, BrandSimpleDto } from "../../../api-services"
 import { getAPI } from "../../../axios-utils.ts"
 import { notifications } from "@mantine/notifications"
 import { DispatchFunc } from "ka-table/types"
 import { loadData } from "ka-table/actionCreators"
+import { errorNotification, successNotification } from "../../../utils"
+import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
 
 interface DialogDeleteBrandComponentProps {
    openDeleteModal: any
    setOpenDeleteModal: any
    brandData: BrandSimpleDto
-   dispatch: DispatchFunc
+   setSelectedData: (
+      value: ((prevState: BrandSimpleDto) => BrandSimpleDto) | BrandSimpleDto,
+   ) => void
 }
 
 const DialogDeleteBrandComponent = ({
    openDeleteModal,
    setOpenDeleteModal,
    brandData,
-   dispatch,
+   setSelectedData,
 }: DialogDeleteBrandComponentProps) => {
    const deleteHandler = () => {
       getAPI(BrandApi)
          .apiBrandBrandIdDelete(brandData?.brandId)
          .then((res) => {
-            dispatch(loadData())
-            notifications.show({
-               title: "Operación Exitosa",
-               message: "Marca eliminada con exito",
-               color: "teal",
-            })
+            setSelectedData(null)
+            successNotification()
          })
          .catch((err) => {
-            notifications.show({
-               title: "Operación Fallida",
-               message: err.message,
-               color: "red",
-            })
+            setSelectedData(null)
+            setOpenDeleteModal(false)
+            errorNotification(err.message)
          })
          .finally(() => {
             setOpenDeleteModal(false)
@@ -53,9 +51,24 @@ const DialogDeleteBrandComponent = ({
          <Stack>
             <Text>Se eliminará la marca: NOMBRE - {brandData?.name}</Text>
 
-            <Button color="red" onClick={deleteHandler}>
-               Eliminar
-            </Button>
+            <Group position="right">
+               <Button
+                  color="red"
+                  onClick={deleteHandler}
+                  variant="light"
+                  leftIcon={<IconTrash />}
+               >
+                  Eliminar
+               </Button>
+               <Button
+                  color="grape"
+                  onClick={() => setOpenDeleteModal(false)}
+                  variant="light"
+                  leftIcon={<IconArrowLeft />}
+               >
+                  Cancelar
+               </Button>
+            </Group>
          </Stack>
       </Modal>
    )
