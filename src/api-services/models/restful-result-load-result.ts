@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { LoadResult } from './load-result';
+import { LoadResult } from "./load-result"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultLoadResult
  */
 export interface RESTfulResultLoadResult {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultLoadResult
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {LoadResult}
-     * @memberof RESTfulResultLoadResult
-     */
-    data?: LoadResult;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultLoadResult
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultLoadResult
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultLoadResult
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultLoadResult
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultLoadResult
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {LoadResult}
+    * @memberof RESTfulResultLoadResult
+    */
+   data?: LoadResult
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultLoadResult
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultLoadResult
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultLoadResult
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultLoadResult
+    */
+   timestamp?: number
 }

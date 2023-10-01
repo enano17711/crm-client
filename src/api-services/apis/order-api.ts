@@ -11,646 +11,1057 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import globalAxios, { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '../configuration';
+import globalAxios, {
+   AxiosResponse,
+   AxiosInstance,
+   AxiosRequestConfig,
+} from "axios"
+import { Configuration } from "../configuration"
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { CreateOrderDto } from '../models';
-import { GroupingInfo } from '../models';
-import { RESTfulResultItemOrderDto } from '../models';
-import { RESTfulResultObject } from '../models';
-import { RESTfulResultOrderDto } from '../models';
-import { RESTfulResultPaginatedResultOrderDto } from '../models';
-import { SortingInfo } from '../models';
-import { SummaryInfo } from '../models';
+import {
+   BASE_PATH,
+   COLLECTION_FORMATS,
+   RequestArgs,
+   BaseAPI,
+   RequiredError,
+} from "../base"
+import { CreateOrderDto } from "../models"
+import { GroupingInfo } from "../models"
+import { RESTfulResultItemOrderDto } from "../models"
+import { RESTfulResultObject } from "../models"
+import { RESTfulResultOrderDto } from "../models"
+import { RESTfulResultPaginatedResultOrderDto } from "../models"
+import { SortingInfo } from "../models"
+import { SummaryInfo } from "../models"
 /**
  * OrderApi - axios parameter creator
  * @export
  */
-export const OrderApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {number} itemorderid 
-         * @param {number} quantity 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderItemOrderQuantityItemorderidQuantityPut: async (itemorderid: number, quantity: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'itemorderid' is not null or undefined
-            if (itemorderid === null || itemorderid === undefined) {
-                throw new RequiredError('itemorderid','Required parameter itemorderid was null or undefined when calling apiOrderItemOrderQuantityItemorderidQuantityPut.');
-            }
-            // verify required parameter 'quantity' is not null or undefined
-            if (quantity === null || quantity === undefined) {
-                throw new RequiredError('quantity','Required parameter quantity was null or undefined when calling apiOrderItemOrderQuantityItemorderidQuantityPut.');
-            }
-            const localVarPath = `/api/order/item-order-quantity/{itemorderid}/{quantity}`
-                .replace(`{${"itemorderid"}}`, encodeURIComponent(String(itemorderid)))
-                .replace(`{${"quantity"}}`, encodeURIComponent(String(quantity)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+export const OrderApiAxiosParamCreator = function (
+   configuration?: Configuration,
+) {
+   return {
+      /**
+       *
+       * @param {number} itemorderid
+       * @param {number} quantity
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderItemOrderQuantityItemorderidQuantityPut: async (
+         itemorderid: number,
+         quantity: number,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'itemorderid' is not null or undefined
+         if (itemorderid === null || itemorderid === undefined) {
+            throw new RequiredError(
+               "itemorderid",
+               "Required parameter itemorderid was null or undefined when calling apiOrderItemOrderQuantityItemorderidQuantityPut.",
+            )
+         }
+         // verify required parameter 'quantity' is not null or undefined
+         if (quantity === null || quantity === undefined) {
+            throw new RequiredError(
+               "quantity",
+               "Required parameter quantity was null or undefined when calling apiOrderItemOrderQuantityItemorderidQuantityPut.",
+            )
+         }
+         const localVarPath =
+            `/api/order/item-order-quantity/{itemorderid}/{quantity}`
+               .replace(
+                  `{${"itemorderid"}}`,
+                  encodeURIComponent(String(itemorderid)),
+               )
+               .replace(`{${"quantity"}}`, encodeURIComponent(String(quantity)))
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "PUT",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderOrderIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiOrderOrderIdGet.');
-            }
-            const localVarPath = `/api/order/order/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderOrderIdGet: async (
+         id: number,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'id' is not null or undefined
+         if (id === null || id === undefined) {
+            throw new RequiredError(
+               "id",
+               "Required parameter id was null or undefined when calling apiOrderOrderIdGet.",
+            )
+         }
+         const localVarPath = `/api/order/order/{id}`.replace(
+            `{${"id"}}`,
+            encodeURIComponent(String(id)),
+         )
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateOrderDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderOrderPost: async (body?: CreateOrderDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/order/order`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {CreateOrderDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderOrderPost: async (
+         body?: CreateOrderDto,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/order/order`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "POST",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+         localVarHeaderParameter["Content-Type"] = "application/json"
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
+         const needsSerialization =
+            typeof body !== "string" ||
+            localVarRequestOptions.headers["Content-Type"] ===
+               "application/json"
+         localVarRequestOptions.data = needsSerialization
+            ? JSON.stringify(body !== undefined ? body : {})
+            : body || ""
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} orderid 
-         * @param {string} status 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderOrderStatusOrderidStatusPut: async (orderid: number, status: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'orderid' is not null or undefined
-            if (orderid === null || orderid === undefined) {
-                throw new RequiredError('orderid','Required parameter orderid was null or undefined when calling apiOrderOrderStatusOrderidStatusPut.');
-            }
-            // verify required parameter 'status' is not null or undefined
-            if (status === null || status === undefined) {
-                throw new RequiredError('status','Required parameter status was null or undefined when calling apiOrderOrderStatusOrderidStatusPut.');
-            }
-            const localVarPath = `/api/order/order-status/{orderid}/{status}`
-                .replace(`{${"orderid"}}`, encodeURIComponent(String(orderid)))
-                .replace(`{${"status"}}`, encodeURIComponent(String(status)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} orderid
+       * @param {string} status
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderOrderStatusOrderidStatusPut: async (
+         orderid: number,
+         status: string,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'orderid' is not null or undefined
+         if (orderid === null || orderid === undefined) {
+            throw new RequiredError(
+               "orderid",
+               "Required parameter orderid was null or undefined when calling apiOrderOrderStatusOrderidStatusPut.",
+            )
+         }
+         // verify required parameter 'status' is not null or undefined
+         if (status === null || status === undefined) {
+            throw new RequiredError(
+               "status",
+               "Required parameter status was null or undefined when calling apiOrderOrderStatusOrderidStatusPut.",
+            )
+         }
+         const localVarPath = `/api/order/order-status/{orderid}/{status}`
+            .replace(`{${"orderid"}}`, encodeURIComponent(String(orderid)))
+            .replace(`{${"status"}}`, encodeURIComponent(String(status)))
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "PUT",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderOrdersForGridGet: async (requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/order/orders-for-grid`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderOrdersForGridGet: async (
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/order/orders-for-grid`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            if (requireTotalCount !== undefined) {
-                localVarQueryParameter['RequireTotalCount'] = requireTotalCount;
-            }
+         if (requireTotalCount !== undefined) {
+            localVarQueryParameter["RequireTotalCount"] = requireTotalCount
+         }
 
-            if (requireGroupCount !== undefined) {
-                localVarQueryParameter['RequireGroupCount'] = requireGroupCount;
-            }
+         if (requireGroupCount !== undefined) {
+            localVarQueryParameter["RequireGroupCount"] = requireGroupCount
+         }
 
-            if (isCountQuery !== undefined) {
-                localVarQueryParameter['IsCountQuery'] = isCountQuery;
-            }
+         if (isCountQuery !== undefined) {
+            localVarQueryParameter["IsCountQuery"] = isCountQuery
+         }
 
-            if (isSummaryQuery !== undefined) {
-                localVarQueryParameter['IsSummaryQuery'] = isSummaryQuery;
-            }
+         if (isSummaryQuery !== undefined) {
+            localVarQueryParameter["IsSummaryQuery"] = isSummaryQuery
+         }
 
-            if (skip !== undefined) {
-                localVarQueryParameter['Skip'] = skip;
-            }
+         if (skip !== undefined) {
+            localVarQueryParameter["Skip"] = skip
+         }
 
-            if (take !== undefined) {
-                localVarQueryParameter['Take'] = take;
-            }
+         if (take !== undefined) {
+            localVarQueryParameter["Take"] = take
+         }
 
-            if (sort) {
-                localVarQueryParameter['Sort'] = sort;
-            }
+         if (sort) {
+            localVarQueryParameter["Sort"] = sort
+         }
 
-            if (group) {
-                localVarQueryParameter['Group'] = group;
-            }
+         if (group) {
+            localVarQueryParameter["Group"] = group
+         }
 
-            if (filter) {
-                localVarQueryParameter['Filter'] = filter;
-            }
+         if (filter) {
+            localVarQueryParameter["Filter"] = filter
+         }
 
-            if (totalSummary) {
-                localVarQueryParameter['TotalSummary'] = totalSummary;
-            }
+         if (totalSummary) {
+            localVarQueryParameter["TotalSummary"] = totalSummary
+         }
 
-            if (groupSummary) {
-                localVarQueryParameter['GroupSummary'] = groupSummary;
-            }
+         if (groupSummary) {
+            localVarQueryParameter["GroupSummary"] = groupSummary
+         }
 
-            if (select) {
-                localVarQueryParameter['Select'] = select;
-            }
+         if (select) {
+            localVarQueryParameter["Select"] = select
+         }
 
-            if (preSelect) {
-                localVarQueryParameter['PreSelect'] = preSelect;
-            }
+         if (preSelect) {
+            localVarQueryParameter["PreSelect"] = preSelect
+         }
 
-            if (remoteSelect !== undefined) {
-                localVarQueryParameter['RemoteSelect'] = remoteSelect;
-            }
+         if (remoteSelect !== undefined) {
+            localVarQueryParameter["RemoteSelect"] = remoteSelect
+         }
 
-            if (remoteGrouping !== undefined) {
-                localVarQueryParameter['RemoteGrouping'] = remoteGrouping;
-            }
+         if (remoteGrouping !== undefined) {
+            localVarQueryParameter["RemoteGrouping"] = remoteGrouping
+         }
 
-            if (expandLinqSumType !== undefined) {
-                localVarQueryParameter['ExpandLinqSumType'] = expandLinqSumType;
-            }
+         if (expandLinqSumType !== undefined) {
+            localVarQueryParameter["ExpandLinqSumType"] = expandLinqSumType
+         }
 
-            if (primaryKey) {
-                localVarQueryParameter['PrimaryKey'] = primaryKey;
-            }
+         if (primaryKey) {
+            localVarQueryParameter["PrimaryKey"] = primaryKey
+         }
 
-            if (defaultSort !== undefined) {
-                localVarQueryParameter['DefaultSort'] = defaultSort;
-            }
+         if (defaultSort !== undefined) {
+            localVarQueryParameter["DefaultSort"] = defaultSort
+         }
 
-            if (stringToLower !== undefined) {
-                localVarQueryParameter['StringToLower'] = stringToLower;
-            }
+         if (stringToLower !== undefined) {
+            localVarQueryParameter["StringToLower"] = stringToLower
+         }
 
-            if (paginateViaPrimaryKey !== undefined) {
-                localVarQueryParameter['PaginateViaPrimaryKey'] = paginateViaPrimaryKey;
-            }
+         if (paginateViaPrimaryKey !== undefined) {
+            localVarQueryParameter["PaginateViaPrimaryKey"] =
+               paginateViaPrimaryKey
+         }
 
-            if (sortByPrimaryKey !== undefined) {
-                localVarQueryParameter['SortByPrimaryKey'] = sortByPrimaryKey;
-            }
+         if (sortByPrimaryKey !== undefined) {
+            localVarQueryParameter["SortByPrimaryKey"] = sortByPrimaryKey
+         }
 
-            if (allowAsyncOverSync !== undefined) {
-                localVarQueryParameter['AllowAsyncOverSync'] = allowAsyncOverSync;
-            }
+         if (allowAsyncOverSync !== undefined) {
+            localVarQueryParameter["AllowAsyncOverSync"] = allowAsyncOverSync
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiOrderOrdersGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/order/orders`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiOrderOrdersGet: async (
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/order/orders`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            if (pageNumber !== undefined) {
-                localVarQueryParameter['PageNumber'] = pageNumber;
-            }
+         if (pageNumber !== undefined) {
+            localVarQueryParameter["PageNumber"] = pageNumber
+         }
 
-            if (pageSize !== undefined) {
-                localVarQueryParameter['PageSize'] = pageSize;
-            }
+         if (pageSize !== undefined) {
+            localVarQueryParameter["PageSize"] = pageSize
+         }
 
-            if (columnName !== undefined) {
-                localVarQueryParameter['ColumnName'] = columnName;
-            }
+         if (columnName !== undefined) {
+            localVarQueryParameter["ColumnName"] = columnName
+         }
 
-            if (columnValue !== undefined) {
-                localVarQueryParameter['ColumnValue'] = columnValue;
-            }
+         if (columnValue !== undefined) {
+            localVarQueryParameter["ColumnValue"] = columnValue
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+   }
+}
 
 /**
  * OrderApi - functional programming interface
  * @export
  */
-export const OrderApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {number} itemorderid 
-         * @param {number} quantity 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid: number, quantity: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultItemOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid, quantity, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrderIdGet(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateOrderDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderPost(body?: CreateOrderDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrderPost(body, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} orderid 
-         * @param {string} status 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderStatusOrderidStatusPut(orderid: number, status: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrderStatusOrderidStatusPut(orderid, status, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultObject>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>>> {
-            const localVarAxiosArgs = await OrderApiAxiosParamCreator(configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    }
-};
+export const OrderApiFp = function (configuration?: Configuration) {
+   return {
+      /**
+       *
+       * @param {number} itemorderid
+       * @param {number} quantity
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderItemOrderQuantityItemorderidQuantityPut(
+         itemorderid: number,
+         quantity: number,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultItemOrderDto>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderItemOrderQuantityItemorderidQuantityPut(
+            itemorderid,
+            quantity,
+            options,
+         )
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderIdGet(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultOrderDto>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderOrderIdGet(id, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {CreateOrderDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderPost(
+         body?: CreateOrderDto,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultOrderDto>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderOrderPost(body, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} orderid
+       * @param {string} status
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderStatusOrderidStatusPut(
+         orderid: number,
+         status: string,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultOrderDto>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderOrderStatusOrderidStatusPut(orderid, status, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrdersForGridGet(
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultObject>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderOrdersForGridGet(
+            requireTotalCount,
+            requireGroupCount,
+            isCountQuery,
+            isSummaryQuery,
+            skip,
+            take,
+            sort,
+            group,
+            filter,
+            totalSummary,
+            groupSummary,
+            select,
+            preSelect,
+            remoteSelect,
+            remoteGrouping,
+            expandLinqSumType,
+            primaryKey,
+            defaultSort,
+            stringToLower,
+            paginateViaPrimaryKey,
+            sortByPrimaryKey,
+            allowAsyncOverSync,
+            options,
+         )
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrdersGet(
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>>
+      > {
+         const localVarAxiosArgs = await OrderApiAxiosParamCreator(
+            configuration,
+         ).apiOrderOrdersGet(
+            pageNumber,
+            pageSize,
+            columnName,
+            columnValue,
+            options,
+         )
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+   }
+}
 
 /**
  * OrderApi - factory interface
  * @export
  */
-export const OrderApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @param {number} itemorderid 
-         * @param {number} quantity 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid: number, quantity: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultItemOrderDto>> {
-            return OrderApiFp(configuration).apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid, quantity, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderIdGet(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultOrderDto>> {
-            return OrderApiFp(configuration).apiOrderOrderIdGet(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {CreateOrderDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderPost(body?: CreateOrderDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultOrderDto>> {
-            return OrderApiFp(configuration).apiOrderOrderPost(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} orderid 
-         * @param {string} status 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrderStatusOrderidStatusPut(orderid: number, status: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultOrderDto>> {
-            return OrderApiFp(configuration).apiOrderOrderStatusOrderidStatusPut(orderid, status, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultObject>> {
-            return OrderApiFp(configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
-            return OrderApiFp(configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
-        },
-    };
-};
+export const OrderApiFactory = function (
+   configuration?: Configuration,
+   basePath?: string,
+   axios?: AxiosInstance,
+) {
+   return {
+      /**
+       *
+       * @param {number} itemorderid
+       * @param {number} quantity
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderItemOrderQuantityItemorderidQuantityPut(
+         itemorderid: number,
+         quantity: number,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultItemOrderDto>> {
+         return OrderApiFp(configuration)
+            .apiOrderItemOrderQuantityItemorderidQuantityPut(
+               itemorderid,
+               quantity,
+               options,
+            )
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderIdGet(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+         return OrderApiFp(configuration)
+            .apiOrderOrderIdGet(id, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {CreateOrderDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderPost(
+         body?: CreateOrderDto,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+         return OrderApiFp(configuration)
+            .apiOrderOrderPost(body, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} orderid
+       * @param {string} status
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrderStatusOrderidStatusPut(
+         orderid: number,
+         status: string,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+         return OrderApiFp(configuration)
+            .apiOrderOrderStatusOrderidStatusPut(orderid, status, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrdersForGridGet(
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultObject>> {
+         return OrderApiFp(configuration)
+            .apiOrderOrdersForGridGet(
+               requireTotalCount,
+               requireGroupCount,
+               isCountQuery,
+               isSummaryQuery,
+               skip,
+               take,
+               sort,
+               group,
+               filter,
+               totalSummary,
+               groupSummary,
+               select,
+               preSelect,
+               remoteSelect,
+               remoteGrouping,
+               expandLinqSumType,
+               primaryKey,
+               defaultSort,
+               stringToLower,
+               paginateViaPrimaryKey,
+               sortByPrimaryKey,
+               allowAsyncOverSync,
+               options,
+            )
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiOrderOrdersGet(
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
+         return OrderApiFp(configuration)
+            .apiOrderOrdersGet(
+               pageNumber,
+               pageSize,
+               columnName,
+               columnValue,
+               options,
+            )
+            .then((request) => request(axios, basePath))
+      },
+   }
+}
 
 /**
  * OrderApi - object-oriented interface
@@ -659,90 +1070,180 @@ export const OrderApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class OrderApi extends BaseAPI {
-    /**
-     * 
-     * @param {number} itemorderid 
-     * @param {number} quantity 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid: number, quantity: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultItemOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderItemOrderQuantityItemorderidQuantityPut(itemorderid, quantity, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderOrderIdGet(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderOrderIdGet(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {CreateOrderDto} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderOrderPost(body?: CreateOrderDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderOrderPost(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} orderid 
-     * @param {string} status 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderOrderStatusOrderidStatusPut(orderid: number, status: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderOrderStatusOrderidStatusPut(orderid, status, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {boolean} [requireTotalCount] 
-     * @param {boolean} [requireGroupCount] 
-     * @param {boolean} [isCountQuery] 
-     * @param {boolean} [isSummaryQuery] 
-     * @param {number} [skip] 
-     * @param {number} [take] 
-     * @param {Array<SortingInfo>} [sort] 
-     * @param {Array<GroupingInfo>} [group] 
-     * @param {Array<any>} [filter] 
-     * @param {Array<SummaryInfo>} [totalSummary] 
-     * @param {Array<SummaryInfo>} [groupSummary] 
-     * @param {Array<string>} [select] 
-     * @param {Array<string>} [preSelect] 
-     * @param {boolean} [remoteSelect] 
-     * @param {boolean} [remoteGrouping] 
-     * @param {boolean} [expandLinqSumType] 
-     * @param {Array<string>} [primaryKey] 
-     * @param {string} [defaultSort] 
-     * @param {boolean} [stringToLower] 
-     * @param {boolean} [paginateViaPrimaryKey] 
-     * @param {boolean} [sortByPrimaryKey] 
-     * @param {boolean} [allowAsyncOverSync] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderOrdersForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultObject>> {
-        return OrderApiFp(this.configuration).apiOrderOrdersForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} [pageNumber] 
-     * @param {number} [pageSize] 
-     * @param {string} [columnName] 
-     * @param {string} [columnValue] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof OrderApi
-     */
-    public async apiOrderOrdersGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
-        return OrderApiFp(this.configuration).apiOrderOrdersGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
-    }
+   /**
+    *
+    * @param {number} itemorderid
+    * @param {number} quantity
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderItemOrderQuantityItemorderidQuantityPut(
+      itemorderid: number,
+      quantity: number,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultItemOrderDto>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderItemOrderQuantityItemorderidQuantityPut(
+            itemorderid,
+            quantity,
+            options,
+         )
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} id
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderOrderIdGet(
+      id: number,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderOrderIdGet(id, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {CreateOrderDto} [body]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderOrderPost(
+      body?: CreateOrderDto,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderOrderPost(body, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} orderid
+    * @param {string} status
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderOrderStatusOrderidStatusPut(
+      orderid: number,
+      status: string,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultOrderDto>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderOrderStatusOrderidStatusPut(orderid, status, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {boolean} [requireTotalCount]
+    * @param {boolean} [requireGroupCount]
+    * @param {boolean} [isCountQuery]
+    * @param {boolean} [isSummaryQuery]
+    * @param {number} [skip]
+    * @param {number} [take]
+    * @param {Array<SortingInfo>} [sort]
+    * @param {Array<GroupingInfo>} [group]
+    * @param {Array<any>} [filter]
+    * @param {Array<SummaryInfo>} [totalSummary]
+    * @param {Array<SummaryInfo>} [groupSummary]
+    * @param {Array<string>} [select]
+    * @param {Array<string>} [preSelect]
+    * @param {boolean} [remoteSelect]
+    * @param {boolean} [remoteGrouping]
+    * @param {boolean} [expandLinqSumType]
+    * @param {Array<string>} [primaryKey]
+    * @param {string} [defaultSort]
+    * @param {boolean} [stringToLower]
+    * @param {boolean} [paginateViaPrimaryKey]
+    * @param {boolean} [sortByPrimaryKey]
+    * @param {boolean} [allowAsyncOverSync]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderOrdersForGridGet(
+      requireTotalCount?: boolean,
+      requireGroupCount?: boolean,
+      isCountQuery?: boolean,
+      isSummaryQuery?: boolean,
+      skip?: number,
+      take?: number,
+      sort?: Array<SortingInfo>,
+      group?: Array<GroupingInfo>,
+      filter?: Array<any>,
+      totalSummary?: Array<SummaryInfo>,
+      groupSummary?: Array<SummaryInfo>,
+      select?: Array<string>,
+      preSelect?: Array<string>,
+      remoteSelect?: boolean,
+      remoteGrouping?: boolean,
+      expandLinqSumType?: boolean,
+      primaryKey?: Array<string>,
+      defaultSort?: string,
+      stringToLower?: boolean,
+      paginateViaPrimaryKey?: boolean,
+      sortByPrimaryKey?: boolean,
+      allowAsyncOverSync?: boolean,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultObject>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderOrdersForGridGet(
+            requireTotalCount,
+            requireGroupCount,
+            isCountQuery,
+            isSummaryQuery,
+            skip,
+            take,
+            sort,
+            group,
+            filter,
+            totalSummary,
+            groupSummary,
+            select,
+            preSelect,
+            remoteSelect,
+            remoteGrouping,
+            expandLinqSumType,
+            primaryKey,
+            defaultSort,
+            stringToLower,
+            paginateViaPrimaryKey,
+            sortByPrimaryKey,
+            allowAsyncOverSync,
+            options,
+         )
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} [pageNumber]
+    * @param {number} [pageSize]
+    * @param {string} [columnName]
+    * @param {string} [columnValue]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof OrderApi
+    */
+   public async apiOrderOrdersGet(
+      pageNumber?: number,
+      pageSize?: number,
+      columnName?: string,
+      columnValue?: string,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultPaginatedResultOrderDto>> {
+      return OrderApiFp(this.configuration)
+         .apiOrderOrdersGet(
+            pageNumber,
+            pageSize,
+            columnName,
+            columnValue,
+            options,
+         )
+         .then((request) => request(this.axios, this.basePath))
+   }
 }

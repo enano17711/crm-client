@@ -12,75 +12,75 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateSupplierDto
  */
 export interface CreateSupplierDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSupplierDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   country?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSupplierDto
+    */
+   description?: string | null
 }

@@ -11,53 +11,53 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BaseUnitDto } from './base-unit-dto';
+import { BaseUnitDto } from "./base-unit-dto"
 /**
- * 
+ *
  * @export
  * @interface UnitDto
  */
 export interface UnitDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UnitDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnitDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UnitDto
-     */
-    unitId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnitDto
-     */
-    code?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UnitDto
-     */
-    operation?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UnitDto
-     */
-    value?: number;
-    /**
-     * 
-     * @type {BaseUnitDto}
-     * @memberof UnitDto
-     */
-    baseUnit?: BaseUnitDto;
+   /**
+    *
+    * @type {string}
+    * @memberof UnitDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UnitDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof UnitDto
+    */
+   unitId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof UnitDto
+    */
+   code?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UnitDto
+    */
+   operation?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof UnitDto
+    */
+   value?: number
+   /**
+    *
+    * @type {BaseUnitDto}
+    * @memberof UnitDto
+    */
+   baseUnit?: BaseUnitDto
 }

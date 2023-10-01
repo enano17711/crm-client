@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemSaleDto } from './item-sale-dto';
+import { ItemSaleDto } from "./item-sale-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultItemSaleDto
  */
 export interface RESTfulResultItemSaleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {ItemSaleDto}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    data?: ItemSaleDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultItemSaleDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {ItemSaleDto}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   data?: ItemSaleDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultItemSaleDto
+    */
+   timestamp?: number
 }

@@ -11,89 +11,89 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemAdjustment } from './item-adjustment';
+import { ItemAdjustment } from "./item-adjustment"
 /**
- * 
+ *
  * @export
  * @interface Adjustment
  */
 export interface Adjustment {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Adjustment
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Adjustment
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Adjustment
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Adjustment
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    adjustmentId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Adjustment
-     */
-    referenceNumber?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    itemsCount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Adjustment
-     */
-    totalQuantity?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Adjustment
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {Array<ItemAdjustment>}
-     * @memberof Adjustment
-     */
-    itemAdjustments?: Array<ItemAdjustment> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof Adjustment
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Adjustment
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Adjustment
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Adjustment
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   adjustmentId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof Adjustment
+    */
+   referenceNumber?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   itemsCount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof Adjustment
+    */
+   totalQuantity?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof Adjustment
+    */
+   note?: string | null
+   /**
+    *
+    * @type {Array<ItemAdjustment>}
+    * @memberof Adjustment
+    */
+   itemAdjustments?: Array<ItemAdjustment> | null
 }

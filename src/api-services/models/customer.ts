@@ -11,131 +11,131 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Sale } from './sale';
+import { Sale } from "./sale"
 /**
- * 
+ *
  * @export
  * @interface Customer
  */
 export interface Customer {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Customer
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Customer
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Customer
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Customer
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Customer
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Customer
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Customer
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Customer
-     */
-    customerId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Customer
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {Array<Sale>}
-     * @memberof Customer
-     */
-    sales?: Array<Sale> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof Customer
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Customer
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Customer
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Customer
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Customer
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Customer
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Customer
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Customer
+    */
+   customerId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Customer
+    */
+   country?: string | null
+   /**
+    *
+    * @type {Array<Sale>}
+    * @memberof Customer
+    */
+   sales?: Array<Sale> | null
 }

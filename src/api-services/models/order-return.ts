@@ -11,156 +11,156 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemOrderReturn } from './item-order-return';
-import { Supplier } from './supplier';
+import { ItemOrderReturn } from "./item-order-return"
+import { Supplier } from "./supplier"
 /**
- * 
+ *
  * @export
  * @interface OrderReturn
  */
 export interface OrderReturn {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OrderReturn
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderReturn
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderReturn
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderReturn
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    orderReturnId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderReturn
-     */
-    referenceNumber?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    itemsCount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    totalQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    totalDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    totalTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    totalCost?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    orderTaxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    orderTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    orderDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    grandTotal?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderReturn
-     */
-    status?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderReturn
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderReturn
-     */
-    staffNote?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderReturn
-     */
-    supplierId?: number | null;
-    /**
-     * 
-     * @type {Supplier}
-     * @memberof OrderReturn
-     */
-    supplier?: Supplier;
-    /**
-     * 
-     * @type {Array<ItemOrderReturn>}
-     * @memberof OrderReturn
-     */
-    itemOrderReturns?: Array<ItemOrderReturn> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof OrderReturn
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderReturn
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderReturn
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderReturn
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   orderReturnId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof OrderReturn
+    */
+   referenceNumber?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   itemsCount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   totalQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   totalDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   totalTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   totalCost?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   orderTaxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   orderTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   orderDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   grandTotal?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderReturn
+    */
+   status?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderReturn
+    */
+   note?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderReturn
+    */
+   staffNote?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderReturn
+    */
+   supplierId?: number | null
+   /**
+    *
+    * @type {Supplier}
+    * @memberof OrderReturn
+    */
+   supplier?: Supplier
+   /**
+    *
+    * @type {Array<ItemOrderReturn>}
+    * @memberof OrderReturn
+    */
+   itemOrderReturns?: Array<ItemOrderReturn> | null
 }

@@ -12,75 +12,75 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateSupplierDto
  */
 export interface UpdateSupplierDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateSupplierDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   country?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateSupplierDto
+    */
+   description?: string | null
 }

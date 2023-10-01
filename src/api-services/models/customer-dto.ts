@@ -11,89 +11,89 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { SaleDto } from './sale-dto';
+import { SaleDto } from "./sale-dto"
 /**
- * 
+ *
  * @export
  * @interface CustomerDto
  */
 export interface CustomerDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CustomerDto
-     */
-    customerId?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerDto
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {Array<SaleDto>}
-     * @memberof CustomerDto
-     */
-    sales?: Array<SaleDto> | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof CustomerDto
+    */
+   customerId?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CustomerDto
+    */
+   country?: string | null
+   /**
+    *
+    * @type {Array<SaleDto>}
+    * @memberof CustomerDto
+    */
+   sales?: Array<SaleDto> | null
 }

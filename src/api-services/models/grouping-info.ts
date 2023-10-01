@@ -12,33 +12,33 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface GroupingInfo
  */
 export interface GroupingInfo {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupingInfo
-     */
-    selector?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupingInfo
-     */
-    desc?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupingInfo
-     */
-    groupInterval?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupingInfo
-     */
-    isExpanded?: boolean | null;
+   /**
+    *
+    * @type {string}
+    * @memberof GroupingInfo
+    */
+   selector?: string | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof GroupingInfo
+    */
+   desc?: boolean
+   /**
+    *
+    * @type {string}
+    * @memberof GroupingInfo
+    */
+   groupInterval?: string | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof GroupingInfo
+    */
+   isExpanded?: boolean | null
 }

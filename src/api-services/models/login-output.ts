@@ -12,33 +12,33 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface LoginOutput
  */
 export interface LoginOutput {
-    /**
-     * 
-     * @type {number}
-     * @memberof LoginOutput
-     */
-    userId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginOutput
-     */
-    account: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginOutput
-     */
-    accessToken?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginOutput
-     */
-    refreshToken?: string | null;
+   /**
+    *
+    * @type {number}
+    * @memberof LoginOutput
+    */
+   userId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof LoginOutput
+    */
+   account: string
+   /**
+    *
+    * @type {string}
+    * @memberof LoginOutput
+    */
+   accessToken?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof LoginOutput
+    */
+   refreshToken?: string | null
 }

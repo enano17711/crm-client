@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateOrderReturnDto
  */
 export interface CreateOrderReturnDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderReturnDto
-     */
-    orderId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderReturnDto
-     */
-    staffNote?: string | null;
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderReturnDto
+    */
+   orderId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateOrderReturnDto
+    */
+   staffNote?: string | null
 }

@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AdjustmentDto } from './adjustment-dto';
+import { AdjustmentDto } from "./adjustment-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultAdjustmentDto
  */
 export interface RESTfulResultAdjustmentDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {AdjustmentDto}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    data?: AdjustmentDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultAdjustmentDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {AdjustmentDto}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   data?: AdjustmentDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultAdjustmentDto
+    */
+   timestamp?: number
 }

@@ -11,41 +11,41 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BrandSimpleDto } from './brand-simple-dto';
+import { BrandSimpleDto } from "./brand-simple-dto"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResponseBrandSimpleDto
  */
 export interface PaginatedResponseBrandSimpleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedResponseBrandSimpleDto
-     */
-    pageNumber?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedResponseBrandSimpleDto
-     */
-    pageSize?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedResponseBrandSimpleDto
-     */
-    totalNumber?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedResponseBrandSimpleDto
-     */
-    totalPage?: number;
-    /**
-     * 
-     * @type {Array<BrandSimpleDto>}
-     * @memberof PaginatedResponseBrandSimpleDto
-     */
-    items?: Array<BrandSimpleDto> | null;
+   /**
+    *
+    * @type {number}
+    * @memberof PaginatedResponseBrandSimpleDto
+    */
+   pageNumber?: number
+   /**
+    *
+    * @type {number}
+    * @memberof PaginatedResponseBrandSimpleDto
+    */
+   pageSize?: number
+   /**
+    *
+    * @type {number}
+    * @memberof PaginatedResponseBrandSimpleDto
+    */
+   totalNumber?: number
+   /**
+    *
+    * @type {number}
+    * @memberof PaginatedResponseBrandSimpleDto
+    */
+   totalPage?: number
+   /**
+    *
+    * @type {Array<BrandSimpleDto>}
+    * @memberof PaginatedResponseBrandSimpleDto
+    */
+   items?: Array<BrandSimpleDto> | null
 }

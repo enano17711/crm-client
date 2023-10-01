@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultCategoryItemDto } from './paginated-result-category-item-dto';
+import { PaginatedResultCategoryItemDto } from "./paginated-result-category-item-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultCategoryItemDto
  */
 export interface RESTfulResultPaginatedResultCategoryItemDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultCategoryItemDto}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    data?: PaginatedResultCategoryItemDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultCategoryItemDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultCategoryItemDto}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   data?: PaginatedResultCategoryItemDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultCategoryItemDto
+    */
+   timestamp?: number
 }

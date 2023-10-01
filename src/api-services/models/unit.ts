@@ -11,101 +11,101 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BaseUnit } from './base-unit';
+import { BaseUnit } from "./base-unit"
 /**
- * 
+ *
  * @export
  * @interface Unit
  */
 export interface Unit {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Unit
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Unit
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Unit
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Unit
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Unit
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Unit
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    unitId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Unit
-     */
-    code?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Unit
-     */
-    operation?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    value?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Unit
-     */
-    baseUnitId?: number | null;
-    /**
-     * 
-     * @type {BaseUnit}
-     * @memberof Unit
-     */
-    baseUnit?: BaseUnit;
+   /**
+    *
+    * @type {boolean}
+    * @memberof Unit
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Unit
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Unit
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Unit
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof Unit
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Unit
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   unitId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof Unit
+    */
+   code?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Unit
+    */
+   operation?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   value?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof Unit
+    */
+   baseUnitId?: number | null
+   /**
+    *
+    * @type {BaseUnit}
+    * @memberof Unit
+    */
+   baseUnit?: BaseUnit
 }

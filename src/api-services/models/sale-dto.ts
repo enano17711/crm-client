@@ -11,150 +11,150 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CustomerDto } from './customer-dto';
-import { ItemSaleDto } from './item-sale-dto';
+import { CustomerDto } from "./customer-dto"
+import { ItemSaleDto } from "./item-sale-dto"
 /**
- * 
+ *
  * @export
  * @interface SaleDto
  */
 export interface SaleDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SaleDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof SaleDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof SaleDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof SaleDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    saleId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof SaleDto
-     */
-    referenceNumber?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    itemsCount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    totalQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    totalDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    totalTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    totalCost?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    orderTaxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    orderTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    orderDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    grandTotal?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SaleDto
-     */
-    status?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SaleDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SaleDto
-     */
-    customerId?: number | null;
-    /**
-     * 
-     * @type {CustomerDto}
-     * @memberof SaleDto
-     */
-    customer?: CustomerDto;
-    /**
-     * 
-     * @type {Array<ItemSaleDto>}
-     * @memberof SaleDto
-     */
-    itemSales?: Array<ItemSaleDto> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof SaleDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof SaleDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof SaleDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof SaleDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   saleId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof SaleDto
+    */
+   referenceNumber?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   itemsCount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   totalQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   totalDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   totalTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   totalCost?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   orderTaxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   orderTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   orderDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   grandTotal?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof SaleDto
+    */
+   status?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SaleDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof SaleDto
+    */
+   customerId?: number | null
+   /**
+    *
+    * @type {CustomerDto}
+    * @memberof SaleDto
+    */
+   customer?: CustomerDto
+   /**
+    *
+    * @type {Array<ItemSaleDto>}
+    * @memberof SaleDto
+    */
+   itemSales?: Array<ItemSaleDto> | null
 }

@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CustomerDto } from './customer-dto';
-import { MetaData } from './meta-data';
+import { CustomerDto } from "./customer-dto"
+import { MetaData } from "./meta-data"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultCustomerDto
  */
 export interface PaginatedResultCustomerDto {
-    /**
-     * 
-     * @type {Array<CustomerDto>}
-     * @memberof PaginatedResultCustomerDto
-     */
-    items?: Array<CustomerDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultCustomerDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<CustomerDto>}
+    * @memberof PaginatedResultCustomerDto
+    */
+   items?: Array<CustomerDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultCustomerDto
+    */
+   metaData?: MetaData
 }

@@ -12,105 +12,105 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateItemForSaleDto
  */
 export interface CreateItemForSaleDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateItemForSaleDto
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateItemForSaleDto
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    receivedQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    unitCostNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    unitPriceNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    discount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    taxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    tax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    total?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    orderId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    itemOrderId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    itemId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    itemBatchId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    unitCostId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemForSaleDto
-     */
-    unitPriceId?: number | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateItemForSaleDto
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof CreateItemForSaleDto
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   receivedQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   unitCostNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   unitPriceNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   discount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   taxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   tax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   total?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   orderId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   itemOrderId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   itemId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   itemBatchId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   unitCostId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemForSaleDto
+    */
+   unitPriceId?: number | null
 }

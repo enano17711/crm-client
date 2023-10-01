@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BaseUnitDto } from './base-unit-dto';
+import { BaseUnitDto } from "./base-unit-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultBaseUnitDto
  */
 export interface RESTfulResultBaseUnitDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {BaseUnitDto}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    data?: BaseUnitDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultBaseUnitDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {BaseUnitDto}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   data?: BaseUnitDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultBaseUnitDto
+    */
+   timestamp?: number
 }

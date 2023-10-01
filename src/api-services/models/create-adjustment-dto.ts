@@ -11,41 +11,41 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CreateItemAdjustmentDto } from './create-item-adjustment-dto';
+import { CreateItemAdjustmentDto } from "./create-item-adjustment-dto"
 /**
- * 
+ *
  * @export
  * @interface CreateAdjustmentDto
  */
 export interface CreateAdjustmentDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateAdjustmentDto
-     */
-    referenceNumber: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateAdjustmentDto
-     */
-    itemsCount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateAdjustmentDto
-     */
-    totalQuantity: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateAdjustmentDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {Array<CreateItemAdjustmentDto>}
-     * @memberof CreateAdjustmentDto
-     */
-    itemAdjustments: Array<CreateItemAdjustmentDto>;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateAdjustmentDto
+    */
+   referenceNumber: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateAdjustmentDto
+    */
+   itemsCount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateAdjustmentDto
+    */
+   totalQuantity: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateAdjustmentDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {Array<CreateItemAdjustmentDto>}
+    * @memberof CreateAdjustmentDto
+    */
+   itemAdjustments: Array<CreateItemAdjustmentDto>
 }

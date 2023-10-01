@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { TaxDto } from './tax-dto';
+import { TaxDto } from "./tax-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultTaxDto
  */
 export interface RESTfulResultTaxDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultTaxDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {TaxDto}
-     * @memberof RESTfulResultTaxDto
-     */
-    data?: TaxDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultTaxDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultTaxDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultTaxDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultTaxDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultTaxDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {TaxDto}
+    * @memberof RESTfulResultTaxDto
+    */
+   data?: TaxDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultTaxDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultTaxDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultTaxDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultTaxDto
+    */
+   timestamp?: number
 }

@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface LoginInput
  */
 export interface LoginInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginInput
-     */
-    account: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginInput
-     */
-    password: string;
+   /**
+    *
+    * @type {string}
+    * @memberof LoginInput
+    */
+   account: string
+   /**
+    *
+    * @type {string}
+    * @memberof LoginInput
+    */
+   password: string
 }

@@ -11,147 +11,147 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemBatchDto } from './item-batch-dto';
-import { ItemDto } from './item-dto';
-import { ItemForSaleDto } from './item-for-sale-dto';
-import { SaleDto } from './sale-dto';
-import { UnitDto } from './unit-dto';
+import { ItemBatchDto } from "./item-batch-dto"
+import { ItemDto } from "./item-dto"
+import { ItemForSaleDto } from "./item-for-sale-dto"
+import { SaleDto } from "./sale-dto"
+import { UnitDto } from "./unit-dto"
 /**
- * 
+ *
  * @export
  * @interface ItemSaleDto
  */
 export interface ItemSaleDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemSaleDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemSaleDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemSaleDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemSaleDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    itemSaleId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemSaleDto
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemSaleDto
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    receivedQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    unitPriceNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    discount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    taxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    tax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemSaleDto
-     */
-    total?: number | null;
-    /**
-     * 
-     * @type {ItemDto}
-     * @memberof ItemSaleDto
-     */
-    item?: ItemDto;
-    /**
-     * 
-     * @type {ItemBatchDto}
-     * @memberof ItemSaleDto
-     */
-    itemBatch?: ItemBatchDto;
-    /**
-     * 
-     * @type {SaleDto}
-     * @memberof ItemSaleDto
-     */
-    sale?: SaleDto;
-    /**
-     * 
-     * @type {UnitDto}
-     * @memberof ItemSaleDto
-     */
-    unitPrice?: UnitDto;
-    /**
-     * 
-     * @type {ItemForSaleDto}
-     * @memberof ItemSaleDto
-     */
-    itemForSale?: ItemForSaleDto;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemSaleDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemSaleDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemSaleDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemSaleDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   itemSaleId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof ItemSaleDto
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemSaleDto
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   receivedQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   unitPriceNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   discount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   taxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   tax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemSaleDto
+    */
+   total?: number | null
+   /**
+    *
+    * @type {ItemDto}
+    * @memberof ItemSaleDto
+    */
+   item?: ItemDto
+   /**
+    *
+    * @type {ItemBatchDto}
+    * @memberof ItemSaleDto
+    */
+   itemBatch?: ItemBatchDto
+   /**
+    *
+    * @type {SaleDto}
+    * @memberof ItemSaleDto
+    */
+   sale?: SaleDto
+   /**
+    *
+    * @type {UnitDto}
+    * @memberof ItemSaleDto
+    */
+   unitPrice?: UnitDto
+   /**
+    *
+    * @type {ItemForSaleDto}
+    * @memberof ItemSaleDto
+    */
+   itemForSale?: ItemForSaleDto
 }

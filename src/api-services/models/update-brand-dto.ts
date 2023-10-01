@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateBrandDto
  */
 export interface UpdateBrandDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateBrandDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateBrandDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateBrandDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateBrandDto
+    */
+   description?: string | null
 }

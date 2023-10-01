@@ -11,104 +11,104 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemAdjustmentDto } from './item-adjustment-dto';
-import { ItemDto } from './item-dto';
-import { ItemOrderDto } from './item-order-dto';
-import { ItemOrderReturnDto } from './item-order-return-dto';
+import { ItemAdjustmentDto } from "./item-adjustment-dto"
+import { ItemDto } from "./item-dto"
+import { ItemOrderDto } from "./item-order-dto"
+import { ItemOrderReturnDto } from "./item-order-return-dto"
 /**
- * 
+ *
  * @export
  * @interface ItemBatchDto
  */
 export interface ItemBatchDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemBatchDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemBatchDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemBatchDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemBatchDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemBatchDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemBatchDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemBatchDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemBatchDto
-     */
-    itemBatchId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemBatchDto
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemBatchDto
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemBatchDto
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {ItemDto}
-     * @memberof ItemBatchDto
-     */
-    item?: ItemDto;
-    /**
-     * 
-     * @type {Array<ItemAdjustmentDto>}
-     * @memberof ItemBatchDto
-     */
-    itemAdjustments?: Array<ItemAdjustmentDto> | null;
-    /**
-     * 
-     * @type {Array<ItemOrderDto>}
-     * @memberof ItemBatchDto
-     */
-    itemOrders?: Array<ItemOrderDto> | null;
-    /**
-     * 
-     * @type {Array<ItemOrderReturnDto>}
-     * @memberof ItemBatchDto
-     */
-    itemOrderReturns?: Array<ItemOrderReturnDto> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemBatchDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemBatchDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemBatchDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemBatchDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemBatchDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemBatchDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemBatchDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemBatchDto
+    */
+   itemBatchId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof ItemBatchDto
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemBatchDto
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemBatchDto
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {ItemDto}
+    * @memberof ItemBatchDto
+    */
+   item?: ItemDto
+   /**
+    *
+    * @type {Array<ItemAdjustmentDto>}
+    * @memberof ItemBatchDto
+    */
+   itemAdjustments?: Array<ItemAdjustmentDto> | null
+   /**
+    *
+    * @type {Array<ItemOrderDto>}
+    * @memberof ItemBatchDto
+    */
+   itemOrders?: Array<ItemOrderDto> | null
+   /**
+    *
+    * @type {Array<ItemOrderReturnDto>}
+    * @memberof ItemBatchDto
+    */
+   itemOrderReturns?: Array<ItemOrderReturnDto> | null
 }

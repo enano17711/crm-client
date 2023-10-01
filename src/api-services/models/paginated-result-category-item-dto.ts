@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CategoryItemDto } from './category-item-dto';
-import { MetaData } from './meta-data';
+import { CategoryItemDto } from "./category-item-dto"
+import { MetaData } from "./meta-data"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultCategoryItemDto
  */
 export interface PaginatedResultCategoryItemDto {
-    /**
-     * 
-     * @type {Array<CategoryItemDto>}
-     * @memberof PaginatedResultCategoryItemDto
-     */
-    items?: Array<CategoryItemDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultCategoryItemDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<CategoryItemDto>}
+    * @memberof PaginatedResultCategoryItemDto
+    */
+   items?: Array<CategoryItemDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultCategoryItemDto
+    */
+   metaData?: MetaData
 }

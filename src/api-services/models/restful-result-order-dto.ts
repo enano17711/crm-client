@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { OrderDto } from './order-dto';
+import { OrderDto } from "./order-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultOrderDto
  */
 export interface RESTfulResultOrderDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultOrderDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {OrderDto}
-     * @memberof RESTfulResultOrderDto
-     */
-    data?: OrderDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultOrderDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultOrderDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultOrderDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultOrderDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultOrderDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {OrderDto}
+    * @memberof RESTfulResultOrderDto
+    */
+   data?: OrderDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultOrderDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultOrderDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultOrderDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultOrderDto
+    */
+   timestamp?: number
 }

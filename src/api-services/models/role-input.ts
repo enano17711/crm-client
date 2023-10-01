@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface RoleInput
  */
 export interface RoleInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RoleInput
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RoleInput
-     */
-    remark?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof RoleInput
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof RoleInput
+    */
+   remark?: string | null
 }

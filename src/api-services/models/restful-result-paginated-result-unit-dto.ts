@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultUnitDto } from './paginated-result-unit-dto';
+import { PaginatedResultUnitDto } from "./paginated-result-unit-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultUnitDto
  */
 export interface RESTfulResultPaginatedResultUnitDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultUnitDto}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    data?: PaginatedResultUnitDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultUnitDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultUnitDto}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   data?: PaginatedResultUnitDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultUnitDto
+    */
+   timestamp?: number
 }

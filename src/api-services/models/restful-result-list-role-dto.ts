@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { RoleDto } from './role-dto';
+import { RoleDto } from "./role-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultListRoleDto
  */
 export interface RESTfulResultListRoleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListRoleDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {Array<RoleDto>}
-     * @memberof RESTfulResultListRoleDto
-     */
-    data?: Array<RoleDto> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultListRoleDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListRoleDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListRoleDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListRoleDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListRoleDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {Array<RoleDto>}
+    * @memberof RESTfulResultListRoleDto
+    */
+   data?: Array<RoleDto> | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultListRoleDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListRoleDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListRoleDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListRoleDto
+    */
+   timestamp?: number
 }

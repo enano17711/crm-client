@@ -12,93 +12,93 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateItemDto
  */
 export interface UpdateItemDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateItemDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateItemDto
-     */
-    code: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    price: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    cost: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateItemDto
-     */
-    isBatched: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateItemDto
-     */
-    taxCostMethod: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateItemDto
-     */
-    taxPriceMethod: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateItemDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof UpdateItemDto
-     */
-    categoryItems?: Array<number> | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    taxCostId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    taxPriceId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    brandId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    unitPriceId: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateItemDto
-     */
-    unitCostId: number;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateItemDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateItemDto
+    */
+   code: string
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   price: number
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   cost: number
+   /**
+    *
+    * @type {boolean}
+    * @memberof UpdateItemDto
+    */
+   isBatched: boolean
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateItemDto
+    */
+   taxCostMethod: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateItemDto
+    */
+   taxPriceMethod: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateItemDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {Array<number>}
+    * @memberof UpdateItemDto
+    */
+   categoryItems?: Array<number> | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   taxCostId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   taxPriceId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   brandId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   unitPriceId: number
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateItemDto
+    */
+   unitCostId: number
 }

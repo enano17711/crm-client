@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultSaleDto } from './paginated-result-sale-dto';
+import { PaginatedResultSaleDto } from "./paginated-result-sale-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultSaleDto
  */
 export interface RESTfulResultPaginatedResultSaleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultSaleDto}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    data?: PaginatedResultSaleDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultSaleDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultSaleDto}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   data?: PaginatedResultSaleDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultSaleDto
+    */
+   timestamp?: number
 }

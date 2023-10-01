@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { BrandSimpleDto } from './brand-simple-dto';
+import { BrandSimpleDto } from "./brand-simple-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultBrandSimpleDto
  */
 export interface RESTfulResultBrandSimpleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {BrandSimpleDto}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    data?: BrandSimpleDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultBrandSimpleDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {BrandSimpleDto}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   data?: BrandSimpleDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultBrandSimpleDto
+    */
+   timestamp?: number
 }

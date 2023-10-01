@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CategoryItemDto } from './category-item-dto';
+import { CategoryItemDto } from "./category-item-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultCategoryItemDto
  */
 export interface RESTfulResultCategoryItemDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {CategoryItemDto}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    data?: CategoryItemDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultCategoryItemDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {CategoryItemDto}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   data?: CategoryItemDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultCategoryItemDto
+    */
+   timestamp?: number
 }

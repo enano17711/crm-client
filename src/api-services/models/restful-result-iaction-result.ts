@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { IActionResult } from './iaction-result';
+import { IActionResult } from "./iaction-result"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultIActionResult
  */
 export interface RESTfulResultIActionResult {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultIActionResult
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {IActionResult}
-     * @memberof RESTfulResultIActionResult
-     */
-    data?: IActionResult;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultIActionResult
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultIActionResult
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultIActionResult
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultIActionResult
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultIActionResult
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {IActionResult}
+    * @memberof RESTfulResultIActionResult
+    */
+   data?: IActionResult
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultIActionResult
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultIActionResult
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultIActionResult
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultIActionResult
+    */
+   timestamp?: number
 }

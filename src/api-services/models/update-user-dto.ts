@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateUserDto
  */
 export interface UpdateUserDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateUserDto
-     */
-    account?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateUserDto
+    */
+   account?: string | null
 }

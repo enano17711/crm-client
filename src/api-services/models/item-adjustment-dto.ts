@@ -11,91 +11,91 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AdjustmentDto } from './adjustment-dto';
-import { ItemBatchDto } from './item-batch-dto';
-import { ItemDto } from './item-dto';
+import { AdjustmentDto } from "./adjustment-dto"
+import { ItemBatchDto } from "./item-batch-dto"
+import { ItemDto } from "./item-dto"
 /**
- * 
+ *
  * @export
  * @interface ItemAdjustmentDto
  */
 export interface ItemAdjustmentDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemAdjustmentDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustmentDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustmentDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustmentDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustmentDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustmentDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustmentDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustmentDto
-     */
-    itemAdjustmentId?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustmentDto
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemAdjustmentDto
-     */
-    action?: string | null;
-    /**
-     * 
-     * @type {ItemDto}
-     * @memberof ItemAdjustmentDto
-     */
-    item?: ItemDto;
-    /**
-     * 
-     * @type {ItemBatchDto}
-     * @memberof ItemAdjustmentDto
-     */
-    itemBatch?: ItemBatchDto;
-    /**
-     * 
-     * @type {AdjustmentDto}
-     * @memberof ItemAdjustmentDto
-     */
-    adjustment?: AdjustmentDto;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemAdjustmentDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustmentDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustmentDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustmentDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustmentDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustmentDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustmentDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustmentDto
+    */
+   itemAdjustmentId?: number
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustmentDto
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof ItemAdjustmentDto
+    */
+   action?: string | null
+   /**
+    *
+    * @type {ItemDto}
+    * @memberof ItemAdjustmentDto
+    */
+   item?: ItemDto
+   /**
+    *
+    * @type {ItemBatchDto}
+    * @memberof ItemAdjustmentDto
+    */
+   itemBatch?: ItemBatchDto
+   /**
+    *
+    * @type {AdjustmentDto}
+    * @memberof ItemAdjustmentDto
+    */
+   adjustment?: AdjustmentDto
 }

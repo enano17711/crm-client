@@ -11,101 +11,101 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CreateItemOrderDto } from './create-item-order-dto';
+import { CreateItemOrderDto } from "./create-item-order-dto"
 /**
- * 
+ *
  * @export
  * @interface CreateOrderDto
  */
 export interface CreateOrderDto {
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateOrderDto
-     */
-    orderDate: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    referenceNumber: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    itemsCount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    totalQuantity: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    totalDiscount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    totalTax: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    totalCost: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    orderTaxRate: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    orderTax: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    orderDiscount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    grandTotal: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateOrderDto
-     */
-    supplierId: number;
-    /**
-     * 
-     * @type {Array<CreateItemOrderDto>}
-     * @memberof CreateOrderDto
-     */
-    itemOrders?: Array<CreateItemOrderDto> | null;
+   /**
+    *
+    * @type {Date}
+    * @memberof CreateOrderDto
+    */
+   orderDate: Date
+   /**
+    *
+    * @type {string}
+    * @memberof CreateOrderDto
+    */
+   referenceNumber: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   itemsCount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   totalQuantity: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   totalDiscount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   totalTax: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   totalCost: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   orderTaxRate: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   orderTax: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   orderDiscount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   grandTotal: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateOrderDto
+    */
+   status: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateOrderDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateOrderDto
+    */
+   supplierId: number
+   /**
+    *
+    * @type {Array<CreateItemOrderDto>}
+    * @memberof CreateOrderDto
+    */
+   itemOrders?: Array<CreateItemOrderDto> | null
 }

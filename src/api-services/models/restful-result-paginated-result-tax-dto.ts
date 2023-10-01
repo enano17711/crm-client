@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultTaxDto } from './paginated-result-tax-dto';
+import { PaginatedResultTaxDto } from "./paginated-result-tax-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultTaxDto
  */
 export interface RESTfulResultPaginatedResultTaxDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultTaxDto}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    data?: PaginatedResultTaxDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultTaxDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultTaxDto}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   data?: PaginatedResultTaxDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultTaxDto
+    */
+   timestamp?: number
 }

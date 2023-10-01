@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateCategoryItemDto
  */
 export interface CreateCategoryItemDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateCategoryItemDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateCategoryItemDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateCategoryItemDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateCategoryItemDto
+    */
+   description?: string | null
 }

@@ -11,77 +11,77 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Item } from './item';
+import { Item } from "./item"
 /**
- * 
+ *
  * @export
  * @interface Brand
  */
 export interface Brand {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Brand
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Brand
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Brand
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Brand
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Brand
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Brand
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Brand
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Brand
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Brand
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Brand
-     */
-    brandId?: number;
-    /**
-     * 
-     * @type {Array<Item>}
-     * @memberof Brand
-     */
-    items?: Array<Item> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof Brand
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Brand
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Brand
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Brand
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Brand
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Brand
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Brand
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof Brand
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Brand
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Brand
+    */
+   brandId?: number
+   /**
+    *
+    * @type {Array<Item>}
+    * @memberof Brand
+    */
+   items?: Array<Item> | null
 }

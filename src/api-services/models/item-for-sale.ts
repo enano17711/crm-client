@@ -11,202 +11,202 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Item } from './item';
-import { ItemBatch } from './item-batch';
-import { ItemOrder } from './item-order';
-import { ItemSale } from './item-sale';
-import { Order } from './order';
-import { Unit } from './unit';
+import { Item } from "./item"
+import { ItemBatch } from "./item-batch"
+import { ItemOrder } from "./item-order"
+import { ItemSale } from "./item-sale"
+import { Order } from "./order"
+import { Unit } from "./unit"
 /**
- * 
+ *
  * @export
  * @interface ItemForSale
  */
 export interface ItemForSale {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemForSale
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemForSale
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemForSale
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemForSale
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    itemForSaleId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemForSale
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemForSale
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    receivedQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    unitCostNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    unitPriceNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    discount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    taxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    tax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    total?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    orderId?: number | null;
-    /**
-     * 
-     * @type {Order}
-     * @memberof ItemForSale
-     */
-    order?: Order;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    itemId?: number | null;
-    /**
-     * 
-     * @type {Item}
-     * @memberof ItemForSale
-     */
-    item?: Item;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    itemBatchId?: number | null;
-    /**
-     * 
-     * @type {ItemBatch}
-     * @memberof ItemForSale
-     */
-    itemBatch?: ItemBatch;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    unitCostId?: number | null;
-    /**
-     * 
-     * @type {Unit}
-     * @memberof ItemForSale
-     */
-    unitCost?: Unit;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    unitPriceId?: number | null;
-    /**
-     * 
-     * @type {Unit}
-     * @memberof ItemForSale
-     */
-    unitPrice?: Unit;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemForSale
-     */
-    itemOrderId?: number;
-    /**
-     * 
-     * @type {ItemOrder}
-     * @memberof ItemForSale
-     */
-    itemOrder?: ItemOrder;
-    /**
-     * 
-     * @type {Array<ItemSale>}
-     * @memberof ItemForSale
-     */
-    itemSales?: Array<ItemSale> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemForSale
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemForSale
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemForSale
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemForSale
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   itemForSaleId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof ItemForSale
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemForSale
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   receivedQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   unitCostNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   unitPriceNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   discount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   taxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   tax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   total?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   orderId?: number | null
+   /**
+    *
+    * @type {Order}
+    * @memberof ItemForSale
+    */
+   order?: Order
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   itemId?: number | null
+   /**
+    *
+    * @type {Item}
+    * @memberof ItemForSale
+    */
+   item?: Item
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   itemBatchId?: number | null
+   /**
+    *
+    * @type {ItemBatch}
+    * @memberof ItemForSale
+    */
+   itemBatch?: ItemBatch
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   unitCostId?: number | null
+   /**
+    *
+    * @type {Unit}
+    * @memberof ItemForSale
+    */
+   unitCost?: Unit
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   unitPriceId?: number | null
+   /**
+    *
+    * @type {Unit}
+    * @memberof ItemForSale
+    */
+   unitPrice?: Unit
+   /**
+    *
+    * @type {number}
+    * @memberof ItemForSale
+    */
+   itemOrderId?: number
+   /**
+    *
+    * @type {ItemOrder}
+    * @memberof ItemForSale
+    */
+   itemOrder?: ItemOrder
+   /**
+    *
+    * @type {Array<ItemSale>}
+    * @memberof ItemForSale
+    */
+   itemSales?: Array<ItemSale> | null
 }

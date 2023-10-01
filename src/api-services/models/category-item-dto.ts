@@ -11,35 +11,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemDto } from './item-dto';
+import { ItemDto } from "./item-dto"
 /**
- * 
+ *
  * @export
  * @interface CategoryItemDto
  */
 export interface CategoryItemDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CategoryItemDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CategoryItemDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CategoryItemDto
-     */
-    categoryItemId?: number;
-    /**
-     * 
-     * @type {Array<ItemDto>}
-     * @memberof CategoryItemDto
-     */
-    items?: Array<ItemDto> | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CategoryItemDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CategoryItemDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof CategoryItemDto
+    */
+   categoryItemId?: number
+   /**
+    *
+    * @type {Array<ItemDto>}
+    * @memberof CategoryItemDto
+    */
+   items?: Array<ItemDto> | null
 }

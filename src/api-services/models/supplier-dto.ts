@@ -11,96 +11,96 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { OrderDto } from './order-dto';
-import { OrderReturnDto } from './order-return-dto';
+import { OrderDto } from "./order-dto"
+import { OrderReturnDto } from "./order-return-dto"
 /**
- * 
+ *
  * @export
  * @interface SupplierDto
  */
 export interface SupplierDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof SupplierDto
-     */
-    supplierId?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SupplierDto
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {Array<OrderDto>}
-     * @memberof SupplierDto
-     */
-    orders?: Array<OrderDto> | null;
-    /**
-     * 
-     * @type {Array<OrderReturnDto>}
-     * @memberof SupplierDto
-     */
-    orderReturns?: Array<OrderReturnDto> | null;
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof SupplierDto
+    */
+   supplierId?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SupplierDto
+    */
+   country?: string | null
+   /**
+    *
+    * @type {Array<OrderDto>}
+    * @memberof SupplierDto
+    */
+   orders?: Array<OrderDto> | null
+   /**
+    *
+    * @type {Array<OrderReturnDto>}
+    * @memberof SupplierDto
+    */
+   orderReturns?: Array<OrderReturnDto> | null
 }

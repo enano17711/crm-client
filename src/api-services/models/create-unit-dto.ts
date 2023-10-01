@@ -12,45 +12,45 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateUnitDto
  */
 export interface CreateUnitDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUnitDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUnitDto
-     */
-    code: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUnitDto
-     */
-    operation: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateUnitDto
-     */
-    value: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUnitDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateUnitDto
-     */
-    baseUnitId?: number;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUnitDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUnitDto
+    */
+   code: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUnitDto
+    */
+   operation: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateUnitDto
+    */
+   value: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUnitDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateUnitDto
+    */
+   baseUnitId?: number
 }

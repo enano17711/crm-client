@@ -11,164 +11,164 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Item } from './item';
-import { ItemBatch } from './item-batch';
-import { OrderReturn } from './order-return';
-import { Unit } from './unit';
+import { Item } from "./item"
+import { ItemBatch } from "./item-batch"
+import { OrderReturn } from "./order-return"
+import { Unit } from "./unit"
 /**
- * 
+ *
  * @export
  * @interface ItemOrderReturn
  */
 export interface ItemOrderReturn {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemOrderReturn
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemOrderReturn
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemOrderReturn
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemOrderReturn
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    itemOrderReturnId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemOrderReturn
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemOrderReturn
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    receivedQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    unitCostNet?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    discount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    taxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    tax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    total?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    orderReturnId?: number | null;
-    /**
-     * 
-     * @type {OrderReturn}
-     * @memberof ItemOrderReturn
-     */
-    orderReturn?: OrderReturn;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    itemId?: number | null;
-    /**
-     * 
-     * @type {Item}
-     * @memberof ItemOrderReturn
-     */
-    item?: Item;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    itemBatchId?: number | null;
-    /**
-     * 
-     * @type {ItemBatch}
-     * @memberof ItemOrderReturn
-     */
-    itemBatch?: ItemBatch;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemOrderReturn
-     */
-    unitCostId?: number | null;
-    /**
-     * 
-     * @type {Unit}
-     * @memberof ItemOrderReturn
-     */
-    unitCost?: Unit;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemOrderReturn
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemOrderReturn
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemOrderReturn
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemOrderReturn
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   itemOrderReturnId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof ItemOrderReturn
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemOrderReturn
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   receivedQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   unitCostNet?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   discount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   taxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   tax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   total?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   orderReturnId?: number | null
+   /**
+    *
+    * @type {OrderReturn}
+    * @memberof ItemOrderReturn
+    */
+   orderReturn?: OrderReturn
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   itemId?: number | null
+   /**
+    *
+    * @type {Item}
+    * @memberof ItemOrderReturn
+    */
+   item?: Item
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   itemBatchId?: number | null
+   /**
+    *
+    * @type {ItemBatch}
+    * @memberof ItemOrderReturn
+    */
+   itemBatch?: ItemBatch
+   /**
+    *
+    * @type {number}
+    * @memberof ItemOrderReturn
+    */
+   unitCostId?: number | null
+   /**
+    *
+    * @type {Unit}
+    * @memberof ItemOrderReturn
+    */
+   unitCost?: Unit
 }

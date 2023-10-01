@@ -11,99 +11,149 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import globalAxios, { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '../configuration';
+import globalAxios, {
+   AxiosResponse,
+   AxiosInstance,
+   AxiosRequestConfig,
+} from "axios"
+import { Configuration } from "../configuration"
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import {
+   BASE_PATH,
+   COLLECTION_FORMATS,
+   RequestArgs,
+   BaseAPI,
+   RequiredError,
+} from "../base"
 /**
  * InitSystemApi - axios parameter creator
  * @export
  */
-export const InitSystemApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiInitSystemInitDataBasePost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/init-system/init-data-base`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+export const InitSystemApiAxiosParamCreator = function (
+   configuration?: Configuration,
+) {
+   return {
+      /**
+       *
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiInitSystemInitDataBasePost: async (
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/init-system/init-data-base`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "POST",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+   }
+}
 
 /**
  * InitSystemApi - functional programming interface
  * @export
  */
-export const InitSystemApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiInitSystemInitDataBasePost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await InitSystemApiAxiosParamCreator(configuration).apiInitSystemInitDataBasePost(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    }
-};
+export const InitSystemApiFp = function (configuration?: Configuration) {
+   return {
+      /**
+       *
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiInitSystemInitDataBasePost(
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<void>>
+      > {
+         const localVarAxiosArgs = await InitSystemApiAxiosParamCreator(
+            configuration,
+         ).apiInitSystemInitDataBasePost(options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+   }
+}
 
 /**
  * InitSystemApi - factory interface
  * @export
  */
-export const InitSystemApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiInitSystemInitDataBasePost(options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return InitSystemApiFp(configuration).apiInitSystemInitDataBasePost(options).then((request) => request(axios, basePath));
-        },
-    };
-};
+export const InitSystemApiFactory = function (
+   configuration?: Configuration,
+   basePath?: string,
+   axios?: AxiosInstance,
+) {
+   return {
+      /**
+       *
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiInitSystemInitDataBasePost(
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<void>> {
+         return InitSystemApiFp(configuration)
+            .apiInitSystemInitDataBasePost(options)
+            .then((request) => request(axios, basePath))
+      },
+   }
+}
 
 /**
  * InitSystemApi - object-oriented interface
@@ -112,13 +162,17 @@ export const InitSystemApiFactory = function (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export class InitSystemApi extends BaseAPI {
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof InitSystemApi
-     */
-    public async apiInitSystemInitDataBasePost(options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return InitSystemApiFp(this.configuration).apiInitSystemInitDataBasePost(options).then((request) => request(this.axios, this.basePath));
-    }
+   /**
+    *
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof InitSystemApi
+    */
+   public async apiInitSystemInitDataBasePost(
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<void>> {
+      return InitSystemApiFp(this.configuration)
+         .apiInitSystemInitDataBasePost(options)
+         .then((request) => request(this.axios, this.basePath))
+   }
 }

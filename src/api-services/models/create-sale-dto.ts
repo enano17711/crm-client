@@ -11,95 +11,95 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { CreateItemForSaleDto } from './create-item-for-sale-dto';
+import { CreateItemForSaleDto } from "./create-item-for-sale-dto"
 /**
- * 
+ *
  * @export
  * @interface CreateSaleDto
  */
 export interface CreateSaleDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSaleDto
-     */
-    referenceNumber: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    itemsCount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    totalQuantity: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    totalDiscount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    totalTax: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    totalCost: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    orderTaxRate: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    orderTax: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    orderDiscount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    grandTotal: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSaleDto
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSaleDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateSaleDto
-     */
-    customerId: number;
-    /**
-     * 
-     * @type {Array<CreateItemForSaleDto>}
-     * @memberof CreateSaleDto
-     */
-    itemSales?: Array<CreateItemForSaleDto> | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSaleDto
+    */
+   referenceNumber: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   itemsCount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   totalQuantity: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   totalDiscount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   totalTax: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   totalCost: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   orderTaxRate: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   orderTax: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   orderDiscount: number
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   grandTotal: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSaleDto
+    */
+   status: string
+   /**
+    *
+    * @type {string}
+    * @memberof CreateSaleDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateSaleDto
+    */
+   customerId: number
+   /**
+    *
+    * @type {Array<CreateItemForSaleDto>}
+    * @memberof CreateSaleDto
+    */
+   itemSales?: Array<CreateItemForSaleDto> | null
 }

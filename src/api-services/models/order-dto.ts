@@ -11,156 +11,156 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemOrderDto } from './item-order-dto';
-import { SupplierDto } from './supplier-dto';
+import { ItemOrderDto } from "./item-order-dto"
+import { SupplierDto } from "./supplier-dto"
 /**
- * 
+ *
  * @export
  * @interface OrderDto
  */
 export interface OrderDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OrderDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    orderId?: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderDto
-     */
-    orderDate?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderDto
-     */
-    referenceNumber?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    itemsCount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    totalQuantity?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    totalDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    totalTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    totalCost?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    orderTaxRate?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    orderTax?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    orderDiscount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    grandTotal?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderDto
-     */
-    status?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderDto
-     */
-    supplierId?: number | null;
-    /**
-     * 
-     * @type {SupplierDto}
-     * @memberof OrderDto
-     */
-    supplier?: SupplierDto;
-    /**
-     * 
-     * @type {Array<ItemOrderDto>}
-     * @memberof OrderDto
-     */
-    itemOrders?: Array<ItemOrderDto> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof OrderDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   orderId?: number
+   /**
+    *
+    * @type {Date}
+    * @memberof OrderDto
+    */
+   orderDate?: Date | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderDto
+    */
+   referenceNumber?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   itemsCount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   totalQuantity?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   totalDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   totalTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   totalCost?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   orderTaxRate?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   orderTax?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   orderDiscount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   grandTotal?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderDto
+    */
+   status?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof OrderDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof OrderDto
+    */
+   supplierId?: number | null
+   /**
+    *
+    * @type {SupplierDto}
+    * @memberof OrderDto
+    */
+   supplier?: SupplierDto
+   /**
+    *
+    * @type {Array<ItemOrderDto>}
+    * @memberof OrderDto
+    */
+   itemOrders?: Array<ItemOrderDto> | null
 }

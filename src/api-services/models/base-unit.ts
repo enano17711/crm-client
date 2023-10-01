@@ -12,75 +12,75 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface BaseUnit
  */
 export interface BaseUnit {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BaseUnit
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BaseUnit
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BaseUnit
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BaseUnit
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BaseUnit
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BaseUnit
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BaseUnit
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnit
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnit
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BaseUnit
-     */
-    baseUnitId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnit
-     */
-    code?: string | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof BaseUnit
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof BaseUnit
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof BaseUnit
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof BaseUnit
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof BaseUnit
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof BaseUnit
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof BaseUnit
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnit
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnit
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof BaseUnit
+    */
+   baseUnitId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnit
+    */
+   code?: string | null
 }

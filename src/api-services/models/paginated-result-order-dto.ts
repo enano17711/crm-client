@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { MetaData } from './meta-data';
-import { OrderDto } from './order-dto';
+import { MetaData } from "./meta-data"
+import { OrderDto } from "./order-dto"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultOrderDto
  */
 export interface PaginatedResultOrderDto {
-    /**
-     * 
-     * @type {Array<OrderDto>}
-     * @memberof PaginatedResultOrderDto
-     */
-    items?: Array<OrderDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultOrderDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<OrderDto>}
+    * @memberof PaginatedResultOrderDto
+    */
+   items?: Array<OrderDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultOrderDto
+    */
+   metaData?: MetaData
 }

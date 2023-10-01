@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateCategoryItemDto
  */
 export interface UpdateCategoryItemDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateCategoryItemDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateCategoryItemDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateCategoryItemDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateCategoryItemDto
+    */
+   description?: string | null
 }

@@ -12,27 +12,27 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface RoleDto
  */
 export interface RoleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RoleDto
-     */
-    roleId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RoleDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RoleDto
-     */
-    remark?: string | null;
+   /**
+    *
+    * @type {number}
+    * @memberof RoleDto
+    */
+   roleId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof RoleDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof RoleDto
+    */
+   remark?: string | null
 }

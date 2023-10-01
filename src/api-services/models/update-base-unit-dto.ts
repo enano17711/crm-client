@@ -12,69 +12,69 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateBaseUnitDto
  */
 export interface UpdateBaseUnitDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UpdateBaseUnitDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UpdateBaseUnitDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateBaseUnitDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UpdateBaseUnitDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateBaseUnitDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UpdateBaseUnitDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateBaseUnitDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateBaseUnitDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateBaseUnitDto
-     */
-    code: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateBaseUnitDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof UpdateBaseUnitDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UpdateBaseUnitDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateBaseUnitDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UpdateBaseUnitDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateBaseUnitDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UpdateBaseUnitDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateBaseUnitDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateBaseUnitDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateBaseUnitDto
+    */
+   code: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateBaseUnitDto
+    */
+   description?: string | null
 }

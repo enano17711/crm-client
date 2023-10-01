@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { LoginOutput } from './login-output';
+import { LoginOutput } from "./login-output"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultLoginOutput
  */
 export interface RESTfulResultLoginOutput {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultLoginOutput
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {LoginOutput}
-     * @memberof RESTfulResultLoginOutput
-     */
-    data?: LoginOutput;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultLoginOutput
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultLoginOutput
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultLoginOutput
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultLoginOutput
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultLoginOutput
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {LoginOutput}
+    * @memberof RESTfulResultLoginOutput
+    */
+   data?: LoginOutput
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultLoginOutput
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultLoginOutput
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultLoginOutput
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultLoginOutput
+    */
+   timestamp?: number
 }

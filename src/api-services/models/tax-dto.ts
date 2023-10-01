@@ -12,33 +12,33 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface TaxDto
  */
 export interface TaxDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof TaxDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof TaxDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof TaxDto
-     */
-    taxId?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TaxDto
-     */
-    rate?: number;
+   /**
+    *
+    * @type {string}
+    * @memberof TaxDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof TaxDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof TaxDto
+    */
+   taxId?: number
+   /**
+    *
+    * @type {number}
+    * @memberof TaxDto
+    */
+   rate?: number
 }

@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AdjustmentDto } from './adjustment-dto';
-import { MetaData } from './meta-data';
+import { AdjustmentDto } from "./adjustment-dto"
+import { MetaData } from "./meta-data"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultAdjustmentDto
  */
 export interface PaginatedResultAdjustmentDto {
-    /**
-     * 
-     * @type {Array<AdjustmentDto>}
-     * @memberof PaginatedResultAdjustmentDto
-     */
-    items?: Array<AdjustmentDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultAdjustmentDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<AdjustmentDto>}
+    * @memberof PaginatedResultAdjustmentDto
+    */
+   items?: Array<AdjustmentDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultAdjustmentDto
+    */
+   metaData?: MetaData
 }

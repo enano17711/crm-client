@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { MetaData } from './meta-data';
-import { SupplierDto } from './supplier-dto';
+import { MetaData } from "./meta-data"
+import { SupplierDto } from "./supplier-dto"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultSupplierDto
  */
 export interface PaginatedResultSupplierDto {
-    /**
-     * 
-     * @type {Array<SupplierDto>}
-     * @memberof PaginatedResultSupplierDto
-     */
-    items?: Array<SupplierDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultSupplierDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<SupplierDto>}
+    * @memberof PaginatedResultSupplierDto
+    */
+   items?: Array<SupplierDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultSupplierDto
+    */
+   metaData?: MetaData
 }

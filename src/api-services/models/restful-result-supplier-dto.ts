@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { SupplierDto } from './supplier-dto';
+import { SupplierDto } from "./supplier-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultSupplierDto
  */
 export interface RESTfulResultSupplierDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultSupplierDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {SupplierDto}
-     * @memberof RESTfulResultSupplierDto
-     */
-    data?: SupplierDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultSupplierDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultSupplierDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultSupplierDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultSupplierDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultSupplierDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {SupplierDto}
+    * @memberof RESTfulResultSupplierDto
+    */
+   data?: SupplierDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultSupplierDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultSupplierDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultSupplierDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultSupplierDto
+    */
+   timestamp?: number
 }

@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface SortingInfo
  */
 export interface SortingInfo {
-    /**
-     * 
-     * @type {string}
-     * @memberof SortingInfo
-     */
-    selector?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SortingInfo
-     */
-    desc?: boolean;
+   /**
+    *
+    * @type {string}
+    * @memberof SortingInfo
+    */
+   selector?: string | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof SortingInfo
+    */
+   desc?: boolean
 }

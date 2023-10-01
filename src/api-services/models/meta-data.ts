@@ -12,45 +12,45 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface MetaData
  */
 export interface MetaData {
-    /**
-     * 
-     * @type {number}
-     * @memberof MetaData
-     */
-    currentPage?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MetaData
-     */
-    totalPages?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MetaData
-     */
-    pageSize?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MetaData
-     */
-    totalCount?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MetaData
-     */
-    hasPrevious?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MetaData
-     */
-    hasNext?: boolean;
+   /**
+    *
+    * @type {number}
+    * @memberof MetaData
+    */
+   currentPage?: number
+   /**
+    *
+    * @type {number}
+    * @memberof MetaData
+    */
+   totalPages?: number
+   /**
+    *
+    * @type {number}
+    * @memberof MetaData
+    */
+   pageSize?: number
+   /**
+    *
+    * @type {number}
+    * @memberof MetaData
+    */
+   totalCount?: number
+   /**
+    *
+    * @type {boolean}
+    * @memberof MetaData
+    */
+   hasPrevious?: boolean
+   /**
+    *
+    * @type {boolean}
+    * @memberof MetaData
+    */
+   hasNext?: boolean
 }

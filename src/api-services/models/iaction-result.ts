@@ -12,9 +12,8 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface IActionResult
  */
-export interface IActionResult {
-}
+export interface IActionResult {}

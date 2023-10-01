@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultOrderReturnDto } from './paginated-result-order-return-dto';
+import { PaginatedResultOrderReturnDto } from "./paginated-result-order-return-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultOrderReturnDto
  */
 export interface RESTfulResultPaginatedResultOrderReturnDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultOrderReturnDto}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    data?: PaginatedResultOrderReturnDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultOrderReturnDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultOrderReturnDto}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   data?: PaginatedResultOrderReturnDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultOrderReturnDto
+    */
+   timestamp?: number
 }

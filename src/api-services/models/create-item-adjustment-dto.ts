@@ -12,39 +12,39 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateItemAdjustmentDto
  */
 export interface CreateItemAdjustmentDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemAdjustmentDto
-     */
-    quantity: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateItemAdjustmentDto
-     */
-    action: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemAdjustmentDto
-     */
-    itemId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemAdjustmentDto
-     */
-    itemBatchId?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemAdjustmentDto
-     */
-    adjustmentId?: number | null;
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemAdjustmentDto
+    */
+   quantity: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateItemAdjustmentDto
+    */
+   action: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemAdjustmentDto
+    */
+   itemId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemAdjustmentDto
+    */
+   itemBatchId?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemAdjustmentDto
+    */
+   adjustmentId?: number | null
 }

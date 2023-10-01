@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { OrderReturnDto } from './order-return-dto';
+import { OrderReturnDto } from "./order-return-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultOrderReturnDto
  */
 export interface RESTfulResultOrderReturnDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {OrderReturnDto}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    data?: OrderReturnDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultOrderReturnDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {OrderReturnDto}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   data?: OrderReturnDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultOrderReturnDto
+    */
+   timestamp?: number
 }

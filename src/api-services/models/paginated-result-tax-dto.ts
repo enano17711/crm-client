@@ -11,24 +11,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { MetaData } from './meta-data';
-import { TaxDto } from './tax-dto';
+import { MetaData } from "./meta-data"
+import { TaxDto } from "./tax-dto"
 /**
- * 
+ *
  * @export
  * @interface PaginatedResultTaxDto
  */
 export interface PaginatedResultTaxDto {
-    /**
-     * 
-     * @type {Array<TaxDto>}
-     * @memberof PaginatedResultTaxDto
-     */
-    items?: Array<TaxDto> | null;
-    /**
-     * 
-     * @type {MetaData}
-     * @memberof PaginatedResultTaxDto
-     */
-    metaData?: MetaData;
+   /**
+    *
+    * @type {Array<TaxDto>}
+    * @memberof PaginatedResultTaxDto
+    */
+   items?: Array<TaxDto> | null
+   /**
+    *
+    * @type {MetaData}
+    * @memberof PaginatedResultTaxDto
+    */
+   metaData?: MetaData
 }

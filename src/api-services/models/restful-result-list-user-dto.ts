@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { UserDto } from './user-dto';
+import { UserDto } from "./user-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultListUserDto
  */
 export interface RESTfulResultListUserDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListUserDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {Array<UserDto>}
-     * @memberof RESTfulResultListUserDto
-     */
-    data?: Array<UserDto> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultListUserDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListUserDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListUserDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListUserDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListUserDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {Array<UserDto>}
+    * @memberof RESTfulResultListUserDto
+    */
+   data?: Array<UserDto> | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultListUserDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListUserDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListUserDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListUserDto
+    */
+   timestamp?: number
 }

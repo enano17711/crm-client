@@ -12,33 +12,33 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface BaseUnitDto
  */
 export interface BaseUnitDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnitDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnitDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BaseUnitDto
-     */
-    baseUnitId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BaseUnitDto
-     */
-    code?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnitDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnitDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof BaseUnitDto
+    */
+   baseUnitId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof BaseUnitDto
+    */
+   code?: string | null
 }

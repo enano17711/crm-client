@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultBaseUnitDto } from './paginated-result-base-unit-dto';
+import { PaginatedResultBaseUnitDto } from "./paginated-result-base-unit-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultBaseUnitDto
  */
 export interface RESTfulResultPaginatedResultBaseUnitDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultBaseUnitDto}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    data?: PaginatedResultBaseUnitDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultBaseUnitDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultBaseUnitDto}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   data?: PaginatedResultBaseUnitDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultBaseUnitDto
+    */
+   timestamp?: number
 }

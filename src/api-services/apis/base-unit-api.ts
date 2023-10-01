@@ -11,637 +11,1036 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import globalAxios, { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '../configuration';
+import globalAxios, {
+   AxiosResponse,
+   AxiosInstance,
+   AxiosRequestConfig,
+} from "axios"
+import { Configuration } from "../configuration"
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { CreateBaseUnitDto } from '../models';
-import { GroupingInfo } from '../models';
-import { RESTfulResultBaseUnitDto } from '../models';
-import { RESTfulResultLoadResult } from '../models';
-import { RESTfulResultPaginatedResultBaseUnitDto } from '../models';
-import { SortingInfo } from '../models';
-import { SummaryInfo } from '../models';
-import { UpdateBaseUnitDto } from '../models';
+import {
+   BASE_PATH,
+   COLLECTION_FORMATS,
+   RequestArgs,
+   BaseAPI,
+   RequiredError,
+} from "../base"
+import { CreateBaseUnitDto } from "../models"
+import { GroupingInfo } from "../models"
+import { RESTfulResultBaseUnitDto } from "../models"
+import { RESTfulResultLoadResult } from "../models"
+import { RESTfulResultPaginatedResultBaseUnitDto } from "../models"
+import { SortingInfo } from "../models"
+import { SummaryInfo } from "../models"
+import { UpdateBaseUnitDto } from "../models"
 /**
  * BaseUnitApi - axios parameter creator
  * @export
  */
-export const BaseUnitApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitIdDelete: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdDelete.');
-            }
-            const localVarPath = `/api/base-unit/base-unit/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+export const BaseUnitApiAxiosParamCreator = function (
+   configuration?: Configuration,
+) {
+   return {
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitIdDelete: async (
+         id: number,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'id' is not null or undefined
+         if (id === null || id === undefined) {
+            throw new RequiredError(
+               "id",
+               "Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdDelete.",
+            )
+         }
+         const localVarPath = `/api/base-unit/base-unit/{id}`.replace(
+            `{${"id"}}`,
+            encodeURIComponent(String(id)),
+         )
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "DELETE",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitIdGet: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdGet.');
-            }
-            const localVarPath = `/api/base-unit/base-unit/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitIdGet: async (
+         id: number,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'id' is not null or undefined
+         if (id === null || id === undefined) {
+            throw new RequiredError(
+               "id",
+               "Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdGet.",
+            )
+         }
+         const localVarPath = `/api/base-unit/base-unit/{id}`.replace(
+            `{${"id"}}`,
+            encodeURIComponent(String(id)),
+         )
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {UpdateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitIdPut: async (id: number, body?: UpdateBaseUnitDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdPut.');
-            }
-            const localVarPath = `/api/base-unit/base-unit/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {UpdateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitIdPut: async (
+         id: number,
+         body?: UpdateBaseUnitDto,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         // verify required parameter 'id' is not null or undefined
+         if (id === null || id === undefined) {
+            throw new RequiredError(
+               "id",
+               "Required parameter id was null or undefined when calling apiBaseUnitBaseUnitIdPut.",
+            )
+         }
+         const localVarPath = `/api/base-unit/base-unit/{id}`.replace(
+            `{${"id"}}`,
+            encodeURIComponent(String(id)),
+         )
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "PUT",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+         localVarHeaderParameter["Content-Type"] = "application/json"
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
+         const needsSerialization =
+            typeof body !== "string" ||
+            localVarRequestOptions.headers["Content-Type"] ===
+               "application/json"
+         localVarRequestOptions.data = needsSerialization
+            ? JSON.stringify(body !== undefined ? body : {})
+            : body || ""
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {CreateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitPost: async (body?: CreateBaseUnitDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/base-unit/base-unit`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {CreateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitPost: async (
+         body?: CreateBaseUnitDto,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/base-unit/base-unit`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "POST",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+         localVarHeaderParameter["Content-Type"] = "application/json"
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
+         const needsSerialization =
+            typeof body !== "string" ||
+            localVarRequestOptions.headers["Content-Type"] ===
+               "application/json"
+         localVarRequestOptions.data = needsSerialization
+            ? JSON.stringify(body !== undefined ? body : {})
+            : body || ""
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitsForGridGet: async (requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/base-unit/base-units-for-grid`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitsForGridGet: async (
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/base-unit/base-units-for-grid`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            if (requireTotalCount !== undefined) {
-                localVarQueryParameter['RequireTotalCount'] = requireTotalCount;
-            }
+         if (requireTotalCount !== undefined) {
+            localVarQueryParameter["RequireTotalCount"] = requireTotalCount
+         }
 
-            if (requireGroupCount !== undefined) {
-                localVarQueryParameter['RequireGroupCount'] = requireGroupCount;
-            }
+         if (requireGroupCount !== undefined) {
+            localVarQueryParameter["RequireGroupCount"] = requireGroupCount
+         }
 
-            if (isCountQuery !== undefined) {
-                localVarQueryParameter['IsCountQuery'] = isCountQuery;
-            }
+         if (isCountQuery !== undefined) {
+            localVarQueryParameter["IsCountQuery"] = isCountQuery
+         }
 
-            if (isSummaryQuery !== undefined) {
-                localVarQueryParameter['IsSummaryQuery'] = isSummaryQuery;
-            }
+         if (isSummaryQuery !== undefined) {
+            localVarQueryParameter["IsSummaryQuery"] = isSummaryQuery
+         }
 
-            if (skip !== undefined) {
-                localVarQueryParameter['Skip'] = skip;
-            }
+         if (skip !== undefined) {
+            localVarQueryParameter["Skip"] = skip
+         }
 
-            if (take !== undefined) {
-                localVarQueryParameter['Take'] = take;
-            }
+         if (take !== undefined) {
+            localVarQueryParameter["Take"] = take
+         }
 
-            if (sort) {
-                localVarQueryParameter['Sort'] = sort;
-            }
+         if (sort) {
+            localVarQueryParameter["Sort"] = sort
+         }
 
-            if (group) {
-                localVarQueryParameter['Group'] = group;
-            }
+         if (group) {
+            localVarQueryParameter["Group"] = group
+         }
 
-            if (filter) {
-                localVarQueryParameter['Filter'] = filter;
-            }
+         if (filter) {
+            localVarQueryParameter["Filter"] = filter
+         }
 
-            if (totalSummary) {
-                localVarQueryParameter['TotalSummary'] = totalSummary;
-            }
+         if (totalSummary) {
+            localVarQueryParameter["TotalSummary"] = totalSummary
+         }
 
-            if (groupSummary) {
-                localVarQueryParameter['GroupSummary'] = groupSummary;
-            }
+         if (groupSummary) {
+            localVarQueryParameter["GroupSummary"] = groupSummary
+         }
 
-            if (select) {
-                localVarQueryParameter['Select'] = select;
-            }
+         if (select) {
+            localVarQueryParameter["Select"] = select
+         }
 
-            if (preSelect) {
-                localVarQueryParameter['PreSelect'] = preSelect;
-            }
+         if (preSelect) {
+            localVarQueryParameter["PreSelect"] = preSelect
+         }
 
-            if (remoteSelect !== undefined) {
-                localVarQueryParameter['RemoteSelect'] = remoteSelect;
-            }
+         if (remoteSelect !== undefined) {
+            localVarQueryParameter["RemoteSelect"] = remoteSelect
+         }
 
-            if (remoteGrouping !== undefined) {
-                localVarQueryParameter['RemoteGrouping'] = remoteGrouping;
-            }
+         if (remoteGrouping !== undefined) {
+            localVarQueryParameter["RemoteGrouping"] = remoteGrouping
+         }
 
-            if (expandLinqSumType !== undefined) {
-                localVarQueryParameter['ExpandLinqSumType'] = expandLinqSumType;
-            }
+         if (expandLinqSumType !== undefined) {
+            localVarQueryParameter["ExpandLinqSumType"] = expandLinqSumType
+         }
 
-            if (primaryKey) {
-                localVarQueryParameter['PrimaryKey'] = primaryKey;
-            }
+         if (primaryKey) {
+            localVarQueryParameter["PrimaryKey"] = primaryKey
+         }
 
-            if (defaultSort !== undefined) {
-                localVarQueryParameter['DefaultSort'] = defaultSort;
-            }
+         if (defaultSort !== undefined) {
+            localVarQueryParameter["DefaultSort"] = defaultSort
+         }
 
-            if (stringToLower !== undefined) {
-                localVarQueryParameter['StringToLower'] = stringToLower;
-            }
+         if (stringToLower !== undefined) {
+            localVarQueryParameter["StringToLower"] = stringToLower
+         }
 
-            if (paginateViaPrimaryKey !== undefined) {
-                localVarQueryParameter['PaginateViaPrimaryKey'] = paginateViaPrimaryKey;
-            }
+         if (paginateViaPrimaryKey !== undefined) {
+            localVarQueryParameter["PaginateViaPrimaryKey"] =
+               paginateViaPrimaryKey
+         }
 
-            if (sortByPrimaryKey !== undefined) {
-                localVarQueryParameter['SortByPrimaryKey'] = sortByPrimaryKey;
-            }
+         if (sortByPrimaryKey !== undefined) {
+            localVarQueryParameter["SortByPrimaryKey"] = sortByPrimaryKey
+         }
 
-            if (allowAsyncOverSync !== undefined) {
-                localVarQueryParameter['AllowAsyncOverSync'] = allowAsyncOverSync;
-            }
+         if (allowAsyncOverSync !== undefined) {
+            localVarQueryParameter["AllowAsyncOverSync"] = allowAsyncOverSync
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        apiBaseUnitBaseUnitsGet: async (pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/base-unit/base-units`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      apiBaseUnitBaseUnitsGet: async (
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options: AxiosRequestConfig = {},
+      ): Promise<RequestArgs> => {
+         const localVarPath = `/api/base-unit/base-units`
+         // use dummy base URL string because the URL constructor only accepts absolute URLs.
+         const localVarUrlObj = new URL(localVarPath, "https://example.com")
+         let baseOptions
+         if (configuration) {
+            baseOptions = configuration.baseOptions
+         }
+         const localVarRequestOptions: AxiosRequestConfig = {
+            method: "GET",
+            ...baseOptions,
+            ...options,
+         }
+         const localVarHeaderParameter = {} as any
+         const localVarQueryParameter = {} as any
 
-            // authentication Bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
+         // authentication Bearer required
+         // http bearer authentication required
+         if (configuration && configuration.accessToken) {
+            const accessToken =
+               typeof configuration.accessToken === "function"
+                  ? await configuration.accessToken()
+                  : await configuration.accessToken
+            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken
+         }
 
-            if (pageNumber !== undefined) {
-                localVarQueryParameter['PageNumber'] = pageNumber;
-            }
+         if (pageNumber !== undefined) {
+            localVarQueryParameter["PageNumber"] = pageNumber
+         }
 
-            if (pageSize !== undefined) {
-                localVarQueryParameter['PageSize'] = pageSize;
-            }
+         if (pageSize !== undefined) {
+            localVarQueryParameter["PageSize"] = pageSize
+         }
 
-            if (columnName !== undefined) {
-                localVarQueryParameter['ColumnName'] = columnName;
-            }
+         if (columnName !== undefined) {
+            localVarQueryParameter["ColumnName"] = columnName
+         }
 
-            if (columnValue !== undefined) {
-                localVarQueryParameter['ColumnValue'] = columnValue;
-            }
+         if (columnValue !== undefined) {
+            localVarQueryParameter["ColumnValue"] = columnValue
+         }
 
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+         const query = new URLSearchParams(localVarUrlObj.search)
+         for (const key in localVarQueryParameter) {
+            query.set(key, localVarQueryParameter[key])
+         }
+         for (const key in options.params) {
+            query.set(key, options.params[key])
+         }
+         localVarUrlObj.search = new URLSearchParams(query).toString()
+         let headersFromBaseOptions =
+            baseOptions && baseOptions.headers ? baseOptions.headers : {}
+         localVarRequestOptions.headers = {
+            ...localVarHeaderParameter,
+            ...headersFromBaseOptions,
+            ...options.headers,
+         }
 
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
+         return {
+            url:
+               localVarUrlObj.pathname +
+               localVarUrlObj.search +
+               localVarUrlObj.hash,
+            options: localVarRequestOptions,
+         }
+      },
+   }
+}
 
 /**
  * BaseUnitApi - functional programming interface
  * @export
  */
-export const BaseUnitApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdDelete(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitIdDelete(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdGet(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitIdGet(id, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {UpdateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdPut(id: number, body?: UpdateBaseUnitDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitIdPut(id, body, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {CreateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitPost(body?: CreateBaseUnitDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitPost(body, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitsForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultLoadResult>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitsForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>>> {
-            const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(configuration).apiBaseUnitBaseUnitsGet(pageNumber, pageSize, columnName, columnValue, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-    }
-};
+export const BaseUnitApiFp = function (configuration?: Configuration) {
+   return {
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdDelete(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitIdDelete(id, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdGet(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitIdGet(id, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {UpdateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdPut(
+         id: number,
+         body?: UpdateBaseUnitDto,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitIdPut(id, body, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {CreateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitPost(
+         body?: CreateBaseUnitDto,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultBaseUnitDto>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitPost(body, options)
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitsForGridGet(
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultLoadResult>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitsForGridGet(
+            requireTotalCount,
+            requireGroupCount,
+            isCountQuery,
+            isSummaryQuery,
+            skip,
+            take,
+            sort,
+            group,
+            filter,
+            totalSummary,
+            groupSummary,
+            select,
+            preSelect,
+            remoteSelect,
+            remoteGrouping,
+            expandLinqSumType,
+            primaryKey,
+            defaultSort,
+            stringToLower,
+            paginateViaPrimaryKey,
+            sortByPrimaryKey,
+            allowAsyncOverSync,
+            options,
+         )
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitsGet(
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options?: AxiosRequestConfig,
+      ): Promise<
+         (
+            axios?: AxiosInstance,
+            basePath?: string,
+         ) => Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>>
+      > {
+         const localVarAxiosArgs = await BaseUnitApiAxiosParamCreator(
+            configuration,
+         ).apiBaseUnitBaseUnitsGet(
+            pageNumber,
+            pageSize,
+            columnName,
+            columnValue,
+            options,
+         )
+         return (
+            axios: AxiosInstance = globalAxios,
+            basePath: string = BASE_PATH,
+         ) => {
+            const axiosRequestArgs: AxiosRequestConfig = {
+               ...localVarAxiosArgs.options,
+               url: basePath + localVarAxiosArgs.url,
+            }
+            return axios.request(axiosRequestArgs)
+         }
+      },
+   }
+}
 
 /**
  * BaseUnitApi - factory interface
  * @export
  */
-export const BaseUnitApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    return {
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdDelete(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitIdDelete(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdGet(id: number, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitIdGet(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} id 
-         * @param {UpdateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitIdPut(id: number, body?: UpdateBaseUnitDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitIdPut(id, body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {CreateBaseUnitDto} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitPost(body?: CreateBaseUnitDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitPost(body, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {boolean} [requireTotalCount] 
-         * @param {boolean} [requireGroupCount] 
-         * @param {boolean} [isCountQuery] 
-         * @param {boolean} [isSummaryQuery] 
-         * @param {number} [skip] 
-         * @param {number} [take] 
-         * @param {Array<SortingInfo>} [sort] 
-         * @param {Array<GroupingInfo>} [group] 
-         * @param {Array<any>} [filter] 
-         * @param {Array<SummaryInfo>} [totalSummary] 
-         * @param {Array<SummaryInfo>} [groupSummary] 
-         * @param {Array<string>} [select] 
-         * @param {Array<string>} [preSelect] 
-         * @param {boolean} [remoteSelect] 
-         * @param {boolean} [remoteGrouping] 
-         * @param {boolean} [expandLinqSumType] 
-         * @param {Array<string>} [primaryKey] 
-         * @param {string} [defaultSort] 
-         * @param {boolean} [stringToLower] 
-         * @param {boolean} [paginateViaPrimaryKey] 
-         * @param {boolean} [sortByPrimaryKey] 
-         * @param {boolean} [allowAsyncOverSync] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitsForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultLoadResult>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitsForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} [pageNumber] 
-         * @param {number} [pageSize] 
-         * @param {string} [columnName] 
-         * @param {string} [columnValue] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async apiBaseUnitBaseUnitsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>> {
-            return BaseUnitApiFp(configuration).apiBaseUnitBaseUnitsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(axios, basePath));
-        },
-    };
-};
+export const BaseUnitApiFactory = function (
+   configuration?: Configuration,
+   basePath?: string,
+   axios?: AxiosInstance,
+) {
+   return {
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdDelete(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitIdDelete(id, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdGet(
+         id: number,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitIdGet(id, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} id
+       * @param {UpdateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitIdPut(
+         id: number,
+         body?: UpdateBaseUnitDto,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitIdPut(id, body, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {CreateBaseUnitDto} [body]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitPost(
+         body?: CreateBaseUnitDto,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitPost(body, options)
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {boolean} [requireTotalCount]
+       * @param {boolean} [requireGroupCount]
+       * @param {boolean} [isCountQuery]
+       * @param {boolean} [isSummaryQuery]
+       * @param {number} [skip]
+       * @param {number} [take]
+       * @param {Array<SortingInfo>} [sort]
+       * @param {Array<GroupingInfo>} [group]
+       * @param {Array<any>} [filter]
+       * @param {Array<SummaryInfo>} [totalSummary]
+       * @param {Array<SummaryInfo>} [groupSummary]
+       * @param {Array<string>} [select]
+       * @param {Array<string>} [preSelect]
+       * @param {boolean} [remoteSelect]
+       * @param {boolean} [remoteGrouping]
+       * @param {boolean} [expandLinqSumType]
+       * @param {Array<string>} [primaryKey]
+       * @param {string} [defaultSort]
+       * @param {boolean} [stringToLower]
+       * @param {boolean} [paginateViaPrimaryKey]
+       * @param {boolean} [sortByPrimaryKey]
+       * @param {boolean} [allowAsyncOverSync]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitsForGridGet(
+         requireTotalCount?: boolean,
+         requireGroupCount?: boolean,
+         isCountQuery?: boolean,
+         isSummaryQuery?: boolean,
+         skip?: number,
+         take?: number,
+         sort?: Array<SortingInfo>,
+         group?: Array<GroupingInfo>,
+         filter?: Array<any>,
+         totalSummary?: Array<SummaryInfo>,
+         groupSummary?: Array<SummaryInfo>,
+         select?: Array<string>,
+         preSelect?: Array<string>,
+         remoteSelect?: boolean,
+         remoteGrouping?: boolean,
+         expandLinqSumType?: boolean,
+         primaryKey?: Array<string>,
+         defaultSort?: string,
+         stringToLower?: boolean,
+         paginateViaPrimaryKey?: boolean,
+         sortByPrimaryKey?: boolean,
+         allowAsyncOverSync?: boolean,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultLoadResult>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitsForGridGet(
+               requireTotalCount,
+               requireGroupCount,
+               isCountQuery,
+               isSummaryQuery,
+               skip,
+               take,
+               sort,
+               group,
+               filter,
+               totalSummary,
+               groupSummary,
+               select,
+               preSelect,
+               remoteSelect,
+               remoteGrouping,
+               expandLinqSumType,
+               primaryKey,
+               defaultSort,
+               stringToLower,
+               paginateViaPrimaryKey,
+               sortByPrimaryKey,
+               allowAsyncOverSync,
+               options,
+            )
+            .then((request) => request(axios, basePath))
+      },
+      /**
+       *
+       * @param {number} [pageNumber]
+       * @param {number} [pageSize]
+       * @param {string} [columnName]
+       * @param {string} [columnValue]
+       * @param {*} [options] Override http request option.
+       * @throws {RequiredError}
+       */
+      async apiBaseUnitBaseUnitsGet(
+         pageNumber?: number,
+         pageSize?: number,
+         columnName?: string,
+         columnValue?: string,
+         options?: AxiosRequestConfig,
+      ): Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>> {
+         return BaseUnitApiFp(configuration)
+            .apiBaseUnitBaseUnitsGet(
+               pageNumber,
+               pageSize,
+               columnName,
+               columnValue,
+               options,
+            )
+            .then((request) => request(axios, basePath))
+      },
+   }
+}
 
 /**
  * BaseUnitApi - object-oriented interface
@@ -650,89 +1049,174 @@ export const BaseUnitApiFactory = function (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export class BaseUnitApi extends BaseAPI {
-    /**
-     * 
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitIdDelete(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitIdDelete(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitIdGet(id: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitIdGet(id, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} id 
-     * @param {UpdateBaseUnitDto} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitIdPut(id: number, body?: UpdateBaseUnitDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitIdPut(id, body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {CreateBaseUnitDto} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitPost(body?: CreateBaseUnitDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitPost(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {boolean} [requireTotalCount] 
-     * @param {boolean} [requireGroupCount] 
-     * @param {boolean} [isCountQuery] 
-     * @param {boolean} [isSummaryQuery] 
-     * @param {number} [skip] 
-     * @param {number} [take] 
-     * @param {Array<SortingInfo>} [sort] 
-     * @param {Array<GroupingInfo>} [group] 
-     * @param {Array<any>} [filter] 
-     * @param {Array<SummaryInfo>} [totalSummary] 
-     * @param {Array<SummaryInfo>} [groupSummary] 
-     * @param {Array<string>} [select] 
-     * @param {Array<string>} [preSelect] 
-     * @param {boolean} [remoteSelect] 
-     * @param {boolean} [remoteGrouping] 
-     * @param {boolean} [expandLinqSumType] 
-     * @param {Array<string>} [primaryKey] 
-     * @param {string} [defaultSort] 
-     * @param {boolean} [stringToLower] 
-     * @param {boolean} [paginateViaPrimaryKey] 
-     * @param {boolean} [sortByPrimaryKey] 
-     * @param {boolean} [allowAsyncOverSync] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitsForGridGet(requireTotalCount?: boolean, requireGroupCount?: boolean, isCountQuery?: boolean, isSummaryQuery?: boolean, skip?: number, take?: number, sort?: Array<SortingInfo>, group?: Array<GroupingInfo>, filter?: Array<any>, totalSummary?: Array<SummaryInfo>, groupSummary?: Array<SummaryInfo>, select?: Array<string>, preSelect?: Array<string>, remoteSelect?: boolean, remoteGrouping?: boolean, expandLinqSumType?: boolean, primaryKey?: Array<string>, defaultSort?: string, stringToLower?: boolean, paginateViaPrimaryKey?: boolean, sortByPrimaryKey?: boolean, allowAsyncOverSync?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultLoadResult>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitsForGridGet(requireTotalCount, requireGroupCount, isCountQuery, isSummaryQuery, skip, take, sort, group, filter, totalSummary, groupSummary, select, preSelect, remoteSelect, remoteGrouping, expandLinqSumType, primaryKey, defaultSort, stringToLower, paginateViaPrimaryKey, sortByPrimaryKey, allowAsyncOverSync, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @param {number} [pageNumber] 
-     * @param {number} [pageSize] 
-     * @param {string} [columnName] 
-     * @param {string} [columnValue] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BaseUnitApi
-     */
-    public async apiBaseUnitBaseUnitsGet(pageNumber?: number, pageSize?: number, columnName?: string, columnValue?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>> {
-        return BaseUnitApiFp(this.configuration).apiBaseUnitBaseUnitsGet(pageNumber, pageSize, columnName, columnValue, options).then((request) => request(this.axios, this.basePath));
-    }
+   /**
+    *
+    * @param {number} id
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitIdDelete(
+      id: number,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitIdDelete(id, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} id
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitIdGet(
+      id: number,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitIdGet(id, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} id
+    * @param {UpdateBaseUnitDto} [body]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitIdPut(
+      id: number,
+      body?: UpdateBaseUnitDto,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitIdPut(id, body, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {CreateBaseUnitDto} [body]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitPost(
+      body?: CreateBaseUnitDto,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultBaseUnitDto>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitPost(body, options)
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {boolean} [requireTotalCount]
+    * @param {boolean} [requireGroupCount]
+    * @param {boolean} [isCountQuery]
+    * @param {boolean} [isSummaryQuery]
+    * @param {number} [skip]
+    * @param {number} [take]
+    * @param {Array<SortingInfo>} [sort]
+    * @param {Array<GroupingInfo>} [group]
+    * @param {Array<any>} [filter]
+    * @param {Array<SummaryInfo>} [totalSummary]
+    * @param {Array<SummaryInfo>} [groupSummary]
+    * @param {Array<string>} [select]
+    * @param {Array<string>} [preSelect]
+    * @param {boolean} [remoteSelect]
+    * @param {boolean} [remoteGrouping]
+    * @param {boolean} [expandLinqSumType]
+    * @param {Array<string>} [primaryKey]
+    * @param {string} [defaultSort]
+    * @param {boolean} [stringToLower]
+    * @param {boolean} [paginateViaPrimaryKey]
+    * @param {boolean} [sortByPrimaryKey]
+    * @param {boolean} [allowAsyncOverSync]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitsForGridGet(
+      requireTotalCount?: boolean,
+      requireGroupCount?: boolean,
+      isCountQuery?: boolean,
+      isSummaryQuery?: boolean,
+      skip?: number,
+      take?: number,
+      sort?: Array<SortingInfo>,
+      group?: Array<GroupingInfo>,
+      filter?: Array<any>,
+      totalSummary?: Array<SummaryInfo>,
+      groupSummary?: Array<SummaryInfo>,
+      select?: Array<string>,
+      preSelect?: Array<string>,
+      remoteSelect?: boolean,
+      remoteGrouping?: boolean,
+      expandLinqSumType?: boolean,
+      primaryKey?: Array<string>,
+      defaultSort?: string,
+      stringToLower?: boolean,
+      paginateViaPrimaryKey?: boolean,
+      sortByPrimaryKey?: boolean,
+      allowAsyncOverSync?: boolean,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultLoadResult>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitsForGridGet(
+            requireTotalCount,
+            requireGroupCount,
+            isCountQuery,
+            isSummaryQuery,
+            skip,
+            take,
+            sort,
+            group,
+            filter,
+            totalSummary,
+            groupSummary,
+            select,
+            preSelect,
+            remoteSelect,
+            remoteGrouping,
+            expandLinqSumType,
+            primaryKey,
+            defaultSort,
+            stringToLower,
+            paginateViaPrimaryKey,
+            sortByPrimaryKey,
+            allowAsyncOverSync,
+            options,
+         )
+         .then((request) => request(this.axios, this.basePath))
+   }
+   /**
+    *
+    * @param {number} [pageNumber]
+    * @param {number} [pageSize]
+    * @param {string} [columnName]
+    * @param {string} [columnValue]
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof BaseUnitApi
+    */
+   public async apiBaseUnitBaseUnitsGet(
+      pageNumber?: number,
+      pageSize?: number,
+      columnName?: string,
+      columnValue?: string,
+      options?: AxiosRequestConfig,
+   ): Promise<AxiosResponse<RESTfulResultPaginatedResultBaseUnitDto>> {
+      return BaseUnitApiFp(this.configuration)
+         .apiBaseUnitBaseUnitsGet(
+            pageNumber,
+            pageSize,
+            columnName,
+            columnValue,
+            options,
+         )
+         .then((request) => request(this.axios, this.basePath))
+   }
 }

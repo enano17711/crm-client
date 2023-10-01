@@ -11,89 +11,89 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { ItemAdjustmentDto } from './item-adjustment-dto';
+import { ItemAdjustmentDto } from "./item-adjustment-dto"
 /**
- * 
+ *
  * @export
  * @interface AdjustmentDto
  */
 export interface AdjustmentDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AdjustmentDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof AdjustmentDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof AdjustmentDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof AdjustmentDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    adjustmentId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdjustmentDto
-     */
-    referenceNumber?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    itemsCount?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdjustmentDto
-     */
-    totalQuantity?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AdjustmentDto
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {Array<ItemAdjustmentDto>}
-     * @memberof AdjustmentDto
-     */
-    itemAdjustments?: Array<ItemAdjustmentDto> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof AdjustmentDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof AdjustmentDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof AdjustmentDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof AdjustmentDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   adjustmentId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof AdjustmentDto
+    */
+   referenceNumber?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   itemsCount?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof AdjustmentDto
+    */
+   totalQuantity?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof AdjustmentDto
+    */
+   note?: string | null
+   /**
+    *
+    * @type {Array<ItemAdjustmentDto>}
+    * @memberof AdjustmentDto
+    */
+   itemAdjustments?: Array<ItemAdjustmentDto> | null
 }

@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultAdjustmentDto } from './paginated-result-adjustment-dto';
+import { PaginatedResultAdjustmentDto } from "./paginated-result-adjustment-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultAdjustmentDto
  */
 export interface RESTfulResultPaginatedResultAdjustmentDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultAdjustmentDto}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    data?: PaginatedResultAdjustmentDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultAdjustmentDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultAdjustmentDto}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   data?: PaginatedResultAdjustmentDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultAdjustmentDto
+    */
+   timestamp?: number
 }

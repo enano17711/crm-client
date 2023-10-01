@@ -11,138 +11,138 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Order } from './order';
-import { OrderReturn } from './order-return';
+import { Order } from "./order"
+import { OrderReturn } from "./order-return"
 /**
- * 
+ *
  * @export
  * @interface Supplier
  */
 export interface Supplier {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Supplier
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Supplier
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Supplier
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Supplier
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Supplier
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Supplier
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Supplier
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Supplier
-     */
-    supplierId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    companyName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    nit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    ci?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    email?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    state?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Supplier
-     */
-    country?: string | null;
-    /**
-     * 
-     * @type {Array<Order>}
-     * @memberof Supplier
-     */
-    orders?: Array<Order> | null;
-    /**
-     * 
-     * @type {Array<OrderReturn>}
-     * @memberof Supplier
-     */
-    orderReturns?: Array<OrderReturn> | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof Supplier
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Supplier
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Supplier
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Supplier
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Supplier
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof Supplier
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof Supplier
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof Supplier
+    */
+   supplierId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   companyName?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   nit?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   ci?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   email?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   phone?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   address?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   city?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   state?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof Supplier
+    */
+   country?: string | null
+   /**
+    *
+    * @type {Array<Order>}
+    * @memberof Supplier
+    */
+   orders?: Array<Order> | null
+   /**
+    *
+    * @type {Array<OrderReturn>}
+    * @memberof Supplier
+    */
+   orderReturns?: Array<OrderReturn> | null
 }

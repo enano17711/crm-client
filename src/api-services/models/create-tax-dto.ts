@@ -12,27 +12,27 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateTaxDto
  */
 export interface CreateTaxDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTaxDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateTaxDto
-     */
-    rate: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTaxDto
-     */
-    description?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateTaxDto
+    */
+   name: string
+   /**
+    *
+    * @type {number}
+    * @memberof CreateTaxDto
+    */
+   rate: number
+   /**
+    *
+    * @type {string}
+    * @memberof CreateTaxDto
+    */
+   description?: string | null
 }

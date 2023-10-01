@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResponseBrandSimpleDto } from './paginated-response-brand-simple-dto';
+import { PaginatedResponseBrandSimpleDto } from "./paginated-response-brand-simple-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResponseBrandSimpleDto
  */
 export interface RESTfulResultPaginatedResponseBrandSimpleDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResponseBrandSimpleDto}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    data?: PaginatedResponseBrandSimpleDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResponseBrandSimpleDto}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   data?: PaginatedResponseBrandSimpleDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResponseBrandSimpleDto
+    */
+   timestamp?: number
 }

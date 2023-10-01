@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { PaginatedResultCustomerDto } from './paginated-result-customer-dto';
+import { PaginatedResultCustomerDto } from "./paginated-result-customer-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultPaginatedResultCustomerDto
  */
 export interface RESTfulResultPaginatedResultCustomerDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {PaginatedResultCustomerDto}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    data?: PaginatedResultCustomerDto;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultPaginatedResultCustomerDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {PaginatedResultCustomerDto}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   data?: PaginatedResultCustomerDto
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultPaginatedResultCustomerDto
+    */
+   timestamp?: number
 }

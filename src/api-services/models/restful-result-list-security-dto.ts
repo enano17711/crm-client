@@ -11,47 +11,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { SecurityDto } from './security-dto';
+import { SecurityDto } from "./security-dto"
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultListSecurityDto
  */
 export interface RESTfulResultListSecurityDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {Array<SecurityDto>}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    data?: Array<SecurityDto> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultListSecurityDto
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {Array<SecurityDto>}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   data?: Array<SecurityDto> | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultListSecurityDto
+    */
+   timestamp?: number
 }

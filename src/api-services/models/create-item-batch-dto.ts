@@ -12,27 +12,27 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateItemBatchDto
  */
 export interface CreateItemBatchDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateItemBatchDto
-     */
-    batchNumber?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateItemBatchDto
-     */
-    batchDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateItemBatchDto
-     */
-    itemId?: number | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateItemBatchDto
+    */
+   batchNumber?: string | null
+   /**
+    *
+    * @type {Date}
+    * @memberof CreateItemBatchDto
+    */
+   batchDate?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof CreateItemBatchDto
+    */
+   itemId?: number | null
 }

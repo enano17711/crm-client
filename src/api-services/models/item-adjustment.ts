@@ -11,109 +11,109 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Adjustment } from './adjustment';
-import { Item } from './item';
-import { ItemBatch } from './item-batch';
+import { Adjustment } from "./adjustment"
+import { Item } from "./item"
+import { ItemBatch } from "./item-batch"
 /**
- * 
+ *
  * @export
  * @interface ItemAdjustment
  */
 export interface ItemAdjustment {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ItemAdjustment
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustment
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustment
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ItemAdjustment
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    itemAdjustmentId?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    quantity?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ItemAdjustment
-     */
-    action?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    itemId?: number | null;
-    /**
-     * 
-     * @type {Item}
-     * @memberof ItemAdjustment
-     */
-    item?: Item;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    itemBatchId?: number | null;
-    /**
-     * 
-     * @type {ItemBatch}
-     * @memberof ItemAdjustment
-     */
-    itemBatch?: ItemBatch;
-    /**
-     * 
-     * @type {number}
-     * @memberof ItemAdjustment
-     */
-    adjustmentId?: number | null;
-    /**
-     * 
-     * @type {Adjustment}
-     * @memberof ItemAdjustment
-     */
-    adjustment?: Adjustment;
+   /**
+    *
+    * @type {boolean}
+    * @memberof ItemAdjustment
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustment
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustment
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof ItemAdjustment
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   itemAdjustmentId?: number
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   quantity?: number | null
+   /**
+    *
+    * @type {string}
+    * @memberof ItemAdjustment
+    */
+   action?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   itemId?: number | null
+   /**
+    *
+    * @type {Item}
+    * @memberof ItemAdjustment
+    */
+   item?: Item
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   itemBatchId?: number | null
+   /**
+    *
+    * @type {ItemBatch}
+    * @memberof ItemAdjustment
+    */
+   itemBatch?: ItemBatch
+   /**
+    *
+    * @type {number}
+    * @memberof ItemAdjustment
+    */
+   adjustmentId?: number | null
+   /**
+    *
+    * @type {Adjustment}
+    * @memberof ItemAdjustment
+    */
+   adjustment?: Adjustment
 }

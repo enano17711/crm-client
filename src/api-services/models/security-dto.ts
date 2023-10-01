@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface SecurityDto
  */
 export interface SecurityDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof SecurityDto
-     */
-    securityId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecurityDto
-     */
-    uniqueName?: string | null;
+   /**
+    *
+    * @type {number}
+    * @memberof SecurityDto
+    */
+   securityId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof SecurityDto
+    */
+   uniqueName?: string | null
 }

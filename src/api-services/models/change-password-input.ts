@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface ChangePasswordInput
  */
 export interface ChangePasswordInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof ChangePasswordInput
-     */
-    userId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordInput
-     */
-    password?: string | null;
+   /**
+    *
+    * @type {number}
+    * @memberof ChangePasswordInput
+    */
+   userId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof ChangePasswordInput
+    */
+   password?: string | null
 }

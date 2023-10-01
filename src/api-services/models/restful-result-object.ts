@@ -12,45 +12,45 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface RESTfulResultObject
  */
 export interface RESTfulResultObject {
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultObject
-     */
-    statusCode?: number | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultObject
-     */
-    data?: any | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RESTfulResultObject
-     */
-    succeeded?: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultObject
-     */
-    errors?: any | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof RESTfulResultObject
-     */
-    extras?: any | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RESTfulResultObject
-     */
-    timestamp?: number;
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultObject
+    */
+   statusCode?: number | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultObject
+    */
+   data?: any | null
+   /**
+    *
+    * @type {boolean}
+    * @memberof RESTfulResultObject
+    */
+   succeeded?: boolean
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultObject
+    */
+   errors?: any | null
+   /**
+    *
+    * @type {any}
+    * @memberof RESTfulResultObject
+    */
+   extras?: any | null
+   /**
+    *
+    * @type {number}
+    * @memberof RESTfulResultObject
+    */
+   timestamp?: number
 }

@@ -12,63 +12,63 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UserDto
  */
 export interface UserDto {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserDto
-     */
-    isDeleted?: boolean | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserDto
-     */
-    deletedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserDto
-     */
-    deletedBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserDto
-     */
-    createdAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserDto
-     */
-    createdBy?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserDto
-     */
-    updatedAt?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserDto
-     */
-    updatedBy?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserDto
-     */
-    userId?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserDto
-     */
-    account?: string | null;
+   /**
+    *
+    * @type {boolean}
+    * @memberof UserDto
+    */
+   isDeleted?: boolean | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UserDto
+    */
+   deletedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UserDto
+    */
+   deletedBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UserDto
+    */
+   createdAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UserDto
+    */
+   createdBy?: number | null
+   /**
+    *
+    * @type {Date}
+    * @memberof UserDto
+    */
+   updatedAt?: Date | null
+   /**
+    *
+    * @type {number}
+    * @memberof UserDto
+    */
+   updatedBy?: number | null
+   /**
+    *
+    * @type {number}
+    * @memberof UserDto
+    */
+   userId?: number
+   /**
+    *
+    * @type {string}
+    * @memberof UserDto
+    */
+   account?: string | null
 }

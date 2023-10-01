@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface SummaryInfo
  */
 export interface SummaryInfo {
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryInfo
-     */
-    selector?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SummaryInfo
-     */
-    summaryType?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof SummaryInfo
+    */
+   selector?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof SummaryInfo
+    */
+   summaryType?: string | null
 }

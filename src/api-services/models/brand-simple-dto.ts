@@ -12,27 +12,27 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface BrandSimpleDto
  */
 export interface BrandSimpleDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof BrandSimpleDto
-     */
-    name?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BrandSimpleDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BrandSimpleDto
-     */
-    brandId?: number;
+   /**
+    *
+    * @type {string}
+    * @memberof BrandSimpleDto
+    */
+   name?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof BrandSimpleDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof BrandSimpleDto
+    */
+   brandId?: number
 }

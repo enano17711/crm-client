@@ -12,45 +12,45 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface UpdateUnitDto
  */
 export interface UpdateUnitDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateUnitDto
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateUnitDto
-     */
-    code: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateUnitDto
-     */
-    operation: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateUnitDto
-     */
-    value: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateUnitDto
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateUnitDto
-     */
-    baseUnitId?: number;
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateUnitDto
+    */
+   name: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateUnitDto
+    */
+   code: string
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateUnitDto
+    */
+   operation: string
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateUnitDto
+    */
+   value: number
+   /**
+    *
+    * @type {string}
+    * @memberof UpdateUnitDto
+    */
+   description?: string | null
+   /**
+    *
+    * @type {number}
+    * @memberof UpdateUnitDto
+    */
+   baseUnitId?: number
 }

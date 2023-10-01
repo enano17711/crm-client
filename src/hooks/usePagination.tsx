@@ -1,10 +1,13 @@
 import { useState } from "react"
 
 type usePaginationProps = {
-   initialPageSize: number,
+   initialPageSize: number
    initialPageNumber: number
 }
-export const usePagination = ({ initialPageSize, initialPageNumber }: usePaginationProps) => {
+export const usePagination = ({
+   initialPageSize,
+   initialPageNumber,
+}: usePaginationProps) => {
    const [pageSize, setPageSize] = useState(initialPageSize)
    const [pageNumber, setPageNumber] = useState(initialPageNumber)
    const handlePageChange = (page: number) => {
@@ -18,6 +21,6 @@ export const usePagination = ({ initialPageSize, initialPageNumber }: usePaginat
       pageSize,
       pageNumber,
       handlePageChange,
-      handlePerRowsChange
+      handlePerRowsChange,
    }
 }

@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface CreateUserDto
  */
 export interface CreateUserDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserDto
-     */
-    account?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateUserDto
-     */
-    password?: string | null;
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUserDto
+    */
+   account?: string | null
+   /**
+    *
+    * @type {string}
+    * @memberof CreateUserDto
+    */
+   password?: string | null
 }

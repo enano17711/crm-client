@@ -12,33 +12,33 @@
  * Do not edit the class manually.
  */
 /**
- * 
+ *
  * @export
  * @interface LoadResult
  */
 export interface LoadResult {
-    /**
-     * 
-     * @type {Array<any>}
-     * @memberof LoadResult
-     */
-    data?: Array<any> | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof LoadResult
-     */
-    totalCount?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof LoadResult
-     */
-    groupCount?: number;
-    /**
-     * 
-     * @type {Array<any>}
-     * @memberof LoadResult
-     */
-    summary?: Array<any> | null;
+   /**
+    *
+    * @type {Array<any>}
+    * @memberof LoadResult
+    */
+   data?: Array<any> | null
+   /**
+    *
+    * @type {number}
+    * @memberof LoadResult
+    */
+   totalCount?: number
+   /**
+    *
+    * @type {number}
+    * @memberof LoadResult
+    */
+   groupCount?: number
+   /**
+    *
+    * @type {Array<any>}
+    * @memberof LoadResult
+    */
+   summary?: Array<any> | null
 }
