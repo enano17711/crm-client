@@ -1,44 +1,10 @@
-import React, { useCallback, useEffect } from "react"
-import {
-   Box,
-   Button,
-   Group,
-   Stack,
-   TextInput,
-   Textarea,
-   ActionIcon,
-   Menu,
-   Space,
-   Select,
-   Tooltip,
-   Title,
-} from "@mantine/core"
+import React, { useEffect } from "react"
+import { Space, Stack, Textarea, TextInput, Title } from "@mantine/core"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { feature, getAPI } from "../../axios-utils.ts"
 import { BrandApi, CreateBrandDto } from "../../api-services"
 import { errorNotification, successNotification } from "../../utils"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import {
-   IconArrowLeft,
-   IconBoxModel,
-   IconChevronDown,
-   IconColumns3,
-   IconCopy,
-   IconCsv,
-   IconDeviceFloppy,
-   IconEdit,
-   IconFileExport,
-   IconPdf,
-   IconPlus,
-   IconRefresh,
-   IconSquarePlus,
-   IconSquareRounded,
-   IconSquareRoundedPlus,
-   IconSquareRoundedPlusFilled,
-   IconSquareRoundedX,
-   IconTrash,
-} from "@tabler/icons-react"
-import SearchByColumnComponent from "../../components/SearchByColumn.component.tsx"
+import { useNavigate, useParams } from "react-router-dom"
 import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
 
 interface IFormInputs {

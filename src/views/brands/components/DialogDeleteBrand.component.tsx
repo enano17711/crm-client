@@ -1,55 +1,42 @@
 import React from "react"
 import { Button, Group, Modal, Stack, Text } from "@mantine/core"
-import { BrandApi, BrandDto, BrandSimpleDto } from "../../../api-services"
-import { getAPI } from "../../../axios-utils.ts"
-import { notifications } from "@mantine/notifications"
-import { DispatchFunc } from "ka-table/types"
-import { loadData } from "ka-table/actionCreators"
-import { errorNotification, successNotification } from "../../../utils"
+import { successNotification } from "../../../utils"
 import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
+import { selectedBrandAtom } from "../../../store/brand.atoms.ts"
+import { useAtom } from "jotai"
+import { useApiBrandBrandIdDeleteHook } from "../../../api-gen/hooks/brandController"
 
 interface DialogDeleteBrandComponentProps {
    openDeleteModal: any
    setOpenDeleteModal: any
-   brandData: BrandSimpleDto
-   setSelectedData: (
-      value: ((prevState: BrandSimpleDto) => BrandSimpleDto) | BrandSimpleDto,
-   ) => void
 }
 
 const DialogDeleteBrandComponent = ({
    openDeleteModal,
    setOpenDeleteModal,
-   brandData,
-   setSelectedData,
 }: DialogDeleteBrandComponentProps) => {
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
+
+   const { mutate: deleteBrandMutate } = useApiBrandBrandIdDeleteHook(
+      selectedBrand?.brandId,
+   )
+
    const deleteHandler = () => {
-      getAPI(BrandApi)
-         .apiBrandBrandIdDelete(brandData?.brandId)
-         .then((res) => {
-            setSelectedData(null)
-            successNotification()
-         })
-         .catch((err) => {
-            setSelectedData(null)
-            setOpenDeleteModal(false)
-            errorNotification(err.message)
-         })
-         .finally(() => {
-            setOpenDeleteModal(false)
-         })
+      deleteBrandMutate()
+      setOpenDeleteModal(false)
+      successNotification()
    }
 
    return (
       <Modal
          opened={openDeleteModal}
-         title="Eliminar Base Unit"
+         title="Eliminar Marca"
          centered
          onClose={() => setOpenDeleteModal(false)}
          closeOnClickOutside={false}
       >
          <Stack>
-            <Text>Se eliminará la marca: NOMBRE - {brandData?.name}</Text>
+            <Text>Se eliminará la marca: NOMBRE - {selectedBrand?.name}</Text>
 
             <Group position="right">
                <Button

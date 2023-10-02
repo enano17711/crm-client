@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import MainLayout from "./layouts/MainLayout.tsx"
 import LoadingComponent from "./components/Loading.component.tsx"
 import { Route, Routes } from "react-router-dom"

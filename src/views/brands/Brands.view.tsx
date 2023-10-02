@@ -14,11 +14,13 @@ import {
    IconTrash,
 } from "@tabler/icons-react"
 import { accessTokenKey, refreshAccessTokenKey } from "../../axios-utils.ts"
-import SearchByColumnComponent from "../../components/SearchByColumn.component.tsx"
+import SearchBrandByColumnComponent from "./components/SearchBrandByColumn.component.tsx"
 import { Link, useNavigate } from "react-router-dom"
 import { BrandSimpleDto } from "../../api-services"
 import DialogDeleteBrandComponent from "./components/DialogDeleteBrand.component.tsx"
 import { useTable } from "ka-table"
+import { useAtom } from "jotai"
+import { brandsAtom } from "../../store/brand.atoms.ts"
 
 const columns = [
    {
@@ -31,7 +33,8 @@ const columns = [
    },
 ]
 const BrandsView = () => {
-   const [selectedData, setSelectedData] = useState<BrandSimpleDto>(null)
+   // const [selectedData, setSelectedData] = useState<BrandSimpleDto>(null)
+   const [selectedData, setSelectedData] = useAtom(brandsAtom)
    const [openDeleteModal, setOpenDeleteModal] = useState(false)
    const [searchData, setSearchData] = useState<{
       column?: string
@@ -178,7 +181,7 @@ const BrandsView = () => {
                      <IconTrash />
                   </ActionIcon>
                </Tooltip>
-               <SearchByColumnComponent
+               <SearchBrandByColumnComponent
                   columns={columns}
                   table={table}
                   searchData={searchData}
@@ -214,15 +217,10 @@ const BrandsView = () => {
             </ActionIcon>
          </Group>
          <Space h="sm" />
-         <DataGridBrandComponent
-            setSelectedData={setSelectedData}
-            indexTable={table}
-         />
+         <DataGridBrandComponent />
          <DialogDeleteBrandComponent
             openDeleteModal={openDeleteModal}
             setOpenDeleteModal={setOpenDeleteModal}
-            brandData={selectedData}
-            setSelectedData={setSelectedData}
          />
       </Can>
    )

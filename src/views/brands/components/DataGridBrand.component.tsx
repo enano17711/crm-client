@@ -1,210 +1,69 @@
 import "ka-table/style.css"
-import {
-   BrandApi,
-   BrandSimpleDto,
-   PaginatedResponseBrandSimpleDto,
-} from "../../../api-services"
 import { Box } from "@mantine/core"
 import {
    ActionType,
    DataType,
-   ITableInstance,
    PagingPosition,
    SortingMode,
    Table,
+   useTable,
 } from "ka-table"
-import React, { useState } from "react"
-import { feature, getAPI } from "../../../axios-utils.ts"
-import { errorNotification, successNotification } from "../../../utils"
+import React from "react"
 import { kaPropsUtils } from "ka-table/utils"
+import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
+import { useAtom } from "jotai"
+import {
+   brandGridParametersAtom,
+   selectedBrandAtom,
+} from "../../../store/brand.atoms.ts"
 
-interface DataGridBrandComponentProps {
-   setSelectedData: (
-      value: ((prevState: BrandSimpleDto) => BrandSimpleDto) | BrandSimpleDto,
-   ) => void
-   indexTable: ITableInstance
-}
+export const DataGridBrandComponent = () => {
+   const [brandGridParameters, setBrandGridParameters] = useAtom(
+      brandGridParametersAtom,
+   )
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
 
-export const DataGridBrandComponent = ({
-   setSelectedData,
-   indexTable,
-}: DataGridBrandComponentProps) => {
-   const [data, setData] = useState<BrandSimpleDto[]>([])
-   const [metadata, setMetadata] = useState<PaginatedResponseBrandSimpleDto>({
-      totalNumber: 0,
-      totalPage: 0,
-      pageSize: 10,
-      pageNumber: 0,
+   const {
+      data: brandQueryData,
+      error: brandQueryError,
+      status: brandQueryStatus,
+   } = useApiBrandBrandsGetHook({
+      ColumnName: brandGridParameters.searchColumn,
+      ColumnValue: brandGridParameters.searchText,
+      PageNumber: brandGridParameters.pageIndex,
+      PageSize: brandGridParameters.pageSize,
    })
-   indexTable.onDispatch = async (action, tableProps) => {
-      // console.log(action)
-      console.log(indexTable.props.searchText)
-      const searchData =
-         indexTable.props.searchText === undefined
-            ? ["vacio"]
-            : indexTable.props.searchText.split("-")
 
-      // console.log(searchData)
-      let err = null
-      let jsonData = null
-
-      if (searchData[0] === "vacio") {
-         console.log(searchData[0])
-         const [errTemp, jsonDataTemp] = await feature(
-            getAPI(BrandApi).apiBrandBrandsGet(
-               action.pageIndex !== undefined
-                  ? action.pageIndex
-                  : indexTable.props.paging.pageIndex,
-               action.pageSize !== undefined
-                  ? action.pageSize
-                  : indexTable.props.paging.pageSize,
-            ),
-         )
-         err = errTemp
-         jsonData = jsonDataTemp
-      } else if (searchData[0] !== "vacio") {
-         const [errTemp, jsonDataTemp] = await feature(
-            getAPI(BrandApi).apiBrandBrandsGet(
-               action.pageIndex !== undefined
-                  ? action.pageIndex
-                  : indexTable.props.paging.pageIndex,
-               action.pageSize !== undefined
-                  ? action.pageSize
-                  : indexTable.props.paging.pageSize,
-               searchData[0],
-               searchData[1],
-            ),
-         )
-         err = errTemp
-         jsonData = jsonDataTemp
-      }
-
-      if (action.type === ActionType.Search) {
-         indexTable.showLoading()
-         if (err) {
-            errorNotification(err.message)
-         } else {
-            setData(jsonData.data.data.items)
-            setMetadata({
-               totalNumber: jsonData.data.data.totalNumber,
-               totalPage: jsonData.data.data.totalPage,
-               pageNumber: jsonData.data.data.pageNumber,
-               pageSize: jsonData.data.data.pageSize,
-            })
-            successNotification()
+   const table = useTable({
+      onDispatch: async (action, tableProps) => {
+         if (action.type === ActionType.SelectSingleRow) {
+            const selected = kaPropsUtils.getSelectedData(tableProps).pop()
+            setSelectedBrand(selected)
          }
-         indexTable.hideLoading()
-      }
-      if (action.type === ActionType.SelectSingleRow) {
-         const selected = kaPropsUtils.getSelectedData(tableProps).pop()
-         setSelectedData(selected as BrandSimpleDto)
-      }
-      if (
-         action.type === ActionType.ComponentDidMount ||
-         action.type === ActionType.LoadData
-      ) {
-         indexTable.showLoading()
-         if (err) {
-            errorNotification(err.message)
-         } else {
-            setData(jsonData.data.data.items)
-            setMetadata({
-               totalNumber: jsonData.data.data.totalNumber,
-               totalPage: jsonData.data.data.totalPage,
-               pageNumber: jsonData.data.data.pageNumber,
-               pageSize: jsonData.data.data.pageSize,
-            })
-            successNotification()
-         }
-         indexTable.hideLoading()
-      }
-      if (
-         action.type === ActionType.UpdatePageIndex ||
-         action.type === ActionType.UpdatePageSize
-      ) {
-         indexTable.showLoading()
-         if (err) {
-            errorNotification(err.message)
-         } else {
-            setData(jsonData.data.data.items)
-            setMetadata({
-               totalNumber: jsonData.data.data.totalNumber,
-               totalPage: jsonData.data.data.totalPage,
-               pageNumber: jsonData.data.data.pageNumber,
-               pageSize: jsonData.data.data.pageSize,
-            })
-            successNotification()
-         }
-         indexTable.hideLoading()
-      }
-   }
-
-   /*   const table = useTable({
-         onDispatch: async (action, tableProps) => {
-            console.log(action)
-            if (action.type === ActionType.SelectSingleRow) {
-               const selected = kaPropsUtils.getSelectedData(tableProps).pop()
-               setSelectedData(selected as BrandSimpleDto)
-            }
-            if (
-               action.type === ActionType.ComponentDidMount ||
-               action.type === ActionType.LoadData
-            ) {
-               table.showLoading()
-               const [err, jsonData] = await feature(
-                  getAPI(BrandApi).apiBrandBrandsGet(0, 10),
-               )
-               if (err) {
-                  errorNotification(err.message)
-               } else {
-                  setData(jsonData.data.data.items)
-                  setMetadata({
-                     totalNumber: jsonData.data.data.totalNumber,
-                     totalPage: jsonData.data.data.totalPage,
-                     pageNumber: jsonData.data.data.pageNumber,
-                     pageSize: jsonData.data.data.pageSize,
-                  })
-                  successNotification()
+         if (action.type === ActionType.UpdatePageIndex) {
+            setBrandGridParameters((prev) => {
+               return {
+                  ...prev,
+                  pageIndex: action.pageIndex,
                }
-               table.hideLoading()
-            }
-            if (
-               action.type === ActionType.UpdatePageIndex ||
-               action.type === ActionType.UpdatePageSize
-            ) {
-               table.showLoading()
-               const [err, jsonData] = await feature(
-                  getAPI(BrandApi).apiBrandBrandsGet(
-                     action.pageIndex !== undefined
-                        ? action.pageIndex
-                        : table.props.paging.pageIndex,
-                     action.pageSize !== undefined
-                        ? action.pageSize
-                        : table.props.paging.pageSize,
-                  ),
-               )
-               if (err) {
-                  errorNotification(err.message)
-               } else {
-                  setData(jsonData.data.data.items)
-                  setMetadata({
-                     totalNumber: jsonData.data.data.totalNumber,
-                     totalPage: jsonData.data.data.totalPage,
-                     pageNumber: jsonData.data.data.pageNumber,
-                     pageSize: jsonData.data.data.pageSize,
-                  })
-                  successNotification()
+            })
+         }
+         if (action.type === ActionType.UpdatePageSize) {
+            setBrandGridParameters((prev) => {
+               return {
+                  ...prev,
+                  pageSize: action.pageSize,
                }
-               table.hideLoading()
-            }
-         },
-      })*/
+            })
+         }
+      },
+   })
 
    return (
       <>
          <Box>
             <Table
-               table={indexTable}
+               table={table}
                columns={[
                   {
                      key: "name",
@@ -219,22 +78,25 @@ export const DataGridBrandComponent = ({
                      filterRowValue: "",
                   },
                ]}
-               data={data}
+               data={brandQueryData?.data?.items}
                rowKeyField={"brandId"}
+               loading={{
+                  enabled: brandQueryStatus === "loading",
+               }}
                sortingMode={SortingMode.Single}
                paging={{
                   enabled: true,
-                  pageIndex: metadata.pageNumber,
-                  pageSize: metadata.pageSize,
+                  pageIndex: brandQueryData?.data?.pageNumber,
+                  pageSize: brandQueryData?.data?.pageSize,
                   pageSizes: [10, 50, 100, 500],
-                  pagesCount: metadata.totalPage,
+                  pagesCount: brandQueryData?.data?.totalPage,
                   position: PagingPosition.Bottom,
                }}
                childComponents={{
                   dataRow: {
                      elementAttributes: () => ({
                         onClick: (event, extendedEvent) => {
-                           indexTable.selectSingleRow(
+                           table.selectSingleRow(
                               extendedEvent.childProps.rowKeyValue,
                            )
                         },
