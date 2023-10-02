@@ -46,5 +46,6 @@ export const errorNotification = (message?: string) => {
       title: "Operación Fallida",
       message: message,
       color: "red",
+      opacity: 0.3,
    })
 }

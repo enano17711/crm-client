@@ -18,13 +18,17 @@ export type RequestConfig<TVariables = unknown> = {
    headers?: AxiosRequestConfig["headers"]
 }
 
-export const axiosInstance = axios.create({
+/*export const axiosInstance = axios.create({
    baseURL: process.env["AXIOS_BASE"]
       ? process.env["AXIOS_BASE"]
       : "https://localhost:5001",
    headers: process.env["AXIOS_HEADERS"]
       ? (JSON.parse(process.env["AXIOS_HEADERS"]) as AxiosHeaders)
       : ({} as AxiosHeaders),
+})*/
+export const axiosInstance = axios.create({
+   baseURL: "https://localhost:5001",
+   headers: {} as AxiosHeaders,
 })
 
 const accessTokenKey = "access-token"

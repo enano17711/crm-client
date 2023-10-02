@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {
    AppShell,
    Box,
@@ -15,7 +15,6 @@ import BrandLayout from "./BrandLayout.tsx"
 import NavMenuLayout from "./NavMenuLayout.tsx"
 import ShortsHeaderLayout from "./ShortsHeaderLayout.tsx"
 import { IconSearch } from "@tabler/icons-react"
-import { useAppStore } from "../store"
 import { useLocation } from "react-router-dom"
 
 export default function MainLayout({
@@ -27,24 +26,6 @@ export default function MainLayout({
    const [opened, setOpened] = useState(false)
 
    const location = useLocation()
-
-   const { rbacsStore } = useAppStore()
-
-   useEffect(() => {
-      const localStorageData = JSON.parse(
-         localStorage.getItem("userDataSession"),
-      )
-      if (
-         localStorageData?.account !== undefined &&
-         localStorageData?.account !== "" &&
-         localStorageData?.account !== null
-      ) {
-         rbacsStore.actions.loadRBACs({
-            account: "dummyTestData",
-            password: "dummyTestData",
-         })
-      }
-   }, [])
 
    return (
       <AppShell

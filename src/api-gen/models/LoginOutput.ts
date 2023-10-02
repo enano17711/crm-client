@@ -1,3 +1,5 @@
+import { SecurityDto } from "./SecurityDto.ts"
+
 export type LoginOutput = {
    /**
     * @type integer | undefined int32
@@ -15,4 +17,8 @@ export type LoginOutput = {
     * @type string | undefined
     */
    refreshToken?: string
+   /**
+    * @type array | undefined
+    */
+   securities?: SecurityDto[]
 }

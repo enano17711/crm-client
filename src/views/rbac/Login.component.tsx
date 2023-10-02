@@ -13,22 +13,43 @@ import {
 import { useCallback, useEffect, useState } from "react"
 import { clearAccessTokens } from "../../axios-utils.ts"
 import { useNavigate } from "react-router-dom"
-import { useAppStore } from "../../store"
+import { useApiRbacLoginPostHook } from "../../api-gen/hooks/rbacController"
+import { errorNotification } from "../../utils"
+import { useAtom } from "jotai"
+import { securitiesAtom } from "../../store/rbac.atoms.ts"
 
 const LoginComponent = () => {
    const navigate = useNavigate()
+   const [securitiesData, setSecuritiesData] = useAtom(securitiesAtom)
 
    const [userFormData, setUserFormData] = useState({
       account: "",
       password: "",
    })
 
-   const { rbacsStore } = useAppStore()
-
-   useEffect(() => {
-      clearAccessTokens()
-      rbacsStore.actions.disposeState()
-   }, [])
+   const {
+      mutate: loginMutate,
+      data: loginData,
+      isError: isErrorLogin,
+      error: loginError,
+   } = useApiRbacLoginPostHook({
+      mutation: {
+         onSuccess: async (data, variables, context) => {
+            localStorage.setItem("userDataSession", JSON.stringify(data.data))
+            localStorage.setItem("access-token", data.data.accessToken)
+            localStorage.setItem("x-access-token", data.data.refreshToken)
+            localStorage.setItem(
+               "securitiesDataSession",
+               JSON.stringify(data.data.securities),
+            )
+            setSecuritiesData(data.data.securities)
+            navigate("/")
+         },
+         onError: (error, variables, context) => {
+            errorNotification((error as ErrorTypes).message)
+         },
+      },
+   })
 
    const onFormSubmit = useCallback(
       (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,18 +63,17 @@ const LoginComponent = () => {
          )
             return
 
-         rbacsStore.actions
-            .loadRBACs({
-               account: userFormData.account,
-               password: userFormData.password,
-            })
-            .then((res) => {
-               rbacsStore.actions.setSecurities()
-               navigate("/")
-            })
+         loginMutate({
+            account: userFormData.account,
+            password: userFormData.password,
+         })
       },
-      [userFormData.account, userFormData.password, navigate],
+      [userFormData.account, userFormData.password, loginMutate],
    )
+
+   useEffect(() => {
+      clearAccessTokens()
+   }, [])
 
    return (
       <Container size={420} my={40}>
@@ -86,6 +106,7 @@ const LoginComponent = () => {
                         account: e.target.value,
                      })
                   }
+                  error={isErrorLogin ? "Invalid username or password" : null}
                />
                <PasswordInput
                   label="Password"
@@ -99,6 +120,7 @@ const LoginComponent = () => {
                         password: e.target.value,
                      })
                   }
+                  error={isErrorLogin ? "Invalid username or password" : null}
                />
                <Group position="apart" mt="lg">
                   <Checkbox label="Remember me" />

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import MainLayout from "./layouts/MainLayout.tsx"
 import LoadingComponent from "./components/Loading.component.tsx"
 import { Route, Routes } from "react-router-dom"
@@ -17,19 +17,19 @@ import AdjustmentItemsView from "./views/adjustment-items/AdjustmentItems.View.t
 import OrdersView from "./views/orders/Orders.view.tsx"
 import CreateOrderView from "./views/orders/CreateOrder.view.tsx"
 import { AbilityContext, getAbility } from "./access-control.ts"
-import { useAppStore } from "./store"
 import OrderReturnsView from "./views/order-returns/OrderReturns.view.tsx"
 import CreateSaleView from "./views/sales/CreateSale.view.tsx"
 import CustomersView from "./views/customers/Customers.view.tsx"
 import SalesView from "./views/sales/Sales.view.tsx"
 import CreateBrandView from "./views/brands/CreateBrand.view.tsx"
 import UpdateBrandView from "./views/brands/UpdateBrand.view.tsx"
+import { useAtom } from "jotai"
+import { securitiesAtom } from "./store/rbac.atoms.ts"
 
 const RoutesComponent = () => {
-   const { rbacsStore } = useAppStore()
-   const { securities } = rbacsStore.getters
+   const [securitiesData, setSecuritiesData] = useAtom(securitiesAtom)
 
-   const ability = getAbility(securities)
+   const ability = getAbility(securitiesData)
 
    return (
       <AbilityContext.Provider value={ability}>
