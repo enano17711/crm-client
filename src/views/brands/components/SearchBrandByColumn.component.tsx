@@ -1,27 +1,20 @@
 import React, { useCallback } from "react"
 import { NativeSelect, rem, TextInput } from "@mantine/core"
-import { ITableInstance } from "ka-table"
 import { useAtom } from "jotai/index"
 import { brandGridParametersAtom } from "../../../store/brand.atoms.ts"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
 
-interface SearchBrandByColumnComponentProps {
-   columns: { label: string; value: string }[]
-   table: ITableInstance
-   searchData: { column?: string; value?: string }
-   setSearchData: (
-      value:
-         | ((prevState: { column?: string; value?: string }) => {
-              column?: string
-              value?: string
-           })
-         | { column?: string; value?: string },
-   ) => void
-}
-
-const SearchBrandByColumnComponent = ({
-   columns,
-}: SearchBrandByColumnComponentProps) => {
+const columns = [
+   {
+      value: "Name",
+      label: "Name",
+   },
+   {
+      value: "Description",
+      label: "Description",
+   },
+]
+const SearchBrandByColumnComponent = () => {
    const [brandGridParameters, setBrandGridParameters] = useAtom(
       brandGridParametersAtom,
    )

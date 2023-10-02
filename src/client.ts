@@ -1,6 +1,5 @@
-import axios from "axios"
-
 import type { AxiosError, AxiosHeaders, AxiosRequestConfig } from "axios"
+import axios from "axios"
 
 export type RequestConfig<TVariables = unknown> = {
    method: "get" | "put" | "patch" | "post" | "delete"
@@ -46,17 +45,28 @@ axiosInstance.interceptors.request.use(
    (conf) => {
       const accessToken = window.localStorage.getItem(accessTokenKey)
       if (accessToken) {
-         conf.headers!["Authorization"] = `Bearer ${accessToken}`
+         const accessTokenFormatted = accessToken.substring(
+            1,
+            accessToken.length - 1,
+         )
+         conf.headers!["Authorization"] = `Bearer ${accessTokenFormatted}`
 
-         const jwt: any = decryptJWT(accessToken)
+         const jwt: any = decryptJWT(accessTokenFormatted)
          const exp = getJWTDate(jwt.exp as number)
 
          if (new Date() >= exp) {
             const refreshAccessToken = window.localStorage.getItem(
                refreshAccessTokenKey,
             )
+
             if (refreshAccessToken) {
-               conf.headers!["X-Authorization"] = `Bearer ${refreshAccessToken}`
+               const refreshAccessTokenFormatted = refreshAccessToken.substring(
+                  1,
+                  refreshAccessToken.length - 1,
+               )
+               conf.headers![
+                  "X-Authorization"
+               ] = `Bearer ${refreshAccessTokenFormatted}`
             }
          }
       }

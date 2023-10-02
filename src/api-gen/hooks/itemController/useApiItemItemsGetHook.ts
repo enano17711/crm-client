@@ -1,17 +1,13 @@
 import {
-   useQuery,
    QueryKey,
-   UseQueryResult,
+   useQuery,
    UseQueryOptions,
-   QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
+   UseQueryResult,
 } from "@tanstack/react-query"
-import client from "../../../client"
+import client from "../../../client.ts"
 import type {
-   ApiItemItemsGetQueryResponse,
    ApiItemItemsGetQueryParams,
+   ApiItemItemsGetQueryResponse,
 } from "../../models/itemController/ApiItemItemsGet"
 
 export const apiItemItemsGetQueryKey = (params?: ApiItemItemsGetQueryParams) =>

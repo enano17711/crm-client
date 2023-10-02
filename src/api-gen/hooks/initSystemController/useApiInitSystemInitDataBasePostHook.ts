@@ -3,7 +3,7 @@ import {
    UseMutationOptions,
    UseMutationResult,
 } from "@tanstack/react-query"
-import client from "../../../client"
+import client from "../../../client.ts"
 import type { ApiInitSystemInitDataBasePostMutationResponse } from "../../models/initSystemController/ApiInitSystemInitDataBasePost"
 
 /**

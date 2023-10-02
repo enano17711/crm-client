@@ -16,25 +16,13 @@ import {
 import { accessTokenKey, refreshAccessTokenKey } from "../../axios-utils.ts"
 import SearchBrandByColumnComponent from "./components/SearchBrandByColumn.component.tsx"
 import { Link, useNavigate } from "react-router-dom"
-import { BrandSimpleDto } from "../../api-services"
 import DialogDeleteBrandComponent from "./components/DialogDeleteBrand.component.tsx"
 import { useTable } from "ka-table"
 import { useAtom } from "jotai"
-import { brandsAtom } from "../../store/brand.atoms.ts"
+import { selectedBrandAtom } from "../../store/brand.atoms.ts"
 
-const columns = [
-   {
-      value: "Name",
-      label: "Name",
-   },
-   {
-      value: "Description",
-      label: "Description",
-   },
-]
 const BrandsView = () => {
-   // const [selectedData, setSelectedData] = useState<BrandSimpleDto>(null)
-   const [selectedData, setSelectedData] = useAtom(brandsAtom)
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const [openDeleteModal, setOpenDeleteModal] = useState(false)
    const [searchData, setSearchData] = useState<{
       column?: string
@@ -111,9 +99,9 @@ const BrandsView = () => {
                      </ActionIcon>
                   </Tooltip>
                </Link>
-               {selectedData !== null ? (
+               {selectedBrand?.name !== undefined ? (
                   <Link
-                     to={`/brands/create/${selectedData?.name}/${selectedData?.description}`}
+                     to={`/brands/create/${selectedBrand?.name}/${selectedBrand?.description}`}
                   >
                      <Tooltip
                         label="Clonar"
@@ -157,9 +145,9 @@ const BrandsView = () => {
                      variant="light"
                      size="lg"
                      onClick={() =>
-                        navigate("/brands/update/" + selectedData?.brandId)
+                        navigate("/brands/update/" + selectedBrand?.brandId)
                      }
-                     disabled={!(selectedData !== null)}
+                     disabled={!(selectedBrand?.name !== undefined)}
                   >
                      <IconEdit />
                   </ActionIcon>
@@ -175,18 +163,13 @@ const BrandsView = () => {
                      color="red"
                      variant="light"
                      size="lg"
-                     disabled={!(selectedData !== null)}
+                     disabled={!(selectedBrand?.name !== undefined)}
                      onClick={() => setOpenDeleteModal(true)}
                   >
                      <IconTrash />
                   </ActionIcon>
                </Tooltip>
-               <SearchBrandByColumnComponent
-                  columns={columns}
-                  table={table}
-                  searchData={searchData}
-                  setSearchData={setSearchData}
-               />
+               <SearchBrandByColumnComponent />
                <Menu shadow="md">
                   <Menu.Target>
                      <ActionIcon color="lime" variant="light" size="lg">

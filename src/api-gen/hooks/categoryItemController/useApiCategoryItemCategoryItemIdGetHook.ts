@@ -1,17 +1,13 @@
 import {
-   useQuery,
    QueryKey,
-   UseQueryResult,
+   useQuery,
    UseQueryOptions,
-   QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
+   UseQueryResult,
 } from "@tanstack/react-query"
-import client from "../../../client"
+import client from "../../../client.ts"
 import type {
-   ApiCategoryItemCategoryItemIdGetQueryResponse,
    ApiCategoryItemCategoryItemIdGetPathParams,
+   ApiCategoryItemCategoryItemIdGetQueryResponse,
 } from "../../models/categoryItemController/ApiCategoryItemCategoryItemIdGet"
 
 export const apiCategoryItemCategoryItemIdGetQueryKey = (

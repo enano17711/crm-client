@@ -1,26 +1,35 @@
 import {
-   TextInput,
-   PasswordInput,
-   Checkbox,
    Anchor,
-   Paper,
-   Title,
-   Text,
+   Button,
+   Checkbox,
    Container,
    Group,
-   Button,
+   Paper,
+   PasswordInput,
+   Text,
+   TextInput,
+   Title,
 } from "@mantine/core"
 import { useCallback, useEffect, useState } from "react"
 import { clearAccessTokens } from "../../axios-utils.ts"
 import { useNavigate } from "react-router-dom"
 import { useApiRbacLoginPostHook } from "../../api-gen/hooks/rbacController"
 import { errorNotification } from "../../utils"
-import { useAtom } from "jotai"
-import { securitiesAtom } from "../../store/rbac.atoms.ts"
+import { useSetAtom } from "jotai"
+import {
+   accessTokenAtom,
+   refreshTokenAtom,
+   securitiesAtom,
+   userDataSessionAtom,
+} from "../../store/rbac.atoms.ts"
+import { RESET } from "jotai/utils"
 
 const LoginComponent = () => {
    const navigate = useNavigate()
-   const [securitiesData, setSecuritiesData] = useAtom(securitiesAtom)
+   const setSecuritiesData = useSetAtom(securitiesAtom)
+   const setUserDataSession = useSetAtom(userDataSessionAtom)
+   const setAccessToken = useSetAtom(accessTokenAtom)
+   const setRefreshToken = useSetAtom(refreshTokenAtom)
 
    const [userFormData, setUserFormData] = useState({
       account: "",
@@ -35,13 +44,9 @@ const LoginComponent = () => {
    } = useApiRbacLoginPostHook({
       mutation: {
          onSuccess: async (data, variables, context) => {
-            localStorage.setItem("userDataSession", JSON.stringify(data.data))
-            localStorage.setItem("access-token", data.data.accessToken)
-            localStorage.setItem("x-access-token", data.data.refreshToken)
-            localStorage.setItem(
-               "securitiesDataSession",
-               JSON.stringify(data.data.securities),
-            )
+            setUserDataSession(data.data)
+            setAccessToken(data.data.accessToken)
+            setRefreshToken(data.data.refreshToken)
             setSecuritiesData(data.data.securities)
             navigate("/")
          },
@@ -73,6 +78,10 @@ const LoginComponent = () => {
 
    useEffect(() => {
       clearAccessTokens()
+      setUserDataSession(RESET)
+      setAccessToken(RESET)
+      setRefreshToken(RESET)
+      setSecuritiesData(RESET)
    }, [])
 
    return (

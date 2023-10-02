@@ -23,12 +23,11 @@ import CustomersView from "./views/customers/Customers.view.tsx"
 import SalesView from "./views/sales/Sales.view.tsx"
 import CreateBrandView from "./views/brands/CreateBrand.view.tsx"
 import UpdateBrandView from "./views/brands/UpdateBrand.view.tsx"
-import { useAtom } from "jotai"
+import { useAtomValue } from "jotai"
 import { securitiesAtom } from "./store/rbac.atoms.ts"
 
 const RoutesComponent = () => {
-   const [securitiesData, setSecuritiesData] = useAtom(securitiesAtom)
-
+   const securitiesData = useAtomValue(securitiesAtom)
    const ability = getAbility(securitiesData)
 
    return (

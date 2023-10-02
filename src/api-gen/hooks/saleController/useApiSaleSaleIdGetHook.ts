@@ -1,17 +1,13 @@
 import {
-   useQuery,
    QueryKey,
-   UseQueryResult,
+   useQuery,
    UseQueryOptions,
-   QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
+   UseQueryResult,
 } from "@tanstack/react-query"
-import client from "../../../client"
+import client from "../../../client.ts"
 import type {
-   ApiSaleSaleIdGetQueryResponse,
    ApiSaleSaleIdGetPathParams,
+   ApiSaleSaleIdGetQueryResponse,
 } from "../../models/saleController/ApiSaleSaleIdGet"
 
 export const apiSaleSaleIdGetQueryKey = (

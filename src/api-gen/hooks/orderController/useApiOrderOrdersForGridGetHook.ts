@@ -1,17 +1,13 @@
 import {
-   useQuery,
    QueryKey,
-   UseQueryResult,
+   useQuery,
    UseQueryOptions,
-   QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
+   UseQueryResult,
 } from "@tanstack/react-query"
-import client from "../../../client"
+import client from "../../../client.ts"
 import type {
-   ApiOrderOrdersForGridGetQueryResponse,
    ApiOrderOrdersForGridGetQueryParams,
+   ApiOrderOrdersForGridGetQueryResponse,
 } from "../../models/orderController/ApiOrderOrdersForGridGet"
 
 export const apiOrderOrdersForGridGetQueryKey = (
