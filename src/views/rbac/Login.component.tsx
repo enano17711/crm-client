@@ -51,35 +51,6 @@ const LoginComponent = () => {
                rbacsStore.actions.setSecurities()
                navigate("/")
             })
-
-         /*         getAPI(RbacApi)
-            .apiRbacLoginPost({
-               account: userFormData.account,
-               password: userFormData.password,
-            })
-            .then((res) => {
-               localStorage.setItem(
-                  "userDataSession",
-                  JSON.stringify(res.data.data),
-               )
-               localStorage.setItem(accessTokenKey, res.data.data.accessToken)
-               localStorage.setItem(
-                  refreshAccessTokenKey,
-                  res.data.data.refreshToken,
-               )
-               rbacsStore.actions.loadRBACs({
-                  account: userFormData.account,
-                  password: userFormData.password,
-               })
-               navigate("/")
-            })
-            .catch((error) => {
-               notifications.show({
-                  title: "Error",
-                  message: error.response.data.message,
-                  color: "red",
-               })
-            })*/
       },
       [userFormData.account, userFormData.password, navigate],
    )
