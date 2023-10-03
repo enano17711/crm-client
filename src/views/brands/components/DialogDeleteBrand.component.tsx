@@ -2,20 +2,18 @@ import React from "react"
 import { Button, Group, Modal, Stack, Text } from "@mantine/core"
 import { successNotification } from "../../../utils"
 import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
-import { selectedBrandAtom } from "../../../store/brand.atoms.ts"
+import {
+   openBrandDeleteModalAtom,
+   selectedBrandAtom,
+} from "../../../store/brand.atoms.ts"
 import { useAtom } from "jotai"
 import { useApiBrandBrandIdDeleteHook } from "../../../api-gen/hooks/brandController"
 
-interface DialogDeleteBrandComponentProps {
-   openDeleteModal: any
-   setOpenDeleteModal: any
-}
-
-const DialogDeleteBrandComponent = ({
-   openDeleteModal,
-   setOpenDeleteModal,
-}: DialogDeleteBrandComponentProps) => {
+const DialogDeleteBrandComponent = () => {
    const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
+   const [openDeleteModal, setOpenDeleteModal] = useAtom(
+      openBrandDeleteModalAtom,
+   )
 
    const { mutate: deleteBrandMutate } = useApiBrandBrandIdDeleteHook(
       selectedBrand?.brandId,
