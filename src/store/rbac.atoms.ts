@@ -8,8 +8,8 @@ export const securitiesAtom = atomWithStorage<SecurityDto[]>(
 export const userDataSessionAtom = atomWithStorage<LoginOutput>(
    "userDataSession",
    {
-      accessToken: "",
       account: "",
+      accessToken: "",
       refreshToken: "",
       securities: [],
    },

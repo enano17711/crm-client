@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useAtomValue } from "jotai"
 import { userDataSessionAtom } from "../store/rbac.atoms.ts"
 
@@ -18,18 +18,19 @@ const ProtectedRouteComponent = ({
             userDataSession?.accessToken === "" ||
             userDataSession?.accessToken === null
          ) {
+            console.log("entro en userDataSession igual a null")
             navigate("/login")
          }
       })
    }, [])
 
-   if (
+   /*   if (
       userDataSession?.accessToken === undefined ||
       userDataSession?.accessToken === "" ||
       userDataSession?.accessToken === null
    ) {
       return <Navigate to="/login" />
-   }
+   }*/
    return children
 }
 
