@@ -14,16 +14,19 @@ import {
 } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { accessTokenKey, refreshAccessTokenKey } from "../../../axios-utils.ts"
-import { useAtom, useSetAtom } from "jotai"
+import { useAtomValue, useSetAtom } from "jotai"
 import {
+   brandGridParametersAtom,
    openBrandDeleteModalAtom,
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
 
 const BrandTopBarComponent = () => {
-   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
+   const selectedBrand = useAtomValue(selectedBrandAtom)
    const setOpenDeleteModal = useSetAtom(openBrandDeleteModalAtom)
+   const setBrandGridParameters = useSetAtom(brandGridParametersAtom)
    const navigate = useNavigate()
+
    const exportCsv = () => {
       fetch("https://localhost:5001/api/brand/download-brand-excel", {
          method: "POST",
@@ -173,7 +176,16 @@ const BrandTopBarComponent = () => {
                <IconColumns3 />
             </ActionIcon>
          </Group>
-         <ActionIcon color="red" variant="light" size="lg">
+         <ActionIcon
+            color="red"
+            variant="light"
+            size="lg"
+            onClick={() =>
+               setBrandGridParameters((prev) => {
+                  return { ...prev, pageIndex: 0 }
+               })
+            }
+         >
             <IconRefresh />
          </ActionIcon>
       </Group>

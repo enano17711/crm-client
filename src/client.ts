@@ -108,6 +108,7 @@ axiosInstance.interceptors.response.use(
 
          if (status === 401) {
             clearAccessTokens()
+            window.location.href = "/login"
          }
       }
       return Promise.reject(error)
