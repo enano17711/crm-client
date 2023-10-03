@@ -69,7 +69,7 @@ const RoutesComponent = () => {
                   }
                />
                <Route
-                  path="/brands/create/:name?/:description?"
+                  path="/brands/create"
                   element={
                      <ProtectedRouteComponent>
                         <CreateBrandView />

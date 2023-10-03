@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { ActionIcon, Group, Menu, Tooltip } from "@mantine/core"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import {
    IconColumns3,
    IconCopy,
@@ -14,7 +14,7 @@ import {
 } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { accessTokenKey, refreshAccessTokenKey } from "../../../axios-utils.ts"
-import { useAtomValue, useSetAtom } from "jotai"
+import { useAtom, useSetAtom } from "jotai"
 import {
    brandGridParametersAtom,
    openBrandDeleteModalAtom,
@@ -22,10 +22,15 @@ import {
 } from "../../../store/brand.atoms.ts"
 
 const BrandTopBarComponent = () => {
-   const selectedBrand = useAtomValue(selectedBrandAtom)
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const setOpenDeleteModal = useSetAtom(openBrandDeleteModalAtom)
    const setBrandGridParameters = useSetAtom(brandGridParametersAtom)
    const navigate = useNavigate()
+
+   const onActionCreateBrand = useCallback(() => {
+      setSelectedBrand({})
+      navigate("/brands/create")
+   }, [navigate, setSelectedBrand])
 
    const exportCsv = () => {
       fetch("https://localhost:5001/api/brand/download-brand-excel", {
@@ -78,48 +83,39 @@ const BrandTopBarComponent = () => {
    return (
       <Group position="apart">
          <Group>
-            <Link to="/brands/create">
-               <Tooltip
-                  label="Nuevo"
+            <Tooltip
+               label="Nuevo"
+               color="orange"
+               position="bottom"
+               withArrow
+               arrowPosition="center"
+            >
+               <ActionIcon
                   color="orange"
-                  position="bottom"
-                  withArrow
-                  arrowPosition="center"
+                  variant="light"
+                  size="lg"
+                  onClick={onActionCreateBrand}
                >
-                  <ActionIcon color="orange" variant="light" size="lg">
-                     <IconPlus />
-                  </ActionIcon>
-               </Tooltip>
-            </Link>
-            {selectedBrand?.name !== undefined ? (
-               <Link
-                  to={`/brands/create/${selectedBrand?.name}/${selectedBrand?.description}`}
-               >
-                  <Tooltip
-                     label="Clonar"
-                     color="indigo"
-                     position="bottom"
-                     withArrow
-                     arrowPosition="center"
-                  >
-                     <ActionIcon color="indigo" variant="light" size="lg">
-                        <IconCopy />
-                     </ActionIcon>
-                  </Tooltip>
-               </Link>
-            ) : (
-               <Tooltip
-                  label="Clonar"
+                  <IconPlus />
+               </ActionIcon>
+            </Tooltip>
+            <Tooltip
+               label="Clonar"
+               color="indigo"
+               position="bottom"
+               withArrow
+               arrowPosition="center"
+            >
+               <ActionIcon
                   color="indigo"
-                  position="bottom"
-                  withArrow
-                  arrowPosition="center"
+                  variant="light"
+                  size="lg"
+                  onClick={() => navigate("/brands/create")}
+                  disabled={!(selectedBrand?.name !== undefined)}
                >
-                  <ActionIcon color="indigo" variant="light" size="lg" disabled>
-                     <IconCopy />
-                  </ActionIcon>
-               </Tooltip>
-            )}
+                  <IconCopy />
+               </ActionIcon>
+            </Tooltip>
             <Tooltip
                label="Editar"
                color="grape"

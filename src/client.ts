@@ -54,16 +54,25 @@ axiosInstance.interceptors.request.use(
          const jwt: any = decryptJWT(accessTokenFormatted)
          const exp = getJWTDate(jwt.exp as number)
 
+         console.log(exp)
+
          if (new Date() >= exp) {
+            console.log("entro en el expire")
             const refreshAccessToken = window.localStorage.getItem(
                refreshAccessTokenKey,
             )
+            console.log("refreshAccessToken", refreshAccessToken)
 
             if (refreshAccessToken) {
                const refreshAccessTokenFormatted = refreshAccessToken.substring(
                   1,
                   refreshAccessToken.length - 1,
                )
+               console.log(
+                  "refreshAccessTokenFormatted",
+                  refreshAccessTokenFormatted,
+               )
+
                conf.headers![
                   "X-Authorization"
                ] = `Bearer ${refreshAccessTokenFormatted}`

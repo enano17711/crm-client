@@ -1,11 +1,12 @@
 import React, { useEffect } from "react"
 import { Space, Stack, Textarea, TextInput, Title } from "@mantine/core"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { feature, getAPI } from "../../axios-utils.ts"
-import { BrandApi, CreateBrandDto } from "../../api-services"
-import { errorNotification, successNotification } from "../../utils"
-import { useNavigate, useParams } from "react-router-dom"
+import { CreateBrandDto } from "../../api-services"
+import { useNavigate } from "react-router-dom"
 import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
+import { useAtom } from "jotai"
+import { selectedBrandAtom } from "../../store/brand.atoms.ts"
+import { useApiBrandBrandPostHook } from "../../api-gen/hooks/brandController"
 
 interface IFormInputs {
    name: string
@@ -16,8 +17,8 @@ const CreateBrandView = () => {
    const [saveType, setSaveType] = React.useState<
       "create_new" | "create_close" | "create_clone"
    >("create_new")
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const navigate = useNavigate()
-   const params = useParams()
 
    const {
       handleSubmit,
@@ -31,40 +32,46 @@ const CreateBrandView = () => {
       },
    })
 
+   const { mutate } = useApiBrandBrandPostHook({
+      mutation: {
+         onSuccess: (data, variables, context) => {
+            console.log(variables)
+            setSelectedBrand({})
+            if (saveType === "create_new") {
+               reset({
+                  name: "",
+                  description: "",
+               })
+            } else if (saveType === "create_clone") {
+               reset({
+                  name: variables.name,
+                  description: variables.description,
+               })
+            } else {
+               reset({
+                  name: "",
+                  description: "",
+               })
+               navigate("/brands")
+            }
+         },
+      },
+   })
+
    const onSubmit: SubmitHandler<IFormInputs> = async (data, event) => {
-      const [err, res] = await feature(
-         getAPI(BrandApi).apiBrandBrandPost(data as CreateBrandDto),
-      )
-      if (err) {
-         errorNotification(err.message)
-      } else {
-         successNotification()
-         if (saveType === "create_new") {
-            reset({
-               name: "",
-               description: "",
-            })
-         } else if (saveType === "create_clone") {
-            reset({
-               name: data.name,
-               description: data.description,
-            })
-         } else {
-            reset({
-               name: "",
-               description: "",
-            })
-            navigate("/brands")
-         }
-      }
+      mutate(data as CreateBrandDto)
    }
 
    useEffect(() => {
-      console.log(params["name"])
-      if (params["name"] !== null && params["description"] !== null) {
+      if (
+         selectedBrand?.name !== null &&
+         selectedBrand?.name !== undefined &&
+         selectedBrand?.description !== null &&
+         selectedBrand?.description !== undefined
+      ) {
          reset({
-            name: params["name"],
-            description: params["description"],
+            name: selectedBrand?.name,
+            description: selectedBrand?.description,
          })
       }
    }, [])
