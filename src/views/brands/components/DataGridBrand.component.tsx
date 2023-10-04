@@ -63,7 +63,7 @@ export const DataGridBrandComponent = () => {
       [setBrandGridParameters],
    )
    const handlePageChange = useCallback(
-      (page: number, totalRows: number) => {
+      (page: number) => {
          setBrandGridParameters((prev) => {
             return {
                ...prev,
@@ -74,7 +74,7 @@ export const DataGridBrandComponent = () => {
       [setBrandGridParameters],
    )
    const handleOnRowClicked = useCallback(
-      (row: unknown, e: React.MouseEvent) => {
+      (row: unknown) => {
          setSelectedBrand(row as BrandSimpleDto)
       },
       [setSelectedBrand],
@@ -105,6 +105,7 @@ export const DataGridBrandComponent = () => {
                onChangePage={handlePageChange}
                onRowClicked={handleOnRowClicked}
                conditionalRowStyles={conditionalRowStyles}
+               progressPending={brandQueryStatus === "loading"}
             />
          </Box>
       </>
