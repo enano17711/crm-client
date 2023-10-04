@@ -1,17 +1,10 @@
 import "ka-table/style.css"
 import { Box } from "@mantine/core"
-import {
-   ActionType,
-   DataType,
-   PagingPosition,
-   SortingMode,
-   Table,
-   useTable,
-} from "ka-table"
-import React from "react"
-import { kaPropsUtils } from "ka-table/utils"
+import React, { useCallback, useMemo } from "react"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
-import { useAtom, useAtomValue, useSetAtom } from "jotai"
+import DataTable, { TableColumn } from "react-data-table-component"
+import { BrandSimpleDto } from "../../../api-gen"
+import { useAtom, useAtomValue } from "jotai"
 import {
    brandGridColumnsVisibleAtom,
    brandGridParametersAtom,
@@ -22,7 +15,7 @@ export const DataGridBrandComponent = () => {
    const [brandGridParameters, setBrandGridParameters] = useAtom(
       brandGridParametersAtom,
    )
-   const setSelectedBrand = useSetAtom(selectedBrandAtom)
+   const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const brandGridColumnsVisible = useAtomValue(brandGridColumnsVisibleAtom)
 
    const {
@@ -36,75 +29,82 @@ export const DataGridBrandComponent = () => {
       PageSize: brandGridParameters.pageSize,
    })
 
-   const table = useTable({
-      onDispatch: async (action, tableProps) => {
-         if (action.type === ActionType.SelectSingleRow) {
-            const selected = kaPropsUtils.getSelectedData(tableProps).pop()
-            setSelectedBrand(selected)
-         }
-         if (action.type === ActionType.UpdatePageIndex) {
-            setBrandGridParameters((prev) => {
-               return {
-                  ...prev,
-                  pageIndex: action.pageIndex,
-               }
-            })
-         }
-         if (action.type === ActionType.UpdatePageSize) {
-            setBrandGridParameters((prev) => {
-               return {
-                  ...prev,
-                  pageSize: action.pageSize,
-               }
-            })
-         }
+   const columns: TableColumn<BrandSimpleDto>[] = useMemo(
+      () => [
+         {
+            id: "name",
+            name: "Nombre",
+            selector: (row) => row.name,
+            sortable: true,
+            wrap: true,
+            omit: brandGridColumnsVisible.includes("name"),
+         },
+         {
+            id: "description",
+            name: "Descripcion",
+            selector: (row) => row.description,
+            sortable: true,
+            wrap: true,
+            omit: brandGridColumnsVisible.includes("description"),
+         },
+      ],
+      [brandGridColumnsVisible],
+   )
+   const handleRowsPerPageChange = useCallback(
+      (currentRowsPerPage: number, currentPage: number) => {
+         setBrandGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: currentPage,
+               pageSize: currentRowsPerPage,
+            }
+         })
       },
-   })
+      [setBrandGridParameters],
+   )
+   const handlePageChange = useCallback(
+      (page: number, totalRows: number) => {
+         setBrandGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: page,
+            }
+         })
+      },
+      [setBrandGridParameters],
+   )
+   const handleOnRowClicked = useCallback(
+      (row: unknown, e: React.MouseEvent) => {
+         setSelectedBrand(row as BrandSimpleDto)
+      },
+      [setSelectedBrand],
+   )
+   const conditionalRowStyles = [
+      {
+         when: (row) => row.name === selectedBrand.name,
+         style: {
+            backgroundColor: "#FFE8CC",
+            color: "#FD7E14",
+         },
+      },
+   ]
 
    return (
       <>
          <Box>
-            <Table
-               table={table}
-               columns={[
-                  {
-                     key: "name",
-                     title: "Name",
-                     dataType: DataType.String,
-                     filterRowValue: "",
-                  },
-                  {
-                     key: "description",
-                     title: "Description",
-                     dataType: DataType.String,
-                     filterRowValue: "",
-                  },
-               ]}
+            <DataTable
                data={brandQueryData?.data?.items}
-               rowKeyField={"brandId"}
-               loading={{
-                  enabled: brandQueryStatus === "loading",
-               }}
-               sortingMode={SortingMode.Single}
-               paging={{
-                  enabled: true,
-                  pageIndex: brandQueryData?.data?.pageNumber,
-                  pageSize: brandQueryData?.data?.pageSize,
-                  pageSizes: [10, 50, 100, 500],
-                  pagesCount: brandQueryData?.data?.totalPage,
-                  position: PagingPosition.Bottom,
-               }}
-               childComponents={{
-                  dataRow: {
-                     elementAttributes: () => ({
-                        onClick: (event, extendedEvent) => {
-                           table.selectSingleRow(
-                              extendedEvent.childProps.rowKeyValue,
-                           )
-                        },
-                     }),
-                  },
-               }}
+               columns={columns}
+               responsive
+               pagination
+               paginationPerPage={10}
+               paginationRowsPerPageOptions={[10, 25, 50, 100]}
+               paginationTotalRows={brandQueryData?.data?.totalNumber}
+               paginationServer
+               onChangeRowsPerPage={handleRowsPerPageChange}
+               onChangePage={handlePageChange}
+               onRowClicked={handleOnRowClicked}
+               conditionalRowStyles={conditionalRowStyles}
             />
          </Box>
       </>

@@ -11,7 +11,7 @@ export const brandGridParametersAtom = atom<{
 }>({
    searchColumn: "Name",
    searchText: "",
-   pageIndex: 0,
+   pageIndex: 1,
    pageSize: 10,
 })
 export const brandGridColumnsVisibleAtom = atom<string[]>([])

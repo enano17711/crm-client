@@ -23,7 +23,7 @@ import {
 import { useQueryClient } from "@tanstack/react-query"
 
 const BrandTopBarComponent = () => {
-   const [localColumnsVisible, setLocalColumnsVisible] = useAtom(
+   const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
       brandGridColumnsVisibleAtom,
    )
    const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
@@ -182,8 +182,8 @@ const BrandTopBarComponent = () => {
                <Menu.Dropdown>
                   <Menu.Label>Columnas</Menu.Label>
                   <Checkbox.Group
-                     value={localColumnsVisible}
-                     onChange={setLocalColumnsVisible}
+                     value={gridColumnsVisible}
+                     onChange={setGridColumnsVisible}
                      w={200}
                   >
                      <Group mt="xs" px="xs" pb="xs">
