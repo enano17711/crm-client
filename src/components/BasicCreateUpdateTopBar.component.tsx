@@ -17,6 +17,7 @@ interface BasicCreateTopBarComponentProps {
       React.SetStateAction<"create_new" | "create_clone" | "create_close">
    >
    children?: React.ReactNode
+   refreshMethod: () => void
 }
 
 const BasicCreateUpdateTopBarComponent = ({
@@ -24,6 +25,7 @@ const BasicCreateUpdateTopBarComponent = ({
    reloadEnabled,
    setSaveType,
    children,
+   refreshMethod,
 }: BasicCreateTopBarComponentProps) => {
    return (
       <Group position="apart">
@@ -53,6 +55,7 @@ const BasicCreateUpdateTopBarComponent = ({
                   variant="light"
                   size="lg"
                   disabled={!reloadEnabled}
+                  onClick={refreshMethod}
                >
                   <IconRefresh />
                </ActionIcon>

@@ -18,6 +18,7 @@ import {
 } from "../../api-gen/hooks/brandController"
 import { useSetAtom } from "jotai"
 import { selectedBrandAtom } from "../../store/brand.atoms.ts"
+import { useQueryClient } from "@tanstack/react-query"
 
 interface IFormInputs {
    name: string
@@ -31,6 +32,16 @@ const UpdateBrandView = () => {
    >("create_new")
    const navigate = useNavigate()
    const params = useParams()
+
+   const queryClient = useQueryClient()
+
+   const refreshData = () => {
+      queryClient.invalidateQueries([`/api/brand/brand/${params.brandId}`])
+      reset({
+         name: brandData.data.name,
+         description: brandData.data.description,
+      })
+   }
 
    const {
       data: brandData,
@@ -78,7 +89,7 @@ const UpdateBrandView = () => {
       },
    })
 
-   const onSubmit: SubmitHandler<IFormInputs> = async (data, event) => {
+   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
       brandMutate(data as UpdateBrandDto)
    }
 
@@ -98,8 +109,9 @@ const UpdateBrandView = () => {
          )}
          <BasicCreateUpdateTopBarComponent
             backRoute={"/brands"}
-            reloadEnabled={false}
+            reloadEnabled={true}
             setSaveType={setSaveType}
+            refreshMethod={refreshData}
          >
             <Title order={4}>Editar: {brandData?.data?.name}</Title>
          </BasicCreateUpdateTopBarComponent>
