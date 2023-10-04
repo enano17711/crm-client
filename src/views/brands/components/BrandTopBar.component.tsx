@@ -159,9 +159,17 @@ const BrandTopBarComponent = () => {
             <SearchBrandByColumnComponent />
             <Menu shadow="md">
                <Menu.Target>
-                  <ActionIcon color="lime" variant="light" size="lg">
-                     <IconFileExport />
-                  </ActionIcon>
+                  <Tooltip
+                     label="Exportar"
+                     color="lime"
+                     position="bottom"
+                     withArrow
+                     arrowPosition="center"
+                  >
+                     <ActionIcon color="lime" variant="light" size="lg">
+                        <IconFileExport />
+                     </ActionIcon>
+                  </Tooltip>
                </Menu.Target>
                <Menu.Dropdown>
                   <Menu.Label>Exportar</Menu.Label>
@@ -175,9 +183,17 @@ const BrandTopBarComponent = () => {
             </Menu>
             <Menu shadow="md">
                <Menu.Target>
-                  <ActionIcon color="red" variant="light" size="lg">
-                     <IconColumns3 />
-                  </ActionIcon>
+                  <Tooltip
+                     label="Columnas"
+                     color="red"
+                     position="bottom"
+                     withArrow
+                     arrowPosition="center"
+                  >
+                     <ActionIcon color="red" variant="light" size="lg">
+                        <IconColumns3 />
+                     </ActionIcon>
+                  </Tooltip>
                </Menu.Target>
                <Menu.Dropdown>
                   <Menu.Label>Columnas</Menu.Label>
@@ -194,18 +210,26 @@ const BrandTopBarComponent = () => {
                </Menu.Dropdown>
             </Menu>
          </Group>
-         <ActionIcon
+         <Tooltip
+            label="Refrescar"
             color="red"
-            variant="light"
-            size="lg"
-            onClick={() =>
-               queryClient.invalidateQueries({
-                  queryKey: ["/api/brand/brands"],
-               })
-            }
+            position="bottom"
+            withArrow
+            arrowPosition="center"
          >
-            <IconRefresh />
-         </ActionIcon>
+            <ActionIcon
+               color="red"
+               variant="light"
+               size="lg"
+               onClick={() =>
+                  queryClient.invalidateQueries({
+                     queryKey: ["/api/brand/brands"],
+                  })
+               }
+            >
+               <IconRefresh />
+            </ActionIcon>
+         </Tooltip>
       </Group>
    )
 }
