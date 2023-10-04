@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { feature, getAPI } from "../../axios-utils.ts"
-import {
-   BrandApi,
-   BrandSimpleDto,
-   CreateBrandDto,
-   UpdateBrandDto,
-} from "../../api-services"
-import { errorNotification, successNotification } from "../../utils"
+import { UpdateBrandDto } from "../../api-services"
 import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
 import {
    Box,
@@ -19,6 +12,12 @@ import {
    TextInput,
    Title,
 } from "@mantine/core"
+import {
+   useApiBrandBrandIdGetHook,
+   useApiBrandBrandIdPutHook,
+} from "../../api-gen/hooks/brandController"
+import { useSetAtom } from "jotai"
+import { selectedBrandAtom } from "../../store/brand.atoms.ts"
 
 interface IFormInputs {
    name: string
@@ -26,13 +25,46 @@ interface IFormInputs {
 }
 
 const UpdateBrandView = () => {
-   const [loading, setLoading] = useState(false)
-   const [data, setData] = useState<BrandSimpleDto>(null)
+   const setSelectedBrand = useSetAtom(selectedBrandAtom)
    const [saveType, setSaveType] = useState<
       "create_new" | "create_close" | "create_clone"
    >("create_new")
    const navigate = useNavigate()
    const params = useParams()
+
+   const {
+      data: brandData,
+      status: brandStatus,
+      isFetching,
+   } = useApiBrandBrandIdGetHook(Number(params.brandId))
+
+   const { mutate: brandMutate } = useApiBrandBrandIdPutHook(
+      Number(params.brandId),
+      {
+         mutation: {
+            onSuccess: async (variables) => {
+               if (saveType === "create_new") {
+                  setSelectedBrand({})
+                  navigate("/brands/create")
+               } else if (saveType === "create_clone") {
+                  setSelectedBrand({
+                     brandId: Number(params.brandId),
+                     name: variables.name,
+                     description: variables.description,
+                  })
+                  navigate(`/brands/create`)
+               } else {
+                  setSelectedBrand({})
+                  reset({
+                     name: "",
+                     description: "",
+                  })
+                  navigate("/brands")
+               }
+            },
+         },
+      },
+   )
 
    const {
       handleSubmit,
@@ -47,58 +79,29 @@ const UpdateBrandView = () => {
    })
 
    const onSubmit: SubmitHandler<IFormInputs> = async (data, event) => {
-      const brandId = Number(params.brandId)
-      const [err, res] = await feature(
-         getAPI(BrandApi).apiBrandBrandIdPut(brandId, data as UpdateBrandDto),
-      )
-      if (err) {
-         errorNotification(err.message)
-      } else {
-         successNotification()
-         if (saveType === "create_new") {
-            navigate("/brands/create")
-         } else if (saveType === "create_clone") {
-            navigate(`/brands/create/${data.name}/${data.description}`)
-         } else {
-            reset({
-               name: "",
-               description: "",
-            })
-            navigate("/brands")
-         }
-      }
+      brandMutate(data as UpdateBrandDto)
    }
 
    useEffect(() => {
-      const brandId = Number(params.brandId)
-      setLoading(true)
-      getAPI(BrandApi)
-         .apiBrandBrandIdGet(brandId)
-         .then((res) => {
-            reset({
-               name: res.data.data.name,
-               description: res.data.data.description,
-            })
-            setData(res.data.data)
-            successNotification()
+      if (!isFetching) {
+         reset({
+            name: brandData.data.name,
+            description: brandData.data.description,
          })
-         .catch((err) => {
-            errorNotification(err.message)
-         })
-         .finally(() => {
-            setLoading(false)
-         })
-   }, [])
+      }
+   }, [brandStatus])
 
    return (
       <Box pos="relative">
-         <LoadingOverlay visible={loading} />
+         {brandStatus === "loading" && (
+            <LoadingOverlay visible={true} overlayBlur={2} />
+         )}
          <BasicCreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={false}
             setSaveType={setSaveType}
          >
-            <Title order={4}>Editar: {data?.name}</Title>
+            <Title order={4}>Editar: {brandData?.data?.name}</Title>
          </BasicCreateUpdateTopBarComponent>
          <Space h="sm" />
          <form id="create-brand-form" onSubmit={handleSubmit(onSubmit)}>

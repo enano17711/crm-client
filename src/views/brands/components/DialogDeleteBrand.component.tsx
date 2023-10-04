@@ -8,6 +8,7 @@ import {
 } from "../../../store/brand.atoms.ts"
 import { useAtom } from "jotai"
 import { useApiBrandBrandIdDeleteHook } from "../../../api-gen/hooks/brandController"
+import { useQueryClient } from "@tanstack/react-query"
 
 const DialogDeleteBrandComponent = () => {
    const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
@@ -15,15 +16,23 @@ const DialogDeleteBrandComponent = () => {
       openBrandDeleteModalAtom,
    )
 
+   const queryClient = useQueryClient()
+
    const { mutate: deleteBrandMutate } = useApiBrandBrandIdDeleteHook(
       selectedBrand?.brandId,
+      {
+         mutation: {
+            onSuccess: () => {
+               setSelectedBrand({})
+               successNotification()
+               queryClient.invalidateQueries({
+                  queryKey: ["/api/brand/brands"],
+               })
+               setOpenDeleteModal(false)
+            },
+         },
+      },
    )
-
-   const deleteHandler = () => {
-      deleteBrandMutate()
-      setOpenDeleteModal(false)
-      successNotification()
-   }
 
    return (
       <Modal
@@ -39,7 +48,7 @@ const DialogDeleteBrandComponent = () => {
             <Group position="right">
                <Button
                   color="red"
-                  onClick={deleteHandler}
+                  onClick={() => deleteBrandMutate()}
                   variant="light"
                   leftIcon={<IconTrash />}
                >

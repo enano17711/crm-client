@@ -16,16 +16,16 @@ import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { accessTokenKey, refreshAccessTokenKey } from "../../../axios-utils.ts"
 import { useAtom, useSetAtom } from "jotai"
 import {
-   brandGridParametersAtom,
    openBrandDeleteModalAtom,
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
+import { useQueryClient } from "@tanstack/react-query"
 
 const BrandTopBarComponent = () => {
    const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const setOpenDeleteModal = useSetAtom(openBrandDeleteModalAtom)
-   const setBrandGridParameters = useSetAtom(brandGridParametersAtom)
    const navigate = useNavigate()
+   const queryClient = useQueryClient()
 
    const onActionCreateBrand = useCallback(() => {
       setSelectedBrand({})
@@ -177,8 +177,8 @@ const BrandTopBarComponent = () => {
             variant="light"
             size="lg"
             onClick={() =>
-               setBrandGridParameters((prev) => {
-                  return { ...prev, pageIndex: 0 }
+               queryClient.invalidateQueries({
+                  queryKey: ["/api/brand/brands"],
                })
             }
          >

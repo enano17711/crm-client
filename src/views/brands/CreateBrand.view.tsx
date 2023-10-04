@@ -34,8 +34,7 @@ const CreateBrandView = () => {
 
    const { mutate } = useApiBrandBrandPostHook({
       mutation: {
-         onSuccess: (data, variables, context) => {
-            console.log(variables)
+         onSuccess: (variables) => {
             setSelectedBrand({})
             if (saveType === "create_new") {
                reset({
