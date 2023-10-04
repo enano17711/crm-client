@@ -14,4 +14,5 @@ export const brandGridParametersAtom = atom<{
    pageIndex: 0,
    pageSize: 10,
 })
+export const brandGridColumnsVisibleAtom = atom<string[]>([])
 export const openBrandDeleteModalAtom = atom(false)

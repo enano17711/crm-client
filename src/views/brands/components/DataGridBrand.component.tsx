@@ -11,8 +11,9 @@ import {
 import React from "react"
 import { kaPropsUtils } from "ka-table/utils"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
-import { useAtom, useSetAtom } from "jotai"
+import { useAtom, useAtomValue, useSetAtom } from "jotai"
 import {
+   brandGridColumnsVisibleAtom,
    brandGridParametersAtom,
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
@@ -22,6 +23,7 @@ export const DataGridBrandComponent = () => {
       brandGridParametersAtom,
    )
    const setSelectedBrand = useSetAtom(selectedBrandAtom)
+   const brandGridColumnsVisible = useAtomValue(brandGridColumnsVisibleAtom)
 
    const {
       data: brandQueryData,

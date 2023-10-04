@@ -1,8 +1,7 @@
-import React, { useCallback } from "react"
+import React, { useCallback, useState } from "react"
 import { NativeSelect, rem, TextInput } from "@mantine/core"
-import { useAtom } from "jotai/index"
 import { brandGridParametersAtom } from "../../../store/brand.atoms.ts"
-import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
+import { useSetAtom } from "jotai"
 
 const columns = [
    {
@@ -15,20 +14,8 @@ const columns = [
    },
 ]
 const SearchBrandByColumnComponent = () => {
-   const [brandGridParameters, setBrandGridParameters] = useAtom(
-      brandGridParametersAtom,
-   )
-
-   const {
-      data: brandQueryData,
-      error: brandQueryError,
-      status: brandQueryStatus,
-   } = useApiBrandBrandsGetHook({
-      ColumnName: brandGridParameters.searchColumn,
-      ColumnValue: brandGridParameters.searchText,
-      PageNumber: brandGridParameters.pageIndex,
-      PageSize: brandGridParameters.pageSize,
-   })
+   const [columnSelected, setColumnSelected] = useState("Name")
+   const setBrandGridParameters = useSetAtom(brandGridParametersAtom)
 
    const onTextSearchChange = useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +26,7 @@ const SearchBrandByColumnComponent = () => {
                   return {
                      ...prev,
                      searchText: textToSearch,
+                     searchColumn: columnSelected,
                   }
                })
             }
@@ -48,11 +36,12 @@ const SearchBrandByColumnComponent = () => {
                return {
                   ...prev,
                   searchText: "",
+                  searchColumn: columnSelected,
                }
             })
          }
       },
-      [setBrandGridParameters],
+      [setBrandGridParameters, columnSelected],
    )
 
    const select = (
@@ -68,15 +57,8 @@ const SearchBrandByColumnComponent = () => {
                marginRight: rem(-2),
             },
          }}
-         value={brandGridParameters.searchColumn}
-         onChange={(event) =>
-            setBrandGridParameters((prev) => {
-               return {
-                  ...prev,
-                  searchColumn: event.currentTarget.value,
-               }
-            })
-         }
+         value={columnSelected}
+         onChange={(event) => setColumnSelected(event.currentTarget.value)}
       />
    )
 

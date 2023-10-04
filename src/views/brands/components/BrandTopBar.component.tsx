@@ -1,5 +1,5 @@
 import React, { useCallback } from "react"
-import { ActionIcon, Group, Menu, Tooltip } from "@mantine/core"
+import { ActionIcon, Checkbox, Group, Menu, Tooltip } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
 import {
    IconColumns3,
@@ -16,12 +16,16 @@ import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { accessTokenKey, refreshAccessTokenKey } from "../../../axios-utils.ts"
 import { useAtom, useSetAtom } from "jotai"
 import {
+   brandGridColumnsVisibleAtom,
    openBrandDeleteModalAtom,
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
 import { useQueryClient } from "@tanstack/react-query"
 
 const BrandTopBarComponent = () => {
+   const [localColumnsVisible, setLocalColumnsVisible] = useAtom(
+      brandGridColumnsVisibleAtom,
+   )
    const [selectedBrand, setSelectedBrand] = useAtom(selectedBrandAtom)
    const setOpenDeleteModal = useSetAtom(openBrandDeleteModalAtom)
    const navigate = useNavigate()
@@ -160,6 +164,7 @@ const BrandTopBarComponent = () => {
                   </ActionIcon>
                </Menu.Target>
                <Menu.Dropdown>
+                  <Menu.Label>Exportar</Menu.Label>
                   <Menu.Item icon={<IconPdf size={14} />} onClick={exportPdf}>
                      PDF
                   </Menu.Item>
@@ -168,9 +173,26 @@ const BrandTopBarComponent = () => {
                   </Menu.Item>
                </Menu.Dropdown>
             </Menu>
-            <ActionIcon color="red" variant="light" size="lg">
-               <IconColumns3 />
-            </ActionIcon>
+            <Menu shadow="md">
+               <Menu.Target>
+                  <ActionIcon color="red" variant="light" size="lg">
+                     <IconColumns3 />
+                  </ActionIcon>
+               </Menu.Target>
+               <Menu.Dropdown>
+                  <Menu.Label>Columnas</Menu.Label>
+                  <Checkbox.Group
+                     value={localColumnsVisible}
+                     onChange={setLocalColumnsVisible}
+                     w={200}
+                  >
+                     <Group mt="xs" px="xs" pb="xs">
+                        <Checkbox value="name" label="Nombre" />
+                        <Checkbox value="description" label="Descripcion" />
+                     </Group>
+                  </Checkbox.Group>
+               </Menu.Dropdown>
+            </Menu>
          </Group>
          <ActionIcon
             color="red"
