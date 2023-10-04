@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { UpdateBrandDto } from "../../api-services"
-import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
+import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import {
    Box,
    LoadingOverlay,
@@ -107,14 +107,14 @@ const UpdateBrandView = () => {
          {brandStatus === "loading" && (
             <LoadingOverlay visible={true} overlayBlur={2} />
          )}
-         <BasicCreateUpdateTopBarComponent
+         <CreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={true}
             setSaveType={setSaveType}
             refreshMethod={refreshData}
          >
             <Title order={4}>Editar: {brandData?.data?.name}</Title>
-         </BasicCreateUpdateTopBarComponent>
+         </CreateUpdateTopBarComponent>
          <Space h="sm" />
          <form id="create-brand-form" onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing="sm">

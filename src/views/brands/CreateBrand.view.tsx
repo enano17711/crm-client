@@ -3,7 +3,7 @@ import { Space, Stack, Textarea, TextInput, Title } from "@mantine/core"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { CreateBrandDto } from "../../api-services"
 import { useNavigate } from "react-router-dom"
-import BasicCreateUpdateTopBarComponent from "../../components/BasicCreateUpdateTopBar.component.tsx"
+import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import { useAtom } from "jotai"
 import { selectedBrandAtom } from "../../store/brand.atoms.ts"
 import { useApiBrandBrandPostHook } from "../../api-gen/hooks/brandController"
@@ -57,7 +57,7 @@ const CreateBrandView = () => {
       },
    })
 
-   const onSubmit: SubmitHandler<IFormInputs> = async (data, event) => {
+   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
       mutate(data as CreateBrandDto)
    }
 
@@ -77,13 +77,13 @@ const CreateBrandView = () => {
 
    return (
       <>
-         <BasicCreateUpdateTopBarComponent
+         <CreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={false}
             setSaveType={setSaveType}
          >
             <Title order={3}>Crear Marca</Title>
-         </BasicCreateUpdateTopBarComponent>
+         </CreateUpdateTopBarComponent>
          <Space h="sm" />
          <form id="create-brand-form" onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing="sm">

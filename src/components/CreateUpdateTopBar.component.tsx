@@ -17,10 +17,10 @@ interface BasicCreateTopBarComponentProps {
       React.SetStateAction<"create_new" | "create_clone" | "create_close">
    >
    children?: React.ReactNode
-   refreshMethod: () => void
+   refreshMethod?: () => void
 }
 
-const BasicCreateUpdateTopBarComponent = ({
+const CreateUpdateTopBarComponent = ({
    backRoute,
    reloadEnabled,
    setSaveType,
@@ -98,4 +98,4 @@ const BasicCreateUpdateTopBarComponent = ({
    )
 }
 
-export default BasicCreateUpdateTopBarComponent
+export default CreateUpdateTopBarComponent
