@@ -2,6 +2,14 @@ import type { ResTfulResultPaginatedResponseBrandSimpleDto } from "../ResTfulRes
 
 export type ApiBrandBrandsGetQueryParams = {
    /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
+   /**
     * @type integer | undefined int32
     */
    PageNumber?: number

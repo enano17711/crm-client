@@ -1,4 +1,4 @@
-import { SecurityDto } from "./SecurityDto.ts"
+import type { SecurityDto } from "./SecurityDto"
 
 export type LoginOutput = {
    /**

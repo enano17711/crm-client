@@ -1,10 +1,14 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type { ApiRbacRolesGetQueryResponse } from "../../models/rbacController/ApiRbacRolesGet"
 
 export const apiRbacRolesGetQueryKey = () => [`/api/rbac/roles`] as const

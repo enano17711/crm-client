@@ -17,6 +17,14 @@ export type ApiSaleSalesGetQueryParams = {
     * @type string | undefined
     */
    ColumnValue?: string
+   /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
 }
 
 /**

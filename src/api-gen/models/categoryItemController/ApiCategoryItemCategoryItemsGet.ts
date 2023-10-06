@@ -17,6 +17,14 @@ export type ApiCategoryItemCategoryItemsGetQueryParams = {
     * @type string | undefined
     */
    ColumnValue?: string
+   /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
 }
 
 /**

@@ -3,7 +3,7 @@ import {
    UseMutationOptions,
    UseMutationResult,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type {
    ApiRbacGiveRoleSecurityRoleidPostMutationResponse,
    ApiRbacGiveRoleSecurityRoleidPostPathParams,

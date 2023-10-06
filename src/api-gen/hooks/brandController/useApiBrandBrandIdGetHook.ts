@@ -1,13 +1,17 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type {
-   ApiBrandBrandIdGetPathParams,
    ApiBrandBrandIdGetQueryResponse,
+   ApiBrandBrandIdGetPathParams,
 } from "../../models/brandController/ApiBrandBrandIdGet"
 
 export const apiBrandBrandIdGetQueryKey = (

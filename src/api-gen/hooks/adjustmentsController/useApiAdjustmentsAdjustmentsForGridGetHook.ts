@@ -1,13 +1,17 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type {
-   ApiAdjustmentsAdjustmentsForGridGetQueryParams,
    ApiAdjustmentsAdjustmentsForGridGetQueryResponse,
+   ApiAdjustmentsAdjustmentsForGridGetQueryParams,
 } from "../../models/adjustmentsController/ApiAdjustmentsAdjustmentsForGridGet"
 
 export const apiAdjustmentsAdjustmentsForGridGetQueryKey = (

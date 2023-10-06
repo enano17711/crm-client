@@ -1,13 +1,17 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type {
-   ApiCustomerCustomersForGridGetQueryParams,
    ApiCustomerCustomersForGridGetQueryResponse,
+   ApiCustomerCustomersForGridGetQueryParams,
 } from "../../models/customerController/ApiCustomerCustomersForGridGet"
 
 export const apiCustomerCustomersForGridGetQueryKey = (

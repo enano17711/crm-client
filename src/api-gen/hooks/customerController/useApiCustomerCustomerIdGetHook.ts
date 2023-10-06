@@ -1,13 +1,17 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type {
-   ApiCustomerCustomerIdGetPathParams,
    ApiCustomerCustomerIdGetQueryResponse,
+   ApiCustomerCustomerIdGetPathParams,
 } from "../../models/customerController/ApiCustomerCustomerIdGet"
 
 export const apiCustomerCustomerIdGetQueryKey = (

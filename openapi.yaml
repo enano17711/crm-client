@@ -169,6 +169,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -447,6 +455,14 @@ paths:
           schema:
             type: string
         - name: ColumnValue
+          in: query
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
           in: query
           schema:
             type: string
@@ -750,6 +766,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -1028,6 +1052,14 @@ paths:
           schema:
             type: string
         - name: ColumnValue
+          in: query
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
           in: query
           schema:
             type: string
@@ -1620,6 +1652,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -1772,6 +1812,14 @@ paths:
           schema:
             type: string
         - name: ColumnValue
+          in: query
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
           in: query
           schema:
             type: string
@@ -2119,6 +2167,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -2408,6 +2464,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -2689,6 +2753,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -2952,6 +3024,14 @@ paths:
         - brand
       operationId: api-brand-brands-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -3264,6 +3344,14 @@ paths:
           in: query
           schema:
             type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -3542,6 +3630,14 @@ paths:
           schema:
             type: string
         - name: ColumnValue
+          in: query
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
           in: query
           schema:
             type: string
@@ -5982,6 +6078,11 @@ components:
           nullable: true
         refreshToken:
           type: string
+          nullable: true
+        securities:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityDto'
           nullable: true
       additionalProperties: false
     MetaData:

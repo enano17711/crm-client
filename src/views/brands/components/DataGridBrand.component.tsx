@@ -2,7 +2,7 @@ import "ka-table/style.css"
 import { Box } from "@mantine/core"
 import React, { useCallback, useMemo } from "react"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
-import DataTable, { TableColumn } from "react-data-table-component"
+import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
 import { BrandSimpleDto } from "../../../api-gen"
 import { useAtom, useAtomValue } from "jotai"
 import {
@@ -27,6 +27,8 @@ export const DataGridBrandComponent = () => {
       ColumnValue: brandGridParameters.searchText,
       PageNumber: brandGridParameters.pageIndex,
       PageSize: brandGridParameters.pageSize,
+      OrderBy: brandGridParameters.orderBy,
+      OrderDirection: brandGridParameters.orderDirection,
    })
 
    const columns: TableColumn<BrandSimpleDto>[] = useMemo(
@@ -38,6 +40,7 @@ export const DataGridBrandComponent = () => {
             sortable: true,
             wrap: true,
             omit: brandGridColumnsVisible.includes("name"),
+            sortField: "Name",
          },
          {
             id: "description",
@@ -46,6 +49,7 @@ export const DataGridBrandComponent = () => {
             sortable: true,
             wrap: true,
             omit: brandGridColumnsVisible.includes("description"),
+            sortField: "Description",
          },
       ],
       [brandGridColumnsVisible],
@@ -79,6 +83,24 @@ export const DataGridBrandComponent = () => {
       },
       [setSelectedBrand],
    )
+   const handleOnSort = useCallback(
+      (
+         selectedColumn: TableColumn<BrandSimpleDto>,
+         sortDirection: SortOrder,
+         sortedRows: unknown[],
+      ) => {
+         console.log(selectedColumn, sortDirection, sortedRows)
+         setBrandGridParameters((prev) => {
+            return {
+               ...prev,
+               orderBy: selectedColumn.sortField,
+               orderDirection: sortDirection,
+            }
+         })
+      },
+      [setBrandGridParameters],
+   )
+
    const conditionalRowStyles = [
       {
          when: (row) => row.name === selectedBrand.name,
@@ -106,6 +128,8 @@ export const DataGridBrandComponent = () => {
                onRowClicked={handleOnRowClicked}
                conditionalRowStyles={conditionalRowStyles}
                progressPending={brandQueryStatus === "loading"}
+               onSort={handleOnSort}
+               sortServer
             />
          </Box>
       </>

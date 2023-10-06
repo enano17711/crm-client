@@ -1,10 +1,14 @@
 import {
-   QueryKey,
    useQuery,
-   UseQueryOptions,
+   QueryKey,
    UseQueryResult,
+   UseQueryOptions,
+   QueryOptions,
+   UseInfiniteQueryOptions,
+   UseInfiniteQueryResult,
+   useInfiniteQuery,
 } from "@tanstack/react-query"
-import client from "../../../client.ts"
+import client from "../../../client"
 import type { ApiSystemDescriptionGetQueryResponse } from "../../models/systemController/ApiSystemDescriptionGet"
 
 export const apiSystemDescriptionGetQueryKey = () =>
