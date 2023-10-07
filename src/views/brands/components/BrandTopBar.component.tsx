@@ -8,7 +8,6 @@ import {
    IconEdit,
    IconFileExport,
    IconPdf,
-   IconPlus,
    IconRefresh,
    IconTrash,
 } from "@tabler/icons-react"
@@ -20,6 +19,8 @@ import {
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
 import { useQueryClient } from "@tanstack/react-query"
+import { exportCsv, exportPdf } from "../../../utils/index.ts"
+import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -35,69 +36,10 @@ const BrandTopBarComponent = () => {
       navigate("/brands/create")
    }, [navigate, setSelectedBrand])
 
-   const exportCsv = () => {
-      fetch("https://localhost:5001/api/brand/download-brand-excel", {
-         method: "POST",
-         headers: {
-            "Content-Type":
-               "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-         },
-      })
-         .then((res) => res.blob())
-         .then((blob) => {
-            const url = window.URL.createObjectURL(blob)
-            const a = document.createElement("a")
-            a.style.display = "none"
-            a.href = url
-            a.download = "brands.xlsx"
-            document.body.appendChild(a)
-            a.click()
-            window.URL.revokeObjectURL(url)
-            document.body.removeChild(a)
-         })
-   }
-   const exportPdf = () => {
-      const userData = window.localStorage.getItem("userDataSession")
-      const userId = JSON.parse(userData!).userId
-
-      fetch("https://localhost:5001/api/brand/download-brand-pdf/" + userId, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/pdf",
-         },
-      })
-         .then((res) => res.blob())
-         .then((blob) => {
-            const url = window.URL.createObjectURL(blob)
-            const a = document.createElement("a")
-            a.style.display = "none"
-            a.href = url
-            a.download = "brand.pdf"
-            document.body.appendChild(a)
-            a.click()
-            window.URL.revokeObjectURL(url)
-         })
-   }
-
    return (
       <Group position="apart">
          <Group>
-            <Tooltip
-               label="Nuevo"
-               color="orange"
-               position="bottom"
-               withArrow
-               arrowPosition="center"
-            >
-               <ActionIcon
-                  color="orange"
-                  variant="light"
-                  size="lg"
-                  onClick={onActionCreateBrand}
-               >
-                  <IconPlus />
-               </ActionIcon>
-            </Tooltip>
+            <ActionCreateComponent createFunction={onActionCreateBrand} />
             <Tooltip
                label="Clonar"
                color="indigo"
@@ -168,10 +110,20 @@ const BrandTopBarComponent = () => {
                </Menu.Target>
                <Menu.Dropdown>
                   <Menu.Label>Exportar</Menu.Label>
-                  <Menu.Item icon={<IconPdf size={14} />} onClick={exportPdf}>
+                  <Menu.Item
+                     icon={<IconPdf size={14} />}
+                     onClick={() =>
+                        exportPdf("brand/download-brand-pdf", "brands.pdf")
+                     }
+                  >
                      PDF
                   </Menu.Item>
-                  <Menu.Item icon={<IconCsv size={14} />} onClick={exportCsv}>
+                  <Menu.Item
+                     icon={<IconCsv size={14} />}
+                     onClick={() =>
+                        exportCsv("brand/download-brand-excel", "brands.xlsx")
+                     }
+                  >
                      CSV
                   </Menu.Item>
                </Menu.Dropdown>
