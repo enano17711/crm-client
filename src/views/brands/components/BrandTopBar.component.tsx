@@ -7,7 +7,6 @@ import {
    IconFileExport,
    IconPdf,
    IconRefresh,
-   IconTrash,
 } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { useAtom, useSetAtom } from "jotai"
@@ -21,6 +20,7 @@ import { exportCsv, exportPdf } from "../../../utils/index.ts"
 import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
 import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
+import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -48,23 +48,10 @@ const BrandTopBarComponent = () => {
                editUrl={"/brands/update/" + selectedBrand?.brandId}
                disabled={!(selectedBrand?.name !== undefined)}
             />
-            <Tooltip
-               label="Borrar"
-               color="red"
-               position="bottom"
-               withArrow
-               arrowPosition="center"
-            >
-               <ActionIcon
-                  color="red"
-                  variant="light"
-                  size="lg"
-                  disabled={!(selectedBrand?.name !== undefined)}
-                  onClick={() => setOpenDeleteModal(true)}
-               >
-                  <IconTrash />
-               </ActionIcon>
-            </Tooltip>
+            <ActionDeleteComponent
+               deleteFunction={setOpenDeleteModal}
+               disabled={!(selectedBrand?.name !== undefined)}
+            />
             <SearchBrandByColumnComponent />
             <Menu shadow="md">
                <Menu.Target>
