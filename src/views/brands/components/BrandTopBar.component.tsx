@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 import {
    IconColumns3,
    IconCsv,
-   IconEdit,
    IconFileExport,
    IconPdf,
    IconRefresh,
@@ -21,6 +20,7 @@ import { useQueryClient } from "@tanstack/react-query"
 import { exportCsv, exportPdf } from "../../../utils/index.ts"
 import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
 import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
+import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -44,25 +44,10 @@ const BrandTopBarComponent = () => {
                disabled={!(selectedBrand?.name !== undefined)}
                cloneUrl={"/brands/create"}
             />
-            <Tooltip
-               label="Editar"
-               color="grape"
-               position="bottom"
-               withArrow
-               arrowPosition="center"
-            >
-               <ActionIcon
-                  color="grape"
-                  variant="light"
-                  size="lg"
-                  onClick={() =>
-                     navigate("/brands/update/" + selectedBrand?.brandId)
-                  }
-                  disabled={!(selectedBrand?.name !== undefined)}
-               >
-                  <IconEdit />
-               </ActionIcon>
-            </Tooltip>
+            <ActionEditComponent
+               editUrl={"/brands/update/" + selectedBrand?.brandId}
+               disabled={!(selectedBrand?.name !== undefined)}
+            />
             <Tooltip
                label="Borrar"
                color="red"
