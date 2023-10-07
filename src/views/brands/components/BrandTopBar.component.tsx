@@ -13,7 +13,6 @@ import {
    IconTrash,
 } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
-import { accessTokenKey, refreshAccessTokenKey } from "../../../axios-utils.ts"
 import { useAtom, useSetAtom } from "jotai"
 import {
    brandGridColumnsVisibleAtom,
@@ -40,10 +39,8 @@ const BrandTopBarComponent = () => {
       fetch("https://localhost:5001/api/brand/download-brand-excel", {
          method: "POST",
          headers: {
-            "Content-Type": "application/csv",
-            Authorization: "Bearer " + localStorage.getItem(accessTokenKey),
-            "X-Authorization":
-               "Bearer " + localStorage.getItem(refreshAccessTokenKey),
+            "Content-Type":
+               "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
          },
       })
          .then((res) => res.blob())
@@ -52,10 +49,11 @@ const BrandTopBarComponent = () => {
             const a = document.createElement("a")
             a.style.display = "none"
             a.href = url
-            a.download = "brand.csv"
+            a.download = "brands.xlsx"
             document.body.appendChild(a)
             a.click()
             window.URL.revokeObjectURL(url)
+            document.body.removeChild(a)
          })
    }
    const exportPdf = () => {
@@ -66,9 +64,6 @@ const BrandTopBarComponent = () => {
          method: "POST",
          headers: {
             "Content-Type": "application/pdf",
-            Authorization: "Bearer " + localStorage.getItem(accessTokenKey),
-            "X-Authorization":
-               "Bearer " + localStorage.getItem(refreshAccessTokenKey),
          },
       })
          .then((res) => res.blob())
