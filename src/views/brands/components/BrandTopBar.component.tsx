@@ -1,13 +1,7 @@
 import React, { useCallback } from "react"
 import { ActionIcon, Checkbox, Group, Menu, Tooltip } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
-import {
-   IconColumns3,
-   IconCsv,
-   IconFileExport,
-   IconPdf,
-   IconRefresh,
-} from "@tabler/icons-react"
+import { IconColumns3, IconRefresh } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { useAtom, useSetAtom } from "jotai"
 import {
@@ -16,11 +10,11 @@ import {
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
 import { useQueryClient } from "@tanstack/react-query"
-import { exportCsv, exportPdf } from "../../../utils/index.ts"
 import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
 import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
+import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -53,40 +47,12 @@ const BrandTopBarComponent = () => {
                disabled={!(selectedBrand?.name !== undefined)}
             />
             <SearchBrandByColumnComponent />
-            <Menu shadow="md">
-               <Menu.Target>
-                  <Tooltip
-                     label="Exportar"
-                     color="lime"
-                     position="bottom"
-                     withArrow
-                     arrowPosition="center"
-                  >
-                     <ActionIcon color="lime" variant="light" size="lg">
-                        <IconFileExport />
-                     </ActionIcon>
-                  </Tooltip>
-               </Menu.Target>
-               <Menu.Dropdown>
-                  <Menu.Label>Exportar</Menu.Label>
-                  <Menu.Item
-                     icon={<IconPdf size={14} />}
-                     onClick={() =>
-                        exportPdf("brand/download-brand-pdf", "brands.pdf")
-                     }
-                  >
-                     PDF
-                  </Menu.Item>
-                  <Menu.Item
-                     icon={<IconCsv size={14} />}
-                     onClick={() =>
-                        exportCsv("brand/download-brand-excel", "brands.xlsx")
-                     }
-                  >
-                     CSV
-                  </Menu.Item>
-               </Menu.Dropdown>
-            </Menu>
+            <ActionExportComponent
+               pdfUrl={"brand/download-brand-pdf"}
+               pdfName="brands.pdf"
+               excelUrl={"brand/download-brand-excel"}
+               excelName="brands.xlsx"
+            />
             <Menu shadow="md">
                <Menu.Target>
                   <Tooltip
