@@ -3,7 +3,6 @@ import { ActionIcon, Checkbox, Group, Menu, Tooltip } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
 import {
    IconColumns3,
-   IconCopy,
    IconCsv,
    IconEdit,
    IconFileExport,
@@ -21,6 +20,7 @@ import {
 import { useQueryClient } from "@tanstack/react-query"
 import { exportCsv, exportPdf } from "../../../utils/index.ts"
 import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
+import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -40,23 +40,10 @@ const BrandTopBarComponent = () => {
       <Group position="apart">
          <Group>
             <ActionCreateComponent createFunction={onActionCreateBrand} />
-            <Tooltip
-               label="Clonar"
-               color="indigo"
-               position="bottom"
-               withArrow
-               arrowPosition="center"
-            >
-               <ActionIcon
-                  color="indigo"
-                  variant="light"
-                  size="lg"
-                  onClick={() => navigate("/brands/create")}
-                  disabled={!(selectedBrand?.name !== undefined)}
-               >
-                  <IconCopy />
-               </ActionIcon>
-            </Tooltip>
+            <ActionCloneComponent
+               disabled={!(selectedBrand?.name !== undefined)}
+               cloneUrl={"/brands/create"}
+            />
             <Tooltip
                label="Editar"
                color="grape"
