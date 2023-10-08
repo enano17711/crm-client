@@ -1,7 +1,7 @@
 import React, { useCallback } from "react"
-import { ActionIcon, Checkbox, Group, Menu, Tooltip } from "@mantine/core"
+import { ActionIcon, Checkbox, Group, Tooltip } from "@mantine/core"
 import { useNavigate } from "react-router-dom"
-import { IconColumns3, IconRefresh } from "@tabler/icons-react"
+import { IconRefresh } from "@tabler/icons-react"
 import SearchBrandByColumnComponent from "./SearchBrandByColumn.component.tsx"
 import { useAtom, useSetAtom } from "jotai"
 import {
@@ -15,6 +15,7 @@ import ActionCloneComponent from "../../../components/top-bar/ActionClone.compon
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
 import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
+import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 
 const BrandTopBarComponent = () => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
@@ -53,34 +54,18 @@ const BrandTopBarComponent = () => {
                excelUrl={"brand/download-brand-excel"}
                excelName="brands.xlsx"
             />
-            <Menu shadow="md">
-               <Menu.Target>
-                  <Tooltip
-                     label="Columnas"
-                     color="red"
-                     position="bottom"
-                     withArrow
-                     arrowPosition="center"
-                  >
-                     <ActionIcon color="red" variant="light" size="lg">
-                        <IconColumns3 />
-                     </ActionIcon>
-                  </Tooltip>
-               </Menu.Target>
-               <Menu.Dropdown>
-                  <Menu.Label>Columnas</Menu.Label>
-                  <Checkbox.Group
-                     value={gridColumnsVisible}
-                     onChange={setGridColumnsVisible}
-                     w={200}
-                  >
-                     <Group mt="xs" px="xs" pb="xs">
-                        <Checkbox value="name" label="Nombre" />
-                        <Checkbox value="description" label="Descripcion" />
-                     </Group>
-                  </Checkbox.Group>
-               </Menu.Dropdown>
-            </Menu>
+            <ActionColumnsGridComponent>
+               <Checkbox.Group
+                  value={gridColumnsVisible}
+                  onChange={setGridColumnsVisible}
+                  w={200}
+               >
+                  <Group mt="xs" px="xs" pb="xs">
+                     <Checkbox value="name" label="Nombre" />
+                     <Checkbox value="description" label="Descripcion" />
+                  </Group>
+               </Checkbox.Group>
+            </ActionColumnsGridComponent>
          </Group>
          <Tooltip
             label="Refrescar"
