@@ -1,8 +1,8 @@
 import "ka-table/style.css"
 import { Box } from "@mantine/core"
-import React, { useCallback, useMemo } from "react"
+import React, { useMemo } from "react"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"
-import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
+import DataTable, { TableColumn } from "react-data-table-component"
 import { BrandSimpleDto } from "../../../api-gen"
 import { useAtom, useAtomValue } from "jotai"
 import {
@@ -10,6 +10,7 @@ import {
    brandGridParametersAtom,
    selectedBrandAtom,
 } from "../../../store/brand.atoms.ts"
+import { useDataGrid } from "../../../hooks/useDataGrid.hook.tsx"
 
 export const DataGridBrandComponent = () => {
    const [brandGridParameters, setBrandGridParameters] = useAtom(
@@ -54,7 +55,14 @@ export const DataGridBrandComponent = () => {
       ],
       [brandGridColumnsVisible],
    )
-   const handleRowsPerPageChange = useCallback(
+
+   const {
+      handlePageChange,
+      handleRowsPerPageChange,
+      handleOnRowClicked,
+      handleOnSort,
+   } = useDataGrid(setBrandGridParameters, setSelectedBrand)
+   /*   const handleRowsPerPageChange = useCallback(
       (currentRowsPerPage: number, currentPage: number) => {
          setBrandGridParameters((prev) => {
             return {
@@ -99,7 +107,7 @@ export const DataGridBrandComponent = () => {
          })
       },
       [setBrandGridParameters],
-   )
+   )*/
 
    const conditionalRowStyles = [
       {
