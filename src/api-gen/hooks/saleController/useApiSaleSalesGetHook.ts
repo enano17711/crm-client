@@ -1,13 +1,10 @@
-import {
-   useQuery,
+import type {
    QueryKey,
    UseQueryResult,
    UseQueryOptions,
    QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
 } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import client from "../../../client"
 import type {
    ApiSaleSalesGetQueryResponse,
@@ -35,7 +32,7 @@ export function apiSaleSalesGetQueryOptions<
             params,
 
             ...options,
-         })
+         }).then((res) => res.data)
       },
    }
 }

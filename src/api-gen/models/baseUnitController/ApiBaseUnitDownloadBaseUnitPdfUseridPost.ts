@@ -1,8 +1,7 @@
 import type { ResTfulResultIActionResult } from "../ResTfulResultIActionResult"
 
-export type ApiBrandDownloadBrandPdfUseridPostPathParams = {
+export type ApiBaseUnitDownloadBaseUnitPdfUseridPostPathParams = {
    /**
-    * @description The ID of the user.
     * @type integer int64
     */
    userid: number
@@ -11,5 +10,5 @@ export type ApiBrandDownloadBrandPdfUseridPostPathParams = {
 /**
  * @description Success
  */
-export type ApiBrandDownloadBrandPdfUseridPostMutationResponse =
+export type ApiBaseUnitDownloadBaseUnitPdfUseridPostMutationResponse =
    ResTfulResultIActionResult

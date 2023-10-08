@@ -1,5 +1,6 @@
 import type { UpdateBaseUnitDto } from "../UpdateBaseUnitDto"
-import type { ResTfulResultBaseUnitDto } from "../ResTfulResultBaseUnitDto"
+
+export type ApiBaseUnitBaseUnitIdPutMutationResponse = any | null
 
 export type ApiBaseUnitBaseUnitIdPutPathParams = {
    /**
@@ -9,8 +10,3 @@ export type ApiBaseUnitBaseUnitIdPutPathParams = {
 }
 
 export type ApiBaseUnitBaseUnitIdPutMutationRequest = UpdateBaseUnitDto
-
-/**
- * @description Success
- */
-export type ApiBaseUnitBaseUnitIdPutMutationResponse = ResTfulResultBaseUnitDto

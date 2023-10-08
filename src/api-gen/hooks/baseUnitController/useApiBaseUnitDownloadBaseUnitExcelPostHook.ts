@@ -5,20 +5,16 @@ import type {
 import { useMutation } from "@tanstack/react-query"
 import client from "../../../client"
 import type { ResponseConfig } from "../../../client"
-import type {
-   ApiRbacGiveUserRolePostMutationResponse,
-   ApiRbacGiveUserRolePostQueryParams,
-} from "../../models/rbacController/ApiRbacGiveUserRolePost"
+import type { ApiBaseUnitDownloadBaseUnitExcelPostMutationResponse } from "../../models/baseUnitController/ApiBaseUnitDownloadBaseUnitExcelPost"
 
 /**
- * @link /api/rbac/give-user-role
+ * @link /api/base-unit/download-base-unit-excel
  */
 
-export function useApiRbacGiveUserRolePostHook<
-   TData = ApiRbacGiveUserRolePostMutationResponse,
+export function useApiBaseUnitDownloadBaseUnitExcelPostHook<
+   TData = ApiBaseUnitDownloadBaseUnitExcelPostMutationResponse,
    TError = unknown,
 >(
-   params?: ApiRbacGiveUserRolePostQueryParams,
    options: {
       mutation?: UseMutationOptions<ResponseConfig<TData>, TError, void>
       client?: Partial<Parameters<typeof client<TData, TError, void>>[0]>
@@ -31,9 +27,7 @@ export function useApiRbacGiveUserRolePostHook<
       mutationFn: () => {
          return client<TData, TError, void>({
             method: "post",
-            url: `/api/rbac/give-user-role`,
-
-            params,
+            url: `/api/base-unit/download-base-unit-excel`,
 
             ...clientOptions,
          })

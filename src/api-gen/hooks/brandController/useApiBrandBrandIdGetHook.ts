@@ -1,13 +1,10 @@
-import {
-   useQuery,
+import type {
    QueryKey,
    UseQueryResult,
    UseQueryOptions,
    QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
 } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import client from "../../../client"
 import type {
    ApiBrandBrandIdGetQueryResponse,
@@ -35,12 +32,13 @@ export function apiBrandBrandIdGetQueryOptions<
             url: `/api/brand/brand/${id}`,
 
             ...options,
-         })
+         }).then((res) => res.data)
       },
    }
 }
 
 /**
+ * @summary Retrieves a brand by its ID.
  * @link /api/brand/brand/:id
  */
 

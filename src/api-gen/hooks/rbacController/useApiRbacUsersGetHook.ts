@@ -1,13 +1,10 @@
-import {
-   useQuery,
+import type {
    QueryKey,
    UseQueryResult,
    UseQueryOptions,
    QueryOptions,
-   UseInfiniteQueryOptions,
-   UseInfiniteQueryResult,
-   useInfiniteQuery,
 } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import client from "../../../client"
 import type { ApiRbacUsersGetQueryResponse } from "../../models/rbacController/ApiRbacUsersGet"
 
@@ -29,7 +26,7 @@ export function apiRbacUsersGetQueryOptions<
             url: `/api/rbac/users`,
 
             ...options,
-         })
+         }).then((res) => res.data)
       },
    }
 }

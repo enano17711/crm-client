@@ -1,11 +1,11 @@
-import type { BaseUnitDto } from "./BaseUnitDto"
+import type { BaseUnitSimpleDto } from "./BaseUnitSimpleDto"
 
-export type ResTfulResultBaseUnitDto = {
+export type ResTfulResultBaseUnitSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: BaseUnitDto
+   data?: BaseUnitSimpleDto
    /**
     * @type boolean | undefined
     */

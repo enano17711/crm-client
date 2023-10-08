@@ -1,11 +1,11 @@
-import type { PaginatedResultBaseUnitDto } from "./PaginatedResultBaseUnitDto"
+import type { PaginatedResponseBaseUnitSimpleDto } from "./PaginatedResponseBaseUnitSimpleDto"
 
-export type ResTfulResultPaginatedResultBaseUnitDto = {
+export type ResTfulResultPaginatedResponseBaseUnitSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: PaginatedResultBaseUnitDto
+   data?: PaginatedResponseBaseUnitSimpleDto
    /**
     * @type boolean | undefined
     */
