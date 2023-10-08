@@ -11,7 +11,7 @@ import ActionCreateComponent from "../../../components/top-bar/ActionCreate.comp
 import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
-import SearchBaseUnitByColumnComponent from "../../baseUnits/components/SearchBaseUnitByColumn.component.tsx"
+import SearchBaseUnitByColumnComponent from "./SearchBaseUnitByColumn.component.tsx"
 import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
 import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
@@ -60,6 +60,7 @@ const BaseUnitTopBarComponent = () => {
                >
                   <Group mt="xs" px="xs" pb="xs">
                      <Checkbox value="name" label="Nombre" />
+                     <Checkbox value="code" label="Código" />
                      <Checkbox value="description" label="Descripcion" />
                   </Group>
                </Checkbox.Group>
