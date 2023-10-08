@@ -2893,135 +2893,11 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-  /api/brand/brands-for-grid:
-    get:
-      tags:
-        - brand
-      operationId: api-brand-brands-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/brand/brands:
     get:
       tags:
         - brand
+      summary: Retrieves paginated brands based on the provided parameters.
       operationId: api-brand-brands-Get
       parameters:
         - name: OrderBy
@@ -3067,10 +2943,12 @@ paths:
     post:
       tags:
         - brand
+      summary: Downloads a PDF file containing brands.
       operationId: api-brand-download-brand-pdf-userid-Post
       parameters:
         - name: userid
           in: path
+          description: The ID of the user.
           required: true
           schema:
             type: integer
@@ -3092,6 +2970,7 @@ paths:
     post:
       tags:
         - brand
+      summary: Downloads an Excel file containing brands.
       operationId: api-brand-download-brand-excel-Post
       responses:
         '200':
@@ -3110,8 +2989,10 @@ paths:
     post:
       tags:
         - brand
+      summary: Creates a new brand.
       operationId: api-brand-brand-Post
       requestBody:
+        description: The brand to be created.
         content:
           application/json:
             schema:
@@ -3132,15 +3013,18 @@ paths:
     put:
       tags:
         - brand
+      summary: Updates an existing brand.
       operationId: api-brand-brand-id-Put
       parameters:
         - name: id
           in: path
+          description: The ID of the brand to be updated.
           required: true
           schema:
             type: integer
             format: int64
       requestBody:
+        description: The updated brand data.
         content:
           application/json:
             schema:
@@ -3160,10 +3044,12 @@ paths:
     delete:
       tags:
         - brand
+      summary: Deletes a brand.
       operationId: api-brand-brand-id-Delete
       parameters:
         - name: id
           in: path
+          description: The ID of the brand to be deleted.
           required: true
           schema:
             type: integer
@@ -3174,10 +3060,12 @@ paths:
     get:
       tags:
         - brand
+      summary: Retrieves a brand by its ID.
       operationId: api-brand-brand-id-Get
       parameters:
         - name: id
           in: path
+          description: The ID of the brand to be retrieved.
           required: true
           schema:
             type: integer
@@ -3195,137 +3083,20 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_BrandSimpleDto'
-  /api/base-unit/base-units-for-grid:
-    get:
-      tags:
-        - base-unit
-      operationId: api-base-unit-base-units-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/base-unit/base-units:
     get:
       tags:
         - base-unit
       operationId: api-base-unit-base-units-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -3344,27 +3115,19 @@ paths:
           in: query
           schema:
             type: string
-        - name: OrderBy
-          in: query
-          schema:
-            type: string
-        - name: OrderDirection
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_BaseUnitSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_BaseUnitSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_BaseUnitSimpleDto'
   /api/base-unit/base-unit/{id}:
     put:
       tags:
@@ -3394,16 +3157,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
     delete:
       tags:
         - base-unit
@@ -3418,16 +3171,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
     get:
       tags:
         - base-unit
@@ -3445,13 +3188,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_BaseUnitSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_BaseUnitSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_BaseUnitSimpleDto'
   /api/base-unit/base-unit:
     post:
       tags:
@@ -3474,16 +3217,49 @@ paths:
       responses:
         '200':
           description: Success
+  /api/base-unit/download-base-unit-excel:
+    post:
+      tags:
+        - base-unit
+      operationId: api-base-unit-download-base-unit-excel-Post
+      responses:
+        '200':
+          description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_BaseUnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/base-unit/download-base-unit-pdf/{userid}:
+    post:
+      tags:
+        - base-unit
+      operationId: api-base-unit-download-base-unit-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/adjustments/adjustments-for-grid:
     get:
       tags:
@@ -3863,6 +3639,22 @@ components:
           nullable: true
       additionalProperties: false
     BaseUnitDto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        baseUnitId:
+          type: integer
+          format: int64
+        code:
+          type: string
+          nullable: true
+      additionalProperties: false
+    BaseUnitSimpleDto:
       type: object
       properties:
         name:
@@ -6482,6 +6274,27 @@ components:
             $ref: '#/components/schemas/ItemOrderReturnDto'
           nullable: true
       additionalProperties: false
+    PaginatedResponse_BaseUnitSimpleDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BaseUnitSimpleDto'
+          nullable: true
+      additionalProperties: false
     PaginatedResponse_BrandSimpleDto:
       type: object
       properties:
@@ -6531,17 +6344,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AdjustmentDto'
-          nullable: true
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-      additionalProperties: false
-    PaginatedResult_BaseUnitDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BaseUnitDto'
           nullable: true
         metaData:
           $ref: '#/components/schemas/MetaData'
@@ -6655,7 +6457,7 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_BaseUnitDto:
+    RESTfulResult_BaseUnitSimpleDto:
       type: object
       properties:
         statusCode:
@@ -6663,7 +6465,7 @@ components:
           format: int32
           nullable: true
         data:
-          $ref: '#/components/schemas/BaseUnitDto'
+          $ref: '#/components/schemas/BaseUnitSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -7001,6 +6803,27 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    RESTfulResult_PaginatedResponse_BaseUnitSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_BaseUnitSimpleDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
     RESTfulResult_PaginatedResponse_BrandSimpleDto:
       type: object
       properties:
@@ -7052,27 +6875,6 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/PaginatedResult_AdjustmentDto'
-        succeeded:
-          type: boolean
-        errors:
-          additionalProperties: false
-          nullable: true
-        extras:
-          additionalProperties: false
-          nullable: true
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
-    RESTfulResult_PaginatedResult_BaseUnitDto:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          nullable: true
-        data:
-          $ref: '#/components/schemas/PaginatedResult_BaseUnitDto'
         succeeded:
           type: boolean
         errors:
@@ -8258,6 +8060,7 @@ tags:
   - name: adjustments
   - name: base-unit
   - name: brand
+    description: Represents a Brand Application Service in the CRM API.
   - name: category-item
   - name: customer
   - name: init-system
