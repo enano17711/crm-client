@@ -26,7 +26,7 @@ const BaseUnitTopBarComponent = () => {
 
    const onActionCreateBaseUnit = useCallback(() => {
       setSelectedBaseUnit({})
-      navigate("/baseUnits/create")
+      navigate("/base-units/create")
    }, [navigate, setSelectedBaseUnit])
 
    return (
@@ -35,10 +35,10 @@ const BaseUnitTopBarComponent = () => {
             <ActionCreateComponent createFunction={onActionCreateBaseUnit} />
             <ActionCloneComponent
                disabled={!(selectedBaseUnit?.name !== undefined)}
-               cloneUrl={"/baseUnits/create"}
+               cloneUrl={"/base-units/create"}
             />
             <ActionEditComponent
-               editUrl={"/baseUnits/update/" + selectedBaseUnit?.baseUnitId}
+               editUrl={"/base-units/update/" + selectedBaseUnit?.baseUnitId}
                disabled={!(selectedBaseUnit?.name !== undefined)}
             />
             <ActionDeleteComponent
@@ -66,7 +66,7 @@ const BaseUnitTopBarComponent = () => {
                </Checkbox.Group>
             </ActionColumnsGridComponent>
          </Group>
-         <ActionRefreshDataComponent queryKey={["/api/baseUnit/baseUnits"]} />
+         <ActionRefreshDataComponent queryKey={["/api/base-unit/base-units"]} />
       </Group>
    )
 }

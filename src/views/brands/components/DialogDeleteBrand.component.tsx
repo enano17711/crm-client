@@ -42,7 +42,7 @@ const DialogDeleteBrandComponent = () => {
          closeOnClickOutside={false}
       >
          <Stack>
-            <Text>Se eliminará la marca: NOMBRE - {selectedBrand?.name}</Text>
+            <Text>Se eliminará la marca: {selectedBrand?.name}</Text>
 
             <Group position="right">
                <Button

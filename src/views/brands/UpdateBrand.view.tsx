@@ -53,7 +53,7 @@ const UpdateBrandView = () => {
       Number(params.brandId),
       {
          mutation: {
-            onSuccess: async (variables) => {
+            onSuccess: async (_, variables) => {
                if (saveType === "create_new") {
                   setSelectedBrand({})
                   navigate("/brands/create")
