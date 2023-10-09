@@ -44,6 +44,15 @@ const DataGridBaseUnitComponent = () => {
             sortField: "Name",
          },
          {
+            id: "code",
+            name: "Codigo",
+            selector: (row) => row.code,
+            sortable: true,
+            wrap: true,
+            omit: baseUnitGridColumnsVisible.includes("code"),
+            sortField: "Code",
+         },
+         {
             id: "description",
             name: "Descripcion",
             selector: (row) => row.description,

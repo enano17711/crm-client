@@ -47,9 +47,9 @@ const BaseUnitTopBarComponent = () => {
             />
             <SearchBaseUnitByColumnComponent />
             <ActionExportComponent
-               pdfUrl={"baseUnit/download-baseUnit-pdf"}
+               pdfUrl={"base-unit/download-base-unit-pdf"}
                pdfName="baseUnits.pdf"
-               excelUrl={"baseUnit/download-baseUnit-excel"}
+               excelUrl={"base-unit/download-base-unit-excel"}
                excelName="baseUnits.xlsx"
             />
             <ActionColumnsGridComponent>
