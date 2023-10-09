@@ -5,6 +5,7 @@ import { selectedBaseUnitAtom } from "../../store/baseUnit.atoms.ts"
 import { Can } from "../../access-control.ts"
 import BaseUnitTopBarComponent from "./components/BaseUnitTopBar.component.tsx"
 import DataGridBaseUnitComponent from "./components/DataGridBaseUnit.component.tsx"
+import DialogDeleteBaseUnitComponent from "./components/DialogDeleteBaseUnit.component.tsx"
 
 const routes = [
    { path: "/", title: "Inicio" },
@@ -22,6 +23,7 @@ const BaseUnitsView = () => {
          <BaseUnitTopBarComponent />
          <Space h="sm" />
          <DataGridBaseUnitComponent />
+         <DialogDeleteBaseUnitComponent />
       </Can>
    )
 }
