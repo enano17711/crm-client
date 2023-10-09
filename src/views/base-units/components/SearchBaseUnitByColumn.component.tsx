@@ -25,7 +25,7 @@ const SearchBaseUnitByColumnComponent = () => {
       (event: React.ChangeEvent<HTMLInputElement>) => {
          const textToSearch = event.currentTarget.value.trim()
          if (textToSearch !== null && textToSearch !== undefined) {
-            if (textToSearch !== "" && textToSearch.length > 2) {
+            if (textToSearch !== "" && textToSearch.length >= 2) {
                setBaseUnitGridParameters((prev) => {
                   return {
                      ...prev,
