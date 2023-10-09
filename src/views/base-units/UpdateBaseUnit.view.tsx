@@ -118,13 +118,14 @@ const UpdateBaseUnitView = () => {
          <CreateUpdateTopBarComponent
             backRoute={"/base-units"}
             reloadEnabled={true}
+            formKey={"update-baseUnit-form"}
             setSaveType={setSaveType}
             refreshMethod={refreshData}
          >
             <Title order={4}>Editar: {baseUnitData?.data?.name}</Title>
          </CreateUpdateTopBarComponent>
          <Space h="sm" />
-         <form id="create-baseUnit-form" onSubmit={handleSubmit(onSubmit)}>
+         <form id="update-baseUnit-form" onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing="sm">
                <Controller
                   name="name"
@@ -154,7 +155,7 @@ const UpdateBaseUnitView = () => {
                         placeholder="Ml"
                         withAsterisk
                         error={
-                           errors.name?.type === "required" &&
+                           errors.code?.type === "required" &&
                            "Este campo es requerido"
                         }
                      />

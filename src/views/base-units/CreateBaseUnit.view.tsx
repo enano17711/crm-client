@@ -87,6 +87,7 @@ const CreateBaseUnitView = () => {
          <CreateUpdateTopBarComponent
             backRoute={"/base-units"}
             reloadEnabled={false}
+            formKey={"create-baseUnit-form"}
             setSaveType={setSaveType}
          >
             <Title order={3}>Crear Unidad Base</Title>

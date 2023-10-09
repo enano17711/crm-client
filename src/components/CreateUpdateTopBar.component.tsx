@@ -18,6 +18,7 @@ interface BasicCreateTopBarComponentProps {
    >
    children?: React.ReactNode
    refreshMethod?: () => void
+   formKey: string
 }
 
 const CreateUpdateTopBarComponent = ({
@@ -26,6 +27,7 @@ const CreateUpdateTopBarComponent = ({
    setSaveType,
    children,
    refreshMethod,
+   formKey,
 }: BasicCreateTopBarComponentProps) => {
    return (
       <Group position="apart">
@@ -68,7 +70,7 @@ const CreateUpdateTopBarComponent = ({
                color="orange"
                leftIcon={<IconSquareRoundedPlus />}
                type="submit"
-               form="create-brand-form"
+               form={formKey}
                onClick={() => setSaveType("create_new")}
             >
                Guardar y nuevo
@@ -78,7 +80,7 @@ const CreateUpdateTopBarComponent = ({
                color="indigo"
                leftIcon={<IconBoxModel />}
                type="submit"
-               form="create-brand-form"
+               form={formKey}
                onClick={() => setSaveType("create_clone")}
             >
                Guardar y clonar
@@ -88,7 +90,7 @@ const CreateUpdateTopBarComponent = ({
                color="red"
                leftIcon={<IconSquareRoundedX />}
                type="submit"
-               form="create-brand-form"
+               form={formKey}
                onClick={() => setSaveType("create_close")}
             >
                Guardar y cerrar

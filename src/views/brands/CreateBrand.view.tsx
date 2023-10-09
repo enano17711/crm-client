@@ -80,6 +80,7 @@ const CreateBrandView = () => {
          <CreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={false}
+            formKey={"create-brand-form"}
             setSaveType={setSaveType}
          >
             <Title order={3}>Crear Marca</Title>

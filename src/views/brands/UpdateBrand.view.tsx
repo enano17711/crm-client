@@ -110,13 +110,14 @@ const UpdateBrandView = () => {
          <CreateUpdateTopBarComponent
             backRoute={"/brands"}
             reloadEnabled={true}
+            formKey={"update-brand-form"}
             setSaveType={setSaveType}
             refreshMethod={refreshData}
          >
             <Title order={4}>Editar: {brandData?.data?.name}</Title>
          </CreateUpdateTopBarComponent>
          <Space h="sm" />
-         <form id="create-brand-form" onSubmit={handleSubmit(onSubmit)}>
+         <form id="update-brand-form" onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing="sm">
                <Controller
                   name="name"
