@@ -25,6 +25,8 @@ import CreateBrandView from "./views/brands/CreateBrand.view.tsx"
 import UpdateBrandView from "./views/brands/UpdateBrand.view.tsx"
 import { useAtomValue } from "jotai"
 import { securitiesAtom } from "./store/rbac.atoms.ts"
+import CreateBaseUnitView from "./views/base-units/CreateBaseUnit.view.tsx"
+import UpdateBaseUnitView from "./views/base-units/UpdateBaseUnit.view.tsx"
 
 const RoutesComponent = () => {
    const securitiesData = useAtomValue(securitiesAtom)
@@ -49,6 +51,22 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <BaseUnitsView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/base-units/create"
+                  element={
+                     <ProtectedRouteComponent>
+                        <CreateBaseUnitView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/base-units/update/:baseUnitId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateBaseUnitView />
                      </ProtectedRouteComponent>
                   }
                />

@@ -45,7 +45,7 @@ const DataGridBaseUnitComponent = () => {
          },
          {
             id: "code",
-            name: "Codigo",
+            name: "Código",
             selector: (row) => row.code,
             sortable: true,
             wrap: true,
@@ -54,12 +54,10 @@ const DataGridBaseUnitComponent = () => {
          },
          {
             id: "description",
-            name: "Descripcion",
+            name: "Descripción",
             selector: (row) => row.description,
-            sortable: true,
             wrap: true,
             omit: baseUnitGridColumnsVisible.includes("description"),
-            sortField: "Description",
          },
       ],
       [baseUnitGridColumnsVisible],
@@ -121,6 +119,7 @@ const DataGridBaseUnitComponent = () => {
       },
    ]
 
+   // TODO: Expand rows with unit pending
    return (
       <>
          <Box>
