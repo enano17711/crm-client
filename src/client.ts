@@ -1,11 +1,22 @@
-import type { AxiosError, AxiosHeaders, AxiosRequestConfig } from "axios"
+import type {
+   AxiosError,
+   AxiosHeaders,
+   AxiosRequestConfig,
+   AxiosResponse,
+} from "axios"
 import axios from "axios"
 
-export type RequestConfig<TVariables = unknown> = {
+declare const AXIOS_BASE: string
+declare const AXIOS_HEADERS: string
+
+/**
+ * Subset of AxiosRequestConfig
+ */
+export type RequestConfig<TData = unknown> = {
+   url?: string
    method: "get" | "put" | "patch" | "post" | "delete"
-   url: string
    params?: unknown
-   data?: TVariables
+   data?: TData
    responseType?:
       | "arraybuffer"
       | "blob"
@@ -17,14 +28,16 @@ export type RequestConfig<TVariables = unknown> = {
    headers?: AxiosRequestConfig["headers"]
 }
 
-/*export const axiosInstance = axios.create({
-   baseURL: process.env["AXIOS_BASE"]
-      ? process.env["AXIOS_BASE"]
-      : "https://localhost:5001",
-   headers: process.env["AXIOS_HEADERS"]
-      ? (JSON.parse(process.env["AXIOS_HEADERS"]) as AxiosHeaders)
-      : ({} as AxiosHeaders),
-})*/
+/**
+ * Subset of AxiosResponse
+ */
+export type ResponseConfig<TData = unknown> = {
+   data: TData
+   status: number
+   statusText: string
+   headers?: AxiosResponse["headers"]
+}
+
 export const axiosInstance = axios.create({
    baseURL: "https://localhost:5001",
    headers: {} as AxiosHeaders,
@@ -156,10 +169,9 @@ export const axiosClient = async <
    TVariables = unknown,
 >(
    config: RequestConfig<TVariables>,
-): Promise<TData> => {
+): Promise<ResponseConfig<TData>> => {
    const promise = axiosInstance
-      .request<TData>({ ...config })
-      .then(({ data }) => data)
+      .request<TData, ResponseConfig<TData>>({ ...config })
       .catch((e: AxiosError<TError>) => {
          throw e
       })

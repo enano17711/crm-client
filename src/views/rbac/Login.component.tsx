@@ -44,10 +44,10 @@ const LoginComponent = () => {
    } = useApiRbacLoginPostHook({
       mutation: {
          onSuccess: async (data, variables, context) => {
-            setUserDataSession(data.data)
-            setAccessToken(data.data.accessToken)
-            setRefreshToken(data.data.refreshToken)
-            setSecuritiesData(data.data.securities)
+            setUserDataSession(data.data.data)
+            setAccessToken(data.data.data.accessToken)
+            setRefreshToken(data.data.data.refreshToken)
+            setSecuritiesData(data.data.data.securities)
             navigate("/")
          },
          onError: (error, variables, context) => {

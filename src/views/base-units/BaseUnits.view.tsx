@@ -2,10 +2,10 @@ import CustomBreadcrumbsComponent from "../../components/CustomBreadcrumbs.compo
 import React, { useEffect } from "react"
 import { Button, Group, Space } from "@mantine/core"
 import { IconPlus } from "@tabler/icons-react"
-import { ModalCreateBaseUnitComponent } from "./components/ModalCreateBaseUnit.component.tsx"
+/*import { ModalCreateBaseUnitComponent } from "./components/ModalCreateBaseUnit.component.tsx"*/
 import { useAppStore } from "../../store"
-import DialogDeleteBaseUnitComponent from "./components/DialogDeleteBaseUnit.component.tsx"
-import { DataGridBaseUnitComponent } from "./components/DataGridBaseUnit.component.tsx"
+/*import DialogDeleteBaseUnitComponent from "./components/DialogDeleteBaseUnit.component.tsx"*/
+/*import { DataGridBaseUnitComponent } from "./components/DataGridBaseUnit.component.tsx"*/
 
 const routes = [
    { path: "/", title: "Inicio" },
@@ -34,9 +34,9 @@ const BaseUnitsView = () => {
             </Button>
          </Group>
          <Space h="sm" />
-         <DataGridBaseUnitComponent dataSource={baseUnits} />
+         {/*         <DataGridBaseUnitComponent dataSource={baseUnits} />
          <ModalCreateBaseUnitComponent />
-         <DialogDeleteBaseUnitComponent />
+         <DialogDeleteBaseUnitComponent />*/}
       </>
    )
 }
