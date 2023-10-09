@@ -1,22 +1,9 @@
-import { useDisclosure } from "@mantine/hooks"
-import { useEffect } from "react"
 import { LoadingOverlay } from "@mantine/core"
+import { useIsFetching } from "@tanstack/react-query"
 
-type LoadingProps = {
-   loading?: boolean
-}
-const LoadingComponent = ({ loading }: LoadingProps) => {
-   const [visible, { open, close }] = useDisclosure(false)
-
-   useEffect(() => {
-      if (loading) {
-         open()
-      } else {
-         close()
-      }
-   }, [loading])
-
-   return <LoadingOverlay visible={visible} />
+const LoadingComponent = () => {
+   const isFetching = useIsFetching()
+   return <LoadingOverlay visible={isFetching > 0} />
 }
 
 export default LoadingComponent

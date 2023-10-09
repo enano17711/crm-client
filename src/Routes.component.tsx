@@ -1,6 +1,5 @@
 import React from "react"
 import MainLayout from "./layouts/MainLayout.tsx"
-import LoadingComponent from "./components/Loading.component.tsx"
 import { Route, Routes } from "react-router-dom"
 import LoginComponent from "./views/rbac/Login.component.tsx"
 import ProtectedRouteComponent from "./components/ProtectedRoute.component.tsx"
@@ -35,7 +34,7 @@ const RoutesComponent = () => {
    return (
       <AbilityContext.Provider value={ability}>
          <MainLayout>
-            <LoadingComponent />
+            {/*<LoadingComponent />*/}
             <Routes>
                <Route path="/login" element={<LoginComponent />} />
                <Route
