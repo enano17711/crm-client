@@ -38,6 +38,7 @@ export function apiUnitUnitIdGetQueryOptions<
 }
 
 /**
+ * @summary Retrieves a unit with the specified ID.
  * @link /api/unit/unit/:id
  */
 

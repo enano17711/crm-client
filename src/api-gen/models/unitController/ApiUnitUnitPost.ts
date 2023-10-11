@@ -1,9 +1,8 @@
 import type { CreateUnitDto } from "../CreateUnitDto"
-import type { ResTfulResultUnitDto } from "../ResTfulResultUnitDto"
 
-export type ApiUnitUnitPostMutationRequest = CreateUnitDto
+export type ApiUnitUnitPostMutationResponse = any | null
 
 /**
- * @description Success
+ * @description The DTO containing the unit information.
  */
-export type ApiUnitUnitPostMutationResponse = ResTfulResultUnitDto
+export type ApiUnitUnitPostMutationRequest = CreateUnitDto

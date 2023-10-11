@@ -38,6 +38,7 @@ export function apiUnitUnitsGetQueryOptions<
 }
 
 /**
+ * @summary Retrieves a paginated list of units based on the provided parameters.
  * @link /api/unit/units
  */
 

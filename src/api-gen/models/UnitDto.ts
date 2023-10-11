@@ -1,4 +1,4 @@
-import type { BaseUnitDto } from "./BaseUnitDto"
+import type { BaseUnitSimpleDto } from "./BaseUnitSimpleDto"
 
 export type UnitDto = {
    /**
@@ -25,5 +25,5 @@ export type UnitDto = {
     * @type number | undefined double
     */
    value?: number
-   baseUnit?: BaseUnitDto
+   baseUnit?: BaseUnitSimpleDto
 }

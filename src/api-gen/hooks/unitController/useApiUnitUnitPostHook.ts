@@ -11,6 +11,7 @@ import type {
 } from "../../models/unitController/ApiUnitUnitPost"
 
 /**
+ * @summary Creates a new unit using the provided DTO.
  * @link /api/unit/unit
  */
 

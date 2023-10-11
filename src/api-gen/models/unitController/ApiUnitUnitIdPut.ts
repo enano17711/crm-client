@@ -1,16 +1,16 @@
 import type { UpdateUnitDto } from "../UpdateUnitDto"
-import type { ResTfulResultUnitDto } from "../ResTfulResultUnitDto"
+
+export type ApiUnitUnitIdPutMutationResponse = any | null
 
 export type ApiUnitUnitIdPutPathParams = {
    /**
+    * @description The ID of the unit to update.
     * @type integer int64
     */
    id: number
 }
 
-export type ApiUnitUnitIdPutMutationRequest = UpdateUnitDto
-
 /**
- * @description Success
+ * @description The DTO containing the updated unit information.
  */
-export type ApiUnitUnitIdPutMutationResponse = ResTfulResultUnitDto
+export type ApiUnitUnitIdPutMutationRequest = UpdateUnitDto

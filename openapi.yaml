@@ -20,137 +20,21 @@ paths:
       responses:
         '200':
           description: Success
-  /api/unit/units-for-grid:
-    get:
-      tags:
-        - unit
-      operationId: api-unit-units-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/unit/units:
     get:
       tags:
         - unit
+      summary: Retrieves a paginated list of units based on the provided parameters.
       operationId: api-unit-units-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -169,40 +53,35 @@ paths:
           in: query
           schema:
             type: string
-        - name: OrderBy
-          in: query
-          schema:
-            type: string
-        - name: OrderDirection
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_UnitDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_UnitDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_UnitDto'
   /api/unit/unit/{id}:
     put:
       tags:
         - unit
+      summary: Updates a unit with the specified ID using the provided DTO.
       operationId: api-unit-unit-id-Put
       parameters:
         - name: id
           in: path
+          description: The ID of the unit to update.
           required: true
           schema:
             type: integer
             format: int64
       requestBody:
+        description: The DTO containing the updated unit information.
         content:
           application/json:
             schema:
@@ -219,23 +98,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
     delete:
       tags:
         - unit
+      summary: Deletes a unit with the specified ID.
       operationId: api-unit-unit-id-Delete
       parameters:
         - name: id
           in: path
+          description: The ID of the unit to delete.
           required: true
           schema:
             type: integer
@@ -243,23 +114,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
     get:
       tags:
         - unit
+      summary: Retrieves a unit with the specified ID.
       operationId: api-unit-unit-id-Get
       parameters:
         - name: id
           in: path
+          description: The ID of the unit to retrieve.
           required: true
           schema:
             type: integer
@@ -281,8 +144,10 @@ paths:
     post:
       tags:
         - unit
+      summary: Creates a new unit using the provided DTO.
       operationId: api-unit-unit-Post
       requestBody:
+        description: The DTO containing the unit information.
         content:
           application/json:
             schema:
@@ -299,16 +164,52 @@ paths:
       responses:
         '200':
           description: Success
+  /api/unit/download-unit-pdf/{userid}:
+    post:
+      tags:
+        - unit
+      summary: Downloads a PDF file containing information about all units.
+      operationId: api-unit-download-unit-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          description: The ID of the user initiating the download.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_UnitDto'
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/unit/download-unit-excel:
+    post:
+      tags:
+        - unit
+      summary: Downloads an Excel file containing information about all units.
+      operationId: api-unit-download-unit-excel-Post
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/tax/taxs-for-grid:
     get:
       tags:
@@ -3638,22 +3539,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    BaseUnitDto:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        baseUnitId:
-          type: integer
-          format: int64
-        code:
-          type: string
-          nullable: true
-      additionalProperties: false
     BaseUnitSimpleDto:
       type: object
       properties:
@@ -6337,6 +6222,27 @@ components:
             $ref: '#/components/schemas/ItemSimpleDto'
           nullable: true
       additionalProperties: false
+    PaginatedResponse_UnitDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnitDto'
+          nullable: true
+      additionalProperties: false
     PaginatedResult_AdjustmentDto:
       type: object
       properties:
@@ -6421,17 +6327,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TaxDto'
-          nullable: true
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-      additionalProperties: false
-    PaginatedResult_UnitDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnitDto'
           nullable: true
         metaData:
           $ref: '#/components/schemas/MetaData'
@@ -6866,6 +6761,27 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    RESTfulResult_PaginatedResponse_UnitDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_UnitDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
     RESTfulResult_PaginatedResult_AdjustmentDto:
       type: object
       properties:
@@ -7022,27 +6938,6 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/PaginatedResult_TaxDto'
-        succeeded:
-          type: boolean
-        errors:
-          additionalProperties: false
-          nullable: true
-        extras:
-          additionalProperties: false
-          nullable: true
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
-    RESTfulResult_PaginatedResult_UnitDto:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          nullable: true
-        data:
-          $ref: '#/components/schemas/PaginatedResult_UnitDto'
         succeeded:
           type: boolean
         errors:
@@ -7696,7 +7591,7 @@ components:
           type: number
           format: double
         baseUnit:
-          $ref: '#/components/schemas/BaseUnitDto'
+          $ref: '#/components/schemas/BaseUnitSimpleDto'
       additionalProperties: false
     UnitSimpleDto:
       type: object
@@ -7719,6 +7614,10 @@ components:
         value:
           type: number
           format: double
+        baseUnitId:
+          type: integer
+          format: int64
+          nullable: true
       additionalProperties: false
     UpdateBaseUnitDto:
       required:
@@ -8074,3 +7973,4 @@ tags:
     description: 系统服务接口
   - name: tax
   - name: unit
+    description: Represents a service for managing units in the CRM application.

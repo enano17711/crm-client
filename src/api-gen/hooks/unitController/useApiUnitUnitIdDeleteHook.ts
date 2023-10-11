@@ -11,6 +11,7 @@ import type {
 } from "../../models/unitController/ApiUnitUnitIdDelete"
 
 /**
+ * @summary Deletes a unit with the specified ID.
  * @link /api/unit/unit/:id
  */
 
