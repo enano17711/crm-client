@@ -19,12 +19,15 @@ import {
    Title,
 } from "@mantine/core"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
+import TabsBaseUnitComponent from "./components/TabsBaseUnit.component.tsx"
 
 interface IFormInputs {
    name: string
    code: string
    description: string
 }
+
+// TODO: IMPLEMENT TABS
 
 const UpdateBaseUnitView = () => {
    const setSelectedBaseUnit = useSetAtom(selectedBaseUnitAtom)
@@ -177,6 +180,8 @@ const UpdateBaseUnitView = () => {
                />
             </Stack>
          </form>
+         <Space h="sm" />
+         <TabsBaseUnitComponent />
       </Box>
    )
 }
