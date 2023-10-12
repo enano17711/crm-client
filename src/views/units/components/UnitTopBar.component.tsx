@@ -60,8 +60,11 @@ const UnitTopBarComponent = () => {
                >
                   <Group mt="xs" px="xs" pb="xs">
                      <Checkbox value="name" label="Nombre" />
-                     <Checkbox value="description" label="Descripcion" />
                      <Checkbox value="code" label="Code" />
+                     <Checkbox value="baseUnit" label="U. Base" />
+                     <Checkbox value="operation" label="Operacion" />
+                     <Checkbox value="value" label="Valor" />
+                     <Checkbox value="description" label="Descripcion" />
                   </Group>
                </Checkbox.Group>
             </ActionColumnsGridComponent>
