@@ -1,27 +1,42 @@
-import React from "react"
-import { ActionIcon, Group, Tabs, Tooltip } from "@mantine/core"
-import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
-import { IconRefresh } from "@tabler/icons-react"
+import React, { useEffect } from "react"
+import { Space, Tabs } from "@mantine/core"
+import UnitTopBarComponent from "../../units/components/UnitTopBar.component.tsx"
+import { DataGridUnitComponent } from "../../units/components/DataGridUnit.component.tsx"
+import DialogDeleteUnitComponent from "../../units/components/DialogDeleteUnit.component.tsx"
+import { useAtomValue, useSetAtom } from "jotai"
+import {
+   selectedUnitAtom,
+   unitGridParametersAtom,
+} from "../../../store/unit.atoms.ts"
+import { selectedBaseUnitAtom } from "../../../store/baseUnit.atoms.ts"
 
 const TabUnitsFromBaseUnitComponent = () => {
+   const setSingleUnit = useSetAtom(selectedUnitAtom)
+   const singleBaseUnit = useAtomValue(selectedBaseUnitAtom)
+
+   const setUnitGridParameters = useSetAtom(unitGridParametersAtom)
+
+   useEffect(() => {
+      setSingleUnit({})
+      setUnitGridParameters((prev) => {
+         return {
+            ...prev,
+            pageIndex: 1,
+            searchColumn: "BaseUnitId",
+            searchText: singleBaseUnit.baseUnitId.toString(),
+            orderBy: "BaseUnitId",
+            orderDirection: "asc",
+         }
+      })
+   }, [])
+
    return (
       <Tabs.Panel value="first">
-         <Group>
-            <ActionRefreshDataComponent
-               queryKey={["/api/base-unit/base-units"]}
-            />
-            <Tooltip
-               label="Refrescar"
-               color="red"
-               position="bottom"
-               withArrow
-               arrowPosition="center"
-            >
-               <ActionIcon color="red" variant="light" size="lg">
-                  <IconRefresh />
-               </ActionIcon>
-            </Tooltip>
-         </Group>
+         <Space h="sm" />
+         <UnitTopBarComponent showSearchAction={false} />
+         <Space h="sm" />
+         <DataGridUnitComponent />
+         <DialogDeleteUnitComponent />
       </Tabs.Panel>
    )
 }

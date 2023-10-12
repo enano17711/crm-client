@@ -180,7 +180,7 @@ const UpdateBaseUnitView = () => {
                />
             </Stack>
          </form>
-         <Space h="sm" />
+         <Space h="lg" />
          <TabsBaseUnitComponent />
       </Box>
    )

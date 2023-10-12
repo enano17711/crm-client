@@ -16,7 +16,13 @@ import ActionExportComponent from "../../../components/top-bar/ActionExport.comp
 import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
 
-const UnitTopBarComponent = () => {
+interface UnitTopBarComponentProps {
+   showSearchAction: boolean
+}
+
+const UnitTopBarComponent = ({
+   showSearchAction = true,
+}: UnitTopBarComponentProps) => {
    const [gridColumnsVisible, setGridColumnsVisible] = useAtom(
       unitGridColumnsVisibleAtom,
    )
@@ -45,7 +51,7 @@ const UnitTopBarComponent = () => {
                deleteFunction={setOpenDeleteModal}
                disabled={!(selectedUnit?.name !== undefined)}
             />
-            <SearchUnitByColumnComponent />
+            {showSearchAction && <SearchUnitByColumnComponent />}
             <ActionExportComponent
                pdfUrl={"unit/download-unit-pdf"}
                pdfName="units.pdf"
