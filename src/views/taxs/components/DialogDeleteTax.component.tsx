@@ -1,35 +1,65 @@
+import { useAtom } from "jotai"
+import {
+   openTaxDeleteModalAtom,
+   selectedTaxAtom,
+} from "../../../store/tax.atoms.ts"
+import { useQueryClient } from "@tanstack/react-query"
+import { useApiTaxTaxIdDeleteHook } from "../../../api-gen/hooks/taxController"
+import { successNotification } from "../../../utils"
+import { Button, Group, Modal, Stack, Text } from "@mantine/core"
+import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
 import React from "react"
-import { Button, Modal, Stack, Text } from "@mantine/core"
-import { useAppStore } from "../../../store"
 
 const DialogDeleteTaxComponent = () => {
-   const { taxsStore } = useAppStore()
-   const { singleModel, openDeleteModal } = taxsStore.getters
-   const onModalClose = () => {
-      taxsStore.actions.disposeState()
-   }
-   const deleteHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-      taxsStore.actions.deleteTax(singleModel.taxId)
-      onModalClose()
-   }
+   const [selectedTax, setSelectedTax] = useAtom(selectedTaxAtom)
+   const [openDeleteModal, setOpenDeleteModal] = useAtom(openTaxDeleteModalAtom)
+   const queryClient = useQueryClient()
+
+   const { mutate: deleteTaxMutate } = useApiTaxTaxIdDeleteHook(
+      selectedTax?.taxId,
+      {
+         mutation: {
+            onSuccess: () => {
+               setSelectedTax({})
+               successNotification()
+               queryClient.invalidateQueries({
+                  queryKey: ["/api/tax/brands"],
+               })
+               setOpenDeleteModal(false)
+            },
+         },
+      },
+   )
 
    return (
       <Modal
          opened={openDeleteModal}
-         title="Eliminar Impuesto"
+         title="Eliminar Marca"
          centered
-         onClose={onModalClose}
+         onClose={() => setOpenDeleteModal(false)}
          closeOnClickOutside={false}
       >
          <Stack>
-            <Text>
-               Se eliminará el impuesto: NOMBRE - {singleModel?.name} - TASA -{" "}
-               {singleModel?.rate}
-            </Text>
+            <Text>Se eliminará el Impuesto: {selectedTax?.name}</Text>
 
-            <Button color="red" onClick={deleteHandler}>
-               Eliminar
-            </Button>
+            <Group position="right">
+               <Button
+                  color="red"
+                  onClick={() => deleteTaxMutate()}
+                  variant="light"
+                  leftIcon={<IconTrash />}
+               >
+                  Eliminar
+               </Button>
+               <Button
+                  color="grape"
+                  onClick={() => setOpenDeleteModal(false)}
+                  variant="light"
+                  leftIcon={<IconArrowLeft />}
+               >
+                  Cancelar
+               </Button>
+            </Group>
          </Stack>
       </Modal>
    )
