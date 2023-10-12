@@ -27,6 +27,7 @@ import { securitiesAtom } from "./store/rbac.atoms.ts"
 import CreateBaseUnitView from "./views/base-units/CreateBaseUnit.view.tsx"
 import UpdateBaseUnitView from "./views/base-units/UpdateBaseUnit.view.tsx"
 import CreateUnitView from "./views/units/CreateUnit.view.tsx"
+import UpdateUnitView from "./views/units/UpdateUnit.view.tsx"
 
 const RoutesComponent = () => {
    const securitiesData = useAtomValue(securitiesAtom)
@@ -83,6 +84,14 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <CreateUnitView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/units/update/:unitId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateUnitView />
                      </ProtectedRouteComponent>
                   }
                />
