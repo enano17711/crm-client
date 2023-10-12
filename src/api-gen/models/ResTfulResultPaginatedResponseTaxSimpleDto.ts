@@ -1,11 +1,11 @@
-import type { PaginatedResultTaxDto } from "./PaginatedResultTaxDto"
+import type { PaginatedResponseTaxSimpleDto } from "./PaginatedResponseTaxSimpleDto"
 
-export type ResTfulResultPaginatedResultTaxDto = {
+export type ResTfulResultPaginatedResponseTaxSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: PaginatedResultTaxDto
+   data?: PaginatedResponseTaxSimpleDto
    /**
     * @type boolean | undefined
     */

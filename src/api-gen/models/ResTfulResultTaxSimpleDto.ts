@@ -1,11 +1,11 @@
-import type { TaxDto } from "./TaxDto"
+import type { TaxSimpleDto } from "./TaxSimpleDto"
 
-export type ResTfulResultTaxDto = {
+export type ResTfulResultTaxSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: TaxDto
+   data?: TaxSimpleDto
    /**
     * @type boolean | undefined
     */

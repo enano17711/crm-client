@@ -1,4 +1,4 @@
-import type { ResTfulResultTaxDto } from "../ResTfulResultTaxDto"
+import type { ResTfulResultTaxSimpleDto } from "../ResTfulResultTaxSimpleDto"
 
 export type ApiTaxTaxIdGetPathParams = {
    /**
@@ -10,4 +10,4 @@ export type ApiTaxTaxIdGetPathParams = {
 /**
  * @description Success
  */
-export type ApiTaxTaxIdGetQueryResponse = ResTfulResultTaxDto
+export type ApiTaxTaxIdGetQueryResponse = ResTfulResultTaxSimpleDto

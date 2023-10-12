@@ -1,4 +1,4 @@
-import type { ResTfulResultTaxDto } from "../ResTfulResultTaxDto"
+export type ApiTaxTaxIdDeleteMutationResponse = any | null
 
 export type ApiTaxTaxIdDeletePathParams = {
    /**
@@ -6,8 +6,3 @@ export type ApiTaxTaxIdDeletePathParams = {
     */
    id: number
 }
-
-/**
- * @description Success
- */
-export type ApiTaxTaxIdDeleteMutationResponse = ResTfulResultTaxDto

@@ -1,5 +1,6 @@
 import type { UpdateTaxDto } from "../UpdateTaxDto"
-import type { ResTfulResultTaxDto } from "../ResTfulResultTaxDto"
+
+export type ApiTaxTaxIdPutMutationResponse = any | null
 
 export type ApiTaxTaxIdPutPathParams = {
    /**
@@ -9,8 +10,3 @@ export type ApiTaxTaxIdPutPathParams = {
 }
 
 export type ApiTaxTaxIdPutMutationRequest = UpdateTaxDto
-
-/**
- * @description Success
- */
-export type ApiTaxTaxIdPutMutationResponse = ResTfulResultTaxDto
