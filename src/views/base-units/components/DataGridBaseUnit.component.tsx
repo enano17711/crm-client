@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react"
-import { useAtom, useAtomValue } from "jotai/index"
+import { useAtom, useAtomValue } from "jotai"
 import {
    baseUnitGridColumnsVisibleAtom,
    baseUnitGridParametersAtom,

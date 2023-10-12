@@ -1,5 +1,5 @@
 import React from "react"
-import { useAtom } from "jotai/index"
+import { useAtom } from "jotai"
 import {
    openBaseUnitDeleteModalAtom,
    selectedBaseUnitAtom,

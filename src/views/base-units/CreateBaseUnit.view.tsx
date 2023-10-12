@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
-import { useAtom } from "jotai/index"
+import { useAtom } from "jotai"
 import { selectedBaseUnitAtom } from "../../store/baseUnit.atoms.ts"
 import { useNavigate } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useApiBaseUnitBaseUnitPostHook } from "../../api-gen/hooks/baseUnitController"
-import { CreateBaseUnitDto } from "../../api-services"
+import { CreateBaseUnitDto } from "../../api-gen"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import { Space, Stack, Textarea, TextInput, Title } from "@mantine/core"
 

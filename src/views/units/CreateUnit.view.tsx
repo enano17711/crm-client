@@ -9,7 +9,7 @@ import {
    Title,
 } from "@mantine/core"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { CreateUnitDto } from "../../api-services"
+import { CreateUnitDto } from "../../api-gen"
 import { useNavigate } from "react-router-dom"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import { useAtom } from "jotai"

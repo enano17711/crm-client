@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { UpdateBrandDto } from "../../api-services"
+import { UpdateBrandDto } from "../../api-gen"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import {
    Box,

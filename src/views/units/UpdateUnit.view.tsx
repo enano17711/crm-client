@@ -8,7 +8,7 @@ import {
    useApiUnitUnitIdPutHook,
 } from "../../api-gen/hooks/unitController"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { UpdateUnitDto } from "../../api-services"
+import { UpdateUnitDto } from "../../api-gen"
 import {
    Box,
    LoadingOverlay,

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Space } from "@mantine/core"
-import { useSetAtom } from "jotai/index"
+import { useSetAtom } from "jotai"
 import { selectedBaseUnitAtom } from "../../store/baseUnit.atoms.ts"
 import { Can } from "../../access-control.ts"
 import BaseUnitTopBarComponent from "./components/BaseUnitTopBar.component.tsx"

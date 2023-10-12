@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useSetAtom } from "jotai/index"
+import { useSetAtom } from "jotai"
 import { selectedBaseUnitAtom } from "../../store/baseUnit.atoms.ts"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
@@ -8,7 +8,7 @@ import {
    useApiBaseUnitBaseUnitIdPutHook,
 } from "../../api-gen/hooks/baseUnitController"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { UpdateBaseUnitDto } from "../../api-services"
+import { UpdateBaseUnitDto } from "../../api-gen"
 import {
    Box,
    LoadingOverlay,
@@ -26,8 +26,6 @@ interface IFormInputs {
    code: string
    description: string
 }
-
-// TODO: IMPLEMENT TABS
 
 const UpdateBaseUnitView = () => {
    const setSelectedBaseUnit = useSetAtom(selectedBaseUnitAtom)
