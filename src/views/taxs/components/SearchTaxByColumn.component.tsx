@@ -9,6 +9,10 @@ const columns = [
       label: "Name",
    },
    {
+      value: "Rate",
+      label: "Rate",
+   },
+   {
       value: "Description",
       label: "Description",
    },
@@ -21,7 +25,7 @@ const SearchTaxByColumnComponent = () => {
       (event: React.ChangeEvent<HTMLInputElement>) => {
          const textToSearch = event.currentTarget.value.trim()
          if (textToSearch !== null && textToSearch !== undefined) {
-            if (textToSearch !== "" && textToSearch.length > 2) {
+            if (textToSearch !== "" && textToSearch.length > 1) {
                setTaxGridParameters((prev) => {
                   return {
                      ...prev,

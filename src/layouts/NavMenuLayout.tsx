@@ -17,7 +17,7 @@ const NavMenuLayout = () => {
                location.pathname === "/category-items" ||
                location.pathname === "/items" ||
                location.pathname === "/base-units" ||
-               location.pathname === "/taxs" ||
+               location.pathname === "/taxes" ||
                location.pathname === "/create-adjustment" ||
                location.pathname === "/adjustments"
             }
@@ -49,7 +49,7 @@ const NavMenuLayout = () => {
                />
             </Can>
             <Can I="ViewTax" a="user">
-               <NavItemMenuLayout label={"Impuestos"} rute={"taxs"} />
+               <NavItemMenuLayout label={"Impuestos"} rute={"taxes"} />
             </Can>
             <NavLink
                active={

@@ -120,7 +120,7 @@ const RoutesComponent = () => {
                   }
                />
                <Route
-                  path="/taxs"
+                  path="/taxes"
                   element={
                      <ProtectedRouteComponent>
                         <TaxsView />
