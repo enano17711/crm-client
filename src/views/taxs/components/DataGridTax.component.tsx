@@ -1,84 +1,145 @@
-import { TaxDto } from "../../../api-services"
-import { Box } from "@mantine/core"
-import { useAppStore } from "../../../store"
-
-import "devextreme/dist/css/dx.light.css"
+import { useAtom, useAtomValue } from "jotai"
 import {
-   DataGrid,
-   Column,
-   FilterRow,
-   SearchPanel,
-   GroupPanel,
-   Toolbar,
-   Item,
-   Editing,
-   ColumnChooser,
-   Paging,
-   Pager,
-   Export,
-   Selection,
-   Button,
-} from "devextreme-react/data-grid"
-import { exportFormats, exportGrid } from "../../../utils"
+   selectedTaxAtom,
+   taxGridColumnsVisibleAtom,
+   taxGridParametersAtom,
+} from "../../../store/tax.atoms.ts"
+import { useApiTaxTaxsGetHook } from "../../../api-gen/hooks/taxController"
+import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
+import { TaxSimpleDto } from "../../../api-gen"
+import React, { useCallback, useMemo } from "react"
+import { Box } from "@mantine/core"
 
-interface DataGridProps {
-   dataSource: TaxDto[]
-}
+export const DataGridTaxComponent = () => {
+   const [taxGridParameters, setTaxGridParameters] = useAtom(
+      taxGridParametersAtom,
+   )
+   const [selectedTax, setSelectedTax] = useAtom(selectedTaxAtom)
+   const taxGridColumnsVisible = useAtomValue(taxGridColumnsVisibleAtom)
 
-export const DataGridTaxComponent = ({ dataSource }: DataGridProps) => {
-   const { taxsStore } = useAppStore()
+   const {
+      data: taxQueryData,
+      error: taxQueryError,
+      status: taxQueryStatus,
+   } = useApiTaxTaxsGetHook({
+      ColumnName: taxGridParameters.searchColumn,
+      ColumnValue: taxGridParameters.searchText,
+      PageNumber: taxGridParameters.pageIndex,
+      PageSize: taxGridParameters.pageSize,
+      OrderBy: taxGridParameters.orderBy,
+      OrderDirection: taxGridParameters.orderDirection,
+   })
 
-   const openModalUpdate = (e: any) => {
-      const taxRow = e.row.data as TaxDto
-      taxsStore.actions.prepareForUpdate(taxRow)
-   }
+   const columns: TableColumn<TaxSimpleDto>[] = useMemo(
+      () => [
+         {
+            id: "name",
+            name: "Nombre",
+            selector: (row) => row.name,
+            sortable: true,
+            wrap: true,
+            omit: taxGridColumnsVisible.includes("name"),
+            sortField: "Name",
+         },
+         {
+            id: "rate",
+            name: "Tasa",
+            selector: (row) => row.rate,
+            sortable: true,
+            wrap: true,
+            omit: taxGridColumnsVisible.includes("rate"),
+            sortField: "Rate",
+         },
+         {
+            id: "description",
+            name: "Descripción",
+            selector: (row) => row.description,
+            sortable: true,
+            wrap: true,
+            omit: taxGridColumnsVisible.includes("description"),
+            sortField: "Description",
+         },
+      ],
+      [taxGridColumnsVisible],
+   )
 
-   const openModalDelete = (e: any) => {
-      const taxRow = e.row.data as TaxDto
-      taxsStore.actions.prepareForDelete(taxRow)
-   }
+   const handleRowsPerPageChange = useCallback(
+      (currentRowsPerPage: number, currentPage: number) => {
+         setTaxGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: currentPage,
+               pageSize: currentRowsPerPage,
+            }
+         })
+      },
+      [setTaxGridParameters],
+   )
+   const handlePageChange = useCallback(
+      (page: number) => {
+         setTaxGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: page,
+            }
+         })
+      },
+      [setTaxGridParameters],
+   )
+   const handleOnRowClicked = useCallback(
+      (row: unknown) => {
+         setSelectedTax(row as TaxSimpleDto)
+      },
+      [setSelectedTax],
+   )
+   const handleOnSort = useCallback(
+      (
+         selectedColumn: TableColumn<TaxSimpleDto>,
+         sortDirection: SortOrder,
+         sortedRows: unknown[],
+      ) => {
+         setTaxGridParameters((prev) => {
+            return {
+               ...prev,
+               orderBy: selectedColumn.sortField,
+               orderDirection: sortDirection,
+            }
+         })
+      },
+      [setTaxGridParameters],
+   )
+
+   const conditionalRowStyles = [
+      {
+         when: (row) => row.name === selectedTax.name,
+         style: {
+            backgroundColor: "#FFE8CC",
+            color: "#FD7E14",
+         },
+      },
+   ]
 
    return (
-      <Box>
-         <DataGrid
-            id="ImpuestosDataGrid"
-            dataSource={dataSource}
-            keyExpr="taxId"
-            allowColumnReordering
-            allowColumnResizing
-            showRowLines
-            rowAlternationEnabled
-            columnHidingEnabled
-            onExporting={exportGrid}
-         >
-            <Selection mode="multiple" />
-            <Export enabled formats={exportFormats} allowExportSelectedData />
-            <FilterRow visible />
-            <SearchPanel visible />
-            <GroupPanel visible />
-            <Editing mode="popup" allowUpdating allowDeleting useIcons />
-            <Toolbar>
-               <Item name="groupPanel" />
-               <Item name="columnChooserButton" />
-               <Item name="exportButton" />
-               <Item name="searchPanel" />
-            </Toolbar>
-            <Paging enabled defaultPageSize={5} />
-            <Pager
-               displayMode="adaptive"
-               showPageSizeSelector
-               allowedPageSizes={[5, 10, 25, 50, 100]}
-               showNavigationButtons
+      <>
+         <Box>
+            <DataTable
+               data={taxQueryData?.data?.items}
+               columns={columns}
+               responsive
+               pagination
+               paginationPerPage={10}
+               paginationRowsPerPageOptions={[10, 25, 50, 100]}
+               paginationTotalRows={taxQueryData?.data?.totalNumber}
+               paginationServer
+               onChangeRowsPerPage={handleRowsPerPageChange}
+               onChangePage={handlePageChange}
+               onRowClicked={handleOnRowClicked}
+               conditionalRowStyles={conditionalRowStyles}
+               progressPending={taxQueryStatus === "loading"}
+               onSort={handleOnSort}
+               sortServer
             />
-            <ColumnChooser enabled mode="dragAndDrop" />
-            <Column dataField="name" />
-            <Column dataField="rate" />
-            <Column dataField="description" />
-            <Column type="buttons">
-               <Button name="edit" onClick={(e) => openModalUpdate(e)} />
-               <Button name="delete" onClick={(e) => openModalDelete(e)} />
-            </Column>
-         </DataGrid>
-      </Box>
+         </Box>
+      </>
    )
 }
