@@ -1,42 +1,26 @@
-import CustomBreadcrumbsComponent from "../../components/CustomBreadcrumbs.component.tsx"
+import { useSetAtom } from "jotai"
+import { selectedTaxAtom } from "../../store/tax.atoms.ts"
 import React, { useEffect } from "react"
-import { Button, Group, Space } from "@mantine/core"
-import { IconPlus } from "@tabler/icons-react"
-import { ModalCreateTaxComponent } from "./components/ModalCreateTax.component.tsx"
-import { useAppStore } from "../../store"
-import DialogDeleteTaxComponent from "./components/DialogDeleteTax.component.tsx"
-import { DataGridTaxComponent } from "./components/DataGridTax.component.tsx"
+import { Can } from "../../access-control.ts"
+import TaxTopBarComponent from "../taxs/components/TaxTopBar.component.tsx"
+import { Space } from "@mantine/core"
+import { DataGridTaxComponent } from "../taxs/components/DataGridTax.component.tsx"
+import DialogDeleteTaxComponent from "../taxs/components/DialogDeleteTax.component.tsx"
 
-const routes = [
-   { path: "/", title: "Inicio" },
-   { path: "/taxs", title: "Impuestos" },
-]
 const TaxsView = () => {
-   const { taxsStore } = useAppStore()
-   const { taxs } = taxsStore.getters
+   const setSingleTax = useSetAtom(selectedTaxAtom)
 
    useEffect(() => {
-      if (taxs.length === 0) {
-         taxsStore.actions.loadTaxs()
-      }
+      setSingleTax({})
    }, [])
 
    return (
-      <>
-         <Group position="apart">
-            <CustomBreadcrumbsComponent routes={routes} />
-            <Button
-               leftIcon={<IconPlus size={20} />}
-               onClick={() => taxsStore.actions.prepareForCreate()}
-            >
-               Crear Impuesto
-            </Button>
-         </Group>
+      <Can I="ViewTax" a="user">
+         <TaxTopBarComponent />
          <Space h="sm" />
-         <DataGridTaxComponent dataSource={taxs} />
-         <ModalCreateTaxComponent />
+         <DataGridTaxComponent />
          <DialogDeleteTaxComponent />
-      </>
+      </Can>
    )
 }
 
