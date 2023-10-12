@@ -1,6 +1,14 @@
-import type { ResTfulResultPaginatedResultTaxDto } from "../ResTfulResultPaginatedResultTaxDto"
+import type { ResTfulResultPaginatedResponseTaxSimpleDto } from "../ResTfulResultPaginatedResponseTaxSimpleDto"
 
 export type ApiTaxTaxsGetQueryParams = {
+   /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
    /**
     * @type integer | undefined int32
     */
@@ -17,17 +25,10 @@ export type ApiTaxTaxsGetQueryParams = {
     * @type string | undefined
     */
    ColumnValue?: string
-   /**
-    * @type string | undefined
-    */
-   OrderBy?: string
-   /**
-    * @type string | undefined
-    */
-   OrderDirection?: string
 }
 
 /**
  * @description Success
  */
-export type ApiTaxTaxsGetQueryResponse = ResTfulResultPaginatedResultTaxDto
+export type ApiTaxTaxsGetQueryResponse =
+   ResTfulResultPaginatedResponseTaxSimpleDto

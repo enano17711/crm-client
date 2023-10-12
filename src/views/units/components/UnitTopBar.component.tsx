@@ -17,7 +17,7 @@ import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumn
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
 
 interface UnitTopBarComponentProps {
-   showSearchAction: boolean
+   showSearchAction?: boolean
 }
 
 const UnitTopBarComponent = ({

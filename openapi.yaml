@@ -210,137 +210,20 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_IActionResult'
-  /api/tax/taxs-for-grid:
-    get:
-      tags:
-        - tax
-      operationId: api-tax-taxs-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/tax/taxs:
     get:
       tags:
         - tax
       operationId: api-tax-taxs-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -359,27 +242,19 @@ paths:
           in: query
           schema:
             type: string
-        - name: OrderBy
-          in: query
-          schema:
-            type: string
-        - name: OrderDirection
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_TaxSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_TaxSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_TaxSimpleDto'
   /api/tax/tax:
     post:
       tags:
@@ -402,16 +277,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
   /api/tax/tax/{id}:
     put:
       tags:
@@ -441,16 +306,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
     delete:
       tags:
         - tax
@@ -465,16 +320,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
     get:
       tags:
         - tax
@@ -492,13 +337,56 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_TaxSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_TaxSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_TaxDto'
+                $ref: '#/components/schemas/RESTfulResult_TaxSimpleDto'
+  /api/tax/download-tax-pdf/{userid}:
+    post:
+      tags:
+        - tax
+      operationId: api-tax-download-tax-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/tax/download-tax-excel:
+    post:
+      tags:
+        - tax
+      operationId: api-tax-download-tax-excel-Post
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/system/description:
     get:
       tags:
@@ -6222,6 +6110,27 @@ components:
             $ref: '#/components/schemas/ItemSimpleDto'
           nullable: true
       additionalProperties: false
+    PaginatedResponse_TaxSimpleDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxSimpleDto'
+          nullable: true
+      additionalProperties: false
     PaginatedResponse_UnitDto:
       type: object
       properties:
@@ -6316,17 +6225,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SupplierDto'
-          nullable: true
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-      additionalProperties: false
-    PaginatedResult_TaxDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaxDto'
           nullable: true
         metaData:
           $ref: '#/components/schemas/MetaData'
@@ -6761,6 +6659,27 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    RESTfulResult_PaginatedResponse_TaxSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_TaxSimpleDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
     RESTfulResult_PaginatedResponse_UnitDto:
       type: object
       properties:
@@ -6929,27 +6848,6 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_PaginatedResult_TaxDto:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          nullable: true
-        data:
-          $ref: '#/components/schemas/PaginatedResult_TaxDto'
-        succeeded:
-          type: boolean
-        errors:
-          additionalProperties: false
-          nullable: true
-        extras:
-          additionalProperties: false
-          nullable: true
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
     RESTfulResult_SaleDto:
       type: object
       properties:
@@ -7014,7 +6912,7 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_TaxDto:
+    RESTfulResult_TaxSimpleDto:
       type: object
       properties:
         statusCode:
@@ -7022,7 +6920,7 @@ components:
           format: int32
           nullable: true
         data:
-          $ref: '#/components/schemas/TaxDto'
+          $ref: '#/components/schemas/TaxSimpleDto'
         succeeded:
           type: boolean
         errors:
