@@ -31,6 +31,7 @@ import UpdateUnitView from "./views/units/UpdateUnit.view.tsx"
 import CreateTaxView from "./views/taxs/CreateTax.view.tsx"
 import UpdateTaxView from "./views/taxs/UpdateTax.view.tsx"
 import CreateSupplierView from "./views/suppliers/CreateSupplier.view.tsx"
+import UpdateSupplierView from "./views/suppliers/UpdateSupplier.view.tsx"
 
 const RoutesComponent = () => {
    const securitiesData = useAtomValue(securitiesAtom)
@@ -159,6 +160,14 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <CreateSupplierView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/suppliers/update/:supplierId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateSupplierView />
                      </ProtectedRouteComponent>
                   }
                />

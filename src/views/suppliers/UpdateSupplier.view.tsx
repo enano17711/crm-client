@@ -1,26 +1,111 @@
-import React, { useEffect } from "react"
-import { useAtom } from "jotai"
+import React, { useEffect, useState } from "react"
+import { useSetAtom } from "jotai"
 import { selectedSupplierAtom } from "../../store/supplier.atoms.ts"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { useQueryClient } from "@tanstack/react-query"
+import {
+   useApiSupplierSupplierIdGetHook,
+   useApiSupplierSupplierIdPutHook,
+} from "../../api-gen/hooks/supplierController"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { useApiSupplierSupplierPostHook } from "../../api-gen/hooks/supplierController"
-import { CreateSupplierDto } from "../../api-gen"
+import { UpdateSupplierDto } from "../../api-gen"
+import {
+   Box,
+   LoadingOverlay,
+   Space,
+   Stack,
+   TextInput,
+   Title,
+} from "@mantine/core"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
-import { Space, Stack, TextInput, Title } from "@mantine/core"
 
-const CreateSupplierView = () => {
-   const [saveType, setSaveType] = React.useState<
+const UpdateSupplierView = () => {
+   const setSelectedSupplier = useSetAtom(selectedSupplierAtom)
+   const [saveType, setSaveType] = useState<
       "create_new" | "create_close" | "create_clone"
    >("create_new")
-   const [selectedSupplier, setSelectedSupplier] = useAtom(selectedSupplierAtom)
    const navigate = useNavigate()
+   const params = useParams()
+
+   const queryClient = useQueryClient()
+
+   const refreshData = () => {
+      queryClient.invalidateQueries([
+         `/api/supplier/supplier/${params.supplierId}`,
+      ])
+      reset({
+         name: supplierData.data.name,
+         companyName: supplierData.data.companyName,
+         nit: supplierData.data.nit,
+         ci: supplierData.data.ci,
+         email: supplierData.data.email,
+         phone: supplierData.data.phone,
+         address: supplierData.data.address,
+         city: supplierData.data.city,
+         state: supplierData.data.state,
+         country: supplierData.data.country,
+         description: supplierData.data.description,
+      })
+   }
+
+   const {
+      data: supplierData,
+      status: supplierStatus,
+      isFetching,
+   } = useApiSupplierSupplierIdGetHook(Number(params.supplierId))
+
+   const { mutate: supplierMutate } = useApiSupplierSupplierIdPutHook(
+      Number(params.supplierId),
+      {
+         mutation: {
+            onSuccess: async (_, variables) => {
+               if (saveType === "create_new") {
+                  setSelectedSupplier({})
+                  navigate("/suppliers/create")
+               } else if (saveType === "create_clone") {
+                  setSelectedSupplier({
+                     supplierId: Number(params.supplierId),
+                     name: variables.name,
+                     companyName: variables.companyName,
+                     nit: variables.nit,
+                     ci: variables.ci,
+                     email: variables.email,
+                     phone: variables.phone,
+                     address: variables.address,
+                     city: variables.city,
+                     state: variables.state,
+                     country: variables.country,
+                     description: variables.description,
+                  })
+                  navigate(`/suppliers/create`)
+               } else {
+                  setSelectedSupplier({})
+                  reset({
+                     name: "",
+                     companyName: "",
+                     nit: "",
+                     ci: "",
+                     email: "",
+                     phone: "",
+                     address: "",
+                     city: "",
+                     state: "",
+                     country: "",
+                     description: "",
+                  })
+                  navigate("/suppliers")
+               }
+            },
+         },
+      },
+   )
 
    const {
       handleSubmit,
       control,
       reset,
       formState: { errors },
-   } = useForm<CreateSupplierDto>({
+   } = useForm<UpdateSupplierDto>({
       defaultValues: {
          name: "",
          companyName: "",
@@ -36,95 +121,44 @@ const CreateSupplierView = () => {
       },
    })
 
-   const { mutate } = useApiSupplierSupplierPostHook({
-      mutation: {
-         onSuccess: (_, variables) => {
-            setSelectedSupplier({})
-            if (saveType === "create_new") {
-               reset({
-                  name: "",
-                  companyName: "",
-                  nit: "",
-                  ci: "",
-                  email: "",
-                  phone: "",
-                  address: "",
-                  city: "",
-                  state: "",
-                  country: "",
-                  description: "",
-               })
-            } else if (saveType === "create_clone") {
-               reset({
-                  name: variables.name,
-                  companyName: variables.companyName,
-                  nit: variables.nit,
-                  ci: variables.ci,
-                  email: variables.email,
-                  phone: variables.phone,
-                  address: variables.address,
-                  city: variables.city,
-                  state: variables.state,
-                  country: variables.country,
-                  description: variables.description,
-               })
-            } else {
-               reset({
-                  name: "",
-                  companyName: "",
-                  nit: "",
-                  ci: "",
-                  email: "",
-                  phone: "",
-                  address: "",
-                  city: "",
-                  state: "",
-                  country: "",
-                  description: "",
-               })
-               navigate("/suppliers")
-            }
-         },
-      },
-   })
-
-   const onSubmit: SubmitHandler<CreateSupplierDto> = async (data) => {
-      mutate(data as CreateSupplierDto)
+   const onSubmit: SubmitHandler<UpdateSupplierDto> = async (data) => {
+      supplierMutate(data as UpdateSupplierDto)
    }
 
    useEffect(() => {
-      if (
-         selectedSupplier?.name !== null &&
-         selectedSupplier?.name !== undefined
-      ) {
+      if (!isFetching) {
          reset({
-            name: selectedSupplier?.name,
-            companyName: selectedSupplier?.companyName,
-            nit: selectedSupplier?.nit,
-            ci: selectedSupplier?.ci,
-            email: selectedSupplier?.email,
-            phone: selectedSupplier?.phone,
-            address: selectedSupplier?.address,
-            city: selectedSupplier?.city,
-            state: selectedSupplier?.state,
-            country: selectedSupplier?.country,
-            description: selectedSupplier?.description,
+            name: supplierData.data.name,
+            companyName: supplierData.data.companyName,
+            nit: supplierData.data.nit,
+            ci: supplierData.data.ci,
+            email: supplierData.data.email,
+            phone: supplierData.data.phone,
+            address: supplierData.data.address,
+            city: supplierData.data.city,
+            state: supplierData.data.state,
+            country: supplierData.data.country,
+            description: supplierData.data.description,
          })
       }
-   }, [])
+   }, [supplierStatus])
 
    return (
-      <>
+      <Box pos="relative">
+         {supplierStatus === "loading" && (
+            <LoadingOverlay visible={true} overlayBlur={2} />
+         )}
          <CreateUpdateTopBarComponent
             backRoute={"/suppliers"}
-            reloadEnabled={false}
-            formKey={"create-supplier-form"}
+            reloadEnabled={true}
+            formKey={"update-supplier-form"}
             setSaveType={setSaveType}
+            refreshMethod={refreshData}
          >
-            <Title order={3}>Crear Proveedor</Title>
+            <Title order={4}>Editar: {supplierData?.data?.name}</Title>
          </CreateUpdateTopBarComponent>
          <Space h="sm" />
-         <form id="create-supplier-form" onSubmit={handleSubmit(onSubmit)}>
+         <form id="update-supplier-form" onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing="sm">
                <Controller
                   name="name"
@@ -175,20 +209,11 @@ const CreateSupplierView = () => {
                <Controller
                   name="email"
                   control={control}
-                  rules={{ required: true, pattern: /^\S+@\S+$/ }}
                   render={({ field }) => (
                      <TextInput
                         {...field}
                         label="Email"
                         placeholder="Coca-Cola"
-                        withAsterisk
-                        error={
-                           errors.email?.type === "required"
-                              ? "Este campo es requerido"
-                              : errors.email?.type === "pattern"
-                              ? "Email no es válido"
-                              : null
-                        }
                      />
                   )}
                />
@@ -260,8 +285,8 @@ const CreateSupplierView = () => {
                />
             </Stack>
          </form>
-      </>
+      </Box>
    )
 }
 
-export default CreateSupplierView
+export default UpdateSupplierView
