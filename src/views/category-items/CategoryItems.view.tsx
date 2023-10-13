@@ -1,42 +1,26 @@
-import CustomBreadcrumbsComponent from "../../components/CustomBreadcrumbs.component.tsx"
+import { useSetAtom } from "jotai"
+import { selectedCategoryItemAtom } from "../../store/categoryItem.atoms.ts"
 import React, { useEffect } from "react"
-import { Button, Group, Space } from "@mantine/core"
-import { IconPlus } from "@tabler/icons-react"
-import { ModalCreateCategoryItemComponent } from "./components/ModalCreateCategoryItem.component.tsx"
-import { useAppStore } from "../../store"
-import DialogDeleteCategoryItemComponent from "./components/DialogDeleteCategoryItem.component.tsx"
+import { Can } from "../../access-control.ts"
+import { Space } from "@mantine/core"
+import CategoryItemTopBarComponent from "./components/CategoryItemTopBar.component.tsx"
 import { DataGridCategoryItemComponent } from "./components/DataGridCategoryItem.component.tsx"
+import DialogDeleteCategoryItemComponent from "./components/DialogDeleteCategoryItem.component.tsx"
 
-const routes = [
-   { path: "/", title: "Inicio" },
-   { path: "/categoryItems", title: "Categorias de Items" },
-]
 const CategoryItemsView = () => {
-   const { categoryItemsStore } = useAppStore()
-   const { categoryItems } = categoryItemsStore.getters
+   const setSingleCategoryItem = useSetAtom(selectedCategoryItemAtom)
 
    useEffect(() => {
-      if (categoryItems.length === 0) {
-         categoryItemsStore.actions.loadCategoryItems()
-      }
+      setSingleCategoryItem({})
    }, [])
 
    return (
-      <>
-         <Group position="apart">
-            <CustomBreadcrumbsComponent routes={routes} />
-            <Button
-               leftIcon={<IconPlus size={20} />}
-               onClick={() => categoryItemsStore.actions.prepareForCreate()}
-            >
-               Crear Categoría de Items
-            </Button>
-         </Group>
+      <Can I="ViewCategoryItem" a="user">
+         <CategoryItemTopBarComponent />
          <Space h="sm" />
-         <DataGridCategoryItemComponent dataSource={categoryItems} />
-         <ModalCreateCategoryItemComponent />
+         <DataGridCategoryItemComponent />
          <DialogDeleteCategoryItemComponent />
-      </>
+      </Can>
    )
 }
 
