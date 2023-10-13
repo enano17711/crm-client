@@ -1,85 +1,140 @@
-import { CategoryItemDto } from "../../../api-services"
-import { Box } from "@mantine/core"
-import { useAppStore } from "../../../store"
-
-import "devextreme/dist/css/dx.light.css"
+import { useAtom, useAtomValue } from "jotai"
 import {
-   DataGrid,
-   Column,
-   FilterRow,
-   SearchPanel,
-   GroupPanel,
-   Toolbar,
-   Item,
-   Editing,
-   ColumnChooser,
-   Paging,
-   Pager,
-   Export,
-   Selection,
-   Button,
-} from "devextreme-react/data-grid"
-import { exportFormats, exportGrid } from "../../../utils"
+   categoryItemGridColumnsVisibleAtom,
+   categoryItemGridParametersAtom,
+   selectedCategoryItemAtom,
+} from "../../../store/categoryItem.atoms.ts"
+import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
+import React, { useCallback, useMemo } from "react"
+import { Box } from "@mantine/core"
+import { CategoryItemSimpleDto } from "../../../api-gen"
+import { useApiCategoryItemCategoryItemsGetHook } from "../../../api-gen/hooks/categoryItemController"
 
-interface DataGridProps {
-   dataSource: CategoryItemDto[]
-}
+export const DataGridCategoryItemComponent = () => {
+   const [categoryItemGridParameters, setCategoryItemGridParameters] = useAtom(
+      categoryItemGridParametersAtom,
+   )
+   const [selectedCategoryItem, setSelectedCategoryItem] = useAtom(
+      selectedCategoryItemAtom,
+   )
+   const categoryItemGridColumnsVisible = useAtomValue(
+      categoryItemGridColumnsVisibleAtom,
+   )
 
-export const DataGridCategoryItemComponent = ({
-   dataSource,
-}: DataGridProps) => {
-   const { categoryItemsStore } = useAppStore()
+   const {
+      data: categoryItemQueryData,
+      error: categoryItemQueryError,
+      status: categoryItemQueryStatus,
+   } = useApiCategoryItemCategoryItemsGetHook({
+      ColumnName: categoryItemGridParameters.searchColumn,
+      ColumnValue: categoryItemGridParameters.searchText,
+      PageNumber: categoryItemGridParameters.pageIndex,
+      PageSize: categoryItemGridParameters.pageSize,
+      OrderBy: categoryItemGridParameters.orderBy,
+      OrderDirection: categoryItemGridParameters.orderDirection,
+   })
 
-   const openModalUpdate = (e: any) => {
-      const categoryItemRow = e.row.data as CategoryItemDto
-      categoryItemsStore.actions.prepareForUpdate(categoryItemRow)
-   }
+   const columns: TableColumn<CategoryItemSimpleDto>[] = useMemo(
+      () => [
+         {
+            id: "name",
+            name: "Nombre",
+            selector: (row) => row.name,
+            sortable: true,
+            wrap: true,
+            omit: categoryItemGridColumnsVisible.includes("name"),
+            sortField: "Name",
+         },
+         {
+            id: "description",
+            name: "Descripcion",
+            selector: (row) => row.description,
+            sortable: true,
+            wrap: true,
+            omit: categoryItemGridColumnsVisible.includes("description"),
+            sortField: "Description",
+         },
+      ],
+      [categoryItemGridColumnsVisible],
+   )
 
-   const openModalDelete = (e: any) => {
-      const categoryItemRow = e.row.data as CategoryItemDto
-      categoryItemsStore.actions.prepareForDelete(categoryItemRow)
-   }
+   const handleRowsPerPageChange = useCallback(
+      (currentRowsPerPage: number, currentPage: number) => {
+         setCategoryItemGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: currentPage,
+               pageSize: currentRowsPerPage,
+            }
+         })
+      },
+      [setCategoryItemGridParameters],
+   )
+   const handlePageChange = useCallback(
+      (page: number) => {
+         setCategoryItemGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: page,
+            }
+         })
+      },
+      [setCategoryItemGridParameters],
+   )
+   const handleOnRowClicked = useCallback(
+      (row: unknown) => {
+         setSelectedCategoryItem(row as CategoryItemSimpleDto)
+      },
+      [setSelectedCategoryItem],
+   )
+   const handleOnSort = useCallback(
+      (
+         selectedColumn: TableColumn<CategoryItemSimpleDto>,
+         sortDirection: SortOrder,
+         sortedRows: unknown[],
+      ) => {
+         setCategoryItemGridParameters((prev) => {
+            return {
+               ...prev,
+               orderBy: selectedColumn.sortField,
+               orderDirection: sortDirection,
+            }
+         })
+      },
+      [setCategoryItemGridParameters],
+   )
+
+   const conditionalRowStyles = [
+      {
+         when: (row) => row.name === selectedCategoryItem.name,
+         style: {
+            backgroundColor: "#FFE8CC",
+            color: "#FD7E14",
+         },
+      },
+   ]
 
    return (
-      <Box>
-         <DataGrid
-            id="CategoriaItemsDataGrid"
-            dataSource={dataSource}
-            keyExpr="categoryItemId"
-            allowColumnReordering
-            allowColumnResizing
-            showRowLines
-            rowAlternationEnabled
-            columnHidingEnabled
-            onExporting={exportGrid}
-         >
-            <Selection mode="multiple" />
-            <Export enabled formats={exportFormats} allowExportSelectedData />
-            <FilterRow visible />
-            <SearchPanel visible />
-            <GroupPanel visible />
-            <Editing mode="popup" allowUpdating allowDeleting useIcons />
-            <Toolbar>
-               <Item name="groupPanel" />
-               <Item name="columnChooserButton" />
-               <Item name="exportButton" />
-               <Item name="searchPanel" />
-            </Toolbar>
-            <Paging enabled defaultPageSize={5} />
-            <Pager
-               displayMode="adaptive"
-               showPageSizeSelector
-               allowedPageSizes={[5, 10, 25, 50, 100]}
-               showNavigationButtons
+      <>
+         <Box>
+            <DataTable
+               data={categoryItemQueryData?.data?.items}
+               columns={columns}
+               responsive
+               pagination
+               paginationPerPage={10}
+               paginationRowsPerPageOptions={[10, 25, 50, 100]}
+               paginationTotalRows={categoryItemQueryData?.data?.totalNumber}
+               paginationServer
+               onChangeRowsPerPage={handleRowsPerPageChange}
+               onChangePage={handlePageChange}
+               onRowClicked={handleOnRowClicked}
+               conditionalRowStyles={conditionalRowStyles}
+               progressPending={categoryItemQueryStatus === "loading"}
+               onSort={handleOnSort}
+               sortServer
             />
-            <ColumnChooser enabled mode="dragAndDrop" />
-            <Column dataField="name" />
-            <Column dataField="description" />
-            <Column type="buttons">
-               <Button name="edit" onClick={(e) => openModalUpdate(e)} />
-               <Button name="delete" onClick={(e) => openModalDelete(e)} />
-            </Column>
-         </DataGrid>
-      </Box>
+         </Box>
+      </>
    )
 }
