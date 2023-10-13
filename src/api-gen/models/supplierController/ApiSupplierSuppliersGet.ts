@@ -1,6 +1,14 @@
-import type { ResTfulResultPaginatedResultSupplierDto } from "../ResTfulResultPaginatedResultSupplierDto"
+import type { ResTfulResultPaginatedResponseSupplierSimpleDto } from "../ResTfulResultPaginatedResponseSupplierSimpleDto"
 
 export type ApiSupplierSuppliersGetQueryParams = {
+   /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
    /**
     * @type integer | undefined int32
     */
@@ -17,18 +25,10 @@ export type ApiSupplierSuppliersGetQueryParams = {
     * @type string | undefined
     */
    ColumnValue?: string
-   /**
-    * @type string | undefined
-    */
-   OrderBy?: string
-   /**
-    * @type string | undefined
-    */
-   OrderDirection?: string
 }
 
 /**
  * @description Success
  */
 export type ApiSupplierSuppliersGetQueryResponse =
-   ResTfulResultPaginatedResultSupplierDto
+   ResTfulResultPaginatedResponseSupplierSimpleDto

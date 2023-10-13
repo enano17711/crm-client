@@ -1,4 +1,4 @@
-import type { ResTfulResultSupplierDto } from "../ResTfulResultSupplierDto"
+import type { ResTfulResultSupplierSimpleDto } from "../ResTfulResultSupplierSimpleDto"
 
 export type ApiSupplierSupplierIdGetPathParams = {
    /**
@@ -10,4 +10,5 @@ export type ApiSupplierSupplierIdGetPathParams = {
 /**
  * @description Success
  */
-export type ApiSupplierSupplierIdGetQueryResponse = ResTfulResultSupplierDto
+export type ApiSupplierSupplierIdGetQueryResponse =
+   ResTfulResultSupplierSimpleDto

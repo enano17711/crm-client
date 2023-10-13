@@ -1,11 +1,6 @@
 import type { CreateCategoryItemDto } from "../CreateCategoryItemDto"
-import type { ResTfulResultCategoryItemDto } from "../ResTfulResultCategoryItemDto"
+
+export type ApiCategoryItemCategoryItemPostMutationResponse = any | null
 
 export type ApiCategoryItemCategoryItemPostMutationRequest =
    CreateCategoryItemDto
-
-/**
- * @description Success
- */
-export type ApiCategoryItemCategoryItemPostMutationResponse =
-   ResTfulResultCategoryItemDto

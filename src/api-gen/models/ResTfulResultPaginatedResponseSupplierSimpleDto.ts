@@ -1,11 +1,11 @@
-import type { CategoryItemDto } from "./CategoryItemDto"
+import type { PaginatedResponseSupplierSimpleDto } from "./PaginatedResponseSupplierSimpleDto"
 
-export type ResTfulResultCategoryItemDto = {
+export type ResTfulResultPaginatedResponseSupplierSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: CategoryItemDto
+   data?: PaginatedResponseSupplierSimpleDto
    /**
     * @type boolean | undefined
     */

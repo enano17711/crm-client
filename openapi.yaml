@@ -406,137 +406,20 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_String'
-  /api/supplier/suppliers-for-grid:
-    get:
-      tags:
-        - supplier
-      operationId: api-supplier-suppliers-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/supplier/suppliers:
     get:
       tags:
         - supplier
       operationId: api-supplier-suppliers-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -555,27 +438,19 @@ paths:
           in: query
           schema:
             type: string
-        - name: OrderBy
-          in: query
-          schema:
-            type: string
-        - name: OrderDirection
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_SupplierSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_SupplierSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_SupplierSimpleDto'
   /api/supplier/supplier:
     post:
       tags:
@@ -598,16 +473,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
   /api/supplier/supplier/{id}:
     put:
       tags:
@@ -637,16 +502,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
     delete:
       tags:
         - supplier
@@ -661,16 +516,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
     get:
       tags:
         - supplier
@@ -688,13 +533,56 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_SupplierSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_SupplierSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_SupplierDto'
+                $ref: '#/components/schemas/RESTfulResult_SupplierSimpleDto'
+  /api/supplier/download-supplier-pdf/{userid}:
+    post:
+      tags:
+        - supplier
+      operationId: api-supplier-download-supplier-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/supplier/download-supplier-excel:
+    post:
+      tags:
+        - supplier
+      operationId: api-supplier-download-supplier-excel-Post
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/sale/sales-for-grid:
     get:
       tags:
@@ -2393,137 +2281,20 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_CustomerDto'
-  /api/category-item/category-items-for-grid:
-    get:
-      tags:
-        - category-item
-      operationId: api-category-item-category-items-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/category-item/category-items:
     get:
       tags:
         - category-item
       operationId: api-category-item-category-items-Get
       parameters:
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
         - name: PageNumber
           in: query
           schema:
@@ -2542,27 +2313,19 @@ paths:
           in: query
           schema:
             type: string
-        - name: OrderBy
-          in: query
-          schema:
-            type: string
-        - name: OrderDirection
-          in: query
-          schema:
-            type: string
       responses:
         '200':
           description: Success
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_CategoryItemSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_CategoryItemSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_PaginatedResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_CategoryItemSimpleDto'
   /api/category-item/category-item:
     post:
       tags:
@@ -2585,16 +2348,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
   /api/category-item/category-item/{id}:
     put:
       tags:
@@ -2624,16 +2377,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
     delete:
       tags:
         - category-item
@@ -2648,16 +2391,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
     get:
       tags:
         - category-item
@@ -2675,13 +2408,56 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_CategoryItemSimpleDto'
             application/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_CategoryItemSimpleDto'
             text/json:
               schema:
-                $ref: '#/components/schemas/RESTfulResult_CategoryItemDto'
+                $ref: '#/components/schemas/RESTfulResult_CategoryItemSimpleDto'
+  /api/category-item/download-category-item-pdf/{userid}:
+    post:
+      tags:
+        - category-item
+      operationId: api-category-item-download-category-item-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/category-item/download-category-item-excel:
+    post:
+      tags:
+        - category-item
+      operationId: api-category-item-download-category-item-excel-Post
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/brand/brands:
     get:
       tags:
@@ -6089,6 +5865,27 @@ components:
             $ref: '#/components/schemas/BrandSimpleDto'
           nullable: true
       additionalProperties: false
+    PaginatedResponse_CategoryItemSimpleDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryItemSimpleDto'
+          nullable: true
+      additionalProperties: false
     PaginatedResponse_ItemSimpleDto:
       type: object
       properties:
@@ -6108,6 +5905,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ItemSimpleDto'
+          nullable: true
+      additionalProperties: false
+    PaginatedResponse_SupplierSimpleDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplierSimpleDto'
           nullable: true
       additionalProperties: false
     PaginatedResponse_TaxSimpleDto:
@@ -6163,17 +5981,6 @@ components:
         metaData:
           $ref: '#/components/schemas/MetaData'
       additionalProperties: false
-    PaginatedResult_CategoryItemDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryItemDto'
-          nullable: true
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-      additionalProperties: false
     PaginatedResult_CustomerDto:
       type: object
       properties:
@@ -6214,17 +6021,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SaleDto'
-          nullable: true
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-      additionalProperties: false
-    PaginatedResult_SupplierDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplierDto'
           nullable: true
         metaData:
           $ref: '#/components/schemas/MetaData'
@@ -6292,7 +6088,7 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_CategoryItemDto:
+    RESTfulResult_CategoryItemSimpleDto:
       type: object
       properties:
         statusCode:
@@ -6300,7 +6096,7 @@ components:
           format: int32
           nullable: true
         data:
-          $ref: '#/components/schemas/CategoryItemDto'
+          $ref: '#/components/schemas/CategoryItemSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -6638,6 +6434,27 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    RESTfulResult_PaginatedResponse_CategoryItemSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_CategoryItemSimpleDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
     RESTfulResult_PaginatedResponse_ItemSimpleDto:
       type: object
       properties:
@@ -6647,6 +6464,27 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/PaginatedResponse_ItemSimpleDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
+    RESTfulResult_PaginatedResponse_SupplierSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_SupplierSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -6710,27 +6548,6 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/PaginatedResult_AdjustmentDto'
-        succeeded:
-          type: boolean
-        errors:
-          additionalProperties: false
-          nullable: true
-        extras:
-          additionalProperties: false
-          nullable: true
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
-    RESTfulResult_PaginatedResult_CategoryItemDto:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          nullable: true
-        data:
-          $ref: '#/components/schemas/PaginatedResult_CategoryItemDto'
         succeeded:
           type: boolean
         errors:
@@ -6827,27 +6644,6 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_PaginatedResult_SupplierDto:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-          format: int32
-          nullable: true
-        data:
-          $ref: '#/components/schemas/PaginatedResult_SupplierDto'
-        succeeded:
-          type: boolean
-        errors:
-          additionalProperties: false
-          nullable: true
-        extras:
-          additionalProperties: false
-          nullable: true
-        timestamp:
-          type: integer
-          format: int64
-      additionalProperties: false
     RESTfulResult_SaleDto:
       type: object
       properties:
@@ -6891,7 +6687,7 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    RESTfulResult_SupplierDto:
+    RESTfulResult_SupplierSimpleDto:
       type: object
       properties:
         statusCode:
@@ -6899,7 +6695,7 @@ components:
           format: int32
           nullable: true
         data:
-          $ref: '#/components/schemas/SupplierDto'
+          $ref: '#/components/schemas/SupplierSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -7333,6 +7129,47 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrderReturnDto'
+          nullable: true
+      additionalProperties: false
+    SupplierSimpleDto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        supplierId:
+          type: integer
+          format: int64
+          nullable: true
+        companyName:
+          type: string
+          nullable: true
+        nit:
+          type: string
+          nullable: true
+        ci:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        country:
+          type: string
           nullable: true
       additionalProperties: false
     Tax:

@@ -1,5 +1,6 @@
 import type { UpdateCategoryItemDto } from "../UpdateCategoryItemDto"
-import type { ResTfulResultCategoryItemDto } from "../ResTfulResultCategoryItemDto"
+
+export type ApiCategoryItemCategoryItemIdPutMutationResponse = any | null
 
 export type ApiCategoryItemCategoryItemIdPutPathParams = {
    /**
@@ -10,9 +11,3 @@ export type ApiCategoryItemCategoryItemIdPutPathParams = {
 
 export type ApiCategoryItemCategoryItemIdPutMutationRequest =
    UpdateCategoryItemDto
-
-/**
- * @description Success
- */
-export type ApiCategoryItemCategoryItemIdPutMutationResponse =
-   ResTfulResultCategoryItemDto

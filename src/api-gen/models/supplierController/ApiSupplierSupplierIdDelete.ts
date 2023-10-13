@@ -1,4 +1,4 @@
-import type { ResTfulResultSupplierDto } from "../ResTfulResultSupplierDto"
+export type ApiSupplierSupplierIdDeleteMutationResponse = any | null
 
 export type ApiSupplierSupplierIdDeletePathParams = {
    /**
@@ -6,9 +6,3 @@ export type ApiSupplierSupplierIdDeletePathParams = {
     */
    id: number
 }
-
-/**
- * @description Success
- */
-export type ApiSupplierSupplierIdDeleteMutationResponse =
-   ResTfulResultSupplierDto

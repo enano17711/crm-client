@@ -1,11 +1,11 @@
-import type { SupplierDto } from "./SupplierDto"
+import type { CategoryItemSimpleDto } from "./CategoryItemSimpleDto"
 
-export type ResTfulResultSupplierDto = {
+export type ResTfulResultCategoryItemSimpleDto = {
    /**
     * @type integer | undefined int32
     */
    statusCode?: number
-   data?: SupplierDto
+   data?: CategoryItemSimpleDto
    /**
     * @type boolean | undefined
     */

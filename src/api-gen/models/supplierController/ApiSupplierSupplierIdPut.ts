@@ -1,5 +1,6 @@
 import type { UpdateSupplierDto } from "../UpdateSupplierDto"
-import type { ResTfulResultSupplierDto } from "../ResTfulResultSupplierDto"
+
+export type ApiSupplierSupplierIdPutMutationResponse = any | null
 
 export type ApiSupplierSupplierIdPutPathParams = {
    /**
@@ -9,8 +10,3 @@ export type ApiSupplierSupplierIdPutPathParams = {
 }
 
 export type ApiSupplierSupplierIdPutMutationRequest = UpdateSupplierDto
-
-/**
- * @description Success
- */
-export type ApiSupplierSupplierIdPutMutationResponse = ResTfulResultSupplierDto

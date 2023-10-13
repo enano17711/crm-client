@@ -1,4 +1,4 @@
-import type { ResTfulResultCategoryItemDto } from "../ResTfulResultCategoryItemDto"
+import type { ResTfulResultCategoryItemSimpleDto } from "../ResTfulResultCategoryItemSimpleDto"
 
 export type ApiCategoryItemCategoryItemIdGetPathParams = {
    /**
@@ -11,4 +11,4 @@ export type ApiCategoryItemCategoryItemIdGetPathParams = {
  * @description Success
  */
 export type ApiCategoryItemCategoryItemIdGetQueryResponse =
-   ResTfulResultCategoryItemDto
+   ResTfulResultCategoryItemSimpleDto
