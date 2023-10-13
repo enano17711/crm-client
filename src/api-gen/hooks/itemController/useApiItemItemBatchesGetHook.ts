@@ -7,29 +7,29 @@ import type {
 import { useQuery } from "@tanstack/react-query"
 import client from "../../../client"
 import type {
-   ApiItemItemsForGridGetQueryResponse,
-   ApiItemItemsForGridGetQueryParams,
-} from "../../models/itemController/ApiItemItemsForGridGet"
+   ApiItemItemBatchesGetQueryResponse,
+   ApiItemItemBatchesGetQueryParams,
+} from "../../models/itemController/ApiItemItemBatchesGet"
 
-export const apiItemItemsForGridGetQueryKey = (
-   params?: ApiItemItemsForGridGetQueryParams,
-) => [`/api/item/items-for-grid`, ...(params ? [params] : [])] as const
+export const apiItemItemBatchesGetQueryKey = (
+   params?: ApiItemItemBatchesGetQueryParams,
+) => [`/api/item/item-batches`, ...(params ? [params] : [])] as const
 
-export function apiItemItemsForGridGetQueryOptions<
-   TData = ApiItemItemsForGridGetQueryResponse,
+export function apiItemItemBatchesGetQueryOptions<
+   TData = ApiItemItemBatchesGetQueryResponse,
    TError = unknown,
 >(
-   params?: ApiItemItemsForGridGetQueryParams,
+   params?: ApiItemItemBatchesGetQueryParams,
    options: Partial<Parameters<typeof client>[0]> = {},
 ): UseQueryOptions<TData, TError> {
-   const queryKey = apiItemItemsForGridGetQueryKey(params)
+   const queryKey = apiItemItemBatchesGetQueryKey(params)
 
    return {
       queryKey,
       queryFn: () => {
          return client<TData, TError>({
             method: "get",
-            url: `/api/item/items-for-grid`,
+            url: `/api/item/item-batches`,
             params,
 
             ...options,
@@ -39,14 +39,14 @@ export function apiItemItemsForGridGetQueryOptions<
 }
 
 /**
- * @link /api/item/items-for-grid
+ * @link /api/item/item-batches
  */
 
-export function useApiItemItemsForGridGetHook<
-   TData = ApiItemItemsForGridGetQueryResponse,
+export function useApiItemItemBatchesGetHook<
+   TData = ApiItemItemBatchesGetQueryResponse,
    TError = unknown,
 >(
-   params?: ApiItemItemsForGridGetQueryParams,
+   params?: ApiItemItemBatchesGetQueryParams,
    options: {
       query?: UseQueryOptions<TData, TError>
       client?: Partial<Parameters<typeof client<TData, TError>>[0]>
@@ -54,10 +54,10 @@ export function useApiItemItemsForGridGetHook<
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
    const { query: queryOptions, client: clientOptions = {} } = options ?? {}
    const queryKey =
-      queryOptions?.queryKey ?? apiItemItemsForGridGetQueryKey(params)
+      queryOptions?.queryKey ?? apiItemItemBatchesGetQueryKey(params)
 
    const query = useQuery<TData, TError>({
-      ...apiItemItemsForGridGetQueryOptions<TData, TError>(
+      ...apiItemItemBatchesGetQueryOptions<TData, TError>(
          params,
          clientOptions,
       ),

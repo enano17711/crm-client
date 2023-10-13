@@ -1695,131 +1695,6 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RESTfulResult_OrderReturnDto'
-  /api/item/items-for-grid:
-    get:
-      tags:
-        - item
-      operationId: api-item-items-for-grid-Get
-      parameters:
-        - name: RequireTotalCount
-          in: query
-          schema:
-            type: boolean
-        - name: RequireGroupCount
-          in: query
-          schema:
-            type: boolean
-        - name: IsCountQuery
-          in: query
-          schema:
-            type: boolean
-        - name: IsSummaryQuery
-          in: query
-          schema:
-            type: boolean
-        - name: Skip
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Take
-          in: query
-          schema:
-            type: integer
-            format: int32
-        - name: Sort
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SortingInfo'
-        - name: Group
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/GroupingInfo'
-        - name: Filter
-          in: query
-          schema:
-            type: array
-            items:
-              additionalProperties: false
-        - name: TotalSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: GroupSummary
-          in: query
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/SummaryInfo'
-        - name: Select
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: PreSelect
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: RemoteSelect
-          in: query
-          schema:
-            type: boolean
-        - name: RemoteGrouping
-          in: query
-          schema:
-            type: boolean
-        - name: ExpandLinqSumType
-          in: query
-          schema:
-            type: boolean
-        - name: PrimaryKey
-          in: query
-          schema:
-            type: array
-            items:
-              type: string
-        - name: DefaultSort
-          in: query
-          schema:
-            type: string
-        - name: StringToLower
-          in: query
-          schema:
-            type: boolean
-        - name: PaginateViaPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: SortByPrimaryKey
-          in: query
-          schema:
-            type: boolean
-        - name: AllowAsyncOverSync
-          in: query
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: Success
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/RESTfulResult_LoadResult'
   /api/item/items:
     get:
       tags:
@@ -1992,6 +1867,147 @@ paths:
       responses:
         '200':
           description: Success
+    put:
+      tags:
+        - item
+      operationId: api-item-item-batch-id-Put
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemBatchDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemBatchDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateItemBatchDto'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/UpdateItemBatchDto'
+      responses:
+        '200':
+          description: Success
+  /api/item/item-batches:
+    get:
+      tags:
+        - item
+      operationId: api-item-item-batches-Get
+      parameters:
+        - name: PageNumber
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: PageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: ColumnName
+          in: query
+          schema:
+            type: string
+        - name: ColumnValue
+          in: query
+          schema:
+            type: string
+        - name: OrderBy
+          in: query
+          schema:
+            type: string
+        - name: OrderDirection
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_ItemBatchSimpleDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_ItemBatchSimpleDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_PaginatedResponse_ItemBatchSimpleDto'
+  /api/item/item-batch-by-id/{id}:
+    get:
+      tags:
+        - item
+      operationId: api-item-item-batch-by-id-id-Get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_ItemBatchSimpleDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_ItemBatchSimpleDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_ItemBatchSimpleDto'
+  /api/item/download-item-pdf/{userid}:
+    post:
+      tags:
+        - item
+      operationId: api-item-download-item-pdf-userid-Post
+      parameters:
+        - name: userid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+  /api/item/download-item-excel:
+    post:
+      tags:
+        - item
+      operationId: api-item-download-item-excel-Post
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RESTfulResult_IActionResult'
   /api/customer/customers-for-grid:
     get:
       tags:
@@ -3578,12 +3594,15 @@ components:
       additionalProperties: false
     CreateItemDto:
       required:
+        - brandId
         - code
         - cost
         - isBatched
         - name
         - price
+        - taxCostId
         - taxCostMethod
+        - taxPriceId
         - taxPriceMethod
         - unitCostId
         - unitPriceId
@@ -3621,15 +3640,12 @@ components:
         taxCostId:
           type: integer
           format: int64
-          nullable: true
         taxPriceId:
           type: integer
           format: int64
-          nullable: true
         brandId:
           type: integer
           format: int64
-          nullable: true
         unitPriceId:
           type: integer
           format: int64
@@ -4508,6 +4524,53 @@ components:
           items:
             $ref: '#/components/schemas/ItemOrderReturnDto'
           nullable: true
+      additionalProperties: false
+    ItemBatchSimpleDto:
+      type: object
+      properties:
+        isDeleted:
+          type: boolean
+          nullable: true
+        deletedAt:
+          type: string
+          format: date-time
+          nullable: true
+        deletedBy:
+          type: integer
+          format: int64
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+          nullable: true
+        createdBy:
+          type: integer
+          format: int64
+          nullable: true
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        updatedBy:
+          type: integer
+          format: int64
+          nullable: true
+        itemBatchId:
+          type: integer
+          format: int64
+        batchNumber:
+          type: string
+          nullable: true
+        batchDate:
+          type: string
+          format: date-time
+          nullable: true
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        item:
+          $ref: '#/components/schemas/ItemSimpleDto'
       additionalProperties: false
     ItemDto:
       type: object
@@ -5886,6 +5949,27 @@ components:
             $ref: '#/components/schemas/CategoryItemSimpleDto'
           nullable: true
       additionalProperties: false
+    PaginatedResponse_ItemBatchSimpleDto:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        totalNumber:
+          type: integer
+          format: int32
+        totalPage:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemBatchSimpleDto'
+          nullable: true
+      additionalProperties: false
     PaginatedResponse_ItemSimpleDto:
       type: object
       properties:
@@ -6139,6 +6223,27 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/IActionResult'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
+    RESTfulResult_ItemBatchSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ItemBatchSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -6443,6 +6548,27 @@ components:
           nullable: true
         data:
           $ref: '#/components/schemas/PaginatedResponse_CategoryItemSimpleDto'
+        succeeded:
+          type: boolean
+        errors:
+          additionalProperties: false
+          nullable: true
+        extras:
+          additionalProperties: false
+          nullable: true
+        timestamp:
+          type: integer
+          format: int64
+      additionalProperties: false
+    RESTfulResult_PaginatedResponse_ItemBatchSimpleDto:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+          nullable: true
+        data:
+          $ref: '#/components/schemas/PaginatedResponse_ItemBatchSimpleDto'
         succeeded:
           type: boolean
         errors:
@@ -7478,14 +7604,32 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    UpdateItemBatchDto:
+      type: object
+      properties:
+        batchNumber:
+          type: string
+          nullable: true
+        batchDate:
+          type: string
+          format: date-time
+          nullable: true
+        itemId:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
     UpdateItemDto:
       required:
+        - brandId
         - code
         - cost
         - isBatched
         - name
         - price
+        - taxCostId
         - taxCostMethod
+        - taxPriceId
         - taxPriceMethod
         - unitCostId
         - unitPriceId
@@ -7523,15 +7667,12 @@ components:
         taxCostId:
           type: integer
           format: int64
-          nullable: true
         taxPriceId:
           type: integer
           format: int64
-          nullable: true
         brandId:
           type: integer
           format: int64
-          nullable: true
         unitPriceId:
           type: integer
           format: int64

@@ -36,17 +36,17 @@ export type CreateItemDto = {
     */
    categoryItems?: number[]
    /**
-    * @type integer | undefined int64
+    * @type integer int64
     */
-   taxCostId?: number
+   taxCostId: number
    /**
-    * @type integer | undefined int64
+    * @type integer int64
     */
-   taxPriceId?: number
+   taxPriceId: number
    /**
-    * @type integer | undefined int64
+    * @type integer int64
     */
-   brandId?: number
+   brandId: number
    /**
     * @type integer int64
     */
