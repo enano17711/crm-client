@@ -60,6 +60,15 @@ const SupplierTopBarComponent = () => {
                >
                   <Group mt="xs" px="xs" pb="xs">
                      <Checkbox value="name" label="Nombre" />
+                     <Checkbox value="companyName" label="Empresa" />
+                     <Checkbox value="nit" label="Nit" />
+                     <Checkbox value="ci" label="Ci" />
+                     <Checkbox value="email" label="Email" />
+                     <Checkbox value="phone" label="Telefono" />
+                     <Checkbox value="address" label="Direccion" />
+                     <Checkbox value="city" label="Ciudad" />
+                     <Checkbox value="state" label="Estado" />
+                     <Checkbox value="country" label="Pais" />
                      <Checkbox value="description" label="Descripcion" />
                   </Group>
                </Checkbox.Group>

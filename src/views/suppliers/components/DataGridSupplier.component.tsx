@@ -116,6 +116,15 @@ export const DataGridSupplierComponent = () => {
             sortField: "State",
          },
          {
+            id: "country",
+            name: "Pais",
+            selector: (row) => row.country,
+            sortable: true,
+            wrap: true,
+            omit: supplierGridColumnsVisible.includes("country"),
+            sortField: "Country",
+         },
+         {
             id: "description",
             name: "Descripcion",
             selector: (row) => row.description,
