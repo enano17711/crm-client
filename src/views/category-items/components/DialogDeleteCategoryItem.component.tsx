@@ -1,34 +1,70 @@
+import { useAtom } from "jotai"
+import {
+   openCategoryItemDeleteModalAtom,
+   selectedCategoryItemAtom,
+} from "../../../store/categoryItem.atoms.ts"
+import { useQueryClient } from "@tanstack/react-query"
+import { useApiCategoryItemCategoryItemIdDeleteHook } from "../../../api-gen/hooks/categoryItemController"
+import { successNotification } from "../../../utils"
+import { Button, Group, Modal, Stack, Text } from "@mantine/core"
+import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
 import React from "react"
-import { Button, Modal, Stack, Text } from "@mantine/core"
-import { useAppStore } from "../../../store"
 
 const DialogDeleteCategoryItemComponent = () => {
-   const { categoryItemsStore } = useAppStore()
-   const { singleModel, openDeleteModal } = categoryItemsStore.getters
-   const onModalClose = () => {
-      categoryItemsStore.actions.disposeState()
-   }
-   const deleteHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-      categoryItemsStore.actions.deleteCategoryItem(singleModel.categoryItemId)
-      onModalClose()
-   }
+   const [selectedCategoryItem, setSelectedCategoryItem] = useAtom(
+      selectedCategoryItemAtom,
+   )
+   const [openDeleteModal, setOpenDeleteModal] = useAtom(
+      openCategoryItemDeleteModalAtom,
+   )
+   const queryClient = useQueryClient()
+
+   const { mutate: deleteCategoryItemMutate } =
+      useApiCategoryItemCategoryItemIdDeleteHook(
+         selectedCategoryItem?.categoryItemId,
+         {
+            mutation: {
+               onSuccess: () => {
+                  setSelectedCategoryItem({})
+                  successNotification()
+                  queryClient.invalidateQueries({
+                     queryKey: ["/api/category-item/category-items"],
+                  })
+                  setOpenDeleteModal(false)
+               },
+            },
+         },
+      )
 
    return (
       <Modal
          opened={openDeleteModal}
-         title="Eliminar Categoria de Items"
+         title="Eliminar Marca"
          centered
-         onClose={onModalClose}
+         onClose={() => setOpenDeleteModal(false)}
          closeOnClickOutside={false}
       >
          <Stack>
-            <Text>
-               Se eliminará la categoria de items: NOMBRE - {singleModel?.name}
-            </Text>
+            <Text>Se eliminará la Categoria: {selectedCategoryItem?.name}</Text>
 
-            <Button color="red" onClick={deleteHandler}>
-               Eliminar
-            </Button>
+            <Group position="right">
+               <Button
+                  color="red"
+                  onClick={() => deleteCategoryItemMutate()}
+                  variant="light"
+                  leftIcon={<IconTrash />}
+               >
+                  Eliminar
+               </Button>
+               <Button
+                  color="grape"
+                  onClick={() => setOpenDeleteModal(false)}
+                  variant="light"
+                  leftIcon={<IconArrowLeft />}
+               >
+                  Cancelar
+               </Button>
+            </Group>
          </Stack>
       </Modal>
    )
