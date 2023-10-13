@@ -1,92 +1,138 @@
-import { SupplierDto } from "../../../api-services"
-import { Box } from "@mantine/core"
-import { useAppStore } from "../../../store"
-
-import "devextreme/dist/css/dx.light.css"
+import { useAtom, useAtomValue } from "jotai/index"
 import {
-   DataGrid,
-   Column,
-   FilterRow,
-   SearchPanel,
-   GroupPanel,
-   Toolbar,
-   Item,
-   Editing,
-   ColumnChooser,
-   Paging,
-   Pager,
-   Export,
-   Selection,
-   Button,
-} from "devextreme-react/data-grid"
-import { exportFormats, exportGrid } from "../../../utils"
+   selectedSupplierAtom,
+   supplierGridColumnsVisibleAtom,
+   supplierGridParametersAtom,
+} from "../../../store/supplier.atoms.ts"
+import { useApiSupplierSuppliersGetHook } from "../../../api-gen/hooks/supplierController"
+import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
+import { SupplierSimpleDto } from "../../../api-gen"
+import React, { useCallback, useMemo } from "react"
+import { Box } from "@mantine/core"
 
-interface DataGridProps {
-   dataSource: SupplierDto[]
-}
+export const DataGridSupplierComponent = () => {
+   const [supplierGridParameters, setSupplierGridParameters] = useAtom(
+      supplierGridParametersAtom,
+   )
+   const [selectedSupplier, setSelectedSupplier] = useAtom(selectedSupplierAtom)
+   const supplierGridColumnsVisible = useAtomValue(
+      supplierGridColumnsVisibleAtom,
+   )
 
-export const DataGridSupplierComponent = ({ dataSource }: DataGridProps) => {
-   const { suppliersStore } = useAppStore()
+   const {
+      data: supplierQueryData,
+      error: supplierQueryError,
+      status: supplierQueryStatus,
+   } = useApiSupplierSuppliersGetHook({
+      ColumnName: supplierGridParameters.searchColumn,
+      ColumnValue: supplierGridParameters.searchText,
+      PageNumber: supplierGridParameters.pageIndex,
+      PageSize: supplierGridParameters.pageSize,
+      OrderBy: supplierGridParameters.orderBy,
+      OrderDirection: supplierGridParameters.orderDirection,
+   })
 
-   const openModalUpdate = (e: any) => {
-      const supplierRow = e.row.data as SupplierDto
-      suppliersStore.actions.prepareForUpdate(supplierRow)
-   }
+   const columns: TableColumn<SupplierSimpleDto>[] = useMemo(
+      () => [
+         {
+            id: "name",
+            name: "Nombre",
+            selector: (row) => row.name,
+            sortable: true,
+            wrap: true,
+            omit: supplierGridColumnsVisible.includes("name"),
+            sortField: "Name",
+         },
+         {
+            id: "description",
+            name: "Descripcion",
+            selector: (row) => row.description,
+            sortable: true,
+            wrap: true,
+            omit: supplierGridColumnsVisible.includes("description"),
+            sortField: "Description",
+         },
+      ],
+      [supplierGridColumnsVisible],
+   )
 
-   const openModalDelete = (e: any) => {
-      const supplierRow = e.row.data as SupplierDto
-      suppliersStore.actions.prepareForDelete(supplierRow)
-   }
+   const handleRowsPerPageChange = useCallback(
+      (currentRowsPerPage: number, currentPage: number) => {
+         setSupplierGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: currentPage,
+               pageSize: currentRowsPerPage,
+            }
+         })
+      },
+      [setSupplierGridParameters],
+   )
+   const handlePageChange = useCallback(
+      (page: number) => {
+         setSupplierGridParameters((prev) => {
+            return {
+               ...prev,
+               pageIndex: page,
+            }
+         })
+      },
+      [setSupplierGridParameters],
+   )
+   const handleOnRowClicked = useCallback(
+      (row: unknown) => {
+         setSelectedSupplier(row as SupplierSimpleDto)
+      },
+      [setSelectedSupplier],
+   )
+   const handleOnSort = useCallback(
+      (
+         selectedColumn: TableColumn<SupplierSimpleDto>,
+         sortDirection: SortOrder,
+         sortedRows: unknown[],
+      ) => {
+         setSupplierGridParameters((prev) => {
+            return {
+               ...prev,
+               orderBy: selectedColumn.sortField,
+               orderDirection: sortDirection,
+            }
+         })
+      },
+      [setSupplierGridParameters],
+   )
+
+   const conditionalRowStyles = [
+      {
+         when: (row) => row.name === selectedSupplier.name,
+         style: {
+            backgroundColor: "#FFE8CC",
+            color: "#FD7E14",
+         },
+      },
+   ]
 
    return (
-      <Box>
-         <DataGrid
-            id="ProveedoresDataGrid"
-            dataSource={dataSource}
-            keyExpr="supplierId"
-            allowColumnReordering
-            allowColumnResizing
-            showRowLines
-            rowAlternationEnabled
-            columnHidingEnabled
-            onExporting={exportGrid}
-         >
-            <Selection mode="multiple" />
-            <Export enabled formats={exportFormats} allowExportSelectedData />
-            <FilterRow visible />
-            <SearchPanel visible />
-            <GroupPanel visible />
-            <Editing mode="popup" allowUpdating allowDeleting useIcons />
-            <Toolbar>
-               <Item name="groupPanel" />
-               <Item name="columnChooserButton" />
-               <Item name="exportButton" />
-               <Item name="searchPanel" />
-            </Toolbar>
-            <Paging enabled defaultPageSize={5} />
-            <Pager
-               displayMode="adaptive"
-               showPageSizeSelector
-               allowedPageSizes={[5, 10, 25, 50, 100]}
-               showNavigationButtons
+      <>
+         <Box>
+            <DataTable
+               data={supplierQueryData?.data?.items}
+               columns={columns}
+               responsive
+               pagination
+               paginationPerPage={10}
+               paginationRowsPerPageOptions={[10, 25, 50, 100]}
+               paginationTotalRows={supplierQueryData?.data?.totalNumber}
+               paginationServer
+               onChangeRowsPerPage={handleRowsPerPageChange}
+               onChangePage={handlePageChange}
+               onRowClicked={handleOnRowClicked}
+               conditionalRowStyles={conditionalRowStyles}
+               progressPending={supplierQueryStatus === "loading"}
+               onSort={handleOnSort}
+               sortServer
             />
-            <ColumnChooser enabled mode="dragAndDrop" />
-            <Column dataField="name" />
-            <Column dataField="description" />
-            <Column dataField="companyName" />
-            <Column dataField="nit" />
-            <Column dataField="ci" />
-            <Column dataField="email" />
-            <Column dataField="phone" />
-            <Column dataField="address" />
-            <Column dataField="city" />
-            <Column dataField="state" />
-            <Column dataField="country" />
-            <Column type="buttons">
-               <Button name="edit" onClick={(e) => openModalUpdate(e)} />
-               <Button name="delete" onClick={(e) => openModalDelete(e)} />
-            </Column>
-         </DataGrid>
-      </Box>
+         </Box>
+      </>
    )
 }
