@@ -33,6 +33,7 @@ import UpdateTaxView from "./views/taxs/UpdateTax.view.tsx"
 import CreateSupplierView from "./views/suppliers/CreateSupplier.view.tsx"
 import UpdateSupplierView from "./views/suppliers/UpdateSupplier.view.tsx"
 import CreateCategoryItemView from "./views/category-items/CreateCategoryItem.view.tsx"
+import UpdateCategoryItemView from "./views/category-items/UpdateCategoryItem.view.tsx"
 
 const RoutesComponent = () => {
    const securitiesData = useAtomValue(securitiesAtom)
@@ -193,6 +194,14 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <CreateCategoryItemView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/category-items/update/:categoryItemId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateCategoryItemView />
                      </ProtectedRouteComponent>
                   }
                />
