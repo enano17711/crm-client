@@ -21,11 +21,11 @@ const columns = [
       label: "Quantity",
    },
    {
-      value: "Tax Cost Method",
+      value: "TaxCostMethod",
       label: "Tax Cost Method",
    },
    {
-      value: "Tax Price Method",
+      value: "TaxPriceMethod",
       label: "Tax Price Method",
    },
    {

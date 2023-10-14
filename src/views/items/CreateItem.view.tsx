@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo } from "react"
+import React, { useEffect } from "react"
 import { useAtom } from "jotai"
 import { selectedItemAtom } from "../../store/item.atoms.ts"
 import { useNavigate } from "react-router-dom"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { useApiBaseUnitBaseUnitsGetHook } from "../../api-gen/hooks/baseUnitController"
 import { CreateItemDto } from "../../api-gen"
 import CreateUpdateTopBarComponent from "../../components/CreateUpdateTopBar.component.tsx"
 import {
@@ -37,7 +36,6 @@ interface IFormInputs {
    brandId: string
    unitPriceId: string
    unitCostId: string
-   baseUnitId: string
 }
 
 const CreateItemView = () => {
@@ -48,8 +46,6 @@ const CreateItemView = () => {
    const navigate = useNavigate()
 
    const {
-      watch,
-      setValue,
       handleSubmit,
       control,
       reset,
@@ -70,19 +66,8 @@ const CreateItemView = () => {
          brandId: "",
          unitPriceId: "",
          unitCostId: "",
-         baseUnitId: "",
       },
    })
-
-   const { data: baseUnitQueryData, status: baseUnitQueryStatus } =
-      useApiBaseUnitBaseUnitsGetHook({
-         ColumnName: "Name",
-         ColumnValue: "",
-         PageNumber: 1,
-         PageSize: 1000,
-         OrderBy: "Name",
-         OrderDirection: "ASC",
-      })
 
    const { data: unitQueryData, status: unitQueryStatus } =
       useApiUnitUnitsGetHook({
@@ -123,17 +108,6 @@ const CreateItemView = () => {
          OrderDirection: "ASC",
       })
 
-   const watchBaseUnitId = watch("baseUnitId")
-
-   const unitArrayFromBaseUnitId = useMemo(() => {
-      setValue("unitPriceId", "")
-      setValue("unitCostId", "")
-      const baseUnitId = Number(watchBaseUnitId)
-      return unitQueryData?.data?.items?.filter(
-         (unit) => unit.baseUnit.baseUnitId === baseUnitId,
-      )
-   }, [watchBaseUnitId, unitQueryData?.data?.items])
-
    const { mutate } = useApiItemItemPostHook({
       mutation: {
          onSuccess: (_, variables) => {
@@ -154,7 +128,6 @@ const CreateItemView = () => {
                   brandId: "",
                   unitPriceId: "",
                   unitCostId: "",
-                  baseUnitId: "",
                })
             } else if (saveType === "create_clone") {
                reset({
@@ -174,7 +147,6 @@ const CreateItemView = () => {
                   brandId: variables.brandId.toString(),
                   unitPriceId: variables.unitPriceId.toString(),
                   unitCostId: variables.unitCostId.toString(),
-                  baseUnitId: "",
                })
             } else {
                reset({
@@ -192,7 +164,6 @@ const CreateItemView = () => {
                   brandId: "",
                   unitPriceId: "",
                   unitCostId: "",
-                  baseUnitId: "",
                })
                navigate("/items")
             }
@@ -232,14 +203,13 @@ const CreateItemView = () => {
             taxPriceMethod: selectedItem?.taxPriceMethod,
             description: selectedItem?.description,
             categoryItems: selectedItem?.categoryItems.map((item) =>
-               item.toString(),
+               item.categoryItemId.toString(),
             ),
             taxCostId: selectedItem?.taxCost.taxId.toString(),
             taxPriceId: selectedItem?.taxPrice.taxId.toString(),
             brandId: selectedItem?.brand.brandId.toString(),
             unitPriceId: selectedItem?.unitPrice.unitId.toString(),
             unitCostId: selectedItem?.unitCost.unitId.toString(),
-            baseUnitId: "",
          })
       }
    }, [])
@@ -321,35 +291,6 @@ const CreateItemView = () => {
                      )}
                   />
                </Group>
-               <Controller
-                  name="baseUnitId"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                     <Select
-                        {...field}
-                        withAsterisk
-                        label="Unidad Base"
-                        searchable
-                        error={
-                           errors.baseUnitId?.type === "required" &&
-                           "Este campo es requerido"
-                        }
-                        data={
-                           baseUnitQueryStatus === "loading"
-                              ? ["Cargando"]
-                              : baseUnitQueryData?.data?.items?.map(
-                                   (baseUnit) => {
-                                      return {
-                                         label: baseUnit.name,
-                                         value: baseUnit.baseUnitId.toString(),
-                                      }
-                                   },
-                                )
-                        }
-                     />
-                  )}
-               />
                {/*Unidad Precio y Unidad Costo*/}
                <Group position="apart" grow>
                   <Controller
@@ -369,9 +310,9 @@ const CreateItemView = () => {
                            data={
                               unitQueryStatus === "loading"
                                  ? ["Cargando"]
-                                 : unitArrayFromBaseUnitId.map((unit) => {
+                                 : unitQueryData?.data?.items?.map((unit) => {
                                       return {
-                                         label: unit.name,
+                                         label: `${unit.name} | ${unit.code}`,
                                          value: unit.unitId.toString(),
                                       }
                                    })
@@ -396,9 +337,9 @@ const CreateItemView = () => {
                            data={
                               unitQueryStatus === "loading"
                                  ? ["Cargando"]
-                                 : unitArrayFromBaseUnitId.map((unit) => {
+                                 : unitQueryData?.data?.items?.map((unit) => {
                                       return {
-                                         label: unit.name,
+                                         label: `${unit.name} | ${unit.code}`,
                                          value: unit.unitId.toString(),
                                       }
                                    })
@@ -487,7 +428,7 @@ const CreateItemView = () => {
                                  ? ["Cargando"]
                                  : taxQueryData?.data?.items?.map((tax) => {
                                       return {
-                                         label: `${tax.name} = ${tax.rate}%`,
+                                         label: `${tax.name} | ${tax.rate}%`,
                                          value: tax.taxId.toString(),
                                       }
                                    })
@@ -534,7 +475,7 @@ const CreateItemView = () => {
                                  ? ["Cargando"]
                                  : taxQueryData?.data?.items?.map((tax) => {
                                       return {
-                                         label: `${tax.name} = ${tax.rate}%`,
+                                         label: `${tax.name} | ${tax.rate}%`,
                                          value: tax.taxId.toString(),
                                       }
                                    })
@@ -579,6 +520,11 @@ const CreateItemView = () => {
                                       }
                                    },
                                 )
+                        }
+                        withAsterisk
+                        error={
+                           errors.categoryItems?.type === "required" &&
+                           "Este campo es requerido"
                         }
                      />
                   )}

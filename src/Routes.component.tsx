@@ -215,7 +215,7 @@ const RoutesComponent = () => {
                   }
                />
                <Route
-                  path="/create-item"
+                  path="/items/create"
                   element={
                      <ProtectedRouteComponent>
                         <CreateItemView />

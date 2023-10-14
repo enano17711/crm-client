@@ -59,8 +59,9 @@ const DataGridItemComponent = () => {
          },
          {
             id: "isBatched",
-            name: "En lote",
+            name: "Lote y Vencimiento",
             selector: (row) => row.isBatched,
+            format: (row) => (row.isBatched ? "Si" : "No"),
             sortable: true,
             wrap: true,
             omit: itemGridColumnsVisible.includes("isBatched"),
@@ -68,7 +69,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "unitPrice",
-            name: "Unidad de Venta",
+            name: "U. de Venta",
             selector: (row) => row.unitPrice?.name,
             wrap: true,
             omit: itemGridColumnsVisible.includes("unitPrice"),
@@ -84,7 +85,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "unitCost",
-            name: "Unidad de Compra",
+            name: "U. de Compra",
             selector: (row) => row.unitCost?.name,
             wrap: true,
             omit: itemGridColumnsVisible.includes("unitCost"),
@@ -109,7 +110,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "taxCostMethod",
-            name: "Metodo Impuesto Compra",
+            name: "Met. Imp. Compra",
             selector: (row) => row.taxCostMethod,
             sortable: true,
             wrap: true,
@@ -118,7 +119,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "taxCost",
-            name: "Impuesto Compra (%)",
+            name: "Imp. Compra (%)",
             selector: (row) => row.taxCost?.rate,
             sortable: true,
             wrap: true,
@@ -127,7 +128,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "taxPriceMethod",
-            name: "Metodo Impuesto Precio",
+            name: "Met. Imp. Precio",
             selector: (row) => row.taxPriceMethod,
             sortable: true,
             wrap: true,
@@ -136,7 +137,7 @@ const DataGridItemComponent = () => {
          },
          {
             id: "taxPrice",
-            name: "Impuesto Precio (%)",
+            name: "Imp. Precio (%)",
             selector: (row) => row.taxPrice?.rate,
             sortable: true,
             wrap: true,
