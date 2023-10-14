@@ -1,4 +1,3 @@
-import "ka-table/style.css"
 import { Box } from "@mantine/core"
 import React, { useCallback, useMemo } from "react"
 import { useApiBrandBrandsGetHook } from "../../../api-gen/hooks/brandController"

@@ -1,15 +1,14 @@
-import "ka-table/style.css"
 import { Box } from "@mantine/core"
 import React, { useCallback, useMemo } from "react"
 import { useApiUnitUnitsGetHook } from "../../../api-gen/hooks/unitController"
-import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
-import { UnitDto } from "../../../api-gen"
 import { useAtom, useAtomValue } from "jotai"
 import {
    selectedUnitAtom,
    unitGridColumnsVisibleAtom,
    unitGridParametersAtom,
 } from "../../../store/unit.atoms.ts"
+import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
+import { UnitDto } from "../../../api-gen"
 
 export const DataGridUnitComponent = () => {
    const [unitGridParameters, setUnitGridParameters] = useAtom(
