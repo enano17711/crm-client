@@ -1,52 +1,37 @@
-import React from "react"
-import { Button, Modal, Stack, Text } from "@mantine/core"
-import { useAppStore } from "../../../store"
+import { useAtom } from "jotai"
 import {
-   BrandApi,
-   BrandSimpleDto,
-   ItemApi,
-   ItemSimpleDto,
-} from "../../../api-services"
-import { DispatchFunc } from "ka-table/types"
-import { getAPI } from "../../../axios-utils.ts"
-import { loadData } from "ka-table/actionCreators"
-import { notifications } from "@mantine/notifications"
+   openItemDeleteModalAtom,
+   selectedItemAtom,
+} from "../../../store/item.atoms.ts"
+import { useQueryClient } from "@tanstack/react-query"
+import { useApiItemItemIdDeleteHook } from "../../../api-gen/hooks/itemController"
+import { successNotification } from "../../../utils"
+import { Button, Group, Modal, Stack, Text } from "@mantine/core"
+import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
+import React from "react"
 
-interface DialogDeleteBrandComponentProps {
-   openDeleteModal: any
-   setOpenDeleteModal: any
-   itemData: ItemSimpleDto
-   dispatch: DispatchFunc
-}
+const DialogDeleteItemComponent = () => {
+   const [selectedItem, setSelectedItem] = useAtom(selectedItemAtom)
+   const [openDeleteModal, setOpenDeleteModal] = useAtom(
+      openItemDeleteModalAtom,
+   )
+   const queryClient = useQueryClient()
 
-const DialogDeleteItemComponent = ({
-   itemData,
-   setOpenDeleteModal,
-   openDeleteModal,
-   dispatch,
-}: DialogDeleteBrandComponentProps) => {
-   const deleteHandler = () => {
-      getAPI(ItemApi)
-         .apiItemItemIdDelete(itemData?.itemId)
-         .then((res) => {
-            dispatch(loadData())
-            notifications.show({
-               title: "Operación Exitosa",
-               message: "Marca eliminada con exito",
-               color: "teal",
-            })
-         })
-         .catch((err) => {
-            notifications.show({
-               title: "Operación Fallida",
-               message: err.message,
-               color: "red",
-            })
-         })
-         .finally(() => {
-            setOpenDeleteModal(false)
-         })
-   }
+   const { mutate: deleteItemMutate } = useApiItemItemIdDeleteHook(
+      selectedItem?.itemId,
+      {
+         mutation: {
+            onSuccess: () => {
+               setSelectedItem({})
+               successNotification()
+               queryClient.invalidateQueries({
+                  queryKey: ["/api/item/items"],
+               })
+               setOpenDeleteModal(false)
+            },
+         },
+      },
+   )
 
    return (
       <Modal
@@ -57,15 +42,26 @@ const DialogDeleteItemComponent = ({
          closeOnClickOutside={false}
       >
          <Stack>
-            <Text>
-               Se eliminará la item: NOMBRE - {itemData?.name} - CODIGO -{" "}
-               {itemData?.code} y sus registros asociados de items con lote y
-               fecha de vencimiento
-            </Text>
+            <Text>Se eliminará el item: {selectedItem?.name}</Text>
 
-            <Button color="red" onClick={deleteHandler}>
-               Eliminar
-            </Button>
+            <Group position="right">
+               <Button
+                  color="red"
+                  onClick={() => deleteItemMutate()}
+                  variant="light"
+                  leftIcon={<IconTrash />}
+               >
+                  Eliminar
+               </Button>
+               <Button
+                  color="grape"
+                  onClick={() => setOpenDeleteModal(false)}
+                  variant="light"
+                  leftIcon={<IconArrowLeft />}
+               >
+                  Cancelar
+               </Button>
+            </Group>
          </Stack>
       </Modal>
    )
