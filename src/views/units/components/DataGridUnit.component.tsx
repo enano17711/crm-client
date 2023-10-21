@@ -8,7 +8,7 @@ import {
    unitGridParametersAtom,
 } from "../../../store/unit.atoms.ts"
 import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
-import { UnitDto } from "../../../api-gen"
+import { UnitSimpleDto } from "../../../api-gen"
 
 export const DataGridUnitComponent = () => {
    const [unitGridParameters, setUnitGridParameters] = useAtom(
@@ -30,7 +30,7 @@ export const DataGridUnitComponent = () => {
       OrderDirection: unitGridParameters.orderDirection,
    })
 
-   const columns: TableColumn<UnitDto>[] = useMemo(
+   const columns: TableColumn<UnitSimpleDto>[] = useMemo(
       () => [
          {
             id: "name",
@@ -53,9 +53,9 @@ export const DataGridUnitComponent = () => {
          {
             id: "baseUnit",
             name: "U. Base",
-            selector: (row) => row.baseUnit?.name,
+            selector: (row) => row.baseUnitName,
             wrap: true,
-            omit: unitGridColumnsVisible.includes("baseUnit"),
+            omit: unitGridColumnsVisible.includes("baseUnitName"),
          },
          {
             id: "operation",
@@ -109,13 +109,13 @@ export const DataGridUnitComponent = () => {
    )
    const handleOnRowClicked = useCallback(
       (row: unknown) => {
-         setSelectedUnit(row as UnitDto)
+         setSelectedUnit(row as UnitSimpleDto)
       },
       [setSelectedUnit],
    )
    const handleOnSort = useCallback(
       (
-         selectedColumn: TableColumn<UnitDto>,
+         selectedColumn: TableColumn<UnitSimpleDto>,
          sortDirection: SortOrder,
          sortedRows: unknown[],
       ) => {

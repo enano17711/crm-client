@@ -1,8 +1,8 @@
 import { atom } from "jotai"
-import { UnitDto } from "../api-gen"
+import { UnitSimpleDto } from "../api-gen"
 
-export const unitsAtom = atom<UnitDto[]>([])
-export const selectedUnitAtom = atom<UnitDto>({})
+export const unitsAtom = atom<UnitSimpleDto[]>([])
+export const selectedUnitAtom = atom<UnitSimpleDto>({})
 export const unitGridParametersAtom = atom<{
    searchColumn: string
    searchText: string

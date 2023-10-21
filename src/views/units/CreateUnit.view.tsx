@@ -115,7 +115,7 @@ const CreateUnitView = () => {
             code: selectedUnit?.code,
             operation: selectedUnit?.operation,
             value: selectedUnit?.value,
-            baseUnitId: selectedUnit?.baseUnit.baseUnitId.toString(),
+            baseUnitId: selectedUnit?.baseUnitId.toString(),
             description: selectedUnit?.description,
          })
       }

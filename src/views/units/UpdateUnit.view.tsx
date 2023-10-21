@@ -50,7 +50,7 @@ const UpdateUnitView = () => {
          operation: unitData.data.operation,
          value: unitData.data.value,
          description: unitData.data.description,
-         baseUnitId: unitData.data.baseUnit.baseUnitId.toString(),
+         baseUnitId: unitData.data.baseUnitId.toString(),
       })
    }
 
@@ -87,7 +87,12 @@ const UpdateUnitView = () => {
                         operation: variables.operation,
                         value: variables.value,
                         description: variables.description,
-                        baseUnit: prev.baseUnit,
+                        baseUnitId: Number(variables.baseUnitId),
+                        baseUnitName: baseUnitQueryData.data.items.find(
+                           (baseUnit) =>
+                              baseUnit.baseUnitId ===
+                              Number(variables.baseUnitId),
+                        ).name,
                      }
                   })
                   navigate(`/units/create`)
@@ -144,7 +149,7 @@ const UpdateUnitView = () => {
             operation: unitData.data.operation,
             value: unitData.data.value,
             description: unitData.data.description,
-            baseUnitId: unitData.data.baseUnit.baseUnitId.toString(),
+            baseUnitId: unitData.data.baseUnitId.toString(),
          })
       }
    }, [unitStatus])
