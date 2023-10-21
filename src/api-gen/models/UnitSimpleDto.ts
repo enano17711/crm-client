@@ -27,4 +27,8 @@ export type UnitSimpleDto = {
     * @type integer | undefined int64
     */
    baseUnitId?: number
+   /**
+    * @type string | undefined
+    */
+   baseUnitName?: string
 }

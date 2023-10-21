@@ -1,3 +1,5 @@
+export * from "./ApiItemDownloadItemBatchExcelPost"
+export * from "./ApiItemDownloadItemBatchPdfUseridPost"
 export * from "./ApiItemDownloadItemExcelPost"
 export * from "./ApiItemDownloadItemPdfUseridPost"
 export * from "./ApiItemItemBatchByIdIdGet"

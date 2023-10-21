@@ -1,4 +1,4 @@
-import type { ResTfulResultPaginatedResponseUnitDto } from "../ResTfulResultPaginatedResponseUnitDto"
+import type { ResTfulResultPaginatedResponseUnitSimpleDto } from "../ResTfulResultPaginatedResponseUnitSimpleDto"
 
 export type ApiUnitUnitsGetQueryParams = {
    /**
@@ -30,4 +30,5 @@ export type ApiUnitUnitsGetQueryParams = {
 /**
  * @description Success
  */
-export type ApiUnitUnitsGetQueryResponse = ResTfulResultPaginatedResponseUnitDto
+export type ApiUnitUnitsGetQueryResponse =
+   ResTfulResultPaginatedResponseUnitSimpleDto

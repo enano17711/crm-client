@@ -1,6 +1,6 @@
-import type { UnitDto } from "./UnitDto"
+import type { UnitSimpleDto } from "./UnitSimpleDto"
 
-export type PaginatedResponseUnitDto = {
+export type PaginatedResponseUnitSimpleDto = {
    /**
     * @type integer | undefined int32
     */
@@ -20,5 +20,5 @@ export type PaginatedResponseUnitDto = {
    /**
     * @type array | undefined
     */
-   items?: UnitDto[]
+   items?: UnitSimpleDto[]
 }

@@ -2,6 +2,14 @@ import type { ResTfulResultPaginatedResponseItemSimpleDto } from "../ResTfulResu
 
 export type ApiItemItemsGetQueryParams = {
    /**
+    * @type string | undefined
+    */
+   OrderBy?: string
+   /**
+    * @type string | undefined
+    */
+   OrderDirection?: string
+   /**
     * @type integer | undefined int32
     */
    PageNumber?: number
@@ -17,14 +25,6 @@ export type ApiItemItemsGetQueryParams = {
     * @type string | undefined
     */
    ColumnValue?: string
-   /**
-    * @type string | undefined
-    */
-   OrderBy?: string
-   /**
-    * @type string | undefined
-    */
-   OrderDirection?: string
 }
 
 /**
