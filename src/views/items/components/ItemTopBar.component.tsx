@@ -6,8 +6,7 @@ import {
    selectedItemAtom,
 } from "../../../store/item.atoms.ts"
 import { useNavigate } from "react-router-dom"
-import { Checkbox, Group } from "@mantine/core"
-import ActionCreateComponent from "../../../components/top-bar/ActionCreate.component.tsx"
+import { Checkbox, Group, Menu } from "@mantine/core"
 import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
@@ -15,6 +14,8 @@ import SearchItemByColumnComponent from "../../items/components/SearchItemByColu
 import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
 import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
+import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateMenu.component.tsx"
+import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -35,10 +36,28 @@ const ItemTopBarComponent = ({
       navigate("/items/create")
    }, [navigate, setSelectedItem])
 
+   const onActionCreateItemBatch = useCallback(() => {
+      setSelectedItem({})
+      navigate("/items/create-batch")
+   }, [navigate, setSelectedItem])
+
    return (
       <Group position="apart">
          <Group>
-            <ActionCreateComponent createFunction={onActionCreateItem} />
+            <ActionCreateMenuComponent>
+               <Menu.Item
+                  icon={<IconPackage size={14} />}
+                  onClick={() => onActionCreateItem()}
+               >
+                  Item
+               </Menu.Item>
+               <Menu.Item
+                  icon={<Icon3dRotate size={14} />}
+                  onClick={() => onActionCreateItemBatch()}
+               >
+                  Item Batch
+               </Menu.Item>
+            </ActionCreateMenuComponent>
             <ActionCloneComponent
                disabled={!(selectedItem?.name !== undefined)}
                cloneUrl={"/items/create"}
