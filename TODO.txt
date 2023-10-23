@@ -1,0 +1,5 @@
+Functionality for added
+
+....................................
+
+- create item batch view ( incomplete )

@@ -8,7 +8,6 @@ import {
 } from "../../../../store/itemBatch.atoms.ts"
 import { useAtom } from "jotai"
 import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
-import DataGridItemExpandedComponent from "../DataGridItemExpanded.component.tsx"
 
 interface ItemBatchesTabComponentProps {
    data: ItemSimpleDto
@@ -28,8 +27,8 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
          ColumnValue: data.itemId.toString(),
          PageNumber: itemBatchGridParameters.pageIndex,
          PageSize: itemBatchGridParameters.pageSize,
-         OrderBy: "ItemBatchId",
-         OrderDirection: "asc",
+         OrderBy: itemBatchGridParameters.orderBy,
+         OrderDirection: itemBatchGridParameters.orderDirection,
       })
 
    const columns: TableColumn<ItemBatchSimpleDto>[] = useMemo(
@@ -45,7 +44,7 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
          {
             id: "batchDate",
             name: "Fecha de Vencimiento",
-            selector: (row) => row.batchDate.toLocaleDateString(),
+            selector: (row) => new Date(row.batchDate).toLocaleDateString(),
             sortable: true,
             wrap: true,
             sortField: "BatchDate",
@@ -96,6 +95,7 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
          sortDirection: SortOrder,
          sortedRows: unknown[],
       ) => {
+         console.log("entro en el sort")
          setItemBatchGridParameters((prev) => {
             return {
                ...prev,
@@ -111,8 +111,8 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
       {
          when: (row) => row.name === selectedItemBatched.itemBatchId,
          style: {
-            backgroundColor: "#FFE8CC",
-            color: "#FD7E14",
+            backgroundColor: "#F3D9FA",
+            color: "#BE4BDB",
          },
       },
    ]
@@ -136,8 +136,6 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
                progressPending={itemQueryStatus === "loading"}
                onSort={handleOnSort}
                sortServer
-               expandableRows
-               expandableRowsComponent={DataGridItemExpandedComponent}
             />
          </Box>
       </Tabs.Panel>

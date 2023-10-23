@@ -36,6 +36,7 @@ import CreateCategoryItemView from "./views/category-items/CreateCategoryItem.vi
 import UpdateCategoryItemView from "./views/category-items/UpdateCategoryItem.view.tsx"
 import CreateItemView from "./views/items/CreateItem.view.tsx"
 import UpdateItemView from "./views/items/UpdateItem.view.tsx"
+import CreateItemBatchView from "./views/items/CreateItemBatch.view.tsx"
 
 const RoutesComponent = () => {
    const securitiesData = useAtomValue(securitiesAtom)
@@ -220,6 +221,14 @@ const RoutesComponent = () => {
                   element={
                      <ProtectedRouteComponent>
                         <CreateItemView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
+                  path="/items/create-batch"
+                  element={
+                     <ProtectedRouteComponent>
+                        <CreateItemBatchView />
                      </ProtectedRouteComponent>
                   }
                />
