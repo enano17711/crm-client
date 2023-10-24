@@ -7,7 +7,6 @@ import {
 } from "../../../store/item.atoms.ts"
 import { useNavigate } from "react-router-dom"
 import { Checkbox, Group, Menu } from "@mantine/core"
-import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
 import SearchItemByColumnComponent from "../../items/components/SearchItemByColumn.component.tsx"
 import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
@@ -17,6 +16,7 @@ import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateM
 import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
 import { selectedItemBatchedAtom } from "../../../store/itemBatch.atoms.ts"
 import ActionCloneMenuComponent from "../../../components/top-bar/ActionCloneMenu.component.tsx"
+import ActionEditMenuComponent from "../../../components/top-bar/ActionEditMenu.component.tsx"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -52,6 +52,14 @@ const ItemTopBarComponent = ({
    const onActionCloneItemBatch = useCallback(() => {
       navigate("/items/create-batch")
    }, [navigate])
+
+   const onActionEditItem = useCallback(() => {
+      navigate("/items/update/" + selectedItem?.itemId)
+   }, [navigate, selectedItem?.itemId])
+
+   const onActionEditItemBatch = useCallback(() => {
+      navigate("/items/update-batch/" + selectedItemBatch?.itemBatchId)
+   }, [navigate, selectedItemBatch?.itemBatchId])
 
    return (
       <Group position="apart">
@@ -93,10 +101,30 @@ const ItemTopBarComponent = ({
                   Item Batch
                </Menu.Item>
             </ActionCloneMenuComponent>
-            <ActionEditComponent
-               editUrl={"/items/update/" + selectedItem?.itemId}
-               disabled={!(selectedItem?.name !== undefined)}
-            />
+
+            <ActionEditMenuComponent
+               disabled={
+                  !(
+                     selectedItem?.name !== undefined ||
+                     selectedItemBatch?.batchNumber !== undefined
+                  )
+               }
+            >
+               <Menu.Item
+                  disabled={!(selectedItem?.name !== undefined)}
+                  icon={<IconPackage size={14} />}
+                  onClick={() => onActionEditItem()}
+               >
+                  Item
+               </Menu.Item>
+               <Menu.Item
+                  disabled={!(selectedItemBatch?.batchNumber !== undefined)}
+                  icon={<Icon3dRotate size={14} />}
+                  onClick={() => onActionEditItemBatch()}
+               >
+                  Item Batch
+               </Menu.Item>
+            </ActionEditMenuComponent>
             <ActionDeleteComponent
                deleteFunction={setOpenDeleteModal}
                disabled={!(selectedItem?.name !== undefined)}
