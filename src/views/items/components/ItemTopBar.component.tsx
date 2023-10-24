@@ -7,16 +7,19 @@ import {
 } from "../../../store/item.atoms.ts"
 import { useNavigate } from "react-router-dom"
 import { Checkbox, Group, Menu } from "@mantine/core"
-import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
 import SearchItemByColumnComponent from "../../items/components/SearchItemByColumn.component.tsx"
 import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
 import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
 import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateMenu.component.tsx"
 import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
-import { selectedItemBatchedAtom } from "../../../store/itemBatch.atoms.ts"
+import {
+   openItemBatchedDeleteModalAtom,
+   selectedItemBatchedAtom,
+} from "../../../store/itemBatch.atoms.ts"
 import ActionCloneMenuComponent from "../../../components/top-bar/ActionCloneMenu.component.tsx"
 import ActionEditMenuComponent from "../../../components/top-bar/ActionEditMenu.component.tsx"
+import ActionDeleteMenuComponent from "../../../components/top-bar/ActionDeleteMenu.component.tsx"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -33,6 +36,7 @@ const ItemTopBarComponent = ({
       selectedItemBatchedAtom,
    )
    const setOpenDeleteModal = useSetAtom(openItemDeleteModalAtom)
+   const setOpenDeleteModalBatch = useSetAtom(openItemBatchedDeleteModalAtom)
    const navigate = useNavigate()
 
    const onActionCreateItem = useCallback(() => {
@@ -125,10 +129,29 @@ const ItemTopBarComponent = ({
                   Item Batch
                </Menu.Item>
             </ActionEditMenuComponent>
-            <ActionDeleteComponent
-               deleteFunction={setOpenDeleteModal}
-               disabled={!(selectedItem?.name !== undefined)}
-            />
+            <ActionDeleteMenuComponent
+               disabled={
+                  !(
+                     selectedItem?.name !== undefined ||
+                     selectedItemBatch?.batchNumber !== undefined
+                  )
+               }
+            >
+               <Menu.Item
+                  disabled={!(selectedItem?.name !== undefined)}
+                  icon={<IconPackage size={14} />}
+                  onClick={() => setOpenDeleteModal(true)}
+               >
+                  Item
+               </Menu.Item>
+               <Menu.Item
+                  disabled={!(selectedItemBatch?.batchNumber !== undefined)}
+                  icon={<Icon3dRotate size={14} />}
+                  onClick={() => setOpenDeleteModalBatch(true)}
+               >
+                  Item Batch
+               </Menu.Item>
+            </ActionDeleteMenuComponent>
             {showSearchAction && <SearchItemByColumnComponent />}
             <ActionExportComponent
                pdfUrl={"item/download-item-pdf"}
