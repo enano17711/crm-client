@@ -45,6 +45,14 @@ const ItemTopBarComponent = ({
       navigate("/items/create-batch")
    }, [navigate, setSelectedItemBatch])
 
+   const onActionCloneItem = useCallback(() => {
+      navigate("/items/create")
+   }, [navigate])
+
+   const onActionCloneItemBatch = useCallback(() => {
+      navigate("/items/create-batch")
+   }, [navigate])
+
    return (
       <Group position="apart">
          <Group>
@@ -62,16 +70,25 @@ const ItemTopBarComponent = ({
                   Item Batch
                </Menu.Item>
             </ActionCreateMenuComponent>
-            <ActionCloneMenuComponent>
+            <ActionCloneMenuComponent
+               disabled={
+                  !(
+                     selectedItem?.name !== undefined ||
+                     selectedItemBatch?.batchNumber !== undefined
+                  )
+               }
+            >
                <Menu.Item
+                  disabled={!(selectedItem?.name !== undefined)}
                   icon={<IconPackage size={14} />}
-                  onClick={() => onActionCreateItemBatch()}
+                  onClick={() => onActionCloneItem()}
                >
-                  Item Batch
+                  Item
                </Menu.Item>
                <Menu.Item
+                  disabled={!(selectedItemBatch?.batchNumber !== undefined)}
                   icon={<Icon3dRotate size={14} />}
-                  onClick={() => onActionCreateItemBatch()}
+                  onClick={() => onActionCloneItemBatch()}
                >
                   Item Batch
                </Menu.Item>

@@ -4,10 +4,14 @@ import { IconCopy } from "@tabler/icons-react"
 
 interface ActionCloneMenuProps {
    children: React.ReactNode
+   disabled: boolean
 }
-const ActionCloneMenuComponent = ({ children }: ActionCloneMenuProps) => {
+const ActionCloneMenuComponent = ({
+   children,
+   disabled,
+}: ActionCloneMenuProps) => {
    return (
-      <Menu shadow="md">
+      <Menu shadow="md" disabled={disabled}>
          <Menu.Target>
             <Tooltip
                label="Clonar"
@@ -15,8 +19,14 @@ const ActionCloneMenuComponent = ({ children }: ActionCloneMenuProps) => {
                position="bottom"
                withArrow
                arrowPosition="center"
+               disabled={disabled}
             >
-               <ActionIcon color="indigo" variant="light" size="lg">
+               <ActionIcon
+                  color="indigo"
+                  variant="light"
+                  size="lg"
+                  disabled={disabled}
+               >
                   <IconCopy />
                </ActionIcon>
             </Tooltip>
