@@ -50,7 +50,7 @@ const UpdateItemBatchView = () => {
       ])
       reset({
          batchNumber: itemBatchData?.data?.batchNumber,
-         batchDate: itemBatchData?.data?.batchDate,
+         batchDate: new Date(itemBatchData?.data?.batchDate),
          itemId: itemBatchData?.data?.item.itemId.toString(),
       })
    }
@@ -79,7 +79,7 @@ const UpdateItemBatchView = () => {
                         ...prev,
                         itemBatchId: Number(params.itemBatchId),
                         batchNumber: variables.batchNumber,
-                        batchDate: variables.batchDate,
+                        batchDate: new Date(variables.batchDate),
                         itemId: variables.itemId.toString(),
                         item: itemQueryData.data.items.find(
                            (item) => item.itemId === variables.itemId,
