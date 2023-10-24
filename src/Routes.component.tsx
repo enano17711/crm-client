@@ -241,6 +241,14 @@ const RoutesComponent = () => {
                   }
                />
                <Route
+                  path="/items/update-batch/:itemBatchId"
+                  element={
+                     <ProtectedRouteComponent>
+                        <UpdateItemView />
+                     </ProtectedRouteComponent>
+                  }
+               />
+               <Route
                   path="/create-adjustment"
                   element={
                      <ProtectedRouteComponent>

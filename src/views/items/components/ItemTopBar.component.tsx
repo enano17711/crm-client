@@ -93,10 +93,6 @@ const ItemTopBarComponent = ({
                   Item Batch
                </Menu.Item>
             </ActionCloneMenuComponent>
-            {/*<ActionCloneComponent
-               disabled={!(selectedItem?.name !== undefined)}
-               cloneUrl={"/items/create"}
-            />*/}
             <ActionEditComponent
                editUrl={"/items/update/" + selectedItem?.itemId}
                disabled={!(selectedItem?.name !== undefined)}
