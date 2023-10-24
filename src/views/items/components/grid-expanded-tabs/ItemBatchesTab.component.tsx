@@ -119,6 +119,10 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
       },
    ]
 
+   /*   useEffect(() => {
+      setSelectedItemBatched({})
+   }, [])*/
+
    return (
       <Tabs.Panel value="first">
          <Box>

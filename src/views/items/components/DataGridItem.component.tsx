@@ -9,7 +9,7 @@ import { useApiItemItemsGetHook } from "../../../api-gen/hooks/itemController"
 import DataTable, { SortOrder, TableColumn } from "react-data-table-component"
 import { ItemSimpleDto } from "../../../api-gen"
 import { Box } from "@mantine/core"
-import DataGridItemExpandedComponent from "./DataGridItemExpanded.component.tsx"
+import DataGridItemExpandedComponent from "./grid-expanded-tabs/DataGridItemExpanded.component.tsx"
 
 const DataGridItemComponent = () => {
    const [itemGridParameters, setItemGridParameters] = useAtom(

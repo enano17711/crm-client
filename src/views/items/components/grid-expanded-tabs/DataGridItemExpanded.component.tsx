@@ -1,14 +1,15 @@
 import React from "react"
 import { ExpanderComponentProps } from "react-data-table-component"
-import { ItemSimpleDto } from "../../../api-gen"
-import { Tabs } from "@mantine/core"
-import ItemBatchesTabComponent from "./grid-expanded-tabs/ItemBatchesTab.component.tsx"
+import { ItemSimpleDto } from "../../../../api-gen"
+import { Space, Tabs } from "@mantine/core"
+import ItemBatchesTabComponent from "./ItemBatchesTab.component.tsx"
 
 const DataGridItemExpandedComponent = ({
    data,
 }: ExpanderComponentProps<ItemSimpleDto>) => {
    return (
-      <Tabs keepMounted={false} defaultValue="first">
+      <Tabs keepMounted={false} defaultValue="first" pl="xl">
+         <Space h="sm" />
          <Tabs.List>
             <Tabs.Tab value="first">Item Batches</Tabs.Tab>
             <Tabs.Tab value="second">Historial</Tabs.Tab>
