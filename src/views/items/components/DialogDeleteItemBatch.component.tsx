@@ -1,47 +1,72 @@
-import React, { useEffect, useState } from "react"
-import { Button, Modal, Stack, Text } from "@mantine/core"
-import { useAppStore } from "../../../store"
-import { ItemBatchDto } from "../../../api-services"
+import React from "react"
+import { useAtom } from "jotai"
+import { useQueryClient } from "@tanstack/react-query"
+import {
+   openItemBatchedDeleteModalAtom,
+   selectedItemBatchedAtom,
+} from "../../../store/itemBatch.atoms.ts"
+import { useApiItemItemBatchIdDeleteHook } from "../../../api-gen/hooks/itemController"
+import { successNotification } from "../../../utils"
+import { Button, Group, Modal, Stack, Text } from "@mantine/core"
+import { IconArrowLeft, IconTrash } from "@tabler/icons-react"
 
 const DialogDeleteItemBatchComponent = () => {
-   const [localSingleBatchModel, setLocalSingleBatchModel] =
-      useState<ItemBatchDto | null>(null)
+   const [selectedItemBatch, setSelectedItemBatch] = useAtom(
+      selectedItemBatchedAtom,
+   )
+   const [openDeleteModalBatch, setOpenDeleteModalBatch] = useAtom(
+      openItemBatchedDeleteModalAtom,
+   )
 
-   const { itemsStore } = useAppStore()
-   const { singleModelBatch, openDeleteItemBatchModal } = itemsStore.getters
-   const onModalClose = () => {
-      itemsStore.actions.disposeState()
-   }
-   const deleteHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-      itemsStore.actions.deleteItemBatch(singleModelBatch.itemBatchId)
-      onModalClose()
-   }
+   const queryClient = useQueryClient()
 
-   useEffect(() => {
-      if (singleModelBatch) {
-         const newDate = new Date(singleModelBatch.batchDate)
-         setLocalSingleBatchModel({ ...singleModelBatch, batchDate: newDate })
-      }
-   }, [singleModelBatch])
+   const { mutate: deleteItemMutate } = useApiItemItemBatchIdDeleteHook(
+      selectedItemBatch?.itemBatchId,
+      {
+         mutation: {
+            onSuccess: () => {
+               successNotification()
+               queryClient.invalidateQueries({
+                  queryKey: ["/api/item/item-batches"],
+               })
+               setSelectedItemBatch({})
+               setOpenDeleteModalBatch(false)
+            },
+         },
+      },
+   )
 
    return (
       <Modal
-         opened={openDeleteItemBatchModal}
-         title="Eliminar Item"
+         opened={openDeleteModalBatch}
+         title="Eliminar Item Batch"
          centered
-         onClose={onModalClose}
+         onClose={() => setOpenDeleteModalBatch(false)}
          closeOnClickOutside={false}
       >
          <Stack>
             <Text>
-               Se eliminará la item de lote: LOTE -{" "}
-               {singleModelBatch?.batchNumber} - EXPIRATION DATE -{" "}
-               {localSingleBatchModel?.batchDate.toLocaleDateString()}
+               Se eliminará el item batch: {selectedItemBatch?.batchNumber}
             </Text>
 
-            <Button color="red" onClick={deleteHandler}>
-               Eliminar
-            </Button>
+            <Group position="right">
+               <Button
+                  color="red"
+                  onClick={() => deleteItemMutate()}
+                  variant="light"
+                  leftIcon={<IconTrash />}
+               >
+                  Eliminar
+               </Button>
+               <Button
+                  color="grape"
+                  onClick={() => setOpenDeleteModalBatch(false)}
+                  variant="light"
+                  leftIcon={<IconArrowLeft />}
+               >
+                  Cancelar
+               </Button>
+            </Group>
          </Stack>
       </Modal>
    )

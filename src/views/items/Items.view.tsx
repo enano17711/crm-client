@@ -7,6 +7,7 @@ import { Space } from "@mantine/core"
 import DataGridItemComponent from "../items/components/DataGridItem.component.tsx"
 import DialogDeleteItemComponent from "../items/components/DialogDeleteItem.component.tsx"
 import { selectedItemBatchedAtom } from "../../store/itemBatch.atoms.ts"
+import DialogDeleteItemBatchComponent from "./components/DialogDeleteItemBatch.component.tsx"
 
 const ItemsView = () => {
    const setSelectedItem = useSetAtom(selectedItemAtom)
@@ -23,6 +24,7 @@ const ItemsView = () => {
          <Space h="sm" />
          <DataGridItemComponent />
          <DialogDeleteItemComponent />
+         <DialogDeleteItemBatchComponent />
       </Can>
    )
 }

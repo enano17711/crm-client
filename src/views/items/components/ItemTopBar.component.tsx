@@ -187,7 +187,9 @@ const ItemTopBarComponent = ({
                </Checkbox.Group>
             </ActionColumnsGridComponent>
          </Group>
-         <ActionRefreshDataComponent queryKey={["/api/item/items"]} />
+         <ActionRefreshDataComponent
+            queryKey={["/api/item/items", "/api/item/item-batches"]}
+         />
       </Group>
    )
 }
