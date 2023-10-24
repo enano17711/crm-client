@@ -7,7 +7,6 @@ import {
 } from "../../../store/item.atoms.ts"
 import { useNavigate } from "react-router-dom"
 import { Checkbox, Group, Menu } from "@mantine/core"
-import ActionCloneComponent from "../../../components/top-bar/ActionClone.component.tsx"
 import ActionEditComponent from "../../../components/top-bar/ActionEdit.component.tsx"
 import ActionDeleteComponent from "../../../components/top-bar/ActionDelete.component.tsx"
 import SearchItemByColumnComponent from "../../items/components/SearchItemByColumn.component.tsx"
@@ -17,6 +16,7 @@ import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefres
 import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateMenu.component.tsx"
 import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
 import { selectedItemBatchedAtom } from "../../../store/itemBatch.atoms.ts"
+import ActionCloneMenuComponent from "../../../components/top-bar/ActionCloneMenu.component.tsx"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -62,10 +62,24 @@ const ItemTopBarComponent = ({
                   Item Batch
                </Menu.Item>
             </ActionCreateMenuComponent>
-            <ActionCloneComponent
+            <ActionCloneMenuComponent>
+               <Menu.Item
+                  icon={<IconPackage size={14} />}
+                  onClick={() => onActionCreateItemBatch()}
+               >
+                  Item Batch
+               </Menu.Item>
+               <Menu.Item
+                  icon={<Icon3dRotate size={14} />}
+                  onClick={() => onActionCreateItemBatch()}
+               >
+                  Item Batch
+               </Menu.Item>
+            </ActionCloneMenuComponent>
+            {/*<ActionCloneComponent
                disabled={!(selectedItem?.name !== undefined)}
                cloneUrl={"/items/create"}
-            />
+            />*/}
             <ActionEditComponent
                editUrl={"/items/update/" + selectedItem?.itemId}
                disabled={!(selectedItem?.name !== undefined)}
