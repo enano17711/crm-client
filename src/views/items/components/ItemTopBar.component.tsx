@@ -16,6 +16,7 @@ import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumn
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
 import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateMenu.component.tsx"
 import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
+import { selectedItemBatchedAtom } from "../../../store/itemBatch.atoms.ts"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -28,6 +29,9 @@ const ItemTopBarComponent = ({
       itemGridColumnsVisibleAtom,
    )
    const [selectedItem, setSelectedItem] = useAtom(selectedItemAtom)
+   const [selectedItemBatch, setSelectedItemBatch] = useAtom(
+      selectedItemBatchedAtom,
+   )
    const setOpenDeleteModal = useSetAtom(openItemDeleteModalAtom)
    const navigate = useNavigate()
 
@@ -37,9 +41,9 @@ const ItemTopBarComponent = ({
    }, [navigate, setSelectedItem])
 
    const onActionCreateItemBatch = useCallback(() => {
-      setSelectedItem({})
+      setSelectedItemBatch({})
       navigate("/items/create-batch")
-   }, [navigate, setSelectedItem])
+   }, [navigate, setSelectedItemBatch])
 
    return (
       <Group position="apart">

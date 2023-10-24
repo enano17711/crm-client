@@ -11,11 +11,11 @@ export const itemBatchedGridParametersAtom = atom<{
    orderBy: string
    orderDirection: "asc" | "desc"
 }>({
-   searchColumn: "Name",
+   searchColumn: "BatchNumber",
    searchText: "",
    pageIndex: 1,
    pageSize: 10,
-   orderBy: "Name",
+   orderBy: "BatchNumber",
    orderDirection: "asc",
 })
 export const itemBatchedGridColumnsVisibleAtom = atom<string[]>([])

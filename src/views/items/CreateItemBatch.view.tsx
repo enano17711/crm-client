@@ -93,7 +93,7 @@ const CreateItemBatchView = () => {
       ) {
          reset({
             batchNumber: selectedItemBatch?.batchNumber,
-            batchDate: selectedItemBatch?.batchDate,
+            batchDate: new Date(selectedItemBatch?.batchDate),
             itemId: selectedItemBatch?.item.itemId.toString(),
          })
       }

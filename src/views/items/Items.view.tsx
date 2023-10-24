@@ -6,12 +6,15 @@ import ItemTopBarComponent from "../items/components/ItemTopBar.component.tsx"
 import { Space } from "@mantine/core"
 import DataGridItemComponent from "../items/components/DataGridItem.component.tsx"
 import DialogDeleteItemComponent from "../items/components/DialogDeleteItem.component.tsx"
+import { selectedItemBatchedAtom } from "../../store/itemBatch.atoms.ts"
 
 const ItemsView = () => {
-   const setSingleItem = useSetAtom(selectedItemAtom)
+   const setSelectedItem = useSetAtom(selectedItemAtom)
+   const setSelectedItemBatch = useSetAtom(selectedItemBatchedAtom)
 
    useEffect(() => {
-      setSingleItem({})
+      setSelectedItem({})
+      setSelectedItemBatch({})
    }, [])
 
    return (

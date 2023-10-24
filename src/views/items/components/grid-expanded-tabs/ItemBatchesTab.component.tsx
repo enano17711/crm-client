@@ -51,6 +51,7 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
          },
          {
             id: "quantity",
+            name: "Cantidad",
             selector: (row) => row.quantity,
             sortable: true,
             wrap: true,
@@ -85,6 +86,7 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
    )
    const handleOnRowClicked = useCallback(
       (row: unknown) => {
+         console.log("entro en el row clicked: ", row)
          setSelectedItemBatched(row as ItemBatchSimpleDto)
       },
       [setSelectedItemBatched],
@@ -109,7 +111,7 @@ const ItemBatchesTabComponent = ({ data }: ItemBatchesTabComponentProps) => {
 
    const conditionalRowStyles = [
       {
-         when: (row) => row.name === selectedItemBatched.itemBatchId,
+         when: (row) => row.batchNumber === selectedItemBatched.batchNumber,
          style: {
             backgroundColor: "#F3D9FA",
             color: "#BE4BDB",
