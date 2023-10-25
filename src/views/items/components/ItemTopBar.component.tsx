@@ -8,11 +8,15 @@ import {
 import { useNavigate } from "react-router-dom"
 import { Checkbox, Group, Menu } from "@mantine/core"
 import SearchItemByColumnComponent from "../../items/components/SearchItemByColumn.component.tsx"
-import ActionExportComponent from "../../../components/top-bar/ActionExport.component.tsx"
 import ActionColumnsGridComponent from "../../../components/top-bar/ActionColumnsGrid.component.tsx"
 import ActionRefreshDataComponent from "../../../components/top-bar/ActionRefreshData.component.tsx"
 import ActionCreateMenuComponent from "../../../components/top-bar/ActionCreateMenu.component.tsx"
-import { Icon3dRotate, IconPackage } from "@tabler/icons-react"
+import {
+   Icon3dRotate,
+   IconCsv,
+   IconPackage,
+   IconPdf,
+} from "@tabler/icons-react"
 import {
    openItemBatchedDeleteModalAtom,
    selectedItemBatchedAtom,
@@ -20,6 +24,8 @@ import {
 import ActionCloneMenuComponent from "../../../components/top-bar/ActionCloneMenu.component.tsx"
 import ActionEditMenuComponent from "../../../components/top-bar/ActionEditMenu.component.tsx"
 import ActionDeleteMenuComponent from "../../../components/top-bar/ActionDeleteMenu.component.tsx"
+import ActionExportMenuComponent from "../../../components/top-bar/ActionExportMenu.component.tsx"
+import { exportCsv, exportPdf } from "../../../utils"
 
 interface ItemTopBarComponentProps {
    showSearchAction?: boolean
@@ -153,12 +159,47 @@ const ItemTopBarComponent = ({
                </Menu.Item>
             </ActionDeleteMenuComponent>
             {showSearchAction && <SearchItemByColumnComponent />}
-            <ActionExportComponent
-               pdfUrl={"item/download-item-pdf"}
-               pdfName="items.pdf"
-               excelUrl={"item/download-item-excel"}
-               excelName="items.xlsx"
-            />
+            <ActionExportMenuComponent>
+               <Menu.Item
+                  icon={<IconPdf size={14} />}
+                  onClick={() =>
+                     exportPdf("item/download-item-pdf", "items.pdf")
+                  }
+               >
+                  PDF Item
+               </Menu.Item>
+               <Menu.Item
+                  icon={<IconCsv size={14} />}
+                  onClick={() =>
+                     exportCsv("item/download-item-excel", "items.xlsx")
+                  }
+               >
+                  Excel Item
+               </Menu.Item>
+               <Menu.Divider />
+               <Menu.Item
+                  icon={<IconPdf size={14} />}
+                  onClick={() =>
+                     exportPdf(
+                        "item/download-item-batch-pdf",
+                        "itemBatches.pdf",
+                     )
+                  }
+               >
+                  PDF Item Batch
+               </Menu.Item>
+               <Menu.Item
+                  icon={<IconCsv size={14} />}
+                  onClick={() =>
+                     exportCsv(
+                        "item/download-item-batch-excel",
+                        "itemBatches.xlsx",
+                     )
+                  }
+               >
+                  Excel Item Batch
+               </Menu.Item>
+            </ActionExportMenuComponent>
             <ActionColumnsGridComponent>
                <Checkbox.Group
                   value={gridColumnsVisible}
